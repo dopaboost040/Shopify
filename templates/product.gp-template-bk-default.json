@@ -8,858 +8,20 @@
  * ------------------------------------------------------------
  */
 {
+  "order": [
+    "main",
+    "zoom_info_AqCxpY",
+    "trusted_banner_pfmBEb",
+    "problem_static_wpNABQ",
+    "features_Gr4Wjy",
+    "science_dopaboost_kP4BHH",
+    "results_dopaboost_AcBD7w",
+    "slideshow_MKWJJq",
+    "slideshow_JFcFEX",
+    "faq_xCdLpE"
+  ],
   "sections": {
-    "main": {
-      "type": "main-product",
-      "blocks": {
-        "liquid_P8FmaY": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "{% comment %} Product Rating Display {% endcomment %}\n<div class=\"product-ratings\">\n  <div class=\"star-rating\">\n    {% for i in (1..4) %}\n      <span class=\"star filled\">★</span>\n    {% endfor %}\n    <span class=\"star half\">★</span>\n  </div>\n  \n  <p class=\"rating-text\">\n    <strong>30,000+ feel the benefits monthly</strong>\n  </p>\n</div>\n<style>\n  .product-ratings {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    margin: 10px 0;\n    font-family: 'Funnel Sans', sans-serif;\n  }\n  \n  .star-rating {\n    display: flex;\n    gap: 1px;\n  }\n  \n  .star {\n    font-size: 16px;\n    line-height: 1;\n  }\n  \n  .star.filled {\n    color: #C1633F;\n  }\n  \n  .star.half {\n    color: #C1633F;\n    opacity: 0.6;\n  }\n  \n  .rating-text {\n    font-size: 14px;\n    margin: 0;\n    color: #333;\n    line-height: 1;\n    font-weight: 400;\n    font-family: 'Funnel Sans', sans-serif;\n  }\n</style>"
-          }
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "badges": {
-          "type": "badges",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "liquid_C83EWh": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "{% comment %}\n  Product Info Section with HEARTBEAT ANIMATION\n  Double beat pulse effect for \"Limited Stock Remaining\"\n{% endcomment %}\n<style>\n  .product-info-section {\n    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\n    padding: 5px 0;\n  }\n  \n  .product-info-section .almost-sold-out {\n    display: inline-flex !important;\n    align-items: center;\n    gap: 8px;\n    margin-bottom: 6px;\n    color: #C1633F;\n    font-size: 14px;\n    font-weight: 600;\n  }\n  \n  /* HEARTBEAT ANIMATION - Double Beat Effect */\n  .product-info-section .pulse-dot {\n    width: 8px;\n    height: 8px;\n    background-color: #C1633F;\n    border-radius: 50%;\n    animation: heartbeat 1.5s ease-in-out infinite;\n  }\n  \n  @keyframes heartbeat {\n    0% {\n      transform: scale(1);\n    }\n    14% {\n      transform: scale(1.3);\n    }\n    28% {\n      transform: scale(1);\n    }\n    42% {\n      transform: scale(1.3);\n    }\n    70% {\n      transform: scale(1);\n    }\n  }\n  \n  /* Product Stats */\n  .product-info-section .product-stats {\n    color: #333333;\n    font-size: 14px;\n    margin-bottom: 12px;\n    line-height: 1.4;\n    font-weight: 500;\n  }\n  \n  .product-info-section .product-stats strong {\n    color: #C1633F;\n    font-weight: 700;\n  }\n  \n  /* Delivery Info */\n  .product-info-section .delivery-info {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    color: #333333;\n    font-size: 14px;\n    padding-top: 12px;\n    border-top: 1px solid #eeeeee;\n    font-weight: 500;\n  }\n  \n  .product-info-section .delivery-icon {\n    width: 20px;\n    height: 20px;\n    flex-shrink: 0;\n    color: #666666;\n  }\n</style>\n<div class=\"product-info-section\">\n  <!-- Almost sold out with HEARTBEAT animation -->\n  <div class=\"almost-sold-out\">\n    <div class=\"pulse-dot\"></div>\n    <span>Limited Stock Remaining</span>\n  </div>\n  \n  <!-- Product stats -->\n  <div class=\"product-stats\">\n    This product was bought <strong>1249 times</strong> this week\n  </div>\n  \n  <!-- Delivery info -->\n  <div class=\"delivery-info\">\n    <svg class=\"delivery-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n      <circle cx=\"12\" cy=\"12\" r=\"10\" stroke-width=\"2\"></circle>\n      <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 6v6l4 2\"></path>\n    </svg>\n    <span>Order today, receive Friday, November 7</span>\n  </div>\n</div>\n{% comment %}\n  HEARTBEAT ANIMATION ACTIVE\n  - Creates a double-beat rhythm like a heartbeat\n  - Scales up to 1.3x twice, then pauses\n  - 1.5 second cycle time\n  - Mimics urgency with natural rhythm\n{% endcomment %}"
-          }
-        },
-        "liquid_UxXy6w": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "{% comment %}\n  Gift Banner Block - Place above Add to Cart Button\n  This block creates a promotional banner with a gift bow icon on the left\n  Width matches the add to cart button container\n  \n  IMPORTANT: Replace the image URL with your actual ribbon image URL after uploading to Shopify Files\n{% endcomment %}\n\n<style>\n  .gift-banner-container {\n    background-color: #F1EADE;\n    border-radius: 8px;\n    padding: 10px 14px 10px 45px;\n    display: flex;\n    align-items: center;\n    margin-bottom: 16px;\n    width: 100%;\n    box-sizing: border-box;\n    position: relative;\n    min-height: 50px;\n  }\n\n  /* Vertical Ribbon Container */\n  .gift-ribbon-vertical {\n    position: absolute;\n    left: 8px;\n    top: 0;\n    bottom: 0;\n    width: 28px;\n    height: 100%;\n    z-index: 2;\n    pointer-events: none;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n\n  .ribbon-image {\n    width: 100%;\n    height: 100%;\n    max-height: 100%;\n    object-fit: contain;\n    object-position: center;\n    position: relative;\n    z-index: 1;\n  }\n\n  .gift-banner-text {\n    color: #1a1a1a;\n    font-size: 13px;\n    line-height: 1.3;\n    font-weight: 500;\n  }\n\n  .gift-banner-text .highlight {\n    font-weight: 700;\n    color: #d32f2f;\n  }\n\n  /* Add subtle animation on hover */\n  .gift-banner-container:hover {\n    background-color: #F1EADE;\n    transition: background-color 0.3s ease;\n  }\n\n  /* Responsive adjustments */\n  @media (max-width: 749px) {\n    .gift-banner-container {\n      padding: 8px 10px 8px 38px;\n      min-height: 45px;\n    }\n    \n    .gift-ribbon-vertical {\n      left: 6px;\n      top: 0;\n      bottom: 0;\n      width: 25px;\n      height: 100%;\n    }\n    \n    .gift-banner-text {\n      font-size: 12px;\n    }\n  }\n</style>\n\n<div class=\"gift-banner-container\">\n  <!-- Vertical Ribbon with Bow -->\n  <div class=\"gift-ribbon-vertical\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0930/4218/0471/files/Untitled_design_65.png?v=1762089154\" \n      alt=\"Gift Ribbon\" \n      class=\"ribbon-image\"\n      loading=\"lazy\"\n      onerror=\"this.style.display='none'\"\n    />\n  </div>\n  \n  <div class=\"gift-banner-text\">\n    <span class=\"highlight\">BLACK FRIDAY SALE 🔥</span><br>\n    GET 4, PAY FOR 2</span><br>\n🔥 PLUS, Subscribe & Save to unlock an additional <span class=\"highlight\">20% OFF</span>.\n  </div>\n</div>\n\n{% comment %}\n  Alternative version with simpler text (uncomment to use):\n  \n  <div class=\"gift-banner-container\">\n    <div class=\"gift-ribbon-vertical\">\n      <img \n        src=\"https://cdn.shopify.com/s/files/1/0930/4218/0471/files/Untitled_design_65.png?v=1762089154\" \n        alt=\"Gift Ribbon\" \n        class=\"ribbon-image\"\n        loading=\"lazy\"\n      />\n    </div>\n    \n    <div class=\"gift-banner-text\">\n      Hear what matters, protect what's priceless.\n    </div>\n  </div>\n{% endcomment %}\n\n{% comment %}\n  IMPLEMENTATION INSTRUCTIONS:\n  \n  1. Upload the ribbon image to Shopify:\n     - Go to Settings > Files\n     - Upload your vertical ribbon bow image\n     - Copy the URL of the uploaded image\n  \n  2. Replace the image URL:\n     - Find this line: src=\"https://cdn.shopify.com/s/files/1/YOUR-STORE/files/vertical-ribbon-bow.png?v=1234567890\"\n     - Replace with your actual uploaded image URL\n  \n  3. In your Shopify theme, create a new snippet:\n     - Go to Online Store > Themes > Actions > Edit code\n     - Under \"Snippets\", click \"Add a new snippet\"\n     - Name it \"gift-banner-block\" and paste this code\n  \n  4. Add to your product template above the add to cart button:\n     {% render 'gift-banner-block' %}\n  \n  5. Or add directly in the product form:\n     - Find your product-template.liquid or main-product.liquid\n     - Locate the add to cart button (usually has class like \"product-form__buttons\")\n     - Add the render tag just above it\n  \n  6. To customize the message, you can pass variables:\n     {% render 'gift-banner-block', \n        headline: 'Special Offer!',\n        message: 'Limited time discount available',\n        ribbon_image: 'YOUR_IMAGE_URL_HERE'\n     %}\n{% endcomment %}\n\n{% comment %}\n  Version with customizable parameters:\n{% endcomment %}\n\n{% if headline or message %}\n  <div class=\"gift-banner-container\">\n    <div class=\"gift-ribbon-vertical\">\n      <img \n        src=\"{{ ribbon_image | default: 'https://cdn.shopify.com/s/files/1/0930/4218/0471/files/Untitled_design_65.png?v=1762089154' }}\" \n        alt=\"Gift Ribbon\" \n        class=\"ribbon-image\"\n        loading=\"lazy\"\n      />\n    </div>\n    \n    <div class=\"gift-banner-text\">\n      {% if headline %}<span class=\"highlight\">{{ headline }}</span><br>{% endif %}\n      {% if message %}{{ message }}{% endif %}\n    </div>\n  </div>\n{% endif %}"
-          }
-        },
-        "rating": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        },
-        "payment_terms": {
-          "type": "payment_terms",
-          "settings": {}
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-            "icon": "none",
-            "icon_width": 20,
-            "collapse_content": false
-          }
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "#c1633f",
-            "atc_button_text_color": "#ffffff",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        },
-        "liquid_YCHCjB": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<!-- Trust Badges - Add this code right after your add to cart button -->\n<div class=\"trust-badges\">\n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <rect x=\"1\" y=\"6\" width=\"14\" height=\"10\" rx=\"1\"/>\n            <path d=\"M15 12h7l-2-3h-5v12\"/>\n            <circle cx=\"5\" cy=\"18\" r=\"1\"/>\n            <circle cx=\"19\" cy=\"18\" r=\"1\"/>\n        </svg>\n        <span class=\"badge-text\">Free Shipping</span>\n    </div>\n    \n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/>\n            <polyline points=\"12 8 12 12 14 14\"/>\n        </svg>\n        <span class=\"badge-text\">Money Back Guarantee</span>\n    </div>\n</div>\n\n<style>\n.trust-badges {\n    display: flex;\n    gap: 5px;\n    width: 100%;\n    margin-top: -20px !important; /* NEGATIVE margin to pull it up closer */\n    margin-bottom: 4px;\n    position: relative;\n    z-index: 1;\n}\n\n.badge-block {\n    display: flex;\n    align-items: center;\n    gap: 6px;\n    padding: 8px 10px;\n    background: #F7EDDC;\n    border-radius: 4px;\n    flex: 1;\n    justify-content: center;\n}\n\n.badge-icon {\n    width: 18px;\n    height: 18px;\n    flex-shrink: 0;\n    color: #333;\n}\n\n.badge-text {\n    font-size: 12px;\n    color: #333;\n    font-weight: 500;\n    line-height: 1.2;\n}\n\n@media (max-width: 480px) {\n    .badge-text {\n        font-size: 11px;\n    }\n    .badge-block {\n        padding: 6px 8px;\n    }\n}\n</style>"
-          }
-        },
-        "separator_Hw6cKh": {
-          "type": "separator",
-          "settings": {}
-        },
-        "text_cjGAhC": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>Description</strong></p><p>{{ product.metafields.custom.product_information | metafield_tag }}</p>"
-          }
-        },
-        "collapsible_text_pqTLEY": {
-          "type": "collapsible_text",
-          "settings": {
-            "icon": "none",
-            "icon_width": 20,
-            "title": "Ingredients",
-            "content": "<p>{{ product.metafields.custom.ingredients | metafield_tag }}</p>",
-            "page": ""
-          }
-        },
-        "collapsible_text_PFgwtm": {
-          "type": "collapsible_text",
-          "settings": {
-            "icon": "none",
-            "icon_width": 20,
-            "title": "How to use",
-            "content": "<p>{{ product.metafields.custom.how_to_use | metafield_tag }}</p>",
-            "page": ""
-          }
-        },
-        "liquid_rW8pBA": {
-          "type": "liquid",
-          "settings": {
-            "liquid": ""
-          }
-        }
-      },
-      "block_order": [
-        "liquid_P8FmaY",
-        "title",
-        "badges",
-        "price",
-        "liquid_C83EWh",
-        "liquid_UxXy6w",
-        "rating",
-        "payment_terms",
-        "description",
-        "variant_picker",
-        "buy_buttons",
-        "liquid_YCHCjB",
-        "separator_Hw6cKh",
-        "text_cjGAhC",
-        "collapsible_text_pqTLEY",
-        "collapsible_text_PFgwtm",
-        "liquid_rW8pBA"
-      ],
-      "settings": {
-        "full_width": false,
-        "show_fixed_add_to_cart": true,
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "expanded",
-        "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": false,
-        "enable_video_looping": true,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "background": "rgba(0,0,0,0)",
-        "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
-      }
-    },
-    "zoom_info_D84zzJ": {
-      "type": "zoom-info",
-      "blocks": {
-        "feature_JTRmCc": {
-          "type": "feature",
-          "settings": {
-            "image": "shopify://shop_images/canvas-image-1762096415276.jpg",
-            "image_alt": "",
-            "feature_text": "Amy D.",
-            "expanded_text": "I didn’t realize how low my motivation had gotten until I started using these patches. Within a few days, my energy and focus felt steady, no crashes, no jitters.",
-            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #974E35 50%, #7A3E2A 100%)",
-            "link_url": ""
-          }
-        },
-        "feature_mKBqy4": {
-          "type": "feature",
-          "settings": {
-            "image": "shopify://shop_images/canvas-image-1761173935477.jpg",
-            "image_alt": "",
-            "feature_text": "Sarah R.",
-            "expanded_text": "It’s not like caffeine, it’s smoother. I just notice I’m more productive, in a better mood, and not procrastinating all day.",
-            "gradient_background": "linear-gradient(135deg, #5A544F 0%, #4A453F 50%, #423D38 100%)",
-            "link_url": ""
-          }
-        },
-        "feature_wizcWM": {
-          "type": "feature",
-          "settings": {
-            "image": "shopify://shop_images/canvas-image-1762095902741.jpg",
-            "image_alt": "",
-            "feature_text": "Stephan Y.",
-            "expanded_text": "I apply one after my shower and feel a clear, calm focus that lasts all day. It’s become part of my daily routine.",
-            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #8B472F 50%, #6B3522 100%)",
-            "link_url": ""
-          }
-        },
-        "feature_gwMiVU": {
-          "type": "feature",
-          "settings": {
-            "image": "shopify://shop_images/canvas-image-1762096595413.jpg",
-            "image_alt": "",
-            "feature_text": "Barbara R.",
-            "expanded_text": "Love that it’s plant-based and transdermal. My motivation is back, and I don’t get that wired feeling like with supplements.",
-            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #974E35 50%, #7A3E2A 100%)",
-            "link_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "feature_JTRmCc",
-        "feature_mKBqy4",
-        "feature_wizcWM",
-        "feature_gwMiVU"
-      ],
-      "name": "Titanium Features",
-      "settings": {
-        "title": "Real People, Real Results",
-        "desktop_columns": "4",
-        "card_aspect_ratio": "1",
-        "mobile_card_aspect_ratio": "0.85",
-        "background_color": "#fef9f1",
-        "text_color": "#000000",
-        "card_text_color": "#ffffff",
-        "expand_icon_color": "#f5f2f0",
-        "expand_icon_bg": "#f5f2f01a",
-        "expand_icon_hover_bg": "#f5f2f033",
-        "expand_icon_border_color": "#f5f2f099",
-        "overlay_bg": "#f5f2f0fa",
-        "overlay_text_color": "#35312e",
-        "image_overlay_opacity": 20,
-        "card_shadow_opacity": 40,
-        "title_font_size": 48,
-        "title_font_size_mobile": 32,
-        "title_font_weight": "400",
-        "card_font_size": 24,
-        "card_font_size_mobile": 20,
-        "show_expand_icon": true,
-        "enable_parallax": true,
-        "padding_top": 0,
-        "padding_bottom": 55,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 5
-      }
-    },
-    "trusted_banner_pfmBEb": {
-      "type": "trusted-banner",
-      "blocks": {
-        "logo_TmwFwr": {
-          "type": "logo",
-          "settings": {
-            "logo_image": "shopify://shop_images/gempages_589464796735210386-edead21c-d237-4128-a22f-c52500ba8969.svg",
-            "logo_text": "ELLE",
-            "logo_alt_text": "",
-            "logo_link": ""
-          }
-        },
-        "logo_kiNkiy": {
-          "type": "logo",
-          "settings": {
-            "logo_image": "shopify://shop_images/gempages_589464796735210386-ca212e65-d20d-4bed-b31e-57bbb046c8b1.svg",
-            "logo_text": "allure",
-            "logo_alt_text": "",
-            "logo_link": ""
-          }
-        },
-        "logo_468DxC": {
-          "type": "logo",
-          "settings": {
-            "logo_image": "shopify://shop_images/gempages_589464796735210386-b00a20fa-26fb-42e0-a0a6-60c86a2f3c30.svg",
-            "logo_text": "Forbes",
-            "logo_alt_text": "",
-            "logo_link": ""
-          }
-        },
-        "logo_k4qXFr": {
-          "type": "logo",
-          "settings": {
-            "logo_image": "shopify://shop_images/gempages_589464796735210386-06d4bf63-2d9e-43c0-9f2d-d5e60cd15ff1.svg",
-            "logo_text": "BAZAAR",
-            "logo_alt_text": "",
-            "logo_link": ""
-          }
-        },
-        "logo_HmDRjy": {
-          "type": "logo",
-          "settings": {
-            "logo_image": "shopify://shop_images/gempages_589464796735210386-d0047f1b-f4f1-46c3-b588-76477155b2ec.svg",
-            "logo_text": "BYRDIE",
-            "logo_alt_text": "",
-            "logo_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_TmwFwr",
-        "logo_kiNkiy",
-        "logo_468DxC",
-        "logo_k4qXFr",
-        "logo_HmDRjy"
-      ],
-      "name": "Trusted By Banner",
-      "settings": {
-        "remove_section_spacing": true,
-        "full_width": true,
-        "background_color": "#f1eade",
-        "text_color": "#000000",
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "margin_top_mobile": 0,
-        "margin_bottom_mobile": 0,
-        "show_title": true,
-        "title_text": "AS SEEN IN",
-        "title_font": "sans_serif_n4",
-        "title_size": 18,
-        "scroll_speed": 20,
-        "pause_on_hover": true,
-        "logo_display_mode": "gradient",
-        "logo_opacity": 0.9,
-        "debug_mode": false,
-        "logo_font": "sans_serif_n4",
-        "logo_height": 50,
-        "logo_text_size": 24,
-        "logo_spacing": 40
-      }
-    },
-    "problem_static_3EADKm": {
-      "type": "problem-static",
-      "blocks": {
-        "problem_item_AxegDH": {
-          "type": "problem_item",
-          "settings": {
-            "icon_image": "shopify://shop_images/fatigue.png",
-            "number": "01",
-            "title": "Constant Fatigue",
-            "description": "Even after a full night's sleep, you feel drained and unmotivated to start your day."
-          }
-        },
-        "problem_item_RiAAbT": {
-          "type": "problem_item",
-          "settings": {
-            "icon_image": "shopify://shop_images/brain.png",
-            "number": "02",
-            "title": "Brain Fog",
-            "description": "Difficulty concentrating and making decisions affects your work and personal life."
-          }
-        },
-        "problem_item_HNQdqA": {
-          "type": "problem_item",
-          "settings": {
-            "icon_image": "shopify://shop_images/panic.png",
-            "number": "03",
-            "title": "Low Drive",
-            "description": "Tasks that once excited you now feel overwhelming and pointless to complete."
-          }
-        }
-      },
-      "block_order": [
-        "problem_item_AxegDH",
-        "problem_item_RiAAbT",
-        "problem_item_HNQdqA"
-      ],
-      "name": "Problem Section",
-      "settings": {
-        "section_label": "",
-        "headline_part1": "The Hidden Cost Of",
-        "headline_part2": "Low Dopamine",
-        "description": "When your dopamine levels drop, everything becomes harder. Here's what you might be experiencing:",
-        "background_color": "#fef9f1",
-        "label_color": "#999999",
-        "headline_color": "#1a1a1a",
-        "description_color": "#666666",
-        "number_color": "#5d91ae",
-        "item_title_color": "#1a1a1a",
-        "item_text_color": "#666666",
-        "headline_font": "gilda_display_n4",
-        "body_font": "inter_n4",
-        "label_font": "inter_n4",
-        "label_size": 12,
-        "label_size_mobile": 11,
-        "label_spacing": 1.5,
-        "label_weight": "500",
-        "headline_size_desktop": 48,
-        "headline_size_tablet": 40,
-        "headline_size_mobile": 32,
-        "headline_weight": "500",
-        "headline_bold_weight": "700",
-        "description_size": 17,
-        "description_size_mobile": 16,
-        "number_size": 80,
-        "number_size_mobile": 64,
-        "number_weight": "800",
-        "icon_width": 80,
-        "icon_width_mobile": 60,
-        "item_title_size": 24,
-        "item_title_size_mobile": 22,
-        "item_title_weight": "600",
-        "item_text_size": 16,
-        "item_text_size_mobile": 15,
-        "section_padding_desktop": "120px 60px",
-        "section_padding_tablet": "80px 40px",
-        "section_padding_mobile": "60px 24px",
-        "max_width": 1000,
-        "label_margin": 32,
-        "label_margin_mobile": 20,
-        "headline_margin": 32,
-        "headline_margin_mobile": 24,
-        "description_max_width": 700,
-        "description_margin": 80,
-        "description_margin_mobile": 48,
-        "number_margin": 20,
-        "item_title_margin": 12,
-        "item_padding": "0",
-        "columns_desktop": 3,
-        "columns_tablet": 2,
-        "grid_gap": 60,
-        "grid_gap_tablet": 40,
-        "grid_gap_mobile": 30,
-        "grid_margin_top": 80,
-        "grid_margin_top_mobile": 48,
-        "mobile_card_padding": "40px 30px",
-        "mobile_card_background": "#fef9f1",
-        "mobile_card_radius": 12,
-        "mobile_card_shadow": "0 2px 16px rgba(0, 0, 0, 0.08)",
-        "mobile_card_gap": 16,
-        "dot_active_color": "#1a1a1a",
-        "dot_inactive_color": "#d0d0d0"
-      }
-    },
-    "features_TrPW7f": {
-      "type": "features",
-      "blocks": {
-        "hotspot_C6PDBy": {
-          "type": "hotspot",
-          "settings": {
-            "horizontal": 37,
-            "vertical": 28,
-            "mobile_horizontal": 37,
-            "mobile_vertical": 28
-          }
-        },
-        "feature_RTAPQW": {
-          "type": "feature",
-          "settings": {
-            "heading": "Steady release, steady focus",
-            "subtitle": "Our transdermal delivery system ensures a consistent release of active ingredients, no sudden highs or energy crashes."
-          }
-        },
-        "hotspot_m8V3UN": {
-          "type": "hotspot",
-          "settings": {
-            "horizontal": 61,
-            "vertical": 28,
-            "mobile_horizontal": 60,
-            "mobile_vertical": 28
-          }
-        },
-        "feature_hEbk4q": {
-          "type": "feature",
-          "settings": {
-            "heading": "Boost motivation naturally",
-            "subtitle": "Plant-derived compounds gently stimulate dopamine pathways to help you feel more driven, alert, and uplifted."
-          }
-        },
-        "hotspot_JkKj8w": {
-          "type": "hotspot",
-          "settings": {
-            "horizontal": 37,
-            "vertical": 50,
-            "mobile_horizontal": 37,
-            "mobile_vertical": 50
-          }
-        },
-        "feature_y7mVUw": {
-          "type": "feature",
-          "settings": {
-            "heading": "Feel the effects within minutes",
-            "subtitle": "The patch bypasses digestion, delivering nutrients directly through the skin for rapid and efficient absorption."
-          }
-        },
-        "hotspot_zJ9me3": {
-          "type": "hotspot",
-          "settings": {
-            "horizontal": 61,
-            "vertical": 50,
-            "mobile_horizontal": 61,
-            "mobile_vertical": 50
-          }
-        },
-        "feature_zEELiA": {
-          "type": "feature",
-          "settings": {
-            "heading": "Clinically studied ingredients",
-            "subtitle": "Formulated with compounds known to support mood, cognition, and focus, without stimulants or synthetic chemicals."
-          }
-        },
-        "hotspot_4hnmY8": {
-          "type": "hotspot",
-          "settings": {
-            "horizontal": 38,
-            "vertical": 72,
-            "mobile_horizontal": 37,
-            "mobile_vertical": 71
-          }
-        },
-        "feature_mUggJ3": {
-          "type": "feature",
-          "settings": {
-            "heading": "Lasting calm and clarity",
-            "subtitle": "Wear it once in the morning and enjoy up to 8 hours of balanced dopamine levels and mental flow throughout the day."
-          }
-        }
-      },
-      "block_order": [
-        "hotspot_C6PDBy",
-        "feature_RTAPQW",
-        "hotspot_m8V3UN",
-        "feature_hEbk4q",
-        "hotspot_JkKj8w",
-        "feature_y7mVUw",
-        "hotspot_zJ9me3",
-        "feature_zEELiA",
-        "hotspot_4hnmY8",
-        "feature_mUggJ3"
-      ],
-      "name": "Product Features",
-      "settings": {
-        "desktop_max_width": 1200,
-        "desktop_side_padding": 40,
-        "mobile_max_width": 600,
-        "mobile_side_padding": 20,
-        "desktop_background_width": 2000,
-        "mobile_background_width": 1000,
-        "padding_top": 0,
-        "padding_bottom": 20,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "side_margin": 0,
-        "border_radius": 0,
-        "background_color": "#fef9f1",
-        "heading": "This patch restores your balance",
-        "heading_font_family": "serif",
-        "heading_size": 46,
-        "mobile_heading_size": 28,
-        "heading_color": "#35312e",
-        "heading_weight": "400",
-        "heading_letter_spacing": 0,
-        "subheading": "",
-        "subheading_font_family": "assistant_n4",
-        "subheading_size": 15,
-        "mobile_subheading_size": 13,
-        "subheading_color": "#6b6662",
-        "heading_margin_bottom": 40,
-        "mobile_heading_margin_bottom": 20,
-        "image": "shopify://shop_images/transparent-Photoroom_4.png",
-        "desktop_image_width": 800,
-        "mobile_image_width": 600,
-        "image_border_radius": 8,
-        "hotspot_font_family": "assistant_n4",
-        "hotspot_size": 36,
-        "hotspot_bg_color": "#ffffff",
-        "hotspot_text_color": "#35312e",
-        "hotspot_border_color": "#35312e",
-        "hotspot_border_width": 2,
-        "hotspot_border_radius": 50,
-        "hotspot_font_size": 14,
-        "mobile_hotspot_font_size": 12,
-        "hotspot_font_weight": "600",
-        "feature_title_font_family": "assistant_n4",
-        "feature_title_size": 20,
-        "mobile_feature_title_size": 18,
-        "feature_title_color": "#000000",
-        "feature_title_weight": "600",
-        "feature_subtitle_font_family": "assistant_n4",
-        "feature_subtitle_size": 14,
-        "mobile_feature_subtitle_size": 13,
-        "feature_subtitle_color": "#cccccc",
-        "card_background": "#ffffff",
-        "card_border_color": "#e8e5e1",
-        "card_title_color": "#35312e",
-        "card_text_color": "#6b6662",
-        "card_number_bg": "#35312e",
-        "card_number_text": "#ffffff",
-        "hotspot_active_bg": "#948979",
-        "hotspot_active_text": "#ffffff",
-        "hotspot_active_border": "#35312e"
-      }
-    },
-    "science_dopaboost_AMPBLz": {
-      "type": "science-dopaboost",
-      "blocks": {
-        "ingredient_pBtHJL": {
-          "type": "ingredient",
-          "settings": {
-            "category": "KEY INGREDIENT",
-            "name": "Mucuna Pruriens",
-            "description": "Boosts dopamine naturally to support motivation and drive throughout the day."
-          }
-        },
-        "ingredient_d7rjXG": {
-          "type": "ingredient",
-          "settings": {
-            "category": "MOOD SUPPORT",
-            "name": "5-HTP",
-            "description": "Improves mood and promotes calm focus by increasing serotonin production."
-          }
-        },
-        "ingredient_bNtXzR": {
-          "type": "ingredient",
-          "settings": {
-            "category": "BRAIN HEALTH",
-            "name": "Lion's Mane",
-            "description": "Supports mental clarity, memory, and overall brain function for peak performance."
-          }
-        },
-        "ingredient_xwEKdY": {
-          "type": "ingredient",
-          "settings": {
-            "category": "ADAPTOGEN",
-            "name": "Rhodiola Rosea",
-            "description": "Helps reduce fatigue and stress while improving mental and physical endurance."
-          }
-        }
-      },
-      "block_order": [
-        "ingredient_pBtHJL",
-        "ingredient_d7rjXG",
-        "ingredient_bNtXzR",
-        "ingredient_xwEKdY"
-      ],
-      "name": "Science Section",
-      "settings": {
-        "section_label": "",
-        "headline_part1": "Four Powerful Compounds",
-        "headline_part2": "",
-        "show_synergy_section": true,
-        "synergy_title": "How They Work Together",
-        "synergy_text": "These natural compounds create a synergistic effect that enhances mood, motivation, and focus — helping you feel your best every day.",
-        "background_color": "#fef9f1",
-        "label_color": "#999999",
-        "headline_color": "#000000",
-        "headline_highlight_color": "#999999",
-        "category_color": "#000000",
-        "ingredient_name_color": "#1a1a1a",
-        "ingredient_text_color": "#666666",
-        "desktop_border_color": "#e8e4de",
-        "synergy_background": "#948979",
-        "synergy_title_color": "#ffffff",
-        "synergy_text_color": "#cccccc",
-        "mobile_tab_color": "#999999",
-        "mobile_tab_border_color": "#e8e4de",
-        "mobile_tab_active_color": "#1a1a1a",
-        "mobile_tab_active_bg": "#ffffff",
-        "mobile_tab_active_border": "#d4cfc7",
-        "mobile_panel_bg": "#f1eade",
-        "label_size": 12,
-        "label_size_mobile": 11,
-        "label_spacing": 2,
-        "label_weight": 500,
-        "headline_size_desktop": 46,
-        "headline_size_tablet": 38,
-        "headline_size_mobile": 28,
-        "headline_weight": 600,
-        "headline_highlight_weight": 300,
-        "category_size": 9,
-        "ingredient_name_size": 24,
-        "ingredient_name_size_mobile": 24,
-        "ingredient_name_weight": 600,
-        "ingredient_text_size": 15,
-        "ingredient_text_size_mobile": 15,
-        "synergy_title_size": 32,
-        "synergy_title_size_tablet": 28,
-        "synergy_title_size_mobile": 24,
-        "synergy_title_weight": 600,
-        "synergy_text_size": 17,
-        "synergy_text_size_mobile": 15,
-        "mobile_tab_font_size": 14,
-        "mobile_tab_font_weight": 500,
-        "max_width": 900,
-        "section_padding_desktop": "100px 40px",
-        "section_padding_tablet": "80px 40px",
-        "section_padding_mobile": "50px 20px",
-        "desktop_card_padding_box": "40px 35px",
-        "desktop_card_gap": 28,
-        "desktop_border_width": 1,
-        "mobile_tab_padding": "12px 20px",
-        "mobile_tab_gap": 10,
-        "mobile_tab_border_width": 1,
-        "mobile_tab_border_radius": 20,
-        "mobile_tabs_padding_bottom": 20,
-        "mobile_tabs_margin": 20,
-        "mobile_panel_padding": "30px 25px",
-        "mobile_panel_border_radius": 2,
-        "label_margin": 16,
-        "label_margin_mobile": 12,
-        "headline_margin": 32,
-        "headline_margin_mobile": 24,
-        "category_margin": 8,
-        "ingredient_name_margin": 16,
-        "grid_margin_top": 75,
-        "grid_margin_top_mobile": 35,
-        "grid_margin_bottom": 60,
-        "grid_margin_bottom_mobile": 40,
-        "synergy_title_margin": 24,
-        "synergy_title_margin_mobile": 20,
-        "synergy_text_max_width": 700,
-        "synergy_padding": "80px 60px",
-        "synergy_padding_mobile": "60px 30px",
-        "synergy_border_radius": 8,
-        "synergy_margin_top": 60,
-        "synergy_margin_top_mobile": 32
-      }
-    },
-    "results_dopaboost_AcBD7w": {
-      "type": "results-dopaboost",
-      "blocks": {
-        "stat_M6NfYf": {
-          "type": "stat",
-          "settings": {
-            "percentage": 91,
-            "description": "Noticed higher focus and concentration"
-          }
-        },
-        "stat_d79tW4": {
-          "type": "stat",
-          "settings": {
-            "percentage": 87,
-            "description": "Felt better mood and less fatigue"
-          }
-        },
-        "stat_Pdn4iT": {
-          "type": "stat",
-          "settings": {
-            "percentage": 93,
-            "description": "Would recommend to friends and family"
-          }
-        }
-      },
-      "block_order": [
-        "stat_M6NfYf",
-        "stat_d79tW4",
-        "stat_Pdn4iT"
-      ],
-      "name": "Results Section",
-      "settings": {
-        "section_label": "",
-        "headline_part1": "Proven Effectiveness",
-        "headline_part2": "Through User Testing",
-        "footer_text": "BASED ON INDEPENDENT USER TESTING",
-        "background_color": "#fef9f1",
-        "label_color": "#a08977",
-        "headline_color": "#2b2621",
-        "circle_bg_color": "#efe9e1",
-        "circle_color": "#948979",
-        "percentage_color": "#2b2621",
-        "description_color": "#6b5d52",
-        "footer_color": "#a08977",
-        "circle_size": 160,
-        "circle_size_mobile": 140,
-        "circle_stroke_width": 8,
-        "circle_margin": 24,
-        "label_size": 11,
-        "label_size_mobile": 10,
-        "label_spacing": 2,
-        "label_weight": "400",
-        "label_margin": 20,
-        "label_margin_mobile": 16,
-        "headline_size_desktop": 48,
-        "headline_size_tablet": 38,
-        "headline_size_mobile": 28,
-        "headline_weight": "400",
-        "headline_highlight_weight": "600",
-        "headline_margin": 60,
-        "headline_margin_mobile": 40,
-        "percentage_size": 40,
-        "percentage_size_mobile": 36,
-        "percentage_weight": "500",
-        "percent_symbol_size": 20,
-        "percent_symbol_opacity": 0.6,
-        "description_size": 15,
-        "description_size_mobile": 14,
-        "description_max_width": 240,
-        "footer_size": 11,
-        "footer_size_mobile": 10,
-        "footer_spacing": 1.5,
-        "section_padding_desktop": "100px 60px",
-        "section_padding_tablet": "80px 40px",
-        "section_padding_mobile": "60px 24px",
-        "max_width": 1400,
-        "margin_top_desktop": -150,
-        "margin_bottom_desktop": -20,
-        "margin_top_mobile": -80,
-        "margin_bottom_mobile": -40,
-        "columns_desktop": 3,
-        "columns_tablet": 3,
-        "grid_gap": 60,
-        "grid_gap_tablet": 40,
-        "grid_gap_mobile": 50,
-        "grid_margin_top": 60,
-        "grid_margin_top_mobile": 40,
-        "grid_margin_bottom": 60,
-        "grid_margin_bottom_mobile": 40,
-        "stagger_delay": 150,
-        "footer_margin_top": 50,
-        "footer_margin_top_mobile": 40
-      }
-    },
     "faq_xCdLpE": {
-      "type": "faq",
-      "blocks": {
-        "faq_item_MdbVrn": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Do we ship worldwide?",
-            "answer": "<p>Yes!  We offer free worldwide shipping on all orders.<br/><br/>Your patches are packed and shipped within 24 hours, and delivery usually takes 5–6  days depending on your location.</p>"
-          }
-        },
-        "faq_item_H3nKMi": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I buy once or do I need a subscription?",
-            "answer": "<p>You can choose what works best for you. 💛<br/><br/>Order once to try it out, or subscribe to get your patches delivered automatically every month with an exclusive discount.</p>"
-          }
-        },
-        "faq_item_RhtGcn": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How long should I wear one patch?",
-            "answer": "<p>Each patch is designed to last up to 8 hours for optimal nutrient release.<br/><br/>Apply it to clean, dry skin and simply remove it at the end of the day.</p>"
-          }
-        },
-        "faq_item_XfzJyr": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Can I sleep with the patch on?",
-            "answer": "<p>Yes 😴, our patches are safe, breathable, and gentle on the skin.<br/><br/>You can comfortably wear them overnight if you prefer extended use</p>"
-          }
-        },
-        "faq_item_GiBt7U": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Where should I apply the patch?",
-            "answer": "<p>For best results, place the patch on a clean, hair-free area like your upper arm, shoulder, or back.<br/><br/>Rotate placement daily to keep your skin happy and fresh.</p>"
-          }
-        },
-        "faq_item_CVrnWf": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Are the patches waterproof?",
-            "answer": "<p>Yes! Our patches are water-resistant, so you can shower or work out without worry.<br/><br/>Just avoid rubbing the area too hard to keep it firmly in place.</p>"
-          }
-        }
-      },
       "block_order": [
         "faq_item_MdbVrn",
         "faq_item_H3nKMi",
@@ -868,45 +30,951 @@
         "faq_item_GiBt7U",
         "faq_item_CVrnWf"
       ],
+      "blocks": {
+        "faq_item_CVrnWf": {
+          "settings": {
+            "answer": "<p>Yes! Our patches are water-resistant, so you can shower or work out without worry.<br/><br/>Just avoid rubbing the area too hard to keep it firmly in place.</p>",
+            "question": "Are the patches waterproof?"
+          },
+          "type": "faq_item"
+        },
+        "faq_item_GiBt7U": {
+          "settings": {
+            "answer": "<p>For best results, place the patch on a clean, hair-free area like your upper arm, shoulder, or back.<br/><br/>Rotate placement daily to keep your skin happy and fresh.</p>",
+            "question": "Where should I apply the patch?"
+          },
+          "type": "faq_item"
+        },
+        "faq_item_H3nKMi": {
+          "settings": {
+            "answer": "<p>You can choose what works best for you. 💛<br/><br/>Order once to try it out, or subscribe to get your patches delivered automatically every month with an exclusive discount.</p>",
+            "question": "Can I buy once or do I need a subscription?"
+          },
+          "type": "faq_item"
+        },
+        "faq_item_MdbVrn": {
+          "settings": {
+            "answer": "<p>Yes!  We offer free worldwide shipping on all orders.<br/><br/>Your patches are packed and shipped within 24 hours, and delivery usually takes 5–6  days depending on your location.</p>",
+            "question": "Do we ship worldwide?"
+          },
+          "type": "faq_item"
+        },
+        "faq_item_RhtGcn": {
+          "settings": {
+            "answer": "<p>Each patch is designed to last up to 8 hours for optimal nutrient release.<br/><br/>Apply it to clean, dry skin and simply remove it at the end of the day.</p>",
+            "question": "How long should I wear one patch?"
+          },
+          "type": "faq_item"
+        },
+        "faq_item_XfzJyr": {
+          "settings": {
+            "answer": "<p>Yes 😴, our patches are safe, breathable, and gentle on the skin.<br/><br/>You can comfortably wear them overnight if you prefer extended use</p>",
+            "question": "Can I sleep with the patch on?"
+          },
+          "type": "faq_item"
+        }
+      },
       "name": "FAQ",
       "settings": {
-        "title": "FAQ",
-        "subtitle": "Everything you need to know about our titanium cookware and what makes it exceptional.",
-        "show_cta": false,
-        "cta_title": "Still have questions?",
-        "cta_text": "Our culinary experts are here to help you get the most out of your titanium cookware.",
-        "cta_button_text": "Contact Our Team",
-        "cta_button_url": "",
-        "background_color": "#fef9f1",
-        "text_color": "",
-        "subtitle_color": "#000000",
-        "answer_color": "#000000",
-        "border_color": "#4a453f",
         "accent_color": "#c1633f",
+        "answer_color": "#000000",
+        "background_color": "#fef9f1",
+        "border_color": "#4a453f",
+        "close_on_outside_click": true,
+        "close_others": true,
         "cta_bg_color": "#4a453f",
         "cta_button_bg": "#c1633f",
         "cta_button_hover_bg": "#c1633f",
-        "title_font_size": 48,
-        "title_font_size_mobile": 32,
+        "cta_button_text": "Contact Our Team",
+        "cta_button_url": "",
+        "cta_text": "Our culinary experts are here to help you get the most out of your titanium cookware.",
+        "cta_title": "Still have questions?",
+        "padding_bottom": 100,
+        "padding_bottom_mobile": 65,
+        "padding_top": 0,
+        "padding_top_mobile": 65,
         "question_font_size": 18,
         "question_font_size_mobile": 16,
-        "close_others": true,
-        "close_on_outside_click": true,
-        "padding_top": 100,
-        "padding_bottom": 100,
-        "padding_top_mobile": 65,
-        "padding_bottom_mobile": 65
-      }
+        "show_cta": false,
+        "subtitle": "Everything you need to know about our titanium cookware and what makes it exceptional.",
+        "subtitle_color": "#000000",
+        "text_color": "",
+        "title": "FAQ",
+        "title_font_size": 48,
+        "title_font_size_mobile": 32
+      },
+      "type": "faq"
+    },
+    "features_Gr4Wjy": {
+      "block_order": [
+        "hotspot_J9FrjW",
+        "feature_kYPtmQ",
+        "hotspot_8b4aDM",
+        "feature_dBjGmd",
+        "hotspot_qMrJi3",
+        "feature_qwachL",
+        "hotspot_zpkUXj",
+        "feature_VkXLRk",
+        "hotspot_TDykpG",
+        "feature_LMj6Lj"
+      ],
+      "blocks": {
+        "feature_LMj6Lj": {
+          "settings": {
+            "heading": "5. FEEL MORE LIKE YOURSELF AGAIN",
+            "subtitle": "Support your energy, clarity, and motivation so you can keep doing the things that matter most."
+          },
+          "type": "feature"
+        },
+        "feature_VkXLRk": {
+          "settings": {
+            "heading": "4. FOCUS WITHOUT THE FUSS",
+            "subtitle": "No pills. No gummies. Just a lightweight patch that fits effortlessly into your daily wellness routine."
+          },
+          "type": "feature"
+        },
+        "feature_dBjGmd": {
+          "settings": {
+            "heading": "2. SUPPORTS MOTIVATION AND DRIVE",
+            "subtitle": "Formulated with Mucuna Pruriens and Rhodiola to help you stay engaged, productive, and mentally switched on."
+          },
+          "type": "feature"
+        },
+        "feature_kYPtmQ": {
+          "settings": {
+            "heading": "1. LASTING ENERGY AND CLARITY",
+            "subtitle": "Apply once in the morning and enjoy steady support for energy, focus, and mental performance throughout your day."
+          },
+          "type": "feature"
+        },
+        "feature_qwachL": {
+          "settings": {
+            "heading": "3. HELPS REDUCE MIDDAY CRASHES",
+            "subtitle": "Designed for adults who feel mentally drained, unfocused, or low on energy during busy routines."
+          },
+          "type": "feature"
+        },
+        "hotspot_8b4aDM": {
+          "settings": {
+            "horizontal": 61,
+            "mobile_horizontal": 62,
+            "mobile_vertical": 28,
+            "vertical": 28
+          },
+          "type": "hotspot"
+        },
+        "hotspot_J9FrjW": {
+          "settings": {
+            "horizontal": 39,
+            "mobile_horizontal": 39,
+            "mobile_vertical": 28,
+            "vertical": 28
+          },
+          "type": "hotspot"
+        },
+        "hotspot_TDykpG": {
+          "settings": {
+            "horizontal": 39,
+            "mobile_horizontal": 39,
+            "mobile_vertical": 72,
+            "vertical": 72
+          },
+          "type": "hotspot"
+        },
+        "hotspot_qMrJi3": {
+          "settings": {
+            "horizontal": 39,
+            "mobile_horizontal": 39,
+            "mobile_vertical": 50,
+            "vertical": 50
+          },
+          "type": "hotspot"
+        },
+        "hotspot_zpkUXj": {
+          "settings": {
+            "horizontal": 61,
+            "mobile_horizontal": 62,
+            "mobile_vertical": 50,
+            "vertical": 50
+          },
+          "type": "hotspot"
+        }
+      },
+      "name": "Product Features",
+      "settings": {
+        "background_color": "#fef9f1",
+        "border_radius": 0,
+        "card_background": "#ffffff",
+        "card_border_color": "#e8e5e1",
+        "card_number_bg": "#35312e",
+        "card_number_text": "#ffffff",
+        "card_text_color": "#6b6662",
+        "card_title_color": "#35312e",
+        "desktop_background_width": 2000,
+        "desktop_image_width": 400,
+        "desktop_max_width": 1200,
+        "desktop_side_padding": 40,
+        "feature_subtitle_color": "#cccccc",
+        "feature_subtitle_font_family": "assistant_n4",
+        "feature_subtitle_size": 14,
+        "feature_title_color": "#000000",
+        "feature_title_font_family": "assistant_n4",
+        "feature_title_size": 20,
+        "feature_title_weight": "600",
+        "heading": "These Patches Restore Your Balance",
+        "heading_color": "#35312e",
+        "heading_font_family": "serif",
+        "heading_letter_spacing": 0,
+        "heading_margin_bottom": 40,
+        "heading_size": 46,
+        "heading_weight": "400",
+        "hotspot_active_bg": "#948979",
+        "hotspot_active_border": "#35312e",
+        "hotspot_active_text": "#ffffff",
+        "hotspot_bg_color": "#ffffff",
+        "hotspot_border_color": "#35312e",
+        "hotspot_border_radius": 50,
+        "hotspot_border_width": 2,
+        "hotspot_font_family": "assistant_n4",
+        "hotspot_font_size": 14,
+        "hotspot_font_weight": "600",
+        "hotspot_size": 36,
+        "hotspot_text_color": "#35312e",
+        "image": "shopify://shop_images/Benefits_of_NAD_Patches_37.png",
+        "image_border_radius": 8,
+        "margin_bottom": 0,
+        "margin_top": 0,
+        "mobile_background_width": 1000,
+        "mobile_feature_subtitle_size": 13,
+        "mobile_feature_title_size": 18,
+        "mobile_heading_margin_bottom": 20,
+        "mobile_heading_size": 28,
+        "mobile_hotspot_font_size": 12,
+        "mobile_image_width": 600,
+        "mobile_max_width": 600,
+        "mobile_side_padding": 20,
+        "mobile_subheading_size": 13,
+        "padding_bottom": 20,
+        "padding_top": 0,
+        "side_margin": 0,
+        "subheading": "",
+        "subheading_color": "#6b6662",
+        "subheading_font_family": "assistant_n4",
+        "subheading_size": 15
+      },
+      "type": "features"
+    },
+    "main": {
+      "block_order": [
+        "liquid_P8FmaY",
+        "title",
+        "text_dngyfh",
+        "badges",
+        "price",
+        "liquid_C83EWh",
+        "liquid_UxXy6w",
+        "recharge_subscriptions_subscription_widget_v2_tfqLAc",
+        "rating",
+        "payment_terms",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "liquid_YCHCjB",
+        "separator_Hw6cKh",
+        "collapsible_text_adWWLr",
+        "collapsible_text_btNMjc",
+        "collapsible_text_xBCYLb",
+        "liquid_rW8pBA"
+      ],
+      "blocks": {
+        "badges": {
+          "settings": {},
+          "type": "badges"
+        },
+        "buy_buttons": {
+          "settings": {
+            "atc_button_background": "#c1633f",
+            "atc_button_text_color": "#ffffff",
+            "payment_button_background": "",
+            "payment_button_text_color": "",
+            "show_gift_card_recipient": true,
+            "show_payment_button": false
+          },
+          "type": "buy_buttons"
+        },
+        "collapsible_text_adWWLr": {
+          "settings": {
+            "content": "<p>The Brain & Energy Duo is designed to support <strong>focus</strong>, <strong>motivation</strong>, and <strong>sustained</strong> <strong>daily</strong> <strong>energy</strong>. Combining Rhodiola, Mucuna Pruriens, Lion’s Mane Mushroom, and essential B vitamins, this complementary blend helps support mental clarity, cognitive performance, and everyday vitality. Each vegan pack contains <strong>30 Dopamine Patches</strong> and <strong>30 Energy Patches</strong>, offering a simple, convenient alternative to pills and gummies.</p><h3></h3><p></p><p></p><p></p>",
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Description"
+          },
+          "type": "collapsible_text"
+        },
+        "collapsible_text_btNMjc": {
+          "settings": {
+            "content": "<p>Gently remove it from its backing and place it on a clean, hair-free area of your skin. For optimal results, wear the patch for approximately 8 hours.<br/><br/>Avoid stretching the skin prior to application. This helps maintain natural tension and prevents tension blisters, ensuring a smoother application process. Ensure the application area is free from lotions, creams, or oils, as these can interfere with absorption.<br/><br/>Before applying, avoid stretching the skin. This helps maintain natural tension, preventing tension blisters and ensuring a smoother application.<br/><br/>Since every body is different, experiment with different locations to find the area that works best for you, and be sure to rotate patch location on your body with each use.<br/><br/>Wet removal method: Using a wet removal method can reduce the adhesiveness of the product, making it easier to remove. This involves moistening the area before attempting to remove the product.<br/>Using oil for enhanced removal: For optimal results, apply oil to the area before removal.<br/><br/>Oil helps deactivate the adhesive, allowing for an even smoother removal.<br/></p><p></p><p></p><p></p>",
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "How To Use"
+          },
+          "type": "collapsible_text"
+        },
+        "collapsible_text_xBCYLb": {
+          "settings": {
+            "content": "<p><strong>Dopamine Patches:</strong><br/><br/>Rhodiola Extract 10mg, Mucuna Pruriens Extract 8mg, Lion's Mane Mushroom Extract 6mg</p><p><strong>Energy Patches:</strong><br/><br/>Vitamin B1 (Thiamine) 4mg, Vitamin B3 (Niacin) 8mg, Vitamin B12 (Methylcobalamin) 0.5mg</p><p></p>",
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Ingredients"
+          },
+          "type": "collapsible_text"
+        },
+        "description": {
+          "settings": {
+            "collapse_content": false,
+            "icon": "none",
+            "icon_width": 20
+          },
+          "type": "description"
+        },
+        "liquid_C83EWh": {
+          "settings": {
+            "liquid": "{% comment %}\n  Product Info Section with HEARTBEAT ANIMATION\n  Double beat pulse effect for \"Limited Stock Remaining\"\n{% endcomment %}\n<style>\n  .product-info-section {\n    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\n    padding: 5px 0;\n  }\n  \n  .product-info-section .almost-sold-out {\n    display: inline-flex !important;\n    align-items: center;\n    gap: 8px;\n    margin-bottom: 6px;\n    color: #C1633F;\n    font-size: 14px;\n    font-weight: 600;\n  }\n  \n  /* HEARTBEAT ANIMATION - Double Beat Effect */\n  .product-info-section .pulse-dot {\n    width: 8px;\n    height: 8px;\n    background-color: #C1633F;\n    border-radius: 50%;\n    animation: heartbeat 1.5s ease-in-out infinite;\n  }\n  \n  @keyframes heartbeat {\n    0% {\n      transform: scale(1);\n    }\n    14% {\n      transform: scale(1.3);\n    }\n    28% {\n      transform: scale(1);\n    }\n    42% {\n      transform: scale(1.3);\n    }\n    70% {\n      transform: scale(1);\n    }\n  }\n  \n  /* Product Stats */\n  .product-info-section .product-stats {\n    color: #333333;\n    font-size: 14px;\n    margin-bottom: 12px;\n    line-height: 1.4;\n    font-weight: 500;\n  }\n  \n  .product-info-section .product-stats strong {\n    color: #C1633F;\n    font-weight: 700;\n  }\n  \n  /* Delivery Info */\n  .product-info-section .delivery-info {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    color: #333333;\n    font-size: 14px;\n    padding-top: 12px;\n    border-top: 1px solid #eeeeee;\n    font-weight: 500;\n  }\n  \n  .product-info-section .delivery-icon {\n    width: 20px;\n    height: 20px;\n    flex-shrink: 0;\n    color: #666666;\n  }\n</style>\n<div class=\"product-info-section\">\n  <!-- Almost sold out with HEARTBEAT animation -->\n  <div class=\"almost-sold-out\">\n    <div class=\"pulse-dot\"></div>\n    <span>Limited Stock Remaining</span>\n  </div>\n  \n  <!-- Product stats -->\n  <div class=\"product-stats\">\n    This product was bought <strong>1249 times</strong> this week\n  </div>\n  \n  <!-- Delivery info -->\n  <div class=\"delivery-info\">\n    <svg class=\"delivery-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n      <circle cx=\"12\" cy=\"12\" r=\"10\" stroke-width=\"2\"></circle>\n      <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 6v6l4 2\"></path>\n    </svg>\n    <span>Order today, receive Friday, November 7</span>\n  </div>\n</div>\n{% comment %}\n  HEARTBEAT ANIMATION ACTIVE\n  - Creates a double-beat rhythm like a heartbeat\n  - Scales up to 1.3x twice, then pauses\n  - 1.5 second cycle time\n  - Mimics urgency with natural rhythm\n{% endcomment %}"
+          },
+          "type": "liquid"
+        },
+        "liquid_P8FmaY": {
+          "settings": {
+            "liquid": "{% comment %} Product Rating Display With Diagonal 4.5 Stars {% endcomment %}\n<div class=\"product-ratings\" id=\"scroll-to-reviews\">\n  <div class=\"star-rating\" id=\"goToReviews\" aria-label=\"4.5 out of 5 stars\">\n\n    {% for i in (1..4) %}\n      <svg class=\"star-icon filled\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M12 1.8l3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 20.8 7 13.93 2 9.06l6.91-1L12 1.8z\"/>\n      </svg>\n    {% endfor %}\n\n    <svg class=\"star-icon diagonal-half\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n      <defs>\n        <clipPath id=\"diag-fill-star\">\n          <!-- ongeveer 2/3 gevuld -->\n          <polygon points=\"0,24 0,0 18,0 12,24\"></polygon>\n        </clipPath>\n      </defs>\n\n      <!-- achtergrond ster -->\n      <path class=\"star-bg\" d=\"M12 1.8l3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 20.8 7 13.93 2 9.06l6.91-1L12 1.8z\"/>\n\n      <!-- gevulde ster -->\n      <path class=\"star-fg\" clip-path=\"url(#diag-fill-star)\" d=\"M12 1.8l3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 20.8 7 13.93 2 9.06l6.91-1L12 1.8z\"/>\n    </svg>\n\n  </div>\n  \n  <p class=\"rating-text\">\n    <strong id=\"dynamicMonthlyCount\"></strong>\n  </p>\n</div>\n\n<style>\n@import url('https://fonts.googleapis.com/css2?family=Gilda+Display:ital@1&display=swap');\n\n.product-ratings {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  margin: 10px 0;\n  font-family: 'Gilda Display', serif;\n  font-style: italic;\n  cursor: pointer;\n}\n\n.star-rating {\n  display: flex;\n  align-items: center;\n  gap: 1px;\n  line-height: 1;\n}\n\n.star-icon {\n  width: 16px;\n  height: 16px;\n  display: block;\n}\n\n.star-icon.filled path {\n  fill: #C1633F;\n}\n\n.diagonal-half .star-bg {\n  fill: #E4E0DA;\n}\n\n.diagonal-half .star-fg {\n  fill: #C1633F;\n}\n\n.rating-text {\n  font-size: 14px;\n  margin: 0;\n  color: #333;\n  line-height: 1;\n  font-weight: 400;\n  font-family: 'Gilda Display', serif;\n  font-style: italic;\n}\n</style>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n\n  const min = 17000;\n  const max = 35000;\n  const url = window.location.pathname;\n\n  function hashString(str) {\n    let hash = 0;\n    for (let i = 0; i < str.length; i++) {\n      hash = str.charCodeAt(i) + ((hash << 5) - hash);\n    }\n    return Math.abs(hash);\n  }\n\n  let base = Math.floor((hashString(url) % (max - min + 1)) + min);\n\n  let lastDigit = base % 10;\n  if (lastDigit === 0 || lastDigit === 5) {\n    if (base + 1 <= max) {\n      base = base + 1;\n    } else {\n      base = base - 1;\n    }\n  }\n\n  const seededNumber = base;\n\n  const textElement = document.getElementById(\"dynamicMonthlyCount\");\n  if (textElement) {\n    textElement.textContent = seededNumber.toLocaleString() + \"+ feel the benefits monthly\";\n  }\n\n  const trigger = document.querySelector('.product-ratings');\n  const reviewsSection = document.querySelector('#shopify-block-AUURVMUlseVpmVUNIR__okendo_reviews_widget_kW3zJT');\n\n  if (trigger && reviewsSection) {\n    trigger.addEventListener('click', function() {\n      reviewsSection.scrollIntoView({\n        behavior: 'smooth',\n        block: 'start'\n      });\n    });\n  }\n\n});\n</script>"
+          },
+          "type": "liquid"
+        },
+        "liquid_UxXy6w": {
+          "settings": {
+            "liquid": "{% comment %} Premium Deal Banner - No Ribbon {% endcomment %}\n<style>\n.premium-deal-banner {\n  background-color: #f8f4ed;\n  border: 1px solid #e8d9c0;\n  border-radius: 12px;\n  padding: 14px 20px;\n  margin-bottom: 20px;\n  text-align: center;\n  font-size: 14px;\n  line-height: 1.4;\n  color: #2c2c2c;\n}\n\n.premium-deal-banner .highlight {\n  color: #d32f2f;\n  font-weight: 700;\n}\n\n.premium-deal-banner .subtext {\n  font-size: 13px;\n  color: #555;\n  margin-top: 4px;\n}\n</style>\n\n<div class=\"premium-deal-banner\">\n  <strong>Limited Time Offer</strong><br>\n  <span class=\"highlight\">BUY 2, GET 2 FREE</span> + <span class=\"highlight\">20% OFF</span> with Subscribe & Save<br>\n  <span class=\"subtext\">Perfect for yourself or as a thoughtful gift</span>\n</div>"
+          },
+          "type": "liquid"
+        },
+        "liquid_YCHCjB": {
+          "settings": {
+            "liquid": "<!-- Trust Badges - Add this code right after your add to cart button -->\n<div class=\"trust-badges\">\n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <rect x=\"1\" y=\"6\" width=\"14\" height=\"10\" rx=\"1\"/>\n            <path d=\"M15 12h7l-2-3h-5v12\"/>\n            <circle cx=\"5\" cy=\"18\" r=\"1\"/>\n            <circle cx=\"19\" cy=\"18\" r=\"1\"/>\n        </svg>\n        <span class=\"badge-text\">Free Shipping</span>\n    </div>\n    \n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/>\n            <polyline points=\"12 8 12 12 14 14\"/>\n        </svg>\n        <span class=\"badge-text\">Money Back Guarantee</span>\n    </div>\n</div>\n\n<style>\n.trust-badges {\n    display: flex;\n    gap: 5px;\n    width: 100%;\n    margin-top: -20px !important; /* NEGATIVE margin to pull it up closer */\n    margin-bottom: 4px;\n    position: relative;\n    z-index: 1;\n}\n\n.badge-block {\n    display: flex;\n    align-items: center;\n    gap: 6px;\n    padding: 8px 10px;\n    background: #F7EDDC;\n    border-radius: 4px;\n    flex: 1;\n    justify-content: center;\n}\n\n.badge-icon {\n    width: 18px;\n    height: 18px;\n    flex-shrink: 0;\n    color: #333;\n}\n\n.badge-text {\n    font-size: 12px;\n    color: #333;\n    font-weight: 500;\n    line-height: 1.2;\n}\n\n@media (max-width: 480px) {\n    .badge-text {\n        font-size: 11px;\n    }\n    .badge-block {\n        padding: 6px 8px;\n    }\n}\n</style>"
+          },
+          "type": "liquid"
+        },
+        "liquid_rW8pBA": {
+          "settings": {
+            "liquid": ""
+          },
+          "type": "liquid"
+        },
+        "payment_terms": {
+          "settings": {},
+          "type": "payment_terms"
+        },
+        "price": {
+          "settings": {
+            "show_taxes_notice": false
+          },
+          "type": "price"
+        },
+        "rating": {
+          "settings": {
+            "show_empty": false
+          },
+          "type": "rating"
+        },
+        "recharge_subscriptions_subscription_widget_v2_tfqLAc": {
+          "settings": {},
+          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e"
+        },
+        "separator_Hw6cKh": {
+          "settings": {},
+          "type": "separator"
+        },
+        "text_dngyfh": {
+          "settings": {
+            "text": "<p>Designed for adults who want to feel more focused, motivated, and energized throughout the day. Includes <strong>30 Dopamine Patches </strong>and <strong>30 Energy Patches</strong> for a complete<strong> 60 Patch</strong> daily wellness routine.</p>"
+          },
+          "type": "text"
+        },
+        "title": {
+          "settings": {
+            "heading_tag": "h2"
+          },
+          "type": "title"
+        },
+        "variant_picker": {
+          "settings": {
+            "hide_sold_out_variants": false,
+            "selector_style": "block",
+            "size_chart_page": "",
+            "stack_blocks": true,
+            "swatch_selector_style": "swatch",
+            "variant_image_options": ""
+          },
+          "type": "variant_picker"
+        }
+      },
+      "settings": {
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "desktop_media_layout": "grid",
+        "desktop_media_width": 55,
+        "enable_image_zoom": true,
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "full_width": false,
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": "",
+        "max_image_zoom_level": 1.5,
+        "mobile_carousel_control": "thumbnails",
+        "mobile_media_size": "expanded",
+        "show_fixed_add_to_cart": true,
+        "text_color": ""
+      },
+      "type": "main-product"
+    },
+    "problem_static_wpNABQ": {
+      "block_order": [
+        "problem_item_7U9w9C",
+        "problem_item_tdHjYn",
+        "problem_item_39rDmp"
+      ],
+      "blocks": {
+        "problem_item_39rDmp": {
+          "settings": {
+            "description": "Your day starts strong but ends with lower energy, reduced productivity, and difficulty staying engaged.",
+            "icon_image": "shopify://shop_images/panic.png",
+            "number": "03",
+            "title": "Afternoon Energy Slumps"
+          },
+          "type": "problem_item"
+        },
+        "problem_item_7U9w9C": {
+          "settings": {
+            "description": "Staying focused becomes harder. Brain fog, forgetfulness, and distractions start showing up more often.",
+            "icon_image": "shopify://shop_images/fatigue.png",
+            "number": "01",
+            "title": "Less Mental Clarity"
+          },
+          "type": "problem_item"
+        },
+        "problem_item_tdHjYn": {
+          "settings": {
+            "description": "Tasks that used to feel effortless now require more energy and motivation to complete.",
+            "icon_image": "shopify://shop_images/brain.png",
+            "number": "02",
+            "title": "Reduced Drive"
+          },
+          "type": "problem_item"
+        }
+      },
+      "name": "Problem Section",
+      "settings": {
+        "background_color": "#fef9f1",
+        "body_font": "inter_n4",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "description": "Many adults notice changes in focus, motivation, and energy as they get older. What feels like \"just getting older\" may actually be affecting your daily performance more than you realize.",
+        "description_color": "#666666",
+        "description_margin": 80,
+        "description_margin_mobile": 48,
+        "description_max_width": 700,
+        "description_size": 17,
+        "description_size_mobile": 16,
+        "dot_active_color": "#1a1a1a",
+        "dot_inactive_color": "#d0d0d0",
+        "grid_gap": 60,
+        "grid_gap_mobile": 30,
+        "grid_gap_tablet": 40,
+        "grid_margin_top": 80,
+        "grid_margin_top_mobile": 48,
+        "headline_bold_weight": "700",
+        "headline_color": "#1a1a1a",
+        "headline_font": "gilda_display_n4",
+        "headline_margin": 32,
+        "headline_margin_mobile": 24,
+        "headline_part1": "Why You Don't Feel Like Yourself",
+        "headline_part2": "Anymore",
+        "headline_size_desktop": 48,
+        "headline_size_mobile": 32,
+        "headline_size_tablet": 40,
+        "headline_weight": "500",
+        "icon_width": 80,
+        "icon_width_mobile": 60,
+        "item_padding": "0",
+        "item_text_color": "#666666",
+        "item_text_size": 16,
+        "item_text_size_mobile": 15,
+        "item_title_color": "#1a1a1a",
+        "item_title_margin": 12,
+        "item_title_size": 24,
+        "item_title_size_mobile": 22,
+        "item_title_weight": "600",
+        "label_color": "#999999",
+        "label_font": "inter_n4",
+        "label_margin": 32,
+        "label_margin_mobile": 20,
+        "label_size": 12,
+        "label_size_mobile": 11,
+        "label_spacing": 1.5,
+        "label_weight": "500",
+        "max_width": 1000,
+        "mobile_card_background": "#fef9f1",
+        "mobile_card_gap": 16,
+        "mobile_card_padding": "40px 30px",
+        "mobile_card_radius": 12,
+        "mobile_card_shadow": "0 2px 16px rgba(0, 0, 0, 0.08)",
+        "number_color": "#5d91ae",
+        "number_margin": 20,
+        "number_size": 80,
+        "number_size_mobile": 64,
+        "number_weight": "800",
+        "section_label": "",
+        "section_padding_desktop": "120px 60px",
+        "section_padding_mobile": "60px 24px",
+        "section_padding_tablet": "80px 40px"
+      },
+      "type": "problem-static"
+    },
+    "results_dopaboost_AcBD7w": {
+      "block_order": [
+        "stat_M6NfYf",
+        "stat_d79tW4",
+        "stat_Pdn4iT"
+      ],
+      "blocks": {
+        "stat_M6NfYf": {
+          "settings": {
+            "description": "Reported better daily focus",
+            "percentage": 91
+          },
+          "type": "stat"
+        },
+        "stat_Pdn4iT": {
+          "settings": {
+            "description": "Would continue using the patches",
+            "percentage": 86
+          },
+          "type": "stat"
+        },
+        "stat_d79tW4": {
+          "settings": {
+            "description": "Reported more consistent energy",
+            "percentage": 88
+          },
+          "type": "stat"
+        }
+      },
+      "name": "Results Section",
+      "settings": {
+        "background_color": "#fef9f1",
+        "circle_bg_color": "#efe9e1",
+        "circle_color": "#948979",
+        "circle_margin": 24,
+        "circle_size": 160,
+        "circle_size_mobile": 140,
+        "circle_stroke_width": 8,
+        "columns_desktop": 3,
+        "columns_tablet": 3,
+        "description_color": "#6b5d52",
+        "description_max_width": 240,
+        "description_size": 15,
+        "description_size_mobile": 14,
+        "footer_color": "#a08977",
+        "footer_margin_top": 50,
+        "footer_margin_top_mobile": 40,
+        "footer_size": 11,
+        "footer_size_mobile": 10,
+        "footer_spacing": 1.5,
+        "footer_text": "BASED ON INDEPENDENT USER TESTING",
+        "grid_gap": 60,
+        "grid_gap_mobile": 50,
+        "grid_gap_tablet": 40,
+        "grid_margin_bottom": 60,
+        "grid_margin_bottom_mobile": 40,
+        "grid_margin_top": 60,
+        "grid_margin_top_mobile": 40,
+        "headline_color": "#2b2621",
+        "headline_highlight_weight": "600",
+        "headline_margin": 60,
+        "headline_margin_mobile": 40,
+        "headline_part1": "Proven Effectiveness",
+        "headline_part2": "Through User Testing",
+        "headline_size_desktop": 48,
+        "headline_size_mobile": 28,
+        "headline_size_tablet": 38,
+        "headline_weight": "400",
+        "label_color": "#a08977",
+        "label_margin": 20,
+        "label_margin_mobile": 16,
+        "label_size": 11,
+        "label_size_mobile": 10,
+        "label_spacing": 2,
+        "label_weight": "400",
+        "margin_bottom_desktop": -20,
+        "margin_bottom_mobile": -40,
+        "margin_top_desktop": -150,
+        "margin_top_mobile": -80,
+        "max_width": 1400,
+        "percent_symbol_opacity": 0.6,
+        "percent_symbol_size": 20,
+        "percentage_color": "#2b2621",
+        "percentage_size": 40,
+        "percentage_size_mobile": 36,
+        "percentage_weight": "500",
+        "section_label": "",
+        "section_padding_desktop": "100px 60px",
+        "section_padding_mobile": "60px 24px",
+        "section_padding_tablet": "80px 40px",
+        "stagger_delay": 150
+      },
+      "type": "results-dopaboost"
+    },
+    "science_dopaboost_kP4BHH": {
+      "block_order": [
+        "ingredient_iyFMkR",
+        "ingredient_NbRr9a",
+        "ingredient_XxWFVz",
+        "ingredient_iP3WMB",
+        "ingredient_tX8aKt",
+        "ingredient_MQwyar"
+      ],
+      "blocks": {
+        "ingredient_MQwyar": {
+          "settings": {
+            "category": "DAILY VITALITY",
+            "description": "Essential for energy metabolism, mental performance, and maintaining everyday vitality as you age.",
+            "name": "Vitamin B12"
+          },
+          "type": "ingredient"
+        },
+        "ingredient_NbRr9a": {
+          "settings": {
+            "category": "MOTIVATION SUPPORT",
+            "description": "A natural source of L-Dopa, valued for supporting motivation, drive, and a positive mindset throughout the day.",
+            "name": "Mucuna Pruriens"
+          },
+          "type": "ingredient"
+        },
+        "ingredient_XxWFVz": {
+          "settings": {
+            "category": "COGNITIVE PERFORMANCE",
+            "description": "Supports mental clarity, focus, and cognitive function to help you stay sharp and engaged.",
+            "name": "Lion’s Mane Mushroom"
+          },
+          "type": "ingredient"
+        },
+        "ingredient_iP3WMB": {
+          "settings": {
+            "category": "CELLULAR ENERGY",
+            "description": "Helps convert food into usable energy and supports healthy nervous system function.",
+            "name": "Vitamin B1 (Thiamine)"
+          },
+          "type": "ingredient"
+        },
+        "ingredient_iyFMkR": {
+          "settings": {
+            "category": "ADAPTIVE ENERGY",
+            "description": "Traditionally used to support resilience, stamina, and sustained daily performance when life feels demanding.",
+            "name": "Rhodiola Rosea"
+          },
+          "type": "ingredient"
+        },
+        "ingredient_tX8aKt": {
+          "settings": {
+            "category": "ENERGY METABOLISM",
+            "description": "Supports cellular energy production and contributes to reducing feelings of tiredness and fatigue.",
+            "name": "Vitamin B3 (Niacin)"
+          },
+          "type": "ingredient"
+        }
+      },
+      "name": "Science Section",
+      "settings": {
+        "background_color": "#fef9f1",
+        "category_color": "#000000",
+        "category_margin": 8,
+        "category_size": 9,
+        "desktop_border_color": "#e8e4de",
+        "desktop_border_width": 1,
+        "desktop_card_gap": 28,
+        "desktop_card_padding_box": "40px 35px",
+        "grid_margin_bottom": 60,
+        "grid_margin_bottom_mobile": 40,
+        "grid_margin_top": 75,
+        "grid_margin_top_mobile": 35,
+        "headline_color": "#000000",
+        "headline_highlight_color": "#999999",
+        "headline_highlight_weight": 300,
+        "headline_margin": 32,
+        "headline_margin_mobile": 24,
+        "headline_part1": "Six Targeted Compounds",
+        "headline_part2": "",
+        "headline_size_desktop": 46,
+        "headline_size_mobile": 28,
+        "headline_size_tablet": 38,
+        "headline_weight": 600,
+        "ingredient_name_color": "#1a1a1a",
+        "ingredient_name_margin": 16,
+        "ingredient_name_size": 24,
+        "ingredient_name_size_mobile": 24,
+        "ingredient_name_weight": 600,
+        "ingredient_text_color": "#666666",
+        "ingredient_text_size": 15,
+        "ingredient_text_size_mobile": 15,
+        "label_color": "#999999",
+        "label_margin": 16,
+        "label_margin_mobile": 12,
+        "label_size": 12,
+        "label_size_mobile": 11,
+        "label_spacing": 2,
+        "label_weight": 500,
+        "max_width": 900,
+        "mobile_panel_bg": "#f1eade",
+        "mobile_panel_border_radius": 2,
+        "mobile_panel_padding": "30px 25px",
+        "mobile_tab_active_bg": "#ffffff",
+        "mobile_tab_active_border": "#d4cfc7",
+        "mobile_tab_active_color": "#1a1a1a",
+        "mobile_tab_border_color": "#e8e4de",
+        "mobile_tab_border_radius": 20,
+        "mobile_tab_border_width": 1,
+        "mobile_tab_color": "#999999",
+        "mobile_tab_font_size": 14,
+        "mobile_tab_font_weight": 500,
+        "mobile_tab_gap": 10,
+        "mobile_tab_padding": "12px 20px",
+        "mobile_tabs_margin": 20,
+        "mobile_tabs_padding_bottom": 20,
+        "section_label": "",
+        "section_padding_desktop": "100px 40px",
+        "section_padding_mobile": "50px 20px",
+        "section_padding_tablet": "80px 40px",
+        "show_synergy_section": true,
+        "synergy_background": "#948979",
+        "synergy_border_radius": 8,
+        "synergy_margin_top": 60,
+        "synergy_margin_top_mobile": 32,
+        "synergy_padding": "80px 60px",
+        "synergy_padding_mobile": "60px 30px",
+        "synergy_text": "This complementary blend combines focus-supporting botanicals with energy-supporting vitamins to help you stay mentally sharp, motivated, and energized from morning to evening.",
+        "synergy_text_color": "#cccccc",
+        "synergy_text_max_width": 700,
+        "synergy_text_size": 17,
+        "synergy_text_size_mobile": 15,
+        "synergy_title": "How They Work Together",
+        "synergy_title_color": "#ffffff",
+        "synergy_title_margin": 24,
+        "synergy_title_margin_mobile": 20,
+        "synergy_title_size": 32,
+        "synergy_title_size_mobile": 24,
+        "synergy_title_size_tablet": 28,
+        "synergy_title_weight": 600
+      },
+      "type": "science-dopaboost"
+    },
+    "slideshow_JFcFEX": {
+      "name": "Slideshow",
+      "settings": {
+        "allow_transparent_header": true,
+        "autoplay": false,
+        "background": "#f2f2f2",
+        "background_gradient": "",
+        "controls_type": "dots",
+        "cycle_speed": 6,
+        "full_width": true,
+        "image_size": "auto",
+        "show_initial_transition": false,
+        "transition_type": "fade_with_text"
+      },
+      "type": "slideshow"
+    },
+    "slideshow_MKWJJq": {
+      "name": "Slideshow",
+      "settings": {
+        "allow_transparent_header": true,
+        "autoplay": false,
+        "background": "#f2f2f2",
+        "background_gradient": "",
+        "controls_type": "dots",
+        "cycle_speed": 6,
+        "full_width": true,
+        "image_size": "auto",
+        "show_initial_transition": false,
+        "transition_type": "fade_with_text"
+      },
+      "type": "slideshow"
+    },
+    "trusted_banner_pfmBEb": {
+      "block_order": [
+        "logo_TmwFwr",
+        "logo_kiNkiy",
+        "logo_468DxC",
+        "logo_k4qXFr",
+        "logo_HmDRjy"
+      ],
+      "blocks": {
+        "logo_468DxC": {
+          "settings": {
+            "logo_alt_text": "",
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-b00a20fa-26fb-42e0-a0a6-60c86a2f3c30.svg",
+            "logo_link": "",
+            "logo_text": "Forbes"
+          },
+          "type": "logo"
+        },
+        "logo_HmDRjy": {
+          "settings": {
+            "logo_alt_text": "",
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-d0047f1b-f4f1-46c3-b588-76477155b2ec.svg",
+            "logo_link": "",
+            "logo_text": "BYRDIE"
+          },
+          "type": "logo"
+        },
+        "logo_TmwFwr": {
+          "settings": {
+            "logo_alt_text": "",
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-edead21c-d237-4128-a22f-c52500ba8969.svg",
+            "logo_link": "",
+            "logo_text": "ELLE"
+          },
+          "type": "logo"
+        },
+        "logo_k4qXFr": {
+          "settings": {
+            "logo_alt_text": "",
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-06d4bf63-2d9e-43c0-9f2d-d5e60cd15ff1.svg",
+            "logo_link": "",
+            "logo_text": "BAZAAR"
+          },
+          "type": "logo"
+        },
+        "logo_kiNkiy": {
+          "settings": {
+            "logo_alt_text": "",
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-ca212e65-d20d-4bed-b31e-57bbb046c8b1.svg",
+            "logo_link": "",
+            "logo_text": "allure"
+          },
+          "type": "logo"
+        }
+      },
+      "name": "Trusted By Banner",
+      "settings": {
+        "background_color": "#f1eade",
+        "debug_mode": false,
+        "full_width": true,
+        "logo_display_mode": "gradient",
+        "logo_font": "sans_serif_n4",
+        "logo_height": 50,
+        "logo_opacity": 0.9,
+        "logo_spacing": 40,
+        "logo_text_size": 24,
+        "margin_bottom": 0,
+        "margin_bottom_mobile": 0,
+        "margin_top": 0,
+        "margin_top_mobile": 0,
+        "padding_bottom": 20,
+        "padding_top": 20,
+        "pause_on_hover": true,
+        "remove_section_spacing": true,
+        "scroll_speed": 20,
+        "show_title": true,
+        "text_color": "#000000",
+        "title_font": "sans_serif_n4",
+        "title_size": 18,
+        "title_text": "AS SEEN IN"
+      },
+      "type": "trusted-banner"
+    },
+    "zoom_info_AqCxpY": {
+      "block_order": [
+        "feature_Uakm6J",
+        "feature_Vee6Ri",
+        "feature_cpD7BN",
+        "feature_FVDd4U"
+      ],
+      "blocks": {
+        "feature_FVDd4U": {
+          "settings": {
+            "expanded_text": "Love that it’s plant-based and transdermal. My motivation is back, and I don’t get that wired feeling like with supplements.",
+            "feature_text": "Barbara R.",
+            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #974E35 50%, #7A3E2A 100%)",
+            "image": "shopify://shop_images/canvas-image-1762096595413.jpg",
+            "image_alt": "",
+            "link_url": ""
+          },
+          "type": "feature"
+        },
+        "feature_Uakm6J": {
+          "settings": {
+            "expanded_text": "I didn’t realize how low my motivation had gotten until I started using these patches. Within a few days, my energy and focus felt steady, no crashes, no jitters.",
+            "feature_text": "Amy D.",
+            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #974E35 50%, #7A3E2A 100%)",
+            "image": "shopify://shop_images/canvas-image-1762096415276.jpg",
+            "image_alt": "",
+            "link_url": ""
+          },
+          "type": "feature"
+        },
+        "feature_Vee6Ri": {
+          "settings": {
+            "expanded_text": "It’s not like caffeine, it’s smoother. I just notice I’m more productive, in a better mood, and not procrastinating all day.",
+            "feature_text": "Sarah R.",
+            "gradient_background": "linear-gradient(135deg, #5A544F 0%, #4A453F 50%, #423D38 100%)",
+            "image": "shopify://shop_images/canvas-image-1761173935477.jpg",
+            "image_alt": "",
+            "link_url": ""
+          },
+          "type": "feature"
+        },
+        "feature_cpD7BN": {
+          "settings": {
+            "expanded_text": "I apply one after my shower and feel a clear, calm focus that lasts all day. It’s become part of my daily routine.",
+            "feature_text": "Stephan Y.",
+            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #8B472F 50%, #6B3522 100%)",
+            "image": "shopify://shop_images/canvas-image-1762095902741.jpg",
+            "image_alt": "",
+            "link_url": ""
+          },
+          "type": "feature"
+        }
+      },
+      "name": "Titanium Features",
+      "settings": {
+        "background_color": "#fef9f1",
+        "card_aspect_ratio": "1",
+        "card_font_size": 24,
+        "card_font_size_mobile": 20,
+        "card_shadow_opacity": 40,
+        "card_text_color": "#ffffff",
+        "desktop_columns": "4",
+        "enable_parallax": true,
+        "expand_icon_bg": "#f5f2f01a",
+        "expand_icon_border_color": "#f5f2f099",
+        "expand_icon_color": "#f5f2f0",
+        "expand_icon_hover_bg": "#f5f2f033",
+        "image_overlay_opacity": 20,
+        "mobile_card_aspect_ratio": "0.85",
+        "overlay_bg": "#f5f2f0fa",
+        "overlay_text_color": "#35312e",
+        "padding_bottom": 55,
+        "padding_bottom_mobile": 5,
+        "padding_top": 0,
+        "padding_top_mobile": 0,
+        "show_expand_icon": true,
+        "text_color": "#000000",
+        "title": "Real People, Real Results",
+        "title_font_size": 48,
+        "title_font_size_mobile": 32,
+        "title_font_weight": "400"
+      },
+      "type": "zoom-info"
     }
-  },
-  "order": [
-    "main",
-    "zoom_info_D84zzJ",
-    "trusted_banner_pfmBEb",
-    "problem_static_3EADKm",
-    "features_TrPW7f",
-    "science_dopaboost_AMPBLz",
-    "results_dopaboost_AcBD7w",
-    "faq_xCdLpE"
-  ]
+  }
 }

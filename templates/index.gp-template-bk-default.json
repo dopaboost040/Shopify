@@ -15,21 +15,21 @@
         "image_RnM6Pf": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/GLP-1_Support_Patches_offer_a_gentle_steady_approach_to_appetite_and_glucose_balance._Their_transdermal_delivery_ensures_consistent_support_without_the_fluctuations_typical_of_oral_su_73635680-df37-406e-8dbb-dcda06cddc2d.png",
-            "mobile_image": "shopify://shop_images/GLP-1_Support_Patches_offer_a_gentle_steady_approach_to_appetite_and_glucose_balance._Their_transdermal_delivery_ensures_consistent_support_without_the_fluctuations_typical_of_oral_su_f0823855-8fa3-40a2-b5e4-70c567efe3b4.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "image": "shopify://shop_images/Zonder_titel_2732_x_1537_px_2800_x_1000_px_21.png",
+            "mobile_image": "shopify://shop_images/Ontwerp_zonder_titel_36_94f82643-6392-4817-89ce-73a604f073c0.png",
+            "content_max_width": 1000,
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
             "subheading": "",
             "title": "",
             "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
+            "button_text": "SHOP NOW",
+            "button_link": "shopify://collections/all",
+            "text_color": "#fefaf4",
+            "button_background": "#c1633f",
+            "button_text_color": "#fefaf4",
             "overlay_color": "#000000",
-            "overlay_opacity": 30,
+            "overlay_opacity": 0,
             "background": "",
             "background_gradient": ""
           }
@@ -43,13 +43,96 @@
         "full_width": true,
         "allow_transparent_header": false,
         "show_initial_transition": false,
-        "image_size": "md",
+        "image_size": "auto",
         "controls_type": "dots",
         "transition_type": "fade_with_text",
         "autoplay": false,
         "cycle_speed": 6,
         "background": "#f2f2f2",
         "background_gradient": ""
+      }
+    },
+    "trusted_banner_A7VWeh": {
+      "type": "trusted-banner",
+      "blocks": {
+        "logo_XPi4n3": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-edead21c-d237-4128-a22f-c52500ba8969.svg",
+            "logo_text": "ELLE",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_kXQrd6": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-ca212e65-d20d-4bed-b31e-57bbb046c8b1.svg",
+            "logo_text": "allure",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_Jaj7UQ": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-b00a20fa-26fb-42e0-a0a6-60c86a2f3c30.svg",
+            "logo_text": "Forbes",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_iR8QW3": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-06d4bf63-2d9e-43c0-9f2d-d5e60cd15ff1.svg",
+            "logo_text": "BAZAAR",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_NNydXg": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-d0047f1b-f4f1-46c3-b588-76477155b2ec.svg",
+            "logo_text": "BYRDIE",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_XPi4n3",
+        "logo_kXQrd6",
+        "logo_Jaj7UQ",
+        "logo_iR8QW3",
+        "logo_NNydXg"
+      ],
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#f1eade",
+        "text_color": "#000000",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": true,
+        "title_text": "AS SEEN IN",
+        "title_font": "sans_serif_n4",
+        "title_size": 18,
+        "scroll_speed": 20,
+        "pause_on_hover": true,
+        "logo_display_mode": "gradient",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "sans_serif_n4",
+        "logo_height": 50,
+        "logo_text_size": 24,
+        "logo_spacing": 40
       }
     },
     "featured_collection_d433tC": {
@@ -69,12 +152,12 @@
         ],
         "full_width": false,
         "stack_products": false,
-        "show_progress_bar": false,
+        "show_progress_bar": true,
         "products_count": 6,
-        "products_per_row_mobile": "2",
+        "products_per_row_mobile": "1",
         "products_per_row_desktop": 3,
         "subheading": "",
-        "title": "Featured collection",
+        "title": "Best Sellers",
         "content": "",
         "link_url": "",
         "link_text": "View all",
@@ -85,6 +168,25 @@
         "heading_gradient": "",
         "product_card_background": "",
         "product_card_text_color": ""
+      }
+    },
+    "impact_text_gG7tMX": {
+      "type": "impact-text",
+      "name": "Impact text",
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "text_alignment": "center",
+        "impact_text_style": "fill",
+        "text_divider": "none",
+        "impact_text_size_ratio": 1,
+        "background": "",
+        "background_gradient": "",
+        "heading_text_color": "",
+        "heading_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
       }
     },
     "section-6": {
@@ -222,6 +324,402 @@
         "chart_true_false_color": ""
       }
     },
+    "rich_text_ahqGRJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3rd39D": {
+          "type": "heading",
+          "settings": {
+            "text": "Over 100.000 + Happy Customers and Counting!",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "subheading_PACf9D": {
+          "type": "subheading",
+          "settings": {
+            "text": "See why everyone’s talking about the DopaBoost Patches."
+          }
+        }
+      },
+      "block_order": [
+        "heading_3rd39D",
+        "subheading_PACf9D"
+      ],
+      "custom_css": [],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "inner_padding_top": 0,
+        "inner_padding_bottom": 0,
+        "inner_padding_top_mobile": 0,
+        "inner_padding_bottom_mobile": 0,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "ss_shoppable_video_BnrxEH": {
+      "type": "ss-shoppable-video",
+      "blocks": {
+        "item_dKkcfQ": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/copy_4A73E2EA-5D10-439E-8E97-9C0B7B5D7EBF_41064028-0def-4511-a342-b1d6b0a9389d.mov",
+            "video_url": "",
+            "autoplay": true,
+            "product": "dopamine-patches-1",
+            "use_variants": true,
+            "modal_heading": "<p><strong>Dopamine Patches</strong></p>",
+            "modal_text": "<p><br/>Our Dopamine Patches naturally support mood, motivation, and emotional balance. Formulated with Mucuna Pruriens, 5-HTP, Lion's Mane, and Rhodiola, they promote mental clarity and well-being. Each vegan pack of 30 patches offers a simple, natural boost for your daily mindset.<br/><br/>Subscribe now for the Best Deal. We will ship you a fresh batch monthly.</p>"
+          }
+        },
+        "item_hpPcRz": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/IMG_4104.mov",
+            "video_url": "",
+            "autoplay": true,
+            "product": "energy-patches",
+            "use_variants": true,
+            "modal_heading": "<p><strong>Energy Patches</strong></p>",
+            "modal_text": "<p><br/>Our Collagen Patches promote skin elasticity, hydration, and youthful radiance. Formulated with collagen peptides, Vitamin C, and Hyaluronic Acid, they support healthy skin, hair, nails, and joints. Each vegan pack of 30 patches delivers smoother, firmer, more radiant skin, just apply and glow.<br/><br/>Subscribe now for the Best Deal and highest personal success rate. We will automatically ship you a fresh batch every month so you never run out of your daily support.</p>"
+          }
+        },
+        "item_MynFrh": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/hf_20260521_080418_cfc00dbc-cab5-4609-a11e-6f16766024d3.mp4",
+            "video_url": "",
+            "autoplay": false,
+            "product": "glp-1-berberine-patches",
+            "use_variants": true,
+            "modal_heading": "<p><strong>GLP-1/Berberine Patches</strong></p>",
+            "modal_text": "<p><br/>Our Berberine Patches support weight management, appetite control, and steady energy. Infused with Berberine, Chromium, and botanicals, they regulate blood sugar and reduce cravings. Each vegan pack of 30 patches offers a simple, effective way to complement your healthy lifestyle.<br/><br/>Subscribe now for the Best Deal, we'll ship you a fresh batch monthly.</p>"
+          }
+        },
+        "item_mXRDFR": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/hf_20260521_090819_801fd294-2c38-4493-8388-8b0e2aa1a798.mp4",
+            "video_url": "",
+            "autoplay": false,
+            "product": "nad-patches",
+            "use_variants": true,
+            "modal_heading": "<p><strong>NAD+ Patches</strong></p>",
+            "modal_text": "<p><br/>Support cellular energy, mental clarity, and healthy aging with our NAD+ Patches. Formulated with NMN, Resveratrol, NAC, Lion's Mane, and Cordyceps, they promote sustained focus and overall vitality. Each vegan pack of 30 patches delivers an effective way to fuel your potential.<br/><br/>Subscribe now for the Best Deal and highest personal success rate. We will automatically ship you a fresh batch every month.<br/><br/></p>"
+          }
+        },
+        "item_zf6zQM": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/hf_20260522_081633_6ae2a9ee-755f-4b9f-b19d-3f72fd088f9d.mp4",
+            "video_url": "",
+            "autoplay": false,
+            "product": "dopamine-patches-1",
+            "use_variants": true,
+            "modal_heading": "<p><strong>Dopamine Patches</strong></p>",
+            "modal_text": "<p><br/>Our Dopamine Patches naturally support mood, motivation, and emotional balance. Formulated with Mucuna Pruriens, 5-HTP, Lion's Mane, and Rhodiola, they promote mental clarity and well-being. Each vegan pack of 30 patches offers a simple, natural boost for your daily mindset.<br/><br/>Subscribe now for the Best Deal. We will ship you a fresh batch monthly.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_dKkcfQ",
+        "item_hpPcRz",
+        "item_MynFrh",
+        "item_mXRDFR",
+        "item_zf6zQM"
+      ],
+      "name": "SS - Shoppable video",
+      "settings": {
+        "heading": "",
+        "heading_custom": true,
+        "heading_font": "amiri_n4",
+        "heading_size": 48,
+        "heading_size_mobile": 58,
+        "heading_height": 190,
+        "heading_align": "center",
+        "heading_align_mobile": "center",
+        "slider_view": 5,
+        "slider_view_mobile": 2.2,
+        "slider_gap": 20,
+        "slider_gap_mobile": 16,
+        "slider_mt": 20,
+        "card_radius": 6,
+        "card_border_thickness": 0,
+        "card_shadow": true,
+        "video_ratio": "portrait",
+        "video_ratio_mobile": "portrait",
+        "video_overlay": 0.2,
+        "image_width": 44,
+        "image_width_mobile": 44,
+        "image_radius": 0,
+        "image_border_thickness": 0,
+        "title_custom": false,
+        "title_font": "mono",
+        "title_size": 14,
+        "title_size_mobile": 14,
+        "title_height": 130,
+        "title_uppercase": false,
+        "price_custom": false,
+        "price_font": "josefin_sans_n4",
+        "price_size": 14,
+        "price_size_mobile": 14,
+        "price_height": 130,
+        "button": "Add To Cart",
+        "button_soldout": "Sold Out",
+        "button_custom": false,
+        "button_font": "josefin_sans_n4",
+        "button_size": 15,
+        "button_size_mobile": 15,
+        "button_padding_vertical": 11,
+        "button_padding_vertical_mobile": 11,
+        "button_padding_horizontal": 12,
+        "button_padding_horizontal_mobile": 9,
+        "reload_after_adding": false,
+        "redirect_after_adding": false,
+        "option_custom": false,
+        "option_font": "josefin_sans_n4",
+        "option_size": 12,
+        "option_size_mobile": 12,
+        "option_height": 100,
+        "option_mt": 24,
+        "variants_price_custom": false,
+        "variants_price_font": "josefin_sans_n4",
+        "variants_price_size": 14,
+        "variants_price_size_mobile": 14,
+        "variants_price_height": 130,
+        "variants_price_mt": 10,
+        "variants_price_align": "center",
+        "variants_price_align_mobile": "center",
+        "modal_width": 740,
+        "modal_width_mobile": 100,
+        "modal_radius": 16,
+        "modal_border_thickness": 0,
+        "modal_overlay": 50,
+        "close_size": 42,
+        "close_size_mobile": 42,
+        "close_radius": 8,
+        "close_border_thickness": 0,
+        "buttons_size": 48,
+        "buttons_size_mobile": 48,
+        "buttons_radius": 8,
+        "buttons_border_thickness": 0,
+        "modal_video_radius": 0,
+        "modal_video_border_thickness": 0,
+        "modal_video_ratio": "portrait",
+        "modal_video_ratio_mobile": "portrait",
+        "modal_heading_custom": false,
+        "modal_heading_font": "josefin_sans_n4",
+        "modal_heading_size": 28,
+        "modal_heading_size_mobile": 28,
+        "modal_heading_height": 130,
+        "modal_heading_align": "center",
+        "modal_heading_align_mobile": "center",
+        "modal_text_custom": false,
+        "modal_text_font": "josefin_sans_n4",
+        "modal_text_size": 16,
+        "modal_text_size_mobile": 16,
+        "modal_text_height": 150,
+        "modal_text_align": "center",
+        "modal_text_align_mobile": "center",
+        "modal_text_mt": 0,
+        "use_modal_product": true,
+        "modal_image_width": 70,
+        "modal_image_width_mobile": 66,
+        "modal_image_radius": 12,
+        "modal_image_border_thickness": 0,
+        "modal_title_custom": false,
+        "modal_title_font": "josefin_sans_n4",
+        "modal_title_size": 16,
+        "modal_title_size_mobile": 16,
+        "modal_title_height": 130,
+        "modal_title_uppercase": false,
+        "modal_price_custom": false,
+        "modal_price_font": "josefin_sans_n4",
+        "modal_price_size": 14,
+        "modal_price_size_mobile": 14,
+        "modal_price_height": 130,
+        "modal_button": "Add To Cart",
+        "modal_button_soldout": "Sold Out",
+        "modal_button_custom": false,
+        "modal_button_font": "josefin_sans_n4",
+        "modal_button_size": 16,
+        "modal_button_size_mobile": 16,
+        "modal_button_radius": 8,
+        "modal_button_border_thickness": 1,
+        "modal_button_mt": 16,
+        "modal_button_align": "center",
+        "modal_button_align_mobile": "center",
+        "card_bg_color": "#fefaf4",
+        "card_border_color": "#121212",
+        "video_overlay_color": "#1a1a1a",
+        "card_shadow_color": "#121212",
+        "title_color": "#fefaf4",
+        "price_color": "#ffffff",
+        "image_border_color": "#121212",
+        "button_color": "#fefaf4",
+        "button_hover_color": "#fefaf4",
+        "button_bg_color": "#321e1e",
+        "button_bg_hover_color": "#121212",
+        "arrow_icon_color": "#ffffff",
+        "arrow_bg_color": "#321e1e",
+        "arrow_border_color": "#ffffff",
+        "option_color": "#121212",
+        "variants_price_color": "#121212",
+        "modal_heading_color": "#121212",
+        "modal_text_color": "#121212",
+        "modal_video_border_color": "#121212",
+        "modal_content_bg_color": "#ffffff",
+        "modal_border_color": "#121212",
+        "close_icon_color": "#ffffff",
+        "close_bg_color": "#ffffff",
+        "close_border_color": "#121212",
+        "buttons_icon_color": "#ffffff",
+        "buttons_bg_color": "#ffffff",
+        "buttons_border_color": "#121212",
+        "modal_title_color": "#121212",
+        "modal_price_color": "#121212",
+        "modal_image_border_color": "#121212",
+        "modal_button_color": "#ffffff",
+        "modal_button_hover_color": "#121212",
+        "modal_button_bg_color": "#121212",
+        "modal_button_bg_hover_color": "#ffffff",
+        "modal_button_border_color": "#121212",
+        "modal_button_border_hover_color": "#121212",
+        "heading_color": "#121212",
+        "background_color": "#fefaf4",
+        "background_gradient": "",
+        "border_color": "#fefaf4",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 12,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": true,
+        "content_width": 1600,
+        "border_thickness": 0,
+        "lazy": true
+      }
+    },
+    "1779712352a6914cce": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_6b2b47e_iieJke": {
+          "type": "ai_gen_block_6b2b47e",
+          "settings": {
+            "main_title": "How it works",
+            "title_font": "gilda_display_n4",
+            "title_size": 44,
+            "title_color": "#1a1a1a",
+            "step_1_image": "shopify://shop_images/BUY_2_GET_2_FREE_25.png",
+            "step_1_title": "Step 1: Apply",
+            "step_1_description": "Place one DopaBoost patch on clean, dry skin and let advanced transdermal delivery do the work. No mixing, no pills, no hassle.",
+            "step_2_image": "shopify://shop_images/BUY_2_GET_2_FREE_24.png",
+            "step_2_title": "Step 2: Absorb",
+            "step_2_description": "Powerful natural ingredients are released steadily for up to 8 hours — designed for smooth, consistent support throughout your day.",
+            "step_3_image": "shopify://shop_images/BUY_2_GET_2_FREE_26.png",
+            "step_3_title": "Step 3: Thrive",
+            "step_3_description": "Feel more focused, energized, and balanced with a simple daily ritual built to elevate your performance and well-being.",
+            "step_title_size": 18,
+            "step_title_color": "#1a1a1a",
+            "step_description_size": 14,
+            "step_description_color": "#999999",
+            "image_border_radius": 0,
+            "background_color": "#fefaf4",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_6b2b47e_iieJke"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "blocks_FgpeRK": {
+      "type": "_blocks",
+      "custom_css": [],
+      "name": "How it works",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "17797120826c52a520": {
+      "type": "_blocks",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "slideshow_aQRxbx": {
+      "type": "slideshow",
+      "blocks": {
+        "image_QQFjLf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Zonder_titel_2732_x_1537_px_2800_x_1000_px_19.png",
+            "mobile_image": "shopify://shop_images/Designedforelaticskinandfirmness_10_d64a92ba-fbc7-4544-854f-4106d0bf68fb.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "#fefaf4",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_QQFjLf"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
     "unique_section_XiRH3U": {
       "type": "unique-section",
       "blocks": {
@@ -306,119 +804,218 @@
         "feature_text_size_mobile": 15
       }
     },
-    "media_grid_tgDTFf": {
-      "type": "media-grid",
+    "1779699864930153e1": {
+      "type": "_blocks",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "faq_MNpy4U": {
+      "type": "faq",
       "blocks": {
-        "image_dzYCnq": {
-          "type": "image",
+        "faq_item_Lr8FYy": {
+          "type": "faq_item",
           "settings": {
-            "image": "shopify://shop_images/canvas-image-1761221626832.jpg",
-            "icon_size_mobile": 48,
-            "icon_size_desktop": 64,
-            "title": "30,000+ happy customers",
-            "heading_font_size_mobile": 24,
-            "heading_font_size_desktop": 32,
-            "description": "",
-            "description_font_size_mobile": 12,
-            "description_font_size_desktop": 14,
-            "heading_tag": "h4",
-            "link_url": "",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 2,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "question": "How do DopaBoost patches work?",
+            "answer": "<p>DopaBoost patches use transdermal delivery technology to release ingredients gradually through the skin over several hours. This allows for steady daily support without pills, powders, or digestive discomfort. </p>"
           }
         },
-        "image_bgWqxW": {
-          "type": "image",
+        "faq_item_VznCdm": {
+          "type": "faq_item",
           "settings": {
-            "icon_image": "shopify://shop_images/Untitled_design_71.png",
-            "icon_size_mobile": 60,
-            "icon_size_desktop": 80,
-            "title": "Plant-based",
-            "heading_font_size_mobile": 28,
-            "heading_font_size_desktop": 32,
-            "description": "No animal products or testing, just clean, vegan formulations.",
-            "description_font_size_mobile": 12,
-            "description_font_size_desktop": 14,
-            "heading_tag": "h4",
-            "link_url": "",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#c1633f",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "question": "Why choose patches instead of pills?",
+            "answer": "<p>Traditional supplements must pass through the digestive system, where some ingredients may break down before absorption. DopaBoost patches are designed for convenient, consistent delivery throughout the day — without swallowing capsules or mixing powders. </p>"
           }
         },
-        "image_6XFDeR": {
-          "type": "image",
+        "faq_item_FnQrRp": {
+          "type": "faq_item",
           "settings": {
-            "icon_image": "shopify://shop_images/Untitled_design_70.png",
-            "icon_size_mobile": 60,
-            "icon_size_desktop": 80,
-            "title": "Science-Backed",
-            "heading_font_size_mobile": 24,
-            "heading_font_size_desktop": 32,
-            "description": "very patch designed with clinically studied ingredients.",
-            "description_font_size_mobile": 12,
-            "description_font_size_desktop": 14,
-            "heading_tag": "h4",
-            "link_url": "",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#c1633f",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "question": "How long should I wear a patch?",
+            "answer": "<p>Each patch is designed to be worn for up to 8 hours for optimal release and comfort. Simply apply in the morning and remove at the end of the day. </p>"
+          }
+        },
+        "faq_item_dPHrYQ": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where should I apply the patch?",
+            "answer": "<p>Apply your patch to clean, dry, hair-free skin such as the upper arm, shoulder, back, or thigh. Rotate application areas daily for the best experience. </p>"
+          }
+        },
+        "faq_item_JQyY9G": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer worldwide shipping?",
+            "answer": "<p>Yes. We offer worldwide shipping with fast processing times so your patches arrive quickly and reliably. </p>"
+          }
+        },
+        "faq_item_x9EHqB": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I subscribe instead of ordering once?",
+            "answer": "<p>Absolutely. You can choose a one-time purchase or subscribe for automatic monthly delivery and exclusive savings. </p>"
+          }
+        },
+        "faq_item_JjxzeM": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What makes DopaBoost different?",
+            "answer": "<p>DopaBoost combines premium wellness formulas with effortless transdermal delivery — creating a simple daily ritual designed to support energy, focus, balance, and overall well-being without the inconvenience of traditional supplements. </p>"
           }
         }
       },
       "block_order": [
-        "image_dzYCnq",
-        "image_bgWqxW",
-        "image_6XFDeR"
+        "faq_item_Lr8FYy",
+        "faq_item_VznCdm",
+        "faq_item_FnQrRp",
+        "faq_item_dPHrYQ",
+        "faq_item_JQyY9G",
+        "faq_item_x9EHqB",
+        "faq_item_JjxzeM"
       ],
-      "name": "Media grid",
+      "name": "FAQ Section",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about DopaBoost patches, ingredients, delivery, and daily wellness support.",
+        "show_cta": true,
+        "cta_title": "Still have questions?",
+        "cta_text": "Our team is here to help you find the perfect patch for your routine.",
+        "cta_button_text": "Contact Our Team",
+        "cta_button_url": "",
+        "background_color": "#321e1e",
+        "text_color": "#fef9f1",
+        "subtitle_color": "#fef9f1",
+        "answer_color": "#f08d44",
+        "border_color": "#4a453f",
+        "accent_color": "#af593c",
+        "cta_bg_color": "#af674e",
+        "cta_button_bg": "#af593c",
+        "cta_button_hover_bg": "#974e35",
+        "title_font_size": 48,
+        "title_font_size_mobile": 32,
+        "question_font_size": 18,
+        "question_font_size_mobile": 16,
+        "close_others": true,
+        "close_on_outside_click": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mobile": 65,
+        "padding_bottom_mobile": 65
+      }
+    },
+    "newsletter_T9xggH": {
+      "type": "newsletter",
+      "name": "Newsletter",
       "settings": {
         "full_width": true,
-        "reduce_width": false,
-        "desktop_row_height": 310,
-        "mobile_row_height": 250,
+        "show_icon": false,
+        "title": "Join the DopaBoost community",
+        "content": "<p>Join our newsletter for exclusive offers, early product access, and the latest updates from DopaBoost.</p>",
+        "button_text": "➜",
+        "subtext": "",
         "background": "",
-        "background_gradient": ""
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "177970990499089191": {
+      "type": "_blocks",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "17803932670478e1de": {
+      "type": "_blocks",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "17810676543a3ebb9e": {
+      "type": "_blocks",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "1786174512b476c7b8": {
+      "type": "_blocks",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "17861746141839e720": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_2fb20ac_3AEFne": {
+          "type": "ai_gen_block_2fb20ac",
+          "settings": {
+            "apply_to_desktop": false,
+            "desktop_top_position": 0.5,
+            "desktop_left_position": 0.5,
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_2fb20ac_3AEFne"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     }
   },
   "order": [
     "slideshow_pyGX6H",
+    "trusted_banner_A7VWeh",
     "featured_collection_d433tC",
+    "impact_text_gG7tMX",
     "section-6",
     "section-15",
+    "rich_text_ahqGRJ",
+    "ss_shoppable_video_BnrxEH",
+    "1779712352a6914cce",
+    "blocks_FgpeRK",
+    "17797120826c52a520",
+    "slideshow_aQRxbx",
     "unique_section_XiRH3U",
-    "media_grid_tgDTFf"
+    "1779699864930153e1",
+    "faq_MNpy4U",
+    "newsletter_T9xggH",
+    "177970990499089191",
+    "17803932670478e1de",
+    "17810676543a3ebb9e",
+    "1786174512b476c7b8",
+    "17861746141839e720"
   ]
 }

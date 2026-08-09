@@ -1,0 +1,1024 @@
+{% style %}
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {{ section.settings.body_font | font_face: font_display: 'swap' }}
+
+  #shopify-section-{{ section.id }} {
+    --heading-font: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    --body-font: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+
+    --promo-bg: {{ section.settings.promo_bg_color }};
+    --promo-title-color: {{ section.settings.promo_title_color }};
+    --promo-subtitle-color: {{ section.settings.promo_subtitle_color }};
+    --timer-bg: {{ section.settings.timer_bg_color }};
+    --timer-number-color: {{ section.settings.timer_number_color }};
+    --timer-label-color: {{ section.settings.timer_label_color }};
+    --info-icon-color: {{ section.settings.info_icon_color }};
+
+    --header-bg: {{ section.settings.header_bg_color }};
+    --logo-height: {{ section.settings.logo_height }}px;
+
+    --left-bg-start: {{ section.settings.left_bg_color_start }};
+    --left-bg-end: {{ section.settings.left_bg_color_end }};
+    --headline-color: {{ section.settings.headline_color }};
+    --body-color: {{ section.settings.body_text_color }};
+
+    --badge-bg: {{ section.settings.badge_bg_color }};
+    --badge-text: {{ section.settings.badge_text_color }};
+    --badge-star-color: {{ section.settings.badge_star_color }};
+
+    --label-pill-bg: {{ section.settings.label_pill_bg_color }};
+    --label-pill-text: {{ section.settings.label_pill_text_color }};
+
+    --button-bg: {{ section.settings.button_bg_color }};
+    --button-text: {{ section.settings.button_text_color }};
+    --button-radius: {{ section.settings.button_border_radius }}px;
+
+    --trust-icon-bg: {{ section.settings.trust_icon_bg_color }};
+    --trust-text-color: {{ section.settings.trust_text_color }};
+    --trust-link-color: {{ section.settings.trust_link_color }};
+
+    --right-bg: {{ section.settings.right_bg_color }};
+    --arrow-bg: {{ section.settings.arrow_bg_color }};
+    --arrow-color: {{ section.settings.arrow_icon_color }};
+    --dot-color: {{ section.settings.dot_color }};
+    --dot-active-color: {{ section.settings.dot_active_color }};
+
+    --reason-bg: {{ section.settings.reason_bg_color }};
+    --reason-number-color: {{ section.settings.reason_number_color }};
+    --reason-title-color: {{ section.settings.reason_title_color }};
+    --reason-body-color: {{ section.settings.reason_body_color }};
+
+    --sticky-bg: {{ section.settings.sticky_bar_bg_color }};
+    --sticky-text: {{ section.settings.sticky_bar_text_color }};
+    --sticky-pill-bg: {{ section.settings.sticky_pill_bg_color }};
+    --sticky-pill-text: {{ section.settings.sticky_pill_text_color }};
+    --sticky-button-bg: {{ section.settings.sticky_button_bg_color }};
+    --sticky-button-text: {{ section.settings.sticky_button_text_color }};
+  }
+
+  .dbh { width: 100%; font-family: var(--body-font); position: relative; }
+
+  /* 1. TOP PROMO BAR */
+  .dbh__promo {
+    width: 100%;
+    background: var(--promo-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 14px 20px;
+  }
+
+  .dbh__promo-text { text-align: center; }
+
+  .dbh__promo-title {
+    color: var(--promo-title-color);
+    font-family: var(--heading-font);
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+  .dbh__promo-subtitle {
+    color: var(--promo-subtitle-color);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 2px 0 0 0;
+  }
+
+  .dbh__timer-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dbh__timer {
+    display: flex;
+    align-items: stretch;
+    background: var(--timer-bg);
+    border-radius: 10px;
+    padding: 6px 14px;
+    gap: 10px;
+  }
+
+  .dbh__timer-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 32px;
+  }
+
+  .dbh__timer-number {
+    color: var(--timer-number-color);
+    font-family: var(--heading-font);
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .dbh__timer-label {
+    color: var(--timer-label-color);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  .dbh__timer-colon {
+    color: var(--timer-number-color);
+    font-weight: 800;
+    font-size: 20px;
+    align-self: center;
+  }
+
+  .dbh__info {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .dbh__info-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid var(--info-icon-color);
+    color: var(--info-icon-color);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .dbh__info-tooltip {
+    display: none;
+    position: absolute;
+    top: 130%;
+    right: 0;
+    background: #1A1A1A;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 220px;
+    z-index: 20;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  }
+
+  .dbh__info.is-open .dbh__info-tooltip { display: block; }
+
+  /* Mobile: keep promo bar compact on one row (text left, timer right) */
+  @media (max-width: 989px) {
+    .dbh__promo {
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 10px;
+      padding: 10px 14px;
+    }
+    .dbh__promo-text { text-align: left; }
+    .dbh__promo-title { font-size: 12px; letter-spacing: 0.3px; }
+    .dbh__promo-subtitle { font-size: 9px; margin-top: 1px; }
+    .dbh__timer-wrap { gap: 5px; flex-shrink: 0; }
+    .dbh__timer { padding: 4px 8px; gap: 6px; }
+    .dbh__timer-unit { min-width: 22px; }
+    .dbh__timer-number { font-size: 15px; }
+    .dbh__timer-label { font-size: 7px; }
+    .dbh__timer-colon { font-size: 15px; }
+    .dbh__info-btn { width: 16px; height: 16px; font-size: 10px; }
+    .dbh__info-tooltip { width: 170px; font-size: 11px; padding: 8px 10px; }
+  }
+
+  /* 2. LOGO HEADER */
+  .dbh__header {
+    width: 100%;
+    background: var(--header-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 24px;
+  }
+
+  .dbh__logo {
+    height: var(--logo-height);
+    width: auto;
+    display: block;
+  }
+
+  /* 3. HERO GRID */
+  .dbh__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 680px;
+    background: radial-gradient(circle at 30% 30%, var(--left-bg-end), var(--left-bg-start));
+  }
+
+  .dbh__grid > * {
+    min-width: 0;
+  }
+
+  @media (max-width: 989px) {
+    .dbh__grid { grid-template-columns: 1fr; }
+    .dbh__right { order: 1; }
+    .dbh__left { order: 2; }
+  }
+
+  /* Mobile-only blocks: hidden on desktop by default, shown under 990px */
+  .dbh__mobile-only { display: none; }
+  @media (max-width: 989px) {
+    .dbh__mobile-only { display: block; }
+  }
+
+  .dbh__left {
+    background: radial-gradient(circle at 30% 30%, var(--left-bg-end), var(--left-bg-start));
+    padding: 64px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media (max-width: 989px) {
+    .dbh__left { padding: 48px 24px; }
+  }
+
+  .dbh__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--badge-bg);
+    border-radius: 999px;
+    padding: 10px 20px;
+    width: fit-content;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    flex-wrap: wrap;
+  }
+
+  .dbh__badge-avatars { display: flex; }
+  .dbh__avatar { display: block; margin-left: -8px; }
+  .dbh__avatar:first-child { margin-left: 0; }
+  .dbh__avatar img {
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 2px solid var(--badge-bg); object-fit: cover; display: block;
+  }
+  .dbh__badge-stars { color: var(--badge-star-color); font-size: 14px; letter-spacing: 1px; }
+  .dbh__badge-text { color: var(--badge-text); font-size: 14px; }
+
+  /* Mobile: keep badge compact on one row (avatars + stars + text) */
+  @media (max-width: 989px) {
+    .dbh__badge {
+      flex-wrap: nowrap;
+      gap: 6px;
+      padding: 8px 14px;
+      max-width: 100%;
+    }
+    .dbh__avatar img { width: 22px; height: 22px; }
+    .dbh__badge-stars { font-size: 11px; letter-spacing: 0.5px; flex-shrink: 0; }
+    .dbh__badge-text { font-size: 12px; white-space: nowrap; }
+  }
+
+  .dbh__headline {
+    font-family: var(--heading-font);
+    color: var(--headline-color);
+    font-weight: 800;
+    font-size: clamp(30px, 3.8vw, 48px);
+    line-height: 1.1;
+    margin: 0 0 24px 0;
+  }
+
+  .dbh__body {
+    color: var(--body-color);
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 560px;
+    margin-bottom: 32px;
+  }
+  .dbh__body p { margin: 0; }
+
+  .dbh__cta-wrap {
+    position: relative;
+    width: fit-content;
+    margin-bottom: 20px;
+  }
+
+  .dbh__label-pill {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--label-pill-bg);
+    color: var(--label-pill-text);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  .dbh__button {
+    display: inline-block;
+    background: var(--button-bg);
+    color: var(--button-text);
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 20px 40px;
+    border-radius: var(--button-radius);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .dbh__button:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .dbh__trust-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--trust-text-color);
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .dbh__trust-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--trust-icon-bg); color: #fff; flex-shrink: 0;
+  }
+
+  .dbh__trust-line a, .dbh__trust-underline {
+    color: var(--trust-link-color);
+    text-decoration: underline;
+  }
+
+  /* Right: image slider */
+  .dbh__right {
+    background: var(--right-bg);
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 0 !important;
+    aspect-ratio: 1 / 1;
+    align-self: start;
+    width: 100%;
+    height: auto;
+  }
+
+  .dbh__carousel {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .dbh__slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+  }
+
+  .dbh__slide.is-active {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .dbh__slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0 !important;
+  }
+
+  @media (max-width: 989px) {
+    .dbh__right { aspect-ratio: 1 / 1; min-height: 0; }
+  }
+
+  .dbh__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: var(--arrow-bg);
+    color: var(--arrow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    opacity: 0.35;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .dbh__arrow svg { width: 13px; height: 13px; }
+  .dbh__arrow:hover { opacity: 0.9; transform: translateY(-50%) scale(1.06); }
+  .dbh__arrow--prev { left: 10px; }
+  .dbh__arrow--next { right: 10px; }
+
+  .dbh__dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+  }
+
+  .dbh__dot {
+    width: 10px; height: 10px; border-radius: 999px;
+    border: none; background: var(--dot-color);
+    cursor: pointer; padding: 0;
+    transition: background 0.15s ease, width 0.15s ease;
+  }
+  .dbh__dot.is-active { background: var(--dot-active-color); width: 22px; }
+
+  /* 4. MOBILE-ONLY: Reasons list */
+  .dbh__reasons {
+    background: var(--reason-bg);
+    padding: 48px 20px;
+  }
+  .dbh__reason { margin-bottom: 40px; }
+  .dbh__reason:last-child { margin-bottom: 0; }
+  .dbh__reason-number {
+    font-family: var(--heading-font);
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--reason-number-color);
+    margin-bottom: 4px;
+  }
+  .dbh__reason-title {
+    font-family: var(--heading-font);
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.2;
+    color: var(--reason-title-color);
+    margin: 0 0 16px 0;
+  }
+  .dbh__reason-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .dbh__reason-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+  .dbh__reason-body {
+    color: var(--reason-body-color);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .dbh__reason-body p { margin: 0; }
+
+  /* 5. MOBILE-ONLY: Sticky bottom bar */
+  .dbh__sticky-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background: var(--sticky-bg);
+    padding: 14px 40px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+  }
+  .dbh__sticky-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--sticky-text);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+  .dbh__sticky-pill {
+    background: var(--sticky-pill-bg);
+    color: var(--sticky-pill-text);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 999px;
+  }
+  .dbh__sticky-button {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    background: var(--sticky-button-bg);
+    color: var(--sticky-button-text);
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: var(--button-radius);
+  }
+  .dbh__sticky-rating {
+    color: var(--sticky-text);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+  .dbh__sticky-stars { color: var(--badge-star-color); }
+{% endstyle %}
+
+<div class="dbh" id="dbh-{{ section.id }}">
+
+  <!-- 1. TOP PROMO BAR -->
+  {% if section.settings.show_promo_bar %}
+    <div class="dbh__promo">
+      <div class="dbh__promo-text">
+        <p class="dbh__promo-title">{{ section.settings.promo_title }}</p>
+        {% if section.settings.promo_subtitle != blank %}
+          <p class="dbh__promo-subtitle">{{ section.settings.promo_subtitle }}</p>
+        {% endif %}
+      </div>
+
+      {% if section.settings.show_countdown %}
+        <div class="dbh__timer-wrap">
+          <div class="dbh__timer" data-dbh-timer>
+            <div class="dbh__timer-unit">
+              <span class="dbh__timer-number" data-dbh-hours>00</span>
+              <span class="dbh__timer-label">HRS</span>
+            </div>
+            <span class="dbh__timer-colon">:</span>
+            <div class="dbh__timer-unit">
+              <span class="dbh__timer-number" data-dbh-minutes>00</span>
+              <span class="dbh__timer-label">MIN</span>
+            </div>
+            <span class="dbh__timer-colon">:</span>
+            <div class="dbh__timer-unit">
+              <span class="dbh__timer-number" data-dbh-seconds>00</span>
+              <span class="dbh__timer-label">SEC</span>
+            </div>
+          </div>
+
+          {% if section.settings.info_tooltip_text != blank %}
+            <div class="dbh__info" data-dbh-info>
+              <button type="button" class="dbh__info-btn" data-dbh-info-btn aria-label="More info">i</button>
+              <div class="dbh__info-tooltip">{{ section.settings.info_tooltip_text }}</div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <!-- 2. LOGO HEADER -->
+  {% if section.settings.show_logo_header and section.settings.logo_image %}
+    <div class="dbh__header">
+      <img
+        src="{{ section.settings.logo_image | image_url: width: 400 }}"
+        alt="{{ shop.name }}"
+        class="dbh__logo"
+        loading="lazy"
+      >
+    </div>
+  {% endif %}
+
+  <!-- 3. HERO GRID -->
+  <div class="dbh__grid">
+
+    <div class="dbh__left">
+      {% if section.settings.show_badge %}
+        <div class="dbh__badge">
+          <div class="dbh__badge-avatars">
+            {% for i in (1..3) %}
+              {% assign avatar_key = 'badge_avatar_' | append: i %}
+              {% assign avatar_image = section.settings[avatar_key] %}
+              {% if avatar_image %}
+                <span class="dbh__avatar">
+                  <img src="{{ avatar_image | image_url: width: 60 }}" width="30" height="30" alt="" loading="lazy">
+                </span>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <span class="dbh__badge-stars" aria-hidden="true">{% for i in (1..5) %}★{% endfor %}</span>
+          <span class="dbh__badge-text">
+            <strong>{{ section.settings.badge_rating }}</strong> stars |
+            <strong>{{ section.settings.badge_reviews }}</strong> reviews |
+            <strong>{{ section.settings.badge_members }}</strong> members
+          </span>
+        </div>
+      {% endif %}
+
+      <h1 class="dbh__headline">{{ section.settings.headline }}</h1>
+      <div class="dbh__body">{{ section.settings.body_text }}</div>
+
+      <div class="dbh__cta-wrap">
+        {% if section.settings.label_pill_text != blank %}
+          <span class="dbh__label-pill">{{ section.settings.label_pill_text }}</span>
+        {% endif %}
+        <a href="{{ section.settings.button_link | default: '#' }}" class="dbh__button">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+
+      {% if section.settings.trust_line_text != blank %}
+        <div class="dbh__trust-line">
+          <span class="dbh__trust-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>
+            {{ section.settings.trust_line_prefix }}
+            {% if section.settings.trust_line_link != blank %}
+              <a href="{{ section.settings.trust_line_link }}">{{ section.settings.trust_line_text }}</a>
+            {% else %}
+              <span class="dbh__trust-underline">{{ section.settings.trust_line_text }}</span>
+            {% endif %}
+          </span>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="dbh__right">
+      {% assign slide_blocks = section.blocks | where: 'type', 'slide' %}
+      {% assign total_slides = slide_blocks.size %}
+      {% if section.settings.right_image %}
+        {% assign total_slides = total_slides | plus: 1 %}
+      {% endif %}
+
+      {% if total_slides > 0 %}
+        <div class="dbh__carousel" data-dbh-carousel>
+          {% if section.settings.right_image %}
+            <div class="dbh__slide is-active" data-dbh-slide>
+              <img
+                src="{{ section.settings.right_image | image_url: width: 1600 }}"
+                alt="{{ section.settings.right_image_alt | escape }}"
+                class="dbh__slide-img"
+              >
+            </div>
+          {% endif %}
+          {% for block in slide_blocks %}
+            <div class="dbh__slide{% if forloop.first and section.settings.right_image == blank %} is-active{% endif %}" data-dbh-slide {{ block.shopify_attributes }}>
+              {% if block.settings.image %}
+                <img
+                  src="{{ block.settings.image | image_url: width: 1600 }}"
+                  alt="{{ block.settings.alt | escape }}"
+                  class="dbh__slide-img"
+                >
+              {% endif %}
+            </div>
+          {% endfor %}
+
+          {% if total_slides > 1 %}
+            <button type="button" class="dbh__arrow dbh__arrow--prev" data-dbh-prev aria-label="Previous">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="dbh__arrow dbh__arrow--next" data-dbh-next aria-label="Next">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="dbh__dots" data-dbh-dots>
+              {% for i in (1..total_slides) %}
+                <button type="button" class="dbh__dot{% if forloop.first %} is-active{% endif %}" data-dbh-dot aria-label="Go to slide {{ forloop.index }}"></button>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <!-- 4. MOBILE-ONLY: Reasons list -->
+  {% assign reason_blocks = section.blocks | where: 'type', 'reason' %}
+  {% if section.settings.show_mobile_reasons and reason_blocks.size > 0 %}
+    <div class="dbh__reasons dbh__mobile-only">
+      {% for block in reason_blocks %}
+        <div class="dbh__reason" {{ block.shopify_attributes }}>
+          <div class="dbh__reason-number">
+            {% if forloop.index < 10 %}0{{ forloop.index }}{% else %}{{ forloop.index }}{% endif %}
+          </div>
+          {% if block.settings.title != blank %}
+            <h3 class="dbh__reason-title">{{ block.settings.title }}</h3>
+          {% endif %}
+          {% if block.settings.image_1 or block.settings.image_2 or block.settings.image_3 or block.settings.image_4 %}
+            <div class="dbh__reason-images">
+              {% if block.settings.image_1 %}
+                <img
+                  src="{{ block.settings.image_1 | image_url: width: 800 }}"
+                  alt="{{ block.settings.title | escape }}"
+                  class="dbh__reason-img"
+                  loading="lazy"
+                >
+              {% endif %}
+              {% if block.settings.image_2 %}
+                <img
+                  src="{{ block.settings.image_2 | image_url: width: 800 }}"
+                  alt="{{ block.settings.title | escape }}"
+                  class="dbh__reason-img"
+                  loading="lazy"
+                >
+              {% endif %}
+              {% if block.settings.image_3 %}
+                <img
+                  src="{{ block.settings.image_3 | image_url: width: 800 }}"
+                  alt="{{ block.settings.title | escape }}"
+                  class="dbh__reason-img"
+                  loading="lazy"
+                >
+              {% endif %}
+              {% if block.settings.image_4 %}
+                <img
+                  src="{{ block.settings.image_4 | image_url: width: 800 }}"
+                  alt="{{ block.settings.title | escape }}"
+                  class="dbh__reason-img"
+                  loading="lazy"
+                >
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if block.settings.body_text != blank %}
+            <div class="dbh__reason-body">{{ block.settings.body_text }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- 5. MOBILE-ONLY: Sticky bottom bar -->
+  {% if section.settings.show_mobile_sticky_bar %}
+    <div class="dbh__sticky-bar dbh__mobile-only" data-dbh-sticky-bar>
+      {% if section.settings.mobile_sticky_bar_dismissible %}
+        <button type="button" class="dbh__sticky-close" data-dbh-sticky-close aria-label="Close">&times;</button>
+      {% endif %}
+      {% if section.settings.label_pill_text != blank %}
+        <span class="dbh__sticky-pill">{{ section.settings.label_pill_text }}</span>
+      {% endif %}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="dbh__sticky-button">
+        {{ section.settings.button_text }}
+      </a>
+      <div class="dbh__sticky-rating">
+        <span class="dbh__sticky-stars" aria-hidden="true">{% for i in (1..5) %}★{% endfor %}</span>
+        <span>
+          <strong>{{ section.settings.badge_rating }}</strong> stars |
+          <strong>{{ section.settings.badge_reviews }}</strong> reviews |
+          <strong>{{ section.settings.badge_members }}</strong> members
+        </span>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('dbh-{{ section.id }}');
+    if (!root) return;
+
+    /* --- Carousel --- */
+    var autoplayMs = {{ section.settings.carousel_autoplay_seconds | times: 1000 }};
+    var slides = root.querySelectorAll('[data-dbh-slide]');
+    var dots = root.querySelectorAll('[data-dbh-dot]');
+    var prevBtn = root.querySelector('[data-dbh-prev]');
+    var nextBtn = root.querySelector('[data-dbh-next]');
+    var index = 0;
+    var timer = null;
+
+    slides.forEach(function (slide, si) {
+      if (slide.classList.contains('is-active')) index = si;
+    });
+
+    function goTo(i) {
+      if (slides.length === 0) return;
+      index = (i + slides.length) % slides.length;
+      slides.forEach(function (slide, si) { slide.classList.toggle('is-active', si === index); });
+      dots.forEach(function (dot, di) { dot.classList.toggle('is-active', di === index); });
+    }
+
+    function restartAutoplay() {
+      if (!autoplayMs || slides.length < 2) return;
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { goTo(index + 1); }, autoplayMs);
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); restartAutoplay(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(index + 1); restartAutoplay(); });
+    dots.forEach(function (dot, di) {
+      dot.addEventListener('click', function () { goTo(di); restartAutoplay(); });
+    });
+
+    restartAutoplay();
+
+    /* --- Countdown timer: resets per-visitor after the configured duration --- */
+    var hoursEl = root.querySelector('[data-dbh-hours]');
+    var minutesEl = root.querySelector('[data-dbh-minutes]');
+    var secondsEl = root.querySelector('[data-dbh-seconds]');
+
+    if (hoursEl && minutesEl && secondsEl) {
+      var durationMs = {{ section.settings.countdown_duration_hours | times: 3600000 }};
+      var storageKey = 'dbh-countdown-end-{{ section.id }}';
+
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+      function getEndTime() {
+        var stored = null;
+        try { stored = window.localStorage ? localStorage.getItem(storageKey) : null; } catch (e) {}
+        var now = Date.now();
+        if (stored && parseInt(stored, 10) > now) {
+          return parseInt(stored, 10);
+        }
+        var end = now + durationMs;
+        try { if (window.localStorage) localStorage.setItem(storageKey, end); } catch (e) {}
+        return end;
+      }
+
+      var endTime = getEndTime();
+
+      function tick() {
+        var now = Date.now();
+        var diff = endTime - now;
+        if (diff <= 0) {
+          endTime = Date.now() + durationMs;
+          try { if (window.localStorage) localStorage.setItem(storageKey, endTime); } catch (e) {}
+          diff = durationMs;
+        }
+        var hrs = Math.floor(diff / 3600000);
+        var mins = Math.floor((diff % 3600000) / 60000);
+        var secs = Math.floor((diff % 60000) / 1000);
+        hoursEl.textContent = pad(hrs);
+        minutesEl.textContent = pad(mins);
+        secondsEl.textContent = pad(secs);
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    /* --- Mobile sticky bar close button --- */
+    var stickyBar = root.querySelector('[data-dbh-sticky-bar]');
+    var stickyClose = root.querySelector('[data-dbh-sticky-close]');
+    if (stickyBar && stickyClose) {
+      stickyClose.addEventListener('click', function () {
+        stickyBar.style.display = 'none';
+      });
+    }
+
+    /* --- Info tooltip --- */
+    var infoWrap = root.querySelector('[data-dbh-info]');
+    var infoBtn = root.querySelector('[data-dbh-info-btn]');
+    if (infoWrap && infoBtn) {
+      infoBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        infoWrap.classList.toggle('is-open');
+      });
+      document.addEventListener('click', function () {
+        infoWrap.classList.remove('is-open');
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "DopaBoost Hero",
+  "class": "dbh-section",
+  "settings": [
+    { "type": "header", "content": "Fonts" },
+    { "type": "font_picker", "id": "heading_font", "label": "Heading font", "default": "poppins_n7" },
+    { "type": "font_picker", "id": "body_font", "label": "Body font", "default": "inter_n4" },
+
+    { "type": "header", "content": "1. Top promo bar" },
+    { "type": "checkbox", "id": "show_promo_bar", "label": "Show top promo bar", "default": true },
+    { "type": "text", "id": "promo_title", "label": "Main line", "default": "☀️ SUMMER SALE ☀️" },
+    { "type": "text", "id": "promo_subtitle", "label": "Subtitle line", "default": "UP TO 30% OFF W/ FREE GIFTS" },
+    { "type": "checkbox", "id": "show_countdown", "label": "Show countdown timer", "default": true },
+    { "type": "range", "id": "countdown_duration_hours", "label": "Countdown length (hours, resets per visitor)", "min": 1, "max": 72, "step": 1, "default": 24 },
+    { "type": "text", "id": "info_tooltip_text", "label": "Info (i) tooltip text", "default": "Offer resets every 24 hours." },
+
+    { "type": "header", "content": "2. Logo header" },
+    { "type": "checkbox", "id": "show_logo_header", "label": "Show logo header row", "default": true },
+    { "type": "color", "id": "header_bg_color", "label": "Header background", "default": "#FFFFFF" },
+    { "type": "image_picker", "id": "logo_image", "label": "Logo image (nothing shows if left empty)" },
+    { "type": "range", "id": "logo_height", "label": "Logo height (px)", "min": 20, "max": 100, "step": 2, "default": 40 },
+
+    { "type": "header", "content": "3a. Hero — left side content" },
+    { "type": "checkbox", "id": "show_badge", "label": "Show rating badge", "default": true },
+    { "type": "image_picker", "id": "badge_avatar_1", "label": "Badge avatar 1" },
+    { "type": "image_picker", "id": "badge_avatar_2", "label": "Badge avatar 2" },
+    { "type": "image_picker", "id": "badge_avatar_3", "label": "Badge avatar 3" },
+    { "type": "text", "id": "badge_rating", "label": "Badge rating", "default": "4.8" },
+    { "type": "text", "id": "badge_reviews", "label": "Badge review count", "default": "10K+" },
+    { "type": "text", "id": "badge_members", "label": "Badge member count", "default": "50K+" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "5 Reasons Why DopaBoost Is Your Brain's New Best Friend (Besides the Focus)" },
+    { "type": "richtext", "id": "body_text", "label": "Body text", "default": "<p>Your dopamine system is like your brain's motivation engine—it affects everything from focus and mood to energy and drive. DopaBoost supports it with a clinically-studied blend, delivered through a simple daily patch.</p>" },
+    { "type": "text", "id": "label_pill_text", "label": "Small label above button", "default": "10K+ Patches Worn Daily" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Save 30% + Free Gifts" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "trust_line_prefix", "label": "Trust line prefix", "default": "Try It" },
+    { "type": "text", "id": "trust_line_text", "label": "Trust line linked text", "default": "Risk-Free For 30 Days" },
+    { "type": "url", "id": "trust_line_link", "label": "Trust line link (optional)" },
+
+    { "type": "header", "content": "3b. Hero — right side image slider" },
+    { "type": "image_picker", "id": "right_image", "label": "Main image" },
+    { "type": "text", "id": "right_image_alt", "label": "Main image alt text" },
+    { "type": "paragraph", "content": "Add extra 'Carousel image' blocks below to slide through more than one image." },
+    { "type": "range", "id": "carousel_autoplay_seconds", "label": "Autoplay speed (seconds, 0 = off)", "min": 0, "max": 10, "step": 1, "default": 4 },
+    { "type": "color", "id": "right_bg_color", "label": "Right column background (visible while image loads)", "default": "#F6F5F1" },
+
+    { "type": "header", "content": "Colors — top promo bar" },
+    { "type": "color", "id": "promo_bg_color", "label": "Bar background", "default": "#1E4620" },
+    { "type": "color", "id": "promo_title_color", "label": "Main line text", "default": "#FFFFFF" },
+    { "type": "color", "id": "promo_subtitle_color", "label": "Subtitle text", "default": "#D9E8D9" },
+    { "type": "color", "id": "timer_bg_color", "label": "Timer background", "default": "#FFFFFF" },
+    { "type": "color", "id": "timer_number_color", "label": "Timer numbers", "default": "#1A1A1A" },
+    { "type": "color", "id": "timer_label_color", "label": "Timer labels (HRS/MIN/SEC)", "default": "#666666" },
+    { "type": "color", "id": "info_icon_color", "label": "Info icon", "default": "#FFFFFF" },
+
+    { "type": "header", "content": "Colors — left side" },
+    { "type": "color", "id": "left_bg_color_start", "label": "Background gradient start", "default": "#FBFAF5" },
+    { "type": "color", "id": "left_bg_color_end", "label": "Background gradient end", "default": "#F6F5F1" },
+    { "type": "color", "id": "headline_color", "label": "Headline text", "default": "#1A1A1A" },
+    { "type": "color", "id": "body_text_color", "label": "Body text", "default": "#333333" },
+    { "type": "color", "id": "badge_bg_color", "label": "Badge background", "default": "#FFFFFF" },
+    { "type": "color", "id": "badge_text_color", "label": "Badge text", "default": "#1A1A1A" },
+    { "type": "color", "id": "badge_star_color", "label": "Badge stars", "default": "#E7D600" },
+    { "type": "color", "id": "label_pill_bg_color", "label": "Small label pill background", "default": "#E7D600" },
+    { "type": "color", "id": "label_pill_text_color", "label": "Small label pill text", "default": "#1A1A1A" },
+    { "type": "color", "id": "button_bg_color", "label": "Button background", "default": "#1A1A1A" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#FFFFFF" },
+    { "type": "range", "id": "button_border_radius", "label": "Button corner radius (px)", "min": 0, "max": 40, "step": 1, "default": 28 },
+    { "type": "color", "id": "trust_icon_bg_color", "label": "Trust checkmark background", "default": "#1A1A1A" },
+    { "type": "color", "id": "trust_text_color", "label": "Trust line text", "default": "#1A1A1A" },
+    { "type": "color", "id": "trust_link_color", "label": "Trust line link/underline", "default": "#1A1A1A" },
+
+    { "type": "header", "content": "Colors — right side carousel controls" },
+    { "type": "color", "id": "arrow_bg_color", "label": "Arrow button background", "default": "#FFFFFF" },
+    { "type": "color", "id": "arrow_icon_color", "label": "Arrow icon color", "default": "#1A1A1A" },
+    { "type": "color", "id": "dot_color", "label": "Dot (inactive)", "default": "#C9C9C9" },
+    { "type": "color", "id": "dot_active_color", "label": "Dot (active)", "default": "#1A1A1A" },
+
+    { "type": "header", "content": "Mobile only — Reasons list" },
+    { "type": "paragraph", "content": "Shown only on mobile/tablet screens, below the hero. Add 'Reason' blocks below to populate it. Not shown on desktop." },
+    { "type": "checkbox", "id": "show_mobile_reasons", "label": "Show reasons list on mobile", "default": true },
+    { "type": "color", "id": "reason_bg_color", "label": "Section background", "default": "#FBFAF5" },
+    { "type": "color", "id": "reason_number_color", "label": "Number color", "default": "#1E4620" },
+    { "type": "color", "id": "reason_title_color", "label": "Title color", "default": "#1E4620" },
+    { "type": "color", "id": "reason_body_color", "label": "Body text color", "default": "#333333" },
+
+    { "type": "header", "content": "Mobile only — Sticky bottom bar" },
+    { "type": "paragraph", "content": "A fixed bar pinned to the bottom of the screen on mobile only. Reuses the button/label/rating text from the hero section above." },
+    { "type": "checkbox", "id": "show_mobile_sticky_bar", "label": "Show sticky bottom bar on mobile", "default": true },
+    { "type": "checkbox", "id": "mobile_sticky_bar_dismissible", "label": "Allow visitors to close it", "default": true },
+    { "type": "color", "id": "sticky_bar_bg_color", "label": "Bar background", "default": "#1E4620" },
+    { "type": "color", "id": "sticky_bar_text_color", "label": "Rating text color", "default": "#FFFFFF" },
+    { "type": "color", "id": "sticky_pill_bg_color", "label": "Pill background", "default": "#E7D600" },
+    { "type": "color", "id": "sticky_pill_text_color", "label": "Pill text", "default": "#1A1A1A" },
+    { "type": "color", "id": "sticky_button_bg_color", "label": "Button background", "default": "#FFFFFF" },
+    { "type": "color", "id": "sticky_button_text_color", "label": "Button text", "default": "#1A1A1A" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Carousel image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "alt", "label": "Alt text" }
+      ]
+    },
+    {
+      "type": "reason",
+      "name": "Reason (mobile only)",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Better Poops (Seriously)" },
+        { "type": "image_picker", "id": "image_1", "label": "Image 1 (top left)" },
+        { "type": "image_picker", "id": "image_2", "label": "Image 2 (top right)" },
+        { "type": "image_picker", "id": "image_3", "label": "Image 3 (bottom left)" },
+        { "type": "image_picker", "id": "image_4", "label": "Image 4 (bottom right)" },
+        { "type": "richtext", "id": "body_text", "label": "Body text", "default": "<p>Describe this benefit in a sentence or two.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "DopaBoost Hero" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,574 @@
+{% doc %}
+  @prompt
+    ✅ Hier is de definitieve versie met de lettertype-aanpassing:
+    
+    Instructie voor Shopify – “How it works” sectie
+    Maak een sectie met de titel “How it works” (groot en dikgedrukt bovenaan).
+    Daaronder een rij van 3 kolommen met de volgende layout:
+    
+    Op desktop: 3 kolommen naast elkaar.
+    Op mobiel/telefoon: Een slider / carousel (horizontaal scrollbaar of met navigatie-pijltjes).
+    
+    Structuur per kolom (exact zo aanhouden):
+    
+    Bovenaan: grote foto (square of landscape formaat)
+    Direct daaronder: Subtitel dikgedrukt (bold)
+    Daaronder: kleine / normale tekst (paragraph)
+    
+    Belangrijk:
+    Gebruik het bestaande lettertype van de website voor alle teksten en titels (geen nieuw font toevoegen)., Maak het het lettertype van de website zelf die er in de andere kolommen gebruikt wordt , Maak de tekst nu dik gedrukt, de titel, zet de titel nu naar links en zet step 1, step 2 en step 3 ook dik gedrukt., Maak nu step 1, step 2 en step 3 ook dikgedrukt, Ik wil dat 'how it works' niet dikgedrukt is en in precies dezelfde grootte is als de titel van 'technology dopaboost'., Geef mij een optie zodat ik de titel zelf groter kan maken naar mijn eigen wens
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-how-it-works-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: 40px 20px;
+    display: block;
+  }
+
+  .ai-how-it-works-title-{{ ai_gen_id }} {
+    font-family: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+    font-weight: {{ settings.heading_font.weight }};
+    font-style: {{ settings.heading_font.style }};
+    font-size: {{ block.settings.title_font_size }}px;
+    text-align: left;
+    margin: 0 0 40px;
+    color: {{ block.settings.title_color }};
+    line-height: 1.2;
+  }
+
+  .ai-how-it-works-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .ai-how-it-works-column-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ai-how-it-works-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: {{ block.settings.image_aspect_ratio }};
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-how-it-works-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-how-it-works-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-how-it-works-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-how-it-works-subtitle-{{ ai_gen_id }} {
+    font-family: {{ settings.text_font.family }}, {{ settings.text_font.fallback_families }};
+    font-weight: 700;
+    font-style: {{ settings.text_font.style }};
+    font-size: 18px;
+    margin: 0;
+    color: {{ block.settings.subtitle_color }};
+  }
+
+  .ai-how-it-works-text-{{ ai_gen_id }} {
+    font-family: {{ settings.text_font.family }}, {{ settings.text_font.fallback_families }};
+    font-weight: {{ settings.text_font.weight }};
+    font-style: {{ settings.text_font.style }};
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-how-it-works-carousel-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-how-it-works-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_font_size }}px * 0.75);
+      margin-bottom: 24px;
+    }
+
+    .ai-how-it-works-grid-{{ ai_gen_id }} {
+      display: none;
+    }
+
+    .ai-how-it-works-carousel-{{ ai_gen_id }} {
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-how-it-works-carousel-track-{{ ai_gen_id }} {
+      display: flex;
+      transition: transform 0.3s ease;
+      gap: 20px;
+    }
+
+    .ai-how-it-works-carousel-slide-{{ ai_gen_id }} {
+      min-width: 85%;
+      flex-shrink: 0;
+    }
+
+    .ai-how-it-works-carousel-nav-{{ ai_gen_id }} {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .ai-how-it-works-carousel-button-{{ ai_gen_id }} {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid {{ block.settings.nav_button_color }};
+      background-color: {{ block.settings.nav_button_background }};
+      color: {{ block.settings.nav_button_color }};
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .ai-how-it-works-carousel-button-{{ ai_gen_id }}:hover {
+      background-color: {{ block.settings.nav_button_color }};
+      color: {{ block.settings.nav_button_background }};
+    }
+
+    .ai-how-it-works-carousel-button-{{ ai_gen_id }}:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .ai-how-it-works-carousel-dots-{{ ai_gen_id }} {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .ai-how-it-works-carousel-dot-{{ ai_gen_id }} {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: {{ block.settings.dot_color }};
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+
+    .ai-how-it-works-carousel-dot-{{ ai_gen_id }}.active {
+      opacity: 1;
+    }
+  }
+{% endstyle %}
+
+<how-it-works-{{ ai_gen_id }} class="ai-how-it-works-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.title != blank %}
+    <h2 class="ai-how-it-works-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+  {% endif %}
+
+  <div class="ai-how-it-works-grid-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% liquid
+        assign image_key = 'image_' | append: i
+        assign subtitle_key = 'subtitle_' | append: i
+        assign text_key = 'text_' | append: i
+        
+        assign image = block.settings[image_key]
+        assign subtitle = block.settings[subtitle_key]
+        assign text = block.settings[text_key]
+      %}
+      
+      <div class="ai-how-it-works-column-{{ ai_gen_id }}">
+        <div class="ai-how-it-works-image-wrapper-{{ ai_gen_id }}">
+          {% if image %}
+            <img
+              src="{{ image | image_url: width: 800 }}"
+              alt="{{ image.alt | escape }}"
+              loading="lazy"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+              class="ai-how-it-works-image-{{ ai_gen_id }}"
+            >
+          {% else %}
+            <div class="ai-how-it-works-image-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+        
+        {% if subtitle != blank %}
+          <h3 class="ai-how-it-works-subtitle-{{ ai_gen_id }}">{{ subtitle }}</h3>
+        {% endif %}
+        
+        {% if text != blank %}
+          <p class="ai-how-it-works-text-{{ ai_gen_id }}">{{ text }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="ai-how-it-works-carousel-{{ ai_gen_id }}">
+    <div class="ai-how-it-works-carousel-track-{{ ai_gen_id }}">
+      {% for i in (1..3) %}
+        {% liquid
+          assign image_key = 'image_' | append: i
+          assign subtitle_key = 'subtitle_' | append: i
+          assign text_key = 'text_' | append: i
+          
+          assign image = block.settings[image_key]
+          assign subtitle = block.settings[subtitle_key]
+          assign text = block.settings[text_key]
+        %}
+        
+        <div class="ai-how-it-works-carousel-slide-{{ ai_gen_id }} ai-how-it-works-column-{{ ai_gen_id }}">
+          <div class="ai-how-it-works-image-wrapper-{{ ai_gen_id }}">
+            {% if image %}
+              <img
+                src="{{ image | image_url: width: 800 }}"
+                alt="{{ image.alt | escape }}"
+                loading="lazy"
+                width="{{ image.width }}"
+                height="{{ image.height }}"
+                class="ai-how-it-works-image-{{ ai_gen_id }}"
+              >
+            {% else %}
+              <div class="ai-how-it-works-image-placeholder-{{ ai_gen_id }}">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </div>
+          
+          {% if subtitle != blank %}
+            <h3 class="ai-how-it-works-subtitle-{{ ai_gen_id }}">{{ subtitle }}</h3>
+          {% endif %}
+          
+          {% if text != blank %}
+            <p class="ai-how-it-works-text-{{ ai_gen_id }}">{{ text }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="ai-how-it-works-carousel-nav-{{ ai_gen_id }}">
+      <button class="ai-how-it-works-carousel-button-{{ ai_gen_id }} ai-how-it-works-prev-{{ ai_gen_id }}" aria-label="Previous slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="ai-how-it-works-carousel-button-{{ ai_gen_id }} ai-how-it-works-next-{{ ai_gen_id }}" aria-label="Next slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <div class="ai-how-it-works-carousel-dots-{{ ai_gen_id }}">
+      <span class="ai-how-it-works-carousel-dot-{{ ai_gen_id }} active"></span>
+      <span class="ai-how-it-works-carousel-dot-{{ ai_gen_id }}"></span>
+      <span class="ai-how-it-works-carousel-dot-{{ ai_gen_id }}"></span>
+    </div>
+  </div>
+</how-it-works-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class HowItWorks{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 0;
+        this.totalSlides = 3;
+      }
+
+      connectedCallback() {
+        this.track = this.querySelector('.ai-how-it-works-carousel-track-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('.ai-how-it-works-prev-{{ ai_gen_id }}');
+        this.nextButton = this.querySelector('.ai-how-it-works-next-{{ ai_gen_id }}');
+        this.dots = this.querySelectorAll('.ai-how-it-works-carousel-dot-{{ ai_gen_id }}');
+
+        if (this.track && this.prevButton && this.nextButton) {
+          this.setupEventListeners();
+          this.updateCarousel();
+        }
+      }
+
+      setupEventListeners() {
+        this.prevButton.addEventListener('click', () => this.goToPrevSlide());
+        this.nextButton.addEventListener('click', () => this.goToNextSlide());
+
+        this.dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => this.goToSlide(index));
+        });
+
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        this.track.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          isDragging = true;
+        });
+
+        this.track.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          currentX = e.touches[0].clientX;
+        });
+
+        this.track.addEventListener('touchend', () => {
+          if (!isDragging) return;
+          isDragging = false;
+          
+          const diff = startX - currentX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+              this.goToNextSlide();
+            } else {
+              this.goToPrevSlide();
+            }
+          }
+        });
+      }
+
+      goToPrevSlide() {
+        if (this.currentSlide > 0) {
+          this.currentSlide--;
+          this.updateCarousel();
+        }
+      }
+
+      goToNextSlide() {
+        if (this.currentSlide < this.totalSlides - 1) {
+          this.currentSlide++;
+          this.updateCarousel();
+        }
+      }
+
+      goToSlide(index) {
+        this.currentSlide = index;
+        this.updateCarousel();
+      }
+
+      updateCarousel() {
+        const slideWidth = this.track.querySelector('.ai-how-it-works-carousel-slide-{{ ai_gen_id }}').offsetWidth;
+        const gap = 20;
+        const offset = -(this.currentSlide * (slideWidth + gap));
+        
+        this.track.style.transform = `translateX(${offset}px)`;
+
+        this.prevButton.disabled = this.currentSlide === 0;
+        this.nextButton.disabled = this.currentSlide === this.totalSlides - 1;
+
+        this.dots.forEach((dot, index) => {
+          if (index === this.currentSlide) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    customElements.define('how-it-works-{{ ai_gen_id }}', HowItWorks{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "How it works",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "How it works"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title size",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "Column 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtitle_1",
+      "label": "Subtitle",
+      "default": "Step 1"
+    },
+    {
+      "type": "textarea",
+      "id": "text_1",
+      "label": "Text",
+      "default": "Describe the first step of your process here."
+    },
+    {
+      "type": "header",
+      "content": "Column 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtitle_2",
+      "label": "Subtitle",
+      "default": "Step 2"
+    },
+    {
+      "type": "textarea",
+      "id": "text_2",
+      "label": "Text",
+      "default": "Describe the second step of your process here."
+    },
+    {
+      "type": "header",
+      "content": "Column 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtitle_3",
+      "label": "Subtitle",
+      "default": "Step 3"
+    },
+    {
+      "type": "textarea",
+      "id": "text_3",
+      "label": "Text",
+      "default": "Describe the third step of your process here."
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {
+          "value": "1 / 1",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "4 / 3",
+          "label": "Landscape (4:3)"
+        },
+        {
+          "value": "16 / 9",
+          "label": "Wide (16:9)"
+        }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#677279"
+    },
+    {
+      "type": "header",
+      "content": "Mobile carousel"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_color",
+      "label": "Navigation button color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_background",
+      "label": "Navigation button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dot color",
+      "default": "#1a1a1a"
+    }
+  ],
+  "presets": [
+    {
+      "name": "How it works"
+    }
+  ]
+}
+{% endschema %}

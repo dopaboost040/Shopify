@@ -1,0 +1,707 @@
+{% doc %}
+  @prompt
+    CREATE A SECTION 
+    - Small decorative divider lines on each side of "BLACK FRIDAY DEAL" text
+    - Large bold headline: "42% OFF +"
+    - Secondary headline: "FREE MYSTERY GIFT" (bold, uppercase)
+    - Urgency text in bright magenta/pink (#FF1493): "LIMITED TIME ONLY!" (uppercase, bold)
+    - Social proof text: "This sale has already sold out twice, we're on our last restock"
+    - Large prominent CTA button with text "CHECK AVAILABILITY →" in purple/lavender (#8B7FD9)
+    - Below button: Two columns showing "Stock Alert: Running Low" (with Running Low in red) and "FAST FREE Shipping"
+    - Footer text in italics: "Try them with our 100-Day Money Back Guarantee!"
+    
+    STYLING:
+    - Background color: #35312E (dark brown)
+    - Text: mostly black on white background for content area
+    - Button: rounded corners, full-width on mobile
+    - Clean, modern typography with good spacing
+    - Mobile responsive
+    
+    Make it feel premium and urgent for a high-end cookware brand called Siraat.
+    
+    make the mobile width on 800px, more widgth on moible
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-promo-banner-{{ ai_gen_id }} {
+    background-color: {{ block.settings.outer_background_color }};
+    padding: {{ block.settings.outer_padding_mobile }}px 0;
+    width: 100%;
+    display: block;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner-{{ ai_gen_id }} {
+      padding: {{ block.settings.outer_padding_desktop }}px 0;
+    }
+  }
+
+  .ai-promo-banner__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width_mobile }}px;
+    margin: 0 auto;
+    background-color: {{ block.settings.content_background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: {{ block.settings.content_padding_mobile }}px;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner__container-{{ ai_gen_id }} {
+      max-width: {{ block.settings.max_width_desktop }}px;
+      padding: {{ block.settings.content_padding_desktop }}px;
+    }
+  }
+
+  .ai-promo-banner__decorative-header-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .ai-promo-banner__divider-{{ ai_gen_id }} {
+    height: 2px;
+    width: 40px;
+    background-color: {{ block.settings.divider_color }};
+  }
+
+  .ai-promo-banner__label-{{ ai_gen_id }} {
+    font-size: {{ block.settings.label_font_size_mobile }}px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: {{ block.settings.label_color }};
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner__label-{{ ai_gen_id }} {
+      font-size: {{ block.settings.label_font_size_desktop }}px;
+    }
+  }
+
+  .ai-promo-banner__headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.headline_font_size_mobile }}px;
+    font-weight: 700;
+    line-height: 1;
+    color: {{ block.settings.headline_color }};
+    margin: 0 0 12px 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner__headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_font_size_desktop }}px;
+    }
+  }
+
+  .ai-promo-banner__secondary-headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.secondary_headline_font_size_mobile }}px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: {{ block.settings.secondary_headline_color }};
+    margin: 0 0 16px 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner__secondary-headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.secondary_headline_font_size_desktop }}px;
+    }
+  }
+
+  .ai-promo-banner__urgency-{{ ai_gen_id }} {
+    font-size: {{ block.settings.urgency_font_size_mobile }}px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: {{ block.settings.urgency_color }};
+    margin: 0 0 20px 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner__urgency-{{ ai_gen_id }} {
+      font-size: {{ block.settings.urgency_font_size_desktop }}px;
+    }
+  }
+
+  .ai-promo-banner__social-proof-{{ ai_gen_id }} {
+    font-size: {{ block.settings.social_proof_font_size_mobile }}px;
+    line-height: 1.5;
+    color: {{ block.settings.social_proof_color }};
+    margin: 0 0 24px 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner__social-proof-{{ ai_gen_id }} {
+      font-size: {{ block.settings.social_proof_font_size_desktop }}px;
+    }
+  }
+
+  .ai-promo-banner__cta-{{ ai_gen_id }} {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    padding: {{ block.settings.button_padding_mobile }}px;
+    background-color: {{ block.settings.button_background_color }};
+    color: {{ block.settings.button_text_color }};
+    font-size: {{ block.settings.button_font_size_mobile }}px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner__cta-{{ ai_gen_id }} {
+      max-width: {{ block.settings.button_max_width_desktop }}px;
+      padding: {{ block.settings.button_padding_desktop }}px;
+      font-size: {{ block.settings.button_font_size_desktop }}px;
+    }
+  }
+
+  .ai-promo-banner__cta-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_background_color }};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .ai-promo-banner__info-row-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner__info-row-{{ ai_gen_id }} {
+      flex-direction: row;
+      justify-content: center;
+      gap: 40px;
+    }
+  }
+
+  .ai-promo-banner__info-item-{{ ai_gen_id }} {
+    font-size: {{ block.settings.info_font_size_mobile }}px;
+    font-weight: 600;
+    color: {{ block.settings.info_text_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner__info-item-{{ ai_gen_id }} {
+      font-size: {{ block.settings.info_font_size_desktop }}px;
+    }
+  }
+
+  .ai-promo-banner__info-highlight-{{ ai_gen_id }} {
+    color: {{ block.settings.info_highlight_color }};
+    font-weight: 700;
+  }
+
+  .ai-promo-banner__footer-{{ ai_gen_id }} {
+    font-size: {{ block.settings.footer_font_size_mobile }}px;
+    font-style: italic;
+    color: {{ block.settings.footer_text_color }};
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-promo-banner__footer-{{ ai_gen_id }} {
+      font-size: {{ block.settings.footer_font_size_desktop }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-promo-banner-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-promo-banner__container-{{ ai_gen_id }}">
+    <div class="ai-promo-banner__decorative-header-{{ ai_gen_id }}">
+      <div class="ai-promo-banner__divider-{{ ai_gen_id }}"></div>
+      <p class="ai-promo-banner__label-{{ ai_gen_id }}">{{ block.settings.label_text }}</p>
+      <div class="ai-promo-banner__divider-{{ ai_gen_id }}"></div>
+    </div>
+
+    <h1 class="ai-promo-banner__headline-{{ ai_gen_id }}">{{ block.settings.headline_text }}</h1>
+
+    <h2 class="ai-promo-banner__secondary-headline-{{ ai_gen_id }}">{{ block.settings.secondary_headline_text }}</h2>
+
+    <p class="ai-promo-banner__urgency-{{ ai_gen_id }}">{{ block.settings.urgency_text }}</p>
+
+    <p class="ai-promo-banner__social-proof-{{ ai_gen_id }}">{{ block.settings.social_proof_text }}</p>
+
+    <a href="{{ block.settings.cta_link }}" class="ai-promo-banner__cta-{{ ai_gen_id }}">
+      {{ block.settings.cta_text }}
+    </a>
+
+    <div class="ai-promo-banner__info-row-{{ ai_gen_id }}">
+      <div class="ai-promo-banner__info-item-{{ ai_gen_id }}">
+        {{ block.settings.stock_alert_label }}
+        <span class="ai-promo-banner__info-highlight-{{ ai_gen_id }}">{{ block.settings.stock_alert_highlight }}</span>
+      </div>
+      <div class="ai-promo-banner__info-item-{{ ai_gen_id }}">{{ block.settings.shipping_text }}</div>
+    </div>
+
+    <p class="ai-promo-banner__footer-{{ ai_gen_id }}">{{ block.settings.footer_text }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Black Friday promo",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "label_text",
+      "label": "Label text",
+      "default": "BLACK FRIDAY DEAL"
+    },
+    {
+      "type": "text",
+      "id": "headline_text",
+      "label": "Main headline",
+      "default": "42% OFF +"
+    },
+    {
+      "type": "text",
+      "id": "secondary_headline_text",
+      "label": "Secondary headline",
+      "default": "FREE MYSTERY GIFT"
+    },
+    {
+      "type": "text",
+      "id": "urgency_text",
+      "label": "Urgency text",
+      "default": "LIMITED TIME ONLY!"
+    },
+    {
+      "type": "textarea",
+      "id": "social_proof_text",
+      "label": "Social proof text",
+      "default": "This sale has already sold out twice, we're on our last restock"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "CHECK AVAILABILITY →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "stock_alert_label",
+      "label": "Stock alert label",
+      "default": "Stock Alert:"
+    },
+    {
+      "type": "text",
+      "id": "stock_alert_highlight",
+      "label": "Stock alert highlight",
+      "default": "Running Low"
+    },
+    {
+      "type": "text",
+      "id": "shipping_text",
+      "label": "Shipping text",
+      "default": "FAST FREE Shipping"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer text",
+      "default": "Try them with our 100-Day Money Back Guarantee!"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width_mobile",
+      "label": "Max width (mobile)",
+      "min": 300,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "max_width_desktop",
+      "label": "Max width (desktop)",
+      "min": 400,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "outer_padding_mobile",
+      "label": "Outer padding (mobile)",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "outer_padding_desktop",
+      "label": "Outer padding (desktop)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "content_padding_mobile",
+      "label": "Content padding (mobile)",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "content_padding_desktop",
+      "label": "Content padding (desktop)",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "outer_background_color",
+      "label": "Outer background",
+      "default": "#35312E"
+    },
+    {
+      "type": "color",
+      "id": "content_background_color",
+      "label": "Content background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "secondary_headline_color",
+      "label": "Secondary headline color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "urgency_color",
+      "label": "Urgency text color",
+      "default": "#FF1493"
+    },
+    {
+      "type": "color",
+      "id": "social_proof_color",
+      "label": "Social proof color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "info_text_color",
+      "label": "Info text color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "info_highlight_color",
+      "label": "Info highlight color",
+      "default": "#ff0000"
+    },
+    {
+      "type": "color",
+      "id": "footer_text_color",
+      "label": "Footer text color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Background color",
+      "default": "#8B7FD9"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background_color",
+      "label": "Hover background color",
+      "default": "#7366C4"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_max_width_desktop",
+      "label": "Max width (desktop)",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "button_padding_mobile",
+      "label": "Padding (mobile)",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_padding_desktop",
+      "label": "Padding (desktop)",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "label_font_size_mobile",
+      "label": "Label size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "label_font_size_desktop",
+      "label": "Label size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "headline_font_size_mobile",
+      "label": "Headline size (mobile)",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "headline_font_size_desktop",
+      "label": "Headline size (desktop)",
+      "min": 40,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "secondary_headline_font_size_mobile",
+      "label": "Secondary headline (mobile)",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "secondary_headline_font_size_desktop",
+      "label": "Secondary headline (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "urgency_font_size_mobile",
+      "label": "Urgency text (mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "urgency_font_size_desktop",
+      "label": "Urgency text (desktop)",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "social_proof_font_size_mobile",
+      "label": "Social proof (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "social_proof_font_size_desktop",
+      "label": "Social proof (desktop)",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_font_size_mobile",
+      "label": "Button text (mobile)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_font_size_desktop",
+      "label": "Button text (desktop)",
+      "min": 14,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "info_font_size_mobile",
+      "label": "Info text (mobile)",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "info_font_size_desktop",
+      "label": "Info text (desktop)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "footer_font_size_mobile",
+      "label": "Footer text (mobile)",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "footer_font_size_desktop",
+      "label": "Footer text (desktop)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    }
+  ],
+  "presets": [
+    {
+      "name": "Black Friday promo"
+    }
+  ]
+}
+{% endschema %}

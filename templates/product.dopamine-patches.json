@@ -1,0 +1,1018 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "liquid_P8FmaY": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% comment %} Product Rating Display With Diagonal 4.5 Stars {% endcomment %}\n<div class=\"product-ratings\" id=\"scroll-to-reviews\">\n  <div class=\"customer-photos\" aria-hidden=\"true\">\n    <img class=\"customer-photo\" src=\"data:image/jpeg;base64,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\" alt=\"\" loading=\"lazy\">\n    <img class=\"customer-photo\" src=\"data:image/jpeg;base64,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\" alt=\"\" loading=\"lazy\">\n    <img class=\"customer-photo\" src=\"data:image/jpeg;base64,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\" alt=\"\" loading=\"lazy\">\n    <img class=\"customer-photo\" src=\"data:image/jpeg;base64,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\" alt=\"\" loading=\"lazy\">\n    <img class=\"customer-photo\" src=\"data:image/jpeg;base64,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\" alt=\"\" loading=\"lazy\">\n  </div>\n  <div class=\"star-rating\" id=\"goToReviews\" aria-label=\"4.5 out of 5 stars\">\n    {% for i in (1..4) %}\n      <svg class=\"star-icon filled\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M12 1.8l3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 20.8 7 13.93 2 9.06l6.91-1L12 1.8z\"/>\n      </svg>\n    {% endfor %}\n    <svg class=\"star-icon diagonal-half\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n      <defs>\n        <clipPath id=\"diag-fill-star\">\n          <!-- ongeveer 2/3 gevuld -->\n          <polygon points=\"0,24 0,0 18,0 12,24\"></polygon>\n        </clipPath>\n      </defs>\n      <!-- achtergrond ster -->\n      <path class=\"star-bg\" d=\"M12 1.8l3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 20.8 7 13.93 2 9.06l6.91-1L12 1.8z\"/>\n      <!-- gevulde ster -->\n      <path class=\"star-fg\" clip-path=\"url(#diag-fill-star)\" d=\"M12 1.8l3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 20.8 7 13.93 2 9.06l6.91-1L12 1.8z\"/>\n    </svg>\n  </div>\n  <p class=\"rating-text\">\n    <strong id=\"dynamicMonthlyCount\"></strong>\n  </p>\n</div>\n<style>\n@import url('https://fonts.googleapis.com/css2?family=Gilda+Display:ital@1&display=swap');\n.product-ratings {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  margin: 10px 0;\n  font-family: 'Gilda Display', serif;\n  font-style: italic;\n  cursor: pointer;\n}\n.customer-photos {\n  display: flex;\n  align-items: center;\n}\n.customer-photo {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  object-fit: cover;\n  border: 1.5px solid #fff;\n  box-shadow: 0 0 0 1px #E4E0DA;\n}\n.customer-photo:not(:first-child) {\n  margin-left: -6px;\n}\n.star-rating {\n  display: flex;\n  align-items: center;\n  gap: 1px;\n  line-height: 1;\n}\n.star-icon {\n  width: 16px;\n  height: 16px;\n  display: block;\n}\n.star-icon.filled path {\n  fill: #C1633F;\n}\n.diagonal-half .star-bg {\n  fill: #E4E0DA;\n}\n.diagonal-half .star-fg {\n  fill: #C1633F;\n}\n.rating-text {\n  font-size: 14px;\n  margin: 0;\n  color: #333;\n  line-height: 1;\n  font-weight: 400;\n  font-family: 'Gilda Display', serif;\n  font-style: italic;\n}\n/* Mobiel: foto's boven de sterren */\n@media (max-width: 599px) {\n  .product-ratings {\n    flex-wrap: wrap;\n    row-gap: 4px;\n  }\n  .customer-photos {\n    flex-basis: 100%;\n    order: -1;\n  }\n}\n</style>\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  const min = 17000;\n  const max = 35000;\n  const url = window.location.pathname;\n  function hashString(str) {\n    let hash = 0;\n    for (let i = 0; i < str.length; i++) {\n      hash = str.charCodeAt(i) + ((hash << 5) - hash);\n    }\n    return Math.abs(hash);\n  }\n  let base = Math.floor((hashString(url) % (max - min + 1)) + min);\n  let lastDigit = base % 10;\n  if (lastDigit === 0 || lastDigit === 5) {\n    if (base + 1 <= max) {\n      base = base + 1;\n    } else {\n      base = base - 1;\n    }\n  }\n  const seededNumber = base;\n  const textElement = document.getElementById(\"dynamicMonthlyCount\");\n  if (textElement) {\n    textElement.textContent = seededNumber.toLocaleString() + \"+ feel the benefits monthly\";\n  }\n  const trigger = document.querySelector('.product-ratings');\n  const reviewsSection = document.querySelector('#shopify-block-AUURVMUlseVpmVUNIR__okendo_reviews_widget_kW3zJT');\n  if (trigger && reviewsSection) {\n    trigger.addEventListener('click', function() {\n      reviewsSection.scrollIntoView({\n        behavior: 'smooth',\n        block: 'start'\n      });\n    });\n  }\n});\n</script>"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "text_3fdmMb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Aims to support mood, motivation, and emotional wellbeing.<strong> 30 patches</strong> in each pack</p>"
+          }
+        },
+        "liquid_C83EWh": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% comment %}\n  Generate pseudo-random number per product URL (between 1000–1999)\n{% endcomment %}\n{% assign letter = product.handle | slice: 0, 1 | upcase %}\n{% assign letter_num = letter \n  | replace: 'A', '1'  | replace: 'B', '2'  | replace: 'C', '3'\n  | replace: 'D', '4'  | replace: 'E', '5'  | replace: 'F', '6'\n  | replace: 'G', '7'  | replace: 'H', '8'  | replace: 'I', '9'\n  | replace: 'J', '10' | replace: 'K', '11' | replace: 'L', '12'\n  | replace: 'M', '13' | replace: 'N', '14' | replace: 'O', '15'\n  | replace: 'P', '16' | replace: 'Q', '17' | replace: 'R', '18'\n  | replace: 'S', '19' | replace: 'T', '20' | replace: 'U', '21'\n  | replace: 'V', '22' | replace: 'W', '23' | replace: 'X', '24'\n  | replace: 'Y', '25' | replace: 'Z', '26' \n%}\n\n{% assign base = letter_num | times: product.handle.size | times: 53 | modulo: 1000 %}\n{% assign final_number = base | plus: 1000 %}\n\n{% comment %}\n  Product Info Section with HEARTBEAT ANIMATION\n{% endcomment %}\n<style>\n  .product-info-section {\n    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\n    padding: 5px 0;\n  }\n  \n  .product-info-section .almost-sold-out {\n    display: inline-flex !important;\n    align-items: center;\n    gap: 8px;\n    margin-bottom: 6px;\n    color: #C1633F;\n    font-size: 14px;\n    font-weight: 600;\n  }\n  \n  .product-info-section .pulse-dot {\n    width: 8px;\n    height: 8px;\n    background-color: #C1633F;\n    border-radius: 50%;\n    animation: heartbeat 1.5s ease-in-out infinite;\n  }\n  \n  @keyframes heartbeat {\n    0% { transform: scale(1); }\n    14% { transform: scale(1.3); }\n    28% { transform: scale(1); }\n    42% { transform: scale(1.3); }\n    70% { transform: scale(1); }\n  }\n  \n  .product-info-section .product-stats {\n    color: #333333;\n    font-size: 14px;\n    margin-bottom: 12px;\n    line-height: 1.4;\n    font-weight: 500;\n  }\n  \n  .product-info-section .product-stats strong {\n    color: #C1633F;\n    font-weight: 700;\n  }\n  \n  .product-info-section .delivery-info {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    color: #333333;\n    font-size: 14px;\n    padding-top: 12px;\n    border-top: 1px solid #eeeeee;\n    font-weight: 500;\n  }\n  \n  .product-info-section .delivery-icon {\n    width: 20px;\n    height: 20px;\n    flex-shrink: 0;\n    color: #666666;\n  }\n</style>\n\n<div class=\"product-info-section\">\n  <div class=\"almost-sold-out\">\n    <div class=\"pulse-dot\"></div>\n    <span>Limited Stock Remaining</span>\n  </div>\n  \n  <div class=\"product-stats\">\n    This product was bought <strong>{{ final_number }}</strong> times this week\n  </div>\n  \n  <div class=\"delivery-info\">\n    <svg class=\"delivery-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n      <circle cx=\"12\" cy=\"12\" r=\"10\" stroke-width=\"2\"></circle>\n      <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 6v6l4 2\"></path>\n    </svg>\n    <span>\n      Order today, receive \n      {{ \"now\" | date: \"%s\" | plus: 259200 | date: \"%A, %B %d\" }}\n    </span>\n  </div>\n</div>\n\n{% comment %}\n  HEARTBEAT ANIMATION ACTIVE\n{% endcomment %}"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "liquid_UxXy6w": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% comment %} Premium Deal Banner - No Ribbon {% endcomment %}\n<style>\n.premium-deal-banner {\n  background-color: #f8f4ed;\n  border: 1px solid #e8d9c0;\n  border-radius: 12px;\n  padding: 14px 20px;\n  margin-bottom: 20px;\n  text-align: center;\n  font-size: 14px;\n  line-height: 1.4;\n  color: #2c2c2c;\n}\n\n.premium-deal-banner .highlight {\n  color: #d32f2f;\n  font-weight: 700;\n}\n\n.premium-deal-banner .subtext {\n  font-size: 13px;\n  color: #555;\n  margin-top: 4px;\n}\n</style>\n\n<div class=\"premium-deal-banner\">\n  <strong>Limited Time Offer</strong><br>\n  <span class=\"highlight\">BUY 2, GET 2 FREE</span> + <span class=\"highlight\">20% OFF</span> with Subscribe & Save<br>\n  <span class=\"subtext\">Perfect for yourself or as a thoughtful gift</span>\n</div>"
+          }
+        },
+        "recharge_subscriptions_subscription_widget_v2_QRz77y": {
+          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
+          "settings": {}
+        },
+        "quantity_selector_8HYqDN": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "liquid_79Arfj": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"dopa-offer-text\">\n  Add 4 Packs To Your Cart, Pay For 2\n</div>\n\n<style>\n  .dopa-offer-text {\n    color: #C1633F;\n    text-align: center;\n    font-size: 16px;\n    font-weight: 700;\n    line-height: 1.2;\n    margin: 0 0 -10px 0;\n    padding: 0;\n    font-family: inherit;\n  }\n\n  @media (min-width: 750px) {\n    .dopa-offer-text {\n      font-size: 22px;\n      margin-bottom: 4px;\n    }\n  }\n</style>"
+          }
+        },
+        "product_variations_tw3GP6": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "",
+            "option_value_metafield": "",
+            "products": [],
+            "selector_style": "swatch"
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "#c1633f",
+            "atc_button_text_color": "#ffffff",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "liquid_YCHCjB": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<!-- Trust Badges - Add this code right after your add to cart button -->\n<div class=\"trust-badges\">\n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <rect x=\"1\" y=\"6\" width=\"14\" height=\"10\" rx=\"1\"/>\n            <path d=\"M15 12h7l-2-3h-5v12\"/>\n            <circle cx=\"5\" cy=\"18\" r=\"1\"/>\n            <circle cx=\"19\" cy=\"18\" r=\"1\"/>\n        </svg>\n        <span class=\"badge-text\">Free Shipping</span>\n    </div>\n    \n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/>\n            <polyline points=\"12 8 12 12 14 14\"/>\n        </svg>\n        <span class=\"badge-text\">Money Back Guarantee</span>\n    </div>\n</div>\n\n<style>\n.trust-badges {\n    display: flex;\n    gap: 5px;\n    width: 100%;\n    margin-top: -20px !important; /* NEGATIVE margin to pull it up closer */\n    margin-bottom: 4px;\n    position: relative;\n    z-index: 1;\n}\n\n.badge-block {\n    display: flex;\n    align-items: center;\n    gap: 6px;\n    padding: 8px 10px;\n    background: #F7EDDC;\n    border-radius: 4px;\n    flex: 1;\n    justify-content: center;\n}\n\n.badge-icon {\n    width: 18px;\n    height: 18px;\n    flex-shrink: 0;\n    color: #333;\n}\n\n.badge-text {\n    font-size: 12px;\n    color: #333;\n    font-weight: 500;\n    line-height: 1.2;\n}\n\n@media (max-width: 480px) {\n    .badge-text {\n        font-size: 11px;\n    }\n    .badge-block {\n        padding: 6px 8px;\n    }\n}\n</style>"
+          }
+        },
+        "liquid_naFQby": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div id='ss-trust-badges'></div>"
+          }
+        },
+        "separator_Hw6cKh": {
+          "type": "separator",
+          "settings": {}
+        },
+        "text_cjGAhC": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Description</strong></p><p>{{ product.metafields.custom.product_information | metafield_tag }}</p>"
+          }
+        },
+        "collapsible_text_pqTLEY": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Ingredients",
+            "content": "<p>{{ product.metafields.custom.ingredients | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_PFgwtm": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "How to use",
+            "content": "<p>{{ product.metafields.custom.how_to_use | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "liquid_rW8pBA": {
+          "type": "liquid",
+          "settings": {
+            "liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "liquid_P8FmaY",
+        "title",
+        "text_3fdmMb",
+        "liquid_C83EWh",
+        "badges",
+        "price",
+        "liquid_UxXy6w",
+        "recharge_subscriptions_subscription_widget_v2_QRz77y",
+        "quantity_selector_8HYqDN",
+        "liquid_79Arfj",
+        "product_variations_tw3GP6",
+        "payment_terms",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "liquid_YCHCjB",
+        "liquid_naFQby",
+        "separator_Hw6cKh",
+        "text_cjGAhC",
+        "collapsible_text_pqTLEY",
+        "collapsible_text_PFgwtm",
+        "liquid_rW8pBA"
+      ],
+      "settings": {
+        "full_width": false,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "grid",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "thumbnails",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 1.5,
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "ss_trust_badges_tGJxHF": {
+      "type": "ss-trust-badges",
+      "blocks": {
+        "item_z8ymGh": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "image": "shopify://shop_images/Untitled_design_45.png",
+            "text": "<p><strong>100% Plant Based</strong></p>"
+          }
+        },
+        "item_UWELr4": {
+          "type": "item",
+          "settings": {
+            "icon": "return_arrow",
+            "image": "shopify://shop_images/Untitled_design_46.png",
+            "text": "<p><strong>30 Days Supply</strong></p>"
+          }
+        },
+        "item_YDk7BK": {
+          "type": "item",
+          "settings": {
+            "icon": "payment",
+            "image": "shopify://shop_images/Untitled_design_47.png",
+            "text": "<p><strong>Easy Daily Routine</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_z8ymGh",
+        "item_UWELr4",
+        "item_YDk7BK"
+      ],
+      "name": "SS - Trust badges #1",
+      "settings": {
+        "trust_position": "below_buy",
+        "image_icon_size": 40,
+        "image_icon_size_mobile": 40,
+        "text_custom": true,
+        "text_font": "inter_n4",
+        "text_size": 12,
+        "text_size_mobile": 10,
+        "text_advanced": false,
+        "text_height": 80,
+        "text_mt": 20,
+        "icon_color": "#000000",
+        "text_color": "#203621",
+        "background_color": "#fef9f1",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "border_thickness": 0
+      }
+    },
+    "zoom_info_D84zzJ": {
+      "type": "zoom-info",
+      "blocks": {
+        "feature_JTRmCc": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/hf_20260518_144116_5b1f4ec0-f20f-4c5e-8230-225a59174564.png",
+            "image_alt": "",
+            "feature_text": "Valery B.",
+            "expanded_text": "I didn’t realize how low my motivation had gotten until I started using these patches. Within a few days, my energy and focus felt steady, no crashes, no jitters.",
+            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #974E35 50%, #7A3E2A 100%)",
+            "link_url": ""
+          }
+        },
+        "feature_mKBqy4": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/hf_20260626_115519_73609a41-5122-4ad2-ba54-23130393c445.png",
+            "image_alt": "",
+            "feature_text": "Denzel K.",
+            "expanded_text": "It’s not like caffeine, it’s smoother. I just notice I’m more productive, in a better mood, and not procrastinating all day.",
+            "gradient_background": "linear-gradient(135deg, #5A544F 0%, #4A453F 50%, #423D38 100%)",
+            "link_url": ""
+          }
+        },
+        "feature_wizcWM": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/canvas-image-1762095902741.jpg",
+            "image_alt": "",
+            "feature_text": "Stephan Y.",
+            "expanded_text": "I apply one after my shower and feel a clear, calm focus that lasts all day. It’s become part of my daily routine.",
+            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #8B472F 50%, #6B3522 100%)",
+            "link_url": ""
+          }
+        },
+        "feature_gwMiVU": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/hf_20260420_101858_348212fa-3e38-4a32-a9f7-81a375e1b654.png",
+            "image_alt": "",
+            "feature_text": "Nicole V.",
+            "expanded_text": "Love that it’s plant-based and transdermal. My motivation is back, and I don’t get that wired feeling like with supplements.",
+            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #974E35 50%, #7A3E2A 100%)",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_JTRmCc",
+        "feature_mKBqy4",
+        "feature_wizcWM",
+        "feature_gwMiVU"
+      ],
+      "name": "Titanium Features",
+      "settings": {
+        "title": "Real People, Real Results",
+        "desktop_columns": "4",
+        "card_aspect_ratio": "1",
+        "mobile_card_aspect_ratio": "0.85",
+        "background_color": "#fef9f1",
+        "text_color": "#000000",
+        "card_text_color": "#ffffff",
+        "expand_icon_color": "#f5f2f0",
+        "expand_icon_bg": "#f5f2f01a",
+        "expand_icon_hover_bg": "#f5f2f033",
+        "expand_icon_border_color": "#f5f2f099",
+        "overlay_bg": "#f5f2f0fa",
+        "overlay_text_color": "#35312e",
+        "image_overlay_opacity": 20,
+        "card_shadow_opacity": 40,
+        "title_font_size": 48,
+        "title_font_size_mobile": 32,
+        "title_font_weight": "400",
+        "card_font_size": 24,
+        "card_font_size_mobile": 20,
+        "show_expand_icon": true,
+        "enable_parallax": true,
+        "padding_top": 0,
+        "padding_bottom": 55,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 5
+      }
+    },
+    "trusted_banner_pfmBEb": {
+      "type": "trusted-banner",
+      "blocks": {
+        "logo_TmwFwr": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-edead21c-d237-4128-a22f-c52500ba8969.svg",
+            "logo_text": "ELLE",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_kiNkiy": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-ca212e65-d20d-4bed-b31e-57bbb046c8b1.svg",
+            "logo_text": "allure",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_468DxC": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-b00a20fa-26fb-42e0-a0a6-60c86a2f3c30.svg",
+            "logo_text": "Forbes",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_k4qXFr": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-06d4bf63-2d9e-43c0-9f2d-d5e60cd15ff1.svg",
+            "logo_text": "BAZAAR",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_HmDRjy": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-d0047f1b-f4f1-46c3-b588-76477155b2ec.svg",
+            "logo_text": "BYRDIE",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_TmwFwr",
+        "logo_kiNkiy",
+        "logo_468DxC",
+        "logo_k4qXFr",
+        "logo_HmDRjy"
+      ],
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#f1eade",
+        "text_color": "#000000",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": true,
+        "title_text": "AS SEEN IN",
+        "title_font": "sans_serif_n4",
+        "title_size": 18,
+        "scroll_speed": 20,
+        "pause_on_hover": true,
+        "logo_display_mode": "gradient",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "sans_serif_n4",
+        "logo_height": 50,
+        "logo_text_size": 24,
+        "logo_spacing": 40
+      }
+    },
+    "problem_static_3EADKm": {
+      "type": "problem-static",
+      "blocks": {
+        "problem_item_AxegDH": {
+          "type": "problem_item",
+          "settings": {
+            "icon_image": "shopify://shop_images/fatigue.png",
+            "number": "01",
+            "title": "Constant Fatigue",
+            "description": "Even after a full night's sleep, you feel drained and unmotivated to start your day."
+          }
+        },
+        "problem_item_RiAAbT": {
+          "type": "problem_item",
+          "settings": {
+            "icon_image": "shopify://shop_images/brain.png",
+            "number": "02",
+            "title": "Brain Fog",
+            "description": "Difficulty concentrating and making decisions affects your work and personal life."
+          }
+        },
+        "problem_item_HNQdqA": {
+          "type": "problem_item",
+          "settings": {
+            "icon_image": "shopify://shop_images/panic.png",
+            "number": "03",
+            "title": "Low Drive",
+            "description": "Tasks that once excited you now feel overwhelming and pointless to complete."
+          }
+        }
+      },
+      "block_order": [
+        "problem_item_AxegDH",
+        "problem_item_RiAAbT",
+        "problem_item_HNQdqA"
+      ],
+      "name": "Problem Section",
+      "settings": {
+        "section_label": "",
+        "headline_part1": "The Hidden Cost Of",
+        "headline_part2": "Low Dopamine",
+        "description": "When your dopamine levels drop, everything becomes harder. Here's what you might be experiencing:",
+        "background_color": "#fef9f1",
+        "label_color": "#999999",
+        "headline_color": "#1a1a1a",
+        "description_color": "#666666",
+        "number_color": "#5d91ae",
+        "item_title_color": "#1a1a1a",
+        "item_text_color": "#666666",
+        "headline_font": "gilda_display_n4",
+        "body_font": "inter_n4",
+        "label_font": "inter_n4",
+        "label_size": 12,
+        "label_size_mobile": 11,
+        "label_spacing": 1.5,
+        "label_weight": "500",
+        "headline_size_desktop": 48,
+        "headline_size_tablet": 40,
+        "headline_size_mobile": 32,
+        "headline_weight": "500",
+        "headline_bold_weight": "700",
+        "description_size": 17,
+        "description_size_mobile": 16,
+        "number_size": 80,
+        "number_size_mobile": 64,
+        "number_weight": "800",
+        "icon_width": 80,
+        "icon_width_mobile": 60,
+        "item_title_size": 24,
+        "item_title_size_mobile": 22,
+        "item_title_weight": "600",
+        "item_text_size": 16,
+        "item_text_size_mobile": 15,
+        "section_padding_desktop": "120px 60px",
+        "section_padding_tablet": "80px 40px",
+        "section_padding_mobile": "60px 24px",
+        "max_width": 1000,
+        "label_margin": 32,
+        "label_margin_mobile": 20,
+        "headline_margin": 32,
+        "headline_margin_mobile": 24,
+        "description_max_width": 700,
+        "description_margin": 80,
+        "description_margin_mobile": 48,
+        "number_margin": 20,
+        "item_title_margin": 12,
+        "item_padding": "0",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "grid_gap": 60,
+        "grid_gap_tablet": 40,
+        "grid_gap_mobile": 30,
+        "grid_margin_top": 80,
+        "grid_margin_top_mobile": 48,
+        "mobile_card_padding": "40px 30px",
+        "mobile_card_background": "#fef9f1",
+        "mobile_card_radius": 12,
+        "mobile_card_shadow": "0 2px 16px rgba(0, 0, 0, 0.08)",
+        "mobile_card_gap": 16,
+        "dot_active_color": "#1a1a1a",
+        "dot_inactive_color": "#d0d0d0"
+      }
+    },
+    "features_TrPW7f": {
+      "type": "features",
+      "blocks": {
+        "hotspot_C6PDBy": {
+          "type": "hotspot",
+          "settings": {
+            "horizontal": 39,
+            "vertical": 28,
+            "mobile_horizontal": 39,
+            "mobile_vertical": 28
+          }
+        },
+        "feature_RTAPQW": {
+          "type": "feature",
+          "settings": {
+            "heading": "Steady release, steady focus",
+            "subtitle": "Our transdermal delivery system ensures a consistent release of active ingredients, no sudden highs or energy crashes."
+          }
+        },
+        "hotspot_m8V3UN": {
+          "type": "hotspot",
+          "settings": {
+            "horizontal": 61,
+            "vertical": 28,
+            "mobile_horizontal": 62,
+            "mobile_vertical": 28
+          }
+        },
+        "feature_hEbk4q": {
+          "type": "feature",
+          "settings": {
+            "heading": "Boost motivation naturally",
+            "subtitle": "Plant-derived compounds gently stimulate dopamine pathways to help you feel more driven, alert, and uplifted."
+          }
+        },
+        "hotspot_JkKj8w": {
+          "type": "hotspot",
+          "settings": {
+            "horizontal": 39,
+            "vertical": 50,
+            "mobile_horizontal": 39,
+            "mobile_vertical": 50
+          }
+        },
+        "feature_y7mVUw": {
+          "type": "feature",
+          "settings": {
+            "heading": "Feel the effects within minutes",
+            "subtitle": "The patch bypasses digestion, delivering nutrients directly through the skin for rapid and efficient absorption."
+          }
+        },
+        "hotspot_zJ9me3": {
+          "type": "hotspot",
+          "settings": {
+            "horizontal": 61,
+            "vertical": 50,
+            "mobile_horizontal": 62,
+            "mobile_vertical": 50
+          }
+        },
+        "feature_zEELiA": {
+          "type": "feature",
+          "settings": {
+            "heading": "Clinically studied ingredients",
+            "subtitle": "Formulated with compounds known to support mood, cognition, and focus, without stimulants or synthetic chemicals."
+          }
+        },
+        "hotspot_4hnmY8": {
+          "type": "hotspot",
+          "settings": {
+            "horizontal": 39,
+            "vertical": 72,
+            "mobile_horizontal": 39,
+            "mobile_vertical": 72
+          }
+        },
+        "feature_mUggJ3": {
+          "type": "feature",
+          "settings": {
+            "heading": "Lasting calm and clarity",
+            "subtitle": "Wear it once in the morning and enjoy up to 8 hours of balanced dopamine levels and mental flow throughout the day."
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_C6PDBy",
+        "feature_RTAPQW",
+        "hotspot_m8V3UN",
+        "feature_hEbk4q",
+        "hotspot_JkKj8w",
+        "feature_y7mVUw",
+        "hotspot_zJ9me3",
+        "feature_zEELiA",
+        "hotspot_4hnmY8",
+        "feature_mUggJ3"
+      ],
+      "name": "Product Features",
+      "settings": {
+        "desktop_max_width": 1200,
+        "desktop_side_padding": 40,
+        "mobile_max_width": 600,
+        "mobile_side_padding": 20,
+        "desktop_background_width": 2000,
+        "mobile_background_width": 1000,
+        "padding_top": 0,
+        "padding_bottom": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "side_margin": 0,
+        "border_radius": 0,
+        "background_color": "#fef9f1",
+        "heading": "This patch restores your balance",
+        "heading_font_family": "serif",
+        "heading_size": 46,
+        "mobile_heading_size": 28,
+        "heading_color": "#35312e",
+        "heading_weight": "400",
+        "heading_letter_spacing": 0,
+        "subheading": "",
+        "subheading_font_family": "assistant_n4",
+        "subheading_size": 15,
+        "mobile_subheading_size": 13,
+        "subheading_color": "#6b6662",
+        "heading_margin_bottom": 40,
+        "mobile_heading_margin_bottom": 20,
+        "image": "shopify://shop_images/transparent-Photoroom_4_2978e691-a9c6-4229-a87a-a17307b54bbf.png",
+        "desktop_image_width": 800,
+        "mobile_image_width": 600,
+        "image_border_radius": 8,
+        "hotspot_font_family": "assistant_n4",
+        "hotspot_size": 36,
+        "hotspot_bg_color": "#ffffff",
+        "hotspot_text_color": "#35312e",
+        "hotspot_border_color": "#35312e",
+        "hotspot_border_width": 2,
+        "hotspot_border_radius": 50,
+        "hotspot_font_size": 14,
+        "mobile_hotspot_font_size": 12,
+        "hotspot_font_weight": "600",
+        "feature_title_font_family": "assistant_n4",
+        "feature_title_size": 20,
+        "mobile_feature_title_size": 18,
+        "feature_title_color": "#000000",
+        "feature_title_weight": "600",
+        "feature_subtitle_font_family": "assistant_n4",
+        "feature_subtitle_size": 14,
+        "mobile_feature_subtitle_size": 13,
+        "feature_subtitle_color": "#cccccc",
+        "card_background": "#ffffff",
+        "card_border_color": "#e8e5e1",
+        "card_title_color": "#35312e",
+        "card_text_color": "#6b6662",
+        "card_number_bg": "#35312e",
+        "card_number_text": "#ffffff",
+        "hotspot_active_bg": "#948979",
+        "hotspot_active_text": "#ffffff",
+        "hotspot_active_border": "#35312e"
+      }
+    },
+    "science_dopaboost_AMPBLz": {
+      "type": "science-dopaboost",
+      "blocks": {
+        "ingredient_pBtHJL": {
+          "type": "ingredient",
+          "settings": {
+            "category": "KEY INGREDIENT",
+            "name": "Mucuna Pruriens",
+            "description": "Boosts dopamine naturally to support motivation and drive throughout the day."
+          }
+        },
+        "ingredient_d7rjXG": {
+          "type": "ingredient",
+          "settings": {
+            "category": "MOOD SUPPORT",
+            "name": "5-HTP",
+            "description": "Improves mood and promotes calm focus by increasing serotonin production."
+          }
+        },
+        "ingredient_bNtXzR": {
+          "type": "ingredient",
+          "settings": {
+            "category": "BRAIN HEALTH",
+            "name": "Lion's Mane Mushroom",
+            "description": "Supports mental clarity, memory, and overall brain function for peak performance."
+          }
+        },
+        "ingredient_xwEKdY": {
+          "type": "ingredient",
+          "settings": {
+            "category": "ADAPTOGEN",
+            "name": "Rhodiola Rosea",
+            "description": "Helps reduce fatigue and stress while improving mental and physical endurance."
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_pBtHJL",
+        "ingredient_d7rjXG",
+        "ingredient_bNtXzR",
+        "ingredient_xwEKdY"
+      ],
+      "name": "Science Section",
+      "settings": {
+        "section_label": "",
+        "headline_part1": "Four Powerful Compounds",
+        "headline_part2": "",
+        "show_synergy_section": true,
+        "synergy_title": "How They Work Together",
+        "synergy_text": "These natural compounds create a synergistic effect that enhances mood, motivation, and focus — helping you feel your best every day.",
+        "background_color": "#fef9f1",
+        "label_color": "#999999",
+        "headline_color": "#000000",
+        "headline_highlight_color": "#999999",
+        "category_color": "#000000",
+        "ingredient_name_color": "#1a1a1a",
+        "ingredient_text_color": "#666666",
+        "desktop_border_color": "#e8e4de",
+        "synergy_background": "#948979",
+        "synergy_title_color": "#ffffff",
+        "synergy_text_color": "#cccccc",
+        "mobile_tab_color": "#999999",
+        "mobile_tab_border_color": "#e8e4de",
+        "mobile_tab_active_color": "#1a1a1a",
+        "mobile_tab_active_bg": "#ffffff",
+        "mobile_tab_active_border": "#d4cfc7",
+        "mobile_panel_bg": "#f1eade",
+        "label_size": 12,
+        "label_size_mobile": 11,
+        "label_spacing": 2,
+        "label_weight": 500,
+        "headline_size_desktop": 46,
+        "headline_size_tablet": 38,
+        "headline_size_mobile": 28,
+        "headline_weight": 600,
+        "headline_highlight_weight": 300,
+        "category_size": 9,
+        "ingredient_name_size": 24,
+        "ingredient_name_size_mobile": 24,
+        "ingredient_name_weight": 600,
+        "ingredient_text_size": 15,
+        "ingredient_text_size_mobile": 15,
+        "synergy_title_size": 32,
+        "synergy_title_size_tablet": 28,
+        "synergy_title_size_mobile": 24,
+        "synergy_title_weight": 600,
+        "synergy_text_size": 17,
+        "synergy_text_size_mobile": 15,
+        "mobile_tab_font_size": 14,
+        "mobile_tab_font_weight": 500,
+        "max_width": 900,
+        "section_padding_desktop": "100px 40px",
+        "section_padding_tablet": "80px 40px",
+        "section_padding_mobile": "50px 20px",
+        "desktop_card_padding_box": "40px 35px",
+        "desktop_card_gap": 28,
+        "desktop_border_width": 1,
+        "mobile_tab_padding": "12px 20px",
+        "mobile_tab_gap": 10,
+        "mobile_tab_border_width": 1,
+        "mobile_tab_border_radius": 20,
+        "mobile_tabs_padding_bottom": 20,
+        "mobile_tabs_margin": 20,
+        "mobile_panel_padding": "30px 25px",
+        "mobile_panel_border_radius": 2,
+        "label_margin": 16,
+        "label_margin_mobile": 12,
+        "headline_margin": 32,
+        "headline_margin_mobile": 24,
+        "category_margin": 8,
+        "ingredient_name_margin": 16,
+        "grid_margin_top": 75,
+        "grid_margin_top_mobile": 35,
+        "grid_margin_bottom": 60,
+        "grid_margin_bottom_mobile": 40,
+        "synergy_title_margin": 24,
+        "synergy_title_margin_mobile": 20,
+        "synergy_text_max_width": 700,
+        "synergy_padding": "80px 60px",
+        "synergy_padding_mobile": "60px 30px",
+        "synergy_border_radius": 8,
+        "synergy_margin_top": 60,
+        "synergy_margin_top_mobile": 32
+      }
+    },
+    "results_dopaboost_AcBD7w": {
+      "type": "results-dopaboost",
+      "blocks": {
+        "stat_M6NfYf": {
+          "type": "stat",
+          "settings": {
+            "percentage": 91,
+            "description": "Noticed higher focus and concentration"
+          }
+        },
+        "stat_d79tW4": {
+          "type": "stat",
+          "settings": {
+            "percentage": 87,
+            "description": "Felt better mood and less fatigue"
+          }
+        },
+        "stat_Pdn4iT": {
+          "type": "stat",
+          "settings": {
+            "percentage": 93,
+            "description": "Would recommend to friends and family"
+          }
+        }
+      },
+      "block_order": [
+        "stat_M6NfYf",
+        "stat_d79tW4",
+        "stat_Pdn4iT"
+      ],
+      "name": "Results Section",
+      "settings": {
+        "section_label": "",
+        "headline_part1": "Proven Effectiveness",
+        "headline_part2": "Through User Testing",
+        "footer_text": "BASED ON INDEPENDENT USER TESTING",
+        "background_color": "#fef9f1",
+        "label_color": "#a08977",
+        "headline_color": "#2b2621",
+        "circle_bg_color": "#efe9e1",
+        "circle_color": "#948979",
+        "percentage_color": "#2b2621",
+        "description_color": "#6b5d52",
+        "footer_color": "#a08977",
+        "circle_size": 160,
+        "circle_size_mobile": 140,
+        "circle_stroke_width": 8,
+        "circle_margin": 24,
+        "label_size": 11,
+        "label_size_mobile": 10,
+        "label_spacing": 2,
+        "label_weight": "400",
+        "label_margin": 20,
+        "label_margin_mobile": 16,
+        "headline_size_desktop": 48,
+        "headline_size_tablet": 38,
+        "headline_size_mobile": 28,
+        "headline_weight": "400",
+        "headline_highlight_weight": "600",
+        "headline_margin": 60,
+        "headline_margin_mobile": 40,
+        "percentage_size": 40,
+        "percentage_size_mobile": 36,
+        "percentage_weight": "500",
+        "percent_symbol_size": 20,
+        "percent_symbol_opacity": 0.6,
+        "description_size": 15,
+        "description_size_mobile": 14,
+        "description_max_width": 240,
+        "footer_size": 11,
+        "footer_size_mobile": 10,
+        "footer_spacing": 1.5,
+        "section_padding_desktop": "100px 60px",
+        "section_padding_tablet": "80px 40px",
+        "section_padding_mobile": "60px 24px",
+        "max_width": 1400,
+        "margin_top_desktop": -150,
+        "margin_bottom_desktop": -20,
+        "margin_top_mobile": -80,
+        "margin_bottom_mobile": -40,
+        "columns_desktop": 3,
+        "columns_tablet": 3,
+        "grid_gap": 60,
+        "grid_gap_tablet": 40,
+        "grid_gap_mobile": 50,
+        "grid_margin_top": 60,
+        "grid_margin_top_mobile": 40,
+        "grid_margin_bottom": 60,
+        "grid_margin_bottom_mobile": 40,
+        "stagger_delay": 150,
+        "footer_margin_top": 50,
+        "footer_margin_top_mobile": 40
+      }
+    },
+    "faq_xCdLpE": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_MdbVrn": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do we ship worldwide?",
+            "answer": "<p>Yes!  We offer free worldwide shipping on all orders.<br/><br/>Your patches are packed and shipped within 24 hours, and delivery usually takes 5–6  days depending on your location.</p>"
+          }
+        },
+        "faq_item_H3nKMi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I buy once or do I need a subscription?",
+            "answer": "<p>You can choose what works best for you. 💛<br/><br/>Order once to try it out, or subscribe to get your patches delivered automatically every month with an exclusive discount.</p>"
+          }
+        },
+        "faq_item_RhtGcn": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long should I wear one patch?",
+            "answer": "<p>Each patch is designed to last up to 8 hours for optimal nutrient release.<br/><br/>Apply it to clean, dry skin and simply remove it at the end of the day.</p>"
+          }
+        },
+        "faq_item_XfzJyr": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I sleep with the patch on?",
+            "answer": "<p>Yes 😴, our patches are safe, breathable, and gentle on the skin.<br/><br/>You can comfortably wear them overnight if you prefer extended use</p>"
+          }
+        },
+        "faq_item_GiBt7U": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where should I apply the patch?",
+            "answer": "<p>For best results, place the patch on a clean, hair-free area like your upper arm, shoulder, or back.<br/><br/>Rotate placement daily to keep your skin happy and fresh.</p>"
+          }
+        },
+        "faq_item_CVrnWf": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are the patches waterproof?",
+            "answer": "<p>Yes! Our patches are water-resistant, so you can shower or work out without worry.<br/><br/>Just avoid rubbing the area too hard to keep it firmly in place.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_MdbVrn",
+        "faq_item_H3nKMi",
+        "faq_item_RhtGcn",
+        "faq_item_XfzJyr",
+        "faq_item_GiBt7U",
+        "faq_item_CVrnWf"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "title": "FAQ",
+        "subtitle": "Everything you need to know about DopaBoost Patches and how they support your daily wellness routine.",
+        "show_cta": false,
+        "cta_title": "Still have questions?",
+        "cta_text": "Our culinary experts are here to help you get the most out of your titanium cookware.",
+        "cta_button_text": "Contact Our Team",
+        "cta_button_url": "",
+        "background_color": "#fef9f1",
+        "text_color": "",
+        "subtitle_color": "#000000",
+        "answer_color": "#000000",
+        "border_color": "#4a453f",
+        "accent_color": "#c1633f",
+        "cta_bg_color": "#4a453f",
+        "cta_button_bg": "#c1633f",
+        "cta_button_hover_bg": "#c1633f",
+        "title_font_size": 48,
+        "title_font_size_mobile": 32,
+        "question_font_size": 18,
+        "question_font_size_mobile": 16,
+        "close_others": true,
+        "close_on_outside_click": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mobile": 65,
+        "padding_bottom_mobile": 65
+      }
+    },
+    "17623867048c48da01": {
+      "type": "apps",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ss_trust_badges_tGJxHF",
+    "zoom_info_D84zzJ",
+    "trusted_banner_pfmBEb",
+    "problem_static_3EADKm",
+    "features_TrPW7f",
+    "science_dopaboost_AMPBLz",
+    "results_dopaboost_AcBD7w",
+    "faq_xCdLpE",
+    "17623867048c48da01"
+  ]
+}

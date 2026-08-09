@@ -1,0 +1,877 @@
+{%- assign newsletter_block = section.blocks | where: 'type', 'newsletter' | first -%}
+
+{%- if section.blocks.size > 3 -%}
+<style>
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} {
+      {%- if newsletter_block != blank -%}
+        --footer-block-list-gap: var(--spacing-10);
+      {%- endif -%}
+      --footer-block-list-justify-content: space-between;
+    }
+  }
+</style>
+{%- endif -%}
+
+<style>
+  /* CSS Custom Properties for Consistency */
+  :root {
+    --footer-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --footer-text-color: #ffffff;
+    --footer-border-color: rgba(255, 255, 255, 0.15);
+    --footer-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --footer-line-extension: -35%;
+    --footer-icon-size: 18px;
+    --footer-small-text: 0.75rem;
+    --footer-newsletter-size: 2.2rem;
+  }
+
+  /* Mobile Layout */
+  @media screen and (max-width: {{ section.settings.mobile_breakpoint }}px) {
+    /* Block List Layout */
+    .footer__block-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .footer__block-list > * {
+      margin: 0;
+    }
+    
+    /* Block Container */
+    .footer__block-collapsible {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      position: relative;
+      line-height: 1;
+    }
+    
+    /* Separator Lines */
+    .footer__block-collapsible::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: var(--footer-line-extension);
+      height: 1px;
+      background: var(--footer-border-color);
+    }
+    
+    /* Toggle Button */
+    .footer__block-toggle {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 1.5rem 0 0.1rem 0;
+      margin: 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: var(--footer-font-family);
+      font-weight: 600;
+      font-size: var(--footer-small-text);
+      color: var(--footer-text-color);
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+      position: relative;
+      z-index: 1;
+      height: auto;
+      line-height: 1;
+      box-sizing: border-box;
+    }
+    
+    .footer__block-toggle span {
+      flex: 1;
+      line-height: var(--footer-small-text);
+    }
+    
+    /* Toggle Icon - Aligned with separator line end */
+    .footer__block-toggle-icon {
+      width: var(--footer-icon-size);
+      height: var(--footer-icon-size);
+      flex-shrink: 0;
+      opacity: 1;
+      stroke-width: 2.5;
+      color: var(--footer-text-color);
+      margin-right: var(--footer-line-extension);
+      margin-top: -4px;
+      align-self: center;
+      transition: transform var(--footer-transition);
+    }
+    
+    /* Icon Hover and States */
+    .footer__block-toggle:hover .footer__block-toggle-icon {
+      transform: scale(1.1);
+    }
+    
+    .footer__block-toggle-icon--minus,
+    .footer__block-toggle-icon--plus {
+      transform: rotate(0deg);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .footer__block-toggle[aria-expanded="true"] .footer__block-toggle-icon--minus {
+      transform: rotate(180deg);
+    }
+    
+    .footer__block-toggle[aria-expanded="true"] .footer__block-toggle-icon--plus {
+      transform: rotate(45deg) scale(1.1);
+    }
+    
+    /* Hover effect when expanded - makes cross more pronounced */
+    .footer__block-toggle[aria-expanded="true"]:hover .footer__block-toggle-icon--plus {
+      transform: rotate(45deg) scale(1.2);
+    }
+    
+    /* Collapsible Content */
+    .footer__block-content {
+      max-height: 0;
+      overflow: hidden;
+      padding-bottom: 0;
+      opacity: 0;
+      transition: max-height var(--footer-transition), 
+                  padding-bottom var(--footer-transition), 
+                  opacity var(--footer-transition);
+    }
+    
+    .footer__block-content.is-open {
+      max-height: 400px;
+      padding-bottom: 0.75rem;
+      opacity: 1;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                  padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                  opacity 0.4s ease;
+    }
+    
+    /* List Animation */
+    .footer__block-content ul {
+      padding-top: 0.25rem;
+      margin: 0;
+      transform: translateY(-10px);
+      transition: transform var(--footer-transition);
+    }
+    
+    .footer__block-content.is-open ul {
+      transform: translateY(0);
+    }
+    
+    /* List Item Animation */
+    .footer__block-content li {
+      margin-bottom: 0.5rem;
+      list-style: none;
+      opacity: 0;
+      transform: translateY(-5px);
+      transition: opacity var(--footer-transition), transform var(--footer-transition);
+    }
+    
+    .footer__block-content.is-open li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Staggered Animation Delays */
+    .footer__block-content.is-open li:nth-child(1) { transition-delay: 0.05s; }
+    .footer__block-content.is-open li:nth-child(2) { transition-delay: 0.1s; }
+    .footer__block-content.is-open li:nth-child(3) { transition-delay: 0.15s; }
+    .footer__block-content.is-open li:nth-child(4) { transition-delay: 0.2s; }
+    .footer__block-content.is-open li:nth-child(5) { transition-delay: 0.25s; }
+    
+    /* Content Text Styling */
+    .footer__block-content a,
+    .footer__block-content .prose,
+    .footer__block-content .prose * {
+      font-family: var(--footer-font-family);
+      font-size: var(--footer-small-text);
+      font-weight: 400;
+      color: var(--footer-text-color);
+      text-decoration: none;
+      line-height: 1.4;
+      opacity: 1;
+    }
+    
+    /* Hidden Desktop Titles */
+    .footer__block-title-desktop {
+      display: none;
+    }
+    
+    /* Always Expanded Blocks */
+    .footer__block--always-expanded .footer__block-toggle {
+      display: none;
+    }
+    
+    .footer__block--always-expanded .footer__block-content {
+      max-height: none;
+      overflow: visible;
+      padding-bottom: 1rem;
+      opacity: 1;
+    }
+    
+    .footer__block--always-expanded .footer__block-title-desktop {
+      display: flex;
+      font-family: var(--footer-font-family);
+      font-weight: 600;
+      font-size: var(--footer-small-text);
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+      padding: 1.5rem 0 0.1rem 0;
+      margin: 0;
+      color: var(--footer-text-color);
+      width: 100%;
+      align-items: center;
+      line-height: 1;
+    }
+    
+    /* Newsletter Specific Styling - Always Expanded, No Collapsible */
+    .footer__block--newsletter {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      position: relative;
+      line-height: 1;
+    }
+    
+    /* Remove separator line for newsletter block */
+    .footer__block--newsletter::after {
+      display: none;
+    }
+    
+    .footer__block--newsletter .footer__block-toggle {
+      display: none;
+    }
+    
+    .footer__block--newsletter .footer__block-content {
+      max-height: none;
+      overflow: visible;
+      padding-bottom: 1rem;
+      opacity: 1;
+    }
+    
+    .footer__block--newsletter .footer__newsletter-form {
+      margin-top: 0.75rem;
+    }
+    
+    .footer__block--newsletter input[type="email"] {
+      font-family: var(--footer-font-family);
+      font-size: 0.8rem;
+    }
+    
+    .footer__block--newsletter .footer__block-title-desktop {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: normal;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      font-size: var(--footer-newsletter-size);
+      margin-bottom: 0.1rem;
+      margin-top: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      display: block;
+    }
+    
+    .footer__block--newsletter .v-stack {
+      gap: 0.75rem;
+    }
+  }
+  
+  /* Desktop Layout */
+  @media screen and (min-width: {{ section.settings.mobile_breakpoint | plus: 1 }}px) {
+    .footer__block-toggle {
+      display: none;
+    }
+    
+    .footer__block-content {
+      max-height: none;
+      overflow: visible;
+      padding-bottom: 0;
+    }
+    
+    .footer__block-title-desktop {
+      display: block;
+    }
+    
+    /* Newsletter Content White on Desktop */
+    .footer__block--newsletter .prose,
+    .footer__block--newsletter .prose * {
+      color: var(--footer-text-color);
+    }
+    
+    /* Make newsletter title larger on desktop */
+    .footer__block--newsletter .footer__block-title-desktop {
+      font-size: 2.8rem;
+    }
+    
+    /* Remove line above policy links */
+    .footer__policy-links {
+      border-top: none;
+    }
+    
+    .footer__policy-links::before {
+      display: none;
+    }
+    
+    /* Remove separator line above footer aside bottom section */
+    .footer__aside-bottom {
+      border-top: none;
+    }
+    
+    .footer__aside-bottom::before {
+      display: none;
+    }
+    
+    /* Remove any separator between footer sections */
+    .footer__copyright {
+      border-top: none;
+    }
+    
+    .footer__copyright::before {
+      display: none;
+    }
+  }
+</style>
+
+<div class="footer">
+  <div class="container">
+    <div class="footer__wrapper">
+      {%- comment -%}
+      ------------------------------------------------------------------------------------------------------------------
+      BLOCK AREA
+      ------------------------------------------------------------------------------------------------------------------
+      {%- endcomment -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="footer__block-list empty:hidden">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when '@app' -%}
+                <div class="footer__block footer__block--app">
+                  {%- render block -%}
+                </div>
+
+              {%- when 'text' -%}
+                {%- if block.settings.title != blank or block.settings.content != blank or shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
+                  {%- assign mobile_class = '' -%}
+                  {%- if block.settings.mobile_collapsible == false -%}
+                    {%- assign mobile_class = ' footer__block--always-expanded' -%}
+                  {%- endif -%}
+                  
+                  <div class="footer__block footer__block--text footer__block-collapsible{{ mobile_class }}" {{ block.shopify_attributes }}>
+                    {%- if block.settings.title != blank -%}
+                      <!-- Mobile toggle button -->
+                      <button class="footer__block-toggle" 
+                              aria-expanded="{{ block.settings.mobile_open_default }}" 
+                              aria-controls="footer-text-{{ forloop.index }}"
+                              data-toggle-target="footer-text-{{ forloop.index }}">
+                        <span>{{ block.settings.title | escape }}</span>
+                        {%- if section.settings.mobile_toggle_style == 'plus_minus' -%}
+                          <svg class="footer__block-toggle-icon footer__block-toggle-icon--plus" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                          </svg>
+                        {%- else -%}
+                          <svg class="footer__block-toggle-icon footer__block-toggle-icon--minus" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                          </svg>
+                        {%- endif -%}
+                      </button>
+                      
+                      <!-- Desktop title -->
+                      <p class="bold footer__block-title-desktop">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {%- assign content_class = 'footer__block-content' -%}
+                    {%- if block.settings.mobile_open_default -%}
+                      {%- assign content_class = content_class | append: ' is-open' -%}
+                    {%- endif -%}
+                    
+                    <div class="{{ content_class }}" id="footer-text-{{ forloop.index }}">
+                      {%- if block.settings.content != blank -%}
+                        <div class="prose text-subdued">
+                          {{- block.settings.content -}}
+                        </div>
+                      {%- endif -%}
+
+                      {%- if shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
+                        <div class="follow-on-shop">
+                          {{- shop | login_button: action: 'follow' -}}
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+
+              {%- when 'links' -%}
+                {%- if block.settings.menu != blank -%}
+                  {%- assign mobile_class = '' -%}
+                  {%- if block.settings.mobile_collapsible == false -%}
+                    {%- assign mobile_class = ' footer__block--always-expanded' -%}
+                  {%- endif -%}
+                  
+                  <div class="footer__block footer__block--menu footer__block-collapsible{{ mobile_class }}" {{ block.shopify_attributes }}>
+                    {%- assign menu_title = block.settings.menu_title | default: block.settings.menu.title -%}
+                    
+                    {%- if block.settings.show_menu_title and menu_title != blank -%}
+                      <!-- Mobile toggle button -->
+                      <button class="footer__block-toggle" 
+                              aria-expanded="{{ block.settings.mobile_open_default }}" 
+                              aria-controls="footer-menu-{{ forloop.index }}"
+                              data-toggle-target="footer-menu-{{ forloop.index }}">
+                        <span>{{ menu_title }}</span>
+                        {%- if section.settings.mobile_toggle_style == 'plus_minus' -%}
+                          <svg class="footer__block-toggle-icon footer__block-toggle-icon--plus" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                          </svg>
+                        {%- else -%}
+                          <svg class="footer__block-toggle-icon footer__block-toggle-icon--minus" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                          </svg>
+                        {%- endif -%}
+                      </button>
+                      
+                      <!-- Desktop title -->
+                      <p class="bold footer__block-title-desktop">{{ menu_title }}</p>
+                    {%- endif -%}
+
+                    {%- assign content_class = 'footer__block-content' -%}
+                    {%- if block.settings.mobile_open_default -%}
+                      {%- assign content_class = content_class | append: ' is-open' -%}
+                    {%- endif -%}
+                    
+                    <div class="{{ content_class }}" id="footer-menu-{{ forloop.index }}">
+                      <ul class="v-stack gap-3" role="list">
+                        {%- for link in block.settings.menu.links -%}
+                          <li>
+                            <a href="{{ link.url }}" class="inline-block link-faded break-all">{{ link.title }}</a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </div>
+                  </div>
+                {%- endif -%}
+
+              {%- when 'newsletter' -%}
+                {%- if block.settings.title != blank or block.settings.content != blank or block.settings.image != blank -%}
+                  <div class="footer__block footer__block--newsletter" {{ block.shopify_attributes }}>
+                  {%- if block.settings.title != blank -%}
+                    <!-- Desktop title only - no mobile toggle -->
+                    <p class="{{ block.settings.heading_size }} footer__block-title-desktop">{{- block.settings.title | escape -}}</p>
+                  {%- endif -%}
+
+                  <div class="footer__block-content is-open" id="footer-newsletter-{{ forloop.index }}">
+                    {%- if block.settings.image != blank -%}
+                      {%- capture sizes -%}{{ block.settings.image_width }}px{%- endcapture -%}
+                      {%- capture widths -%}{{ block.settings.image_width }}, {{ block.settings.image_width | times: 2 | at_most: block.settings.image.width }}{%- endcapture -%}
+                      {%- capture style -%}max-width: {{ block.settings.image_width }}px{%- endcapture -%}
+                      {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', style: style, sizes: sizes, widths: widths -}}
+                    {%- endif -%}
+
+                    <div class="v-stack gap-6">
+                      {%- if block.settings.content != blank -%}
+                        <div class="prose text-subdued">
+                          {{- block.settings.content -}}
+                        </div>
+                      {%- endif -%}
+
+                      {%- form 'customer', id: 'footer-newsletter', class: 'footer__newsletter-form form' -%}
+                        {%- if form.posted_successfully? -%}
+                          {%- capture success_message -%}{{ 'general.newsletter.subscribed_successfully' | t }}{%- endcapture -%}
+                          {%- render 'banner', content: success_message, status: 'success' -%}
+                        {%- else -%}
+                          {%- if form.errors -%}
+                            {%- capture error_message -%}{{ form.errors.translated_fields['email'] }} {{ form.errors.messages['email'] }}{%- endcapture -%}
+                            {%- render 'banner', content: error_message, status: 'error' -%}
+                          {%- endif -%}
+
+                          <input type="hidden" name="contact[tags]" value="newsletter">
+
+                          {%- capture label -%}{{ 'general.newsletter.email' | t }}{%- endcapture -%}
+                          {%- render 'input', name: 'contact[email]', label: label, type: 'email', required: true, autocomplete: 'email', enterkeyhint: 'send', self_submit: true -%}
+                        {%- endif -%}
+                      {%- endform -%}
+                    </div>
+                  </div>
+                </div>
+                {%- endif -%}
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%}
+      ------------------------------------------------------------------------------------------------------------------
+      SECONDARY AREA
+      ------------------------------------------------------------------------------------------------------------------
+      {%- endcomment -%}
+
+      <div class="footer__aside empty:hidden">
+        {%- comment -%}
+        ----------------------------------------------------------------------------------------------------------------
+        SOCIAL MEDIA + LOCALIZATION
+        ----------------------------------------------------------------------------------------------------------------
+        {%- endcomment -%}
+
+        {%- if section.settings.show_social_media -%}
+          {%- capture social_media -%}{%- render 'social-media' -%}{%- endcapture -%}
+        {%- endif -%}
+
+        {%- if section.settings.show_country_selector and localization.available_countries.size > 1 -%}
+          {%- assign country_selector = true -%}
+        {%- endif -%}
+
+        {%- if section.settings.show_locale_selector and localization.available_languages.size > 1 -%}
+          {%- assign locale_selector = true -%}
+        {%- endif -%}
+
+        {%- if social_media != blank or country_selector or locale_selector -%}
+          <div class="footer__aside-top">
+            {{- social_media -}}
+
+            {%- if country_selector or locale_selector -%}
+              <div class="h-stack gap-6">
+                {%- if social_media == blank -%}
+                  {%- assign popover_horizontal_position = 'start' -%}
+                {%- else -%}
+                  {%- assign popover_horizontal_position = 'end' -%}
+                {%- endif -%}
+
+                {%- if country_selector -%}
+                  {%- render 'localization-selector', type: 'country', show_country_name: section.settings.show_country_name, show_country_flag: section.settings.show_country_flag, popover_horizontal_position: popover_horizontal_position -%}
+                {%- endif -%}
+
+                {%- if locale_selector -%}
+                  {%- render 'localization-selector', type: 'locale', popover_horizontal_position: popover_horizontal_position -%}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%}
+        ----------------------------------------------------------------------------------------------------------------
+        COPYRIGHT + PAYMENT METHODS
+        ----------------------------------------------------------------------------------------------------------------
+        {%- endcomment -%}
+
+        <div class="footer__aside-bottom">
+          {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+            <ul class="footer__payment-icons h-stack wrap gap-2">
+              {%- for type in shop.enabled_payment_types -%}
+                <li class="contents">{{ type | payment_type_svg_tag }}</li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          <div class="footer__copyright v-stack gap-1">
+            <p class="text-sm text-subdued">© {{ 'now' | date: '%Y' }}, {{ shop.name }}. {{ powered_by_link }}</p>
+
+            {%- if section.settings.show_policy_links and shop.policies.size > 0 -%}
+              <ul class="footer__policy-links unstyled-list">
+                {%- for policy in shop.policies -%}
+                  <li class="contents"><a href="{{ policy.url }}" class="text-sm link-faded">{{ policy.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleButtons = document.querySelectorAll('.footer__block-toggle');
+  
+  toggleButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-toggle-target');
+      const targetContent = document.getElementById(targetId);
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      
+      this.setAttribute('aria-expanded', !isExpanded);
+      
+      if (isExpanded) {
+        targetContent.classList.remove('is-open');
+      } else {
+        targetContent.classList.add('is-open');
+      }
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "shopify-section--footer",
+  "tag": "footer",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Mobile collapsible settings"
+    },
+    {
+      "type": "range",
+      "id": "mobile_breakpoint",
+      "min": 480,
+      "max": 1024,
+      "step": 16,
+      "unit": "px",
+      "label": "Mobile breakpoint",
+      "info": "Screen width below which collapsible menus are active",
+      "default": 768
+    },
+    {
+      "type": "select",
+      "id": "mobile_toggle_style",
+      "label": "Toggle icon style",
+      "options": [
+        {
+          "value": "chevron",
+          "label": "Chevron (down arrow)"
+        },
+        {
+          "value": "plus_minus",
+          "label": "Plus/Minus"
+        }
+      ],
+      "default": "plus_minus"
+    },
+    {
+      "type": "header",
+      "content": "General settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_media",
+      "label": "Show social media",
+      "info": "To configure social media, go to your social media settings.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy_links",
+      "label": "Show policy links",
+      "info": "To add store policies, go to your [policy settings](/admin/settings/legal).",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Country/region selector",
+      "info": "To add a country/region, go to your [markets settings.](/admin/settings/markets)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_selector",
+      "label": "Show country/region selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_flag",
+      "label": "Show country flag",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_name",
+      "label": "Show country name",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Language selector",
+      "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_locale_selector",
+      "label": "Show language selector",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "About our store"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme editor.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_follow_on_shop",
+          "label": "Show Follow on Shop",
+          "info": "To allow customers to follow your store on the Shop app from your storefront, Shop Pay must be enabled. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Mobile settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile_collapsible",
+          "label": "Make collapsible on mobile",
+          "info": "If unchecked, this section will always be expanded on mobile",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile_open_default",
+          "label": "Open by default on mobile",
+          "info": "Only applies if collapsible is enabled",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "name": "Links",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "info": "This menu won't show dropdown items.",
+          "default": "footer"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_menu_title",
+          "label": "Show menu title",
+          "default": true
+        },
+        {
+          "type": "inline_richtext",
+          "id": "menu_title",
+          "label": "Menu title",
+          "info": "Replaces the default menu title"
+        },
+        {
+          "type": "header",
+          "content": "Mobile settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile_collapsible",
+          "label": "Make collapsible on mobile",
+          "info": "If unchecked, this section will always be expanded on mobile",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile_open_default",
+          "label": "Open by default on mobile",
+          "info": "Only applies if collapsible is enabled",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Customers who subscribe will have their email address added to the \"accepts marketing\" [customer list](/admin/customers?query=&accepts_marketing=1)."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "600 x 600px .png recommended"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 300,
+          "step": 10,
+          "unit": "px",
+          "label": "Image width",
+          "default": 150
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Title size",
+          "options": [
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ],
+          "default": "h3"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Sign up to our newsletter"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "header",
+          "content": "Mobile settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile_collapsible",
+          "label": "Make collapsible on mobile",
+          "info": "If unchecked, this section will always be expanded on mobile",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile_open_default",
+          "label": "Open by default on mobile",
+          "info": "Only applies if collapsible is enabled",
+          "default": false
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,910 @@
+{% comment %}
+  Results Section - DopaBoost
+  Variation 1: Clean Circles - Minimalistic design with soft beige colors
+  
+  INSTALLATION:
+  Save as: sections/results-dopaboost.liquid
+{% endcomment %}
+
+<style>
+  /* ========================================
+     RESULTS SECTION - VARIATION 1
+     ======================================== */
+  .results-section-{{ section.id }} {
+    padding: {{ section.settings.section_padding_desktop }};
+    background: {{ section.settings.background_color }};
+    margin-top: {{ section.settings.margin_top_desktop }}px;
+    margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+  }
+
+  .results-container-{{ section.id }} {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  /* Section Label */
+  .section-label-{{ section.id }} {
+    font-size: {{ section.settings.label_size }}px;
+    color: {{ section.settings.label_color }};
+    letter-spacing: {{ section.settings.label_spacing }}px;
+    text-transform: uppercase;
+    margin-bottom: {{ section.settings.label_margin }}px;
+    font-weight: {{ section.settings.label_weight }};
+    text-align: center;
+  }
+
+  /* Headline */
+  .headline-{{ section.id }} {
+    font-size: {{ section.settings.headline_size_desktop }}px;
+    line-height: 1.2;
+    font-weight: {{ section.settings.headline_weight }};
+    color: {{ section.settings.headline_color }};
+    margin-bottom: {{ section.settings.headline_margin }}px;
+    text-align: center;
+  }
+
+  .headline-{{ section.id }} .highlight {
+    font-weight: {{ section.settings.headline_highlight_weight }};
+  }
+
+  /* Stats Grid */
+  .stats-grid-{{ section.id }} {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: {{ section.settings.grid_gap }}px;
+    margin: {{ section.settings.grid_margin_top }}px 0 {{ section.settings.grid_margin_bottom }}px;
+  }
+
+  /* Stat Item */
+  .stat-item-{{ section.id }} {
+    text-align: center;
+  }
+
+  /* Circle Wrapper */
+  .circle-wrap-{{ section.id }} {
+    width: {{ section.settings.circle_size }}px;
+    height: {{ section.settings.circle_size }}px;
+    margin: 0 auto {{ section.settings.circle_margin }}px;
+    position: relative;
+  }
+
+  .circle-svg-{{ section.id }} {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .circle-bg-{{ section.id }} {
+    fill: none;
+    stroke: {{ section.settings.circle_bg_color }};
+    stroke-width: {{ section.settings.circle_stroke_width }};
+  }
+
+  .circle-progress-{{ section.id }} {
+    fill: none;
+    stroke: {{ section.settings.circle_color }};
+    stroke-width: {{ section.settings.circle_stroke_width }};
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 2s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .stat-item-{{ section.id }}.animate .circle-progress-{{ section.id }} {
+    stroke-dashoffset: calc(283 - (283 * var(--progress) / 100));
+  }
+
+  /* Circle Text (Percentage) */
+  .circle-text-{{ section.id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: {{ section.settings.percentage_size }}px;
+    font-weight: {{ section.settings.percentage_weight }};
+    color: {{ section.settings.percentage_color }};
+    opacity: 0;
+    animation: fadeIn-{{ section.id }} 0.6s ease forwards 1.5s;
+  }
+
+  @keyframes fadeIn-{{ section.id }} {
+    to { opacity: 1; }
+  }
+
+  .circle-text-{{ section.id }} .percent {
+    font-size: {{ section.settings.percent_symbol_size }}px;
+    opacity: {{ section.settings.percent_symbol_opacity }};
+  }
+
+  /* Stat Description */
+  .stat-description-{{ section.id }} {
+    font-size: {{ section.settings.description_size }}px;
+    line-height: 1.6;
+    color: {{ section.settings.description_color }};
+    max-width: {{ section.settings.description_max_width }}px;
+    margin: 0 auto;
+  }
+
+  /* Footer Text */
+  .footer-text-{{ section.id }} {
+    text-align: center;
+    margin-top: {{ section.settings.footer_margin_top }}px;
+    font-size: {{ section.settings.footer_size }}px;
+    color: {{ section.settings.footer_color }};
+    letter-spacing: {{ section.settings.footer_spacing }}px;
+    text-transform: uppercase;
+  }
+
+  /* Responsive - Tablet */
+  @media (max-width: 1024px) {
+    .results-section-{{ section.id }} {
+      padding: {{ section.settings.section_padding_tablet }};
+    }
+
+    .headline-{{ section.id }} {
+      font-size: {{ section.settings.headline_size_tablet }}px;
+    }
+
+    .stats-grid-{{ section.id }} {
+      grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
+      gap: {{ section.settings.grid_gap_tablet }}px;
+    }
+  }
+
+  /* Responsive - Mobile */
+  @media (max-width: 768px) {
+    .results-section-{{ section.id }} {
+      padding: {{ section.settings.section_padding_mobile }};
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    }
+
+    .section-label-{{ section.id }} {
+      font-size: {{ section.settings.label_size_mobile }}px;
+      margin-bottom: {{ section.settings.label_margin_mobile }}px;
+    }
+
+    .headline-{{ section.id }} {
+      font-size: {{ section.settings.headline_size_mobile }}px;
+      margin-bottom: {{ section.settings.headline_margin_mobile }}px;
+    }
+
+    .stats-grid-{{ section.id }} {
+      grid-template-columns: 1fr;
+      gap: {{ section.settings.grid_gap_mobile }}px;
+      margin: {{ section.settings.grid_margin_top_mobile }}px 0 {{ section.settings.grid_margin_bottom_mobile }}px;
+    }
+
+    .circle-wrap-{{ section.id }} {
+      width: {{ section.settings.circle_size_mobile }}px;
+      height: {{ section.settings.circle_size_mobile }}px;
+    }
+
+    .circle-text-{{ section.id }} {
+      font-size: {{ section.settings.percentage_size_mobile }}px;
+    }
+
+    .stat-description-{{ section.id }} {
+      font-size: {{ section.settings.description_size_mobile }}px;
+    }
+
+    .footer-text-{{ section.id }} {
+      margin-top: {{ section.settings.footer_margin_top_mobile }}px;
+      font-size: {{ section.settings.footer_size_mobile }}px;
+    }
+  }
+</style>
+
+<!-- HTML Structure -->
+<section class="results-section-{{ section.id }}" id="results-section-{{ section.id }}">
+  <div class="results-container-{{ section.id }}">
+    
+    <!-- Section Label -->
+    {% if section.settings.section_label != blank %}
+    <div class="section-label-{{ section.id }}">
+      {{ section.settings.section_label }}
+    </div>
+    {% endif %}
+
+    <!-- Headline -->
+    {% if section.settings.headline_part1 != blank %}
+    <h2 class="headline-{{ section.id }}">
+      {{ section.settings.headline_part1 }}
+      {% if section.settings.headline_part2 != blank %}
+      <span class="highlight">{{ section.settings.headline_part2 }}</span>
+      {% endif %}
+    </h2>
+    {% endif %}
+
+    <!-- Stats Grid -->
+    <div class="stats-grid-{{ section.id }}">
+      {% for block in section.blocks %}
+        <div class="stat-item-{{ section.id }}" style="--progress: {{ block.settings.percentage }}" {{ block.shopify_attributes }}>
+          
+          <div class="circle-wrap-{{ section.id }}">
+            <svg class="circle-svg-{{ section.id }}" viewBox="0 0 100 100">
+              <circle class="circle-bg-{{ section.id }}" cx="50" cy="50" r="45"></circle>
+              <circle class="circle-progress-{{ section.id }}" cx="50" cy="50" r="45"></circle>
+            </svg>
+            <div class="circle-text-{{ section.id }}">
+              {{ block.settings.percentage }}<span class="percent">%</span>
+            </div>
+          </div>
+
+          <p class="stat-description-{{ section.id }}">{{ block.settings.description }}</p>
+
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Footer Text -->
+    {% if section.settings.footer_text != blank %}
+    <div class="footer-text-{{ section.id }}">
+      {{ section.settings.footer_text }}
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<script>
+(function() {
+  const section = document.getElementById('results-section-{{ section.id }}');
+  if (!section) return;
+  
+  const statItems = section.querySelectorAll('.stat-item-{{ section.id }}');
+  let hasAnimated = false;
+
+  function checkVisibility() {
+    if (hasAnimated) return;
+    
+    const rect = section.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight * 0.8;
+    
+    if (isVisible) {
+      hasAnimated = true;
+      
+      statItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('animate');
+        }, index * {{ section.settings.stagger_delay }});
+      });
+      
+      window.removeEventListener('scroll', checkVisibility);
+    }
+  }
+
+  window.addEventListener('scroll', checkVisibility, { passive: true });
+  checkVisibility();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Results Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "📝 Content"
+    },
+    {
+      "type": "text",
+      "id": "section_label",
+      "label": "Section Label",
+      "default": "04 — RESULTS"
+    },
+    {
+      "type": "text",
+      "id": "headline_part1",
+      "label": "Headline - Part 1",
+      "default": "Proven Effectiveness"
+    },
+    {
+      "type": "text",
+      "id": "headline_part2",
+      "label": "Headline - Part 2 (Bold)",
+      "default": "Through User Testing"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer Text",
+      "default": "BASED ON INDEPENDENT USER TESTING"
+    },
+    {
+      "type": "header",
+      "content": "🎨 Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FAF8F5"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label Color",
+      "default": "#A08977"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline Color",
+      "default": "#2B2621"
+    },
+    {
+      "type": "color",
+      "id": "circle_bg_color",
+      "label": "Circle Background",
+      "default": "#EFE9E1"
+    },
+    {
+      "type": "color",
+      "id": "circle_color",
+      "label": "Circle Progress Color",
+      "default": "#D4A574"
+    },
+    {
+      "type": "color",
+      "id": "percentage_color",
+      "label": "Percentage Color",
+      "default": "#2B2621"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#6B5D52"
+    },
+    {
+      "type": "color",
+      "id": "footer_color",
+      "label": "Footer Text Color",
+      "default": "#A08977"
+    },
+    {
+      "type": "header",
+      "content": "⭕ Circle Settings"
+    },
+    {
+      "type": "range",
+      "id": "circle_size",
+      "label": "Circle Size (Desktop)",
+      "min": 100,
+      "max": 240,
+      "step": 10,
+      "default": 160,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "circle_size_mobile",
+      "label": "Circle Size (Mobile)",
+      "min": 100,
+      "max": 180,
+      "step": 10,
+      "default": 140,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "circle_stroke_width",
+      "label": "Circle Thickness",
+      "min": 4,
+      "max": 16,
+      "step": 1,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "circle_margin",
+      "label": "Space Below Circle",
+      "min": 16,
+      "max": 60,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "📐 Typography"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "label": "Label Size (Desktop)",
+      "min": 9,
+      "max": 16,
+      "step": 1,
+      "default": 11,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "label_size_mobile",
+      "label": "Label Size (Mobile)",
+      "min": 9,
+      "max": 14,
+      "step": 1,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "label_spacing",
+      "label": "Label Letter Spacing",
+      "min": 0,
+      "max": 4,
+      "step": 0.5,
+      "default": 2,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "label_weight",
+      "label": "Label Weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "label_margin",
+      "label": "Space Below Label",
+      "min": 12,
+      "max": 48,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "label_margin_mobile",
+      "label": "Space Below Label (Mobile)",
+      "min": 12,
+      "max": 40,
+      "step": 4,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "headline_size_desktop",
+      "label": "Headline Size (Desktop)",
+      "min": 32,
+      "max": 72,
+      "step": 2,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "headline_size_tablet",
+      "label": "Headline Size (Tablet)",
+      "min": 28,
+      "max": 56,
+      "step": 2,
+      "default": 38,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "headline_size_mobile",
+      "label": "Headline Size (Mobile)",
+      "min": 24,
+      "max": 44,
+      "step": 2,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "headline_weight",
+      "label": "Headline Weight (Part 1)",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "select",
+      "id": "headline_highlight_weight",
+      "label": "Headline Weight (Part 2 - Bold)",
+      "options": [
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "headline_margin",
+      "label": "Space Below Headline",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "headline_margin_mobile",
+      "label": "Space Below Headline (Mobile)",
+      "min": 24,
+      "max": 70,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "percentage_size",
+      "label": "Percentage Size (Desktop)",
+      "min": 28,
+      "max": 64,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "percentage_size_mobile",
+      "label": "Percentage Size (Mobile)",
+      "min": 24,
+      "max": 52,
+      "step": 2,
+      "default": 36,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "percentage_weight",
+      "label": "Percentage Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-Bold" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "range",
+      "id": "percent_symbol_size",
+      "label": "Percent Symbol Size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "percent_symbol_opacity",
+      "label": "Percent Symbol Opacity",
+      "min": 0.3,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.6
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description Size (Desktop)",
+      "min": 13,
+      "max": 20,
+      "step": 1,
+      "default": 15,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "label": "Description Size (Mobile)",
+      "min": 13,
+      "max": 18,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description_max_width",
+      "label": "Description Max Width",
+      "min": 180,
+      "max": 320,
+      "step": 20,
+      "default": 240,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "footer_size",
+      "label": "Footer Size (Desktop)",
+      "min": 9,
+      "max": 16,
+      "step": 1,
+      "default": 11,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "footer_size_mobile",
+      "label": "Footer Size (Mobile)",
+      "min": 9,
+      "max": 14,
+      "step": 1,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "footer_spacing",
+      "label": "Footer Letter Spacing",
+      "min": 0,
+      "max": 3,
+      "step": 0.5,
+      "default": 1.5,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "📏 Spacing & Layout"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_desktop",
+      "label": "Section Padding (Desktop)",
+      "default": "100px 60px"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_tablet",
+      "label": "Section Padding (Tablet)",
+      "default": "80px 40px"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_mobile",
+      "label": "Section Padding (Mobile)",
+      "default": "60px 24px"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum Content Width",
+      "min": 1000,
+      "max": 1600,
+      "step": 100,
+      "default": 1400,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "label": "Margin Top (Desktop)",
+      "min": -150,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "label": "Margin Bottom (Desktop)",
+      "min": -150,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "label": "Margin Top (Mobile)",
+      "min": -150,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "label": "Margin Bottom (Mobile)",
+      "min": -150,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "🔲 Grid Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (Desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns (Tablet)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid Gap (Desktop)",
+      "min": 30,
+      "max": 100,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_tablet",
+      "label": "Grid Gap (Tablet)",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_mobile",
+      "label": "Grid Gap (Mobile)",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_margin_top",
+      "label": "Grid Top Margin (Desktop)",
+      "min": 40,
+      "max": 120,
+      "step": 5,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_margin_top_mobile",
+      "label": "Grid Top Margin (Mobile)",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_margin_bottom",
+      "label": "Grid Bottom Margin (Desktop)",
+      "min": 40,
+      "max": 120,
+      "step": 5,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_margin_bottom_mobile",
+      "label": "Grid Bottom Margin (Mobile)",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "✨ Animation Settings"
+    },
+    {
+      "type": "range",
+      "id": "stagger_delay",
+      "label": "Stagger Delay Between Items",
+      "min": 0,
+      "max": 500,
+      "step": 50,
+      "default": 150,
+      "unit": "ms",
+      "info": "Delay before each subsequent stat animates"
+    },
+    {
+      "type": "range",
+      "id": "footer_margin_top",
+      "label": "Footer Top Margin (Desktop)",
+      "min": 30,
+      "max": 100,
+      "step": 10,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "footer_margin_top_mobile",
+      "label": "Footer Top Margin (Mobile)",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "range",
+          "id": "percentage",
+          "label": "Percentage",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 91,
+          "unit": "%"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Noticed higher focus and concentration"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Results Section",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "percentage": 91,
+            "description": "Noticed higher focus and concentration"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "percentage": 87,
+            "description": "Felt better mood and less fatigue"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "percentage": 93,
+            "description": "Would recommend to friends and family"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

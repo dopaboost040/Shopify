@@ -1,0 +1,2188 @@
+{% comment %}
+  BUNDLE PRODUCT SECTION – Styled to match live PDP
+{% endcomment %}
+
+{%- comment -%} Pseudo-random number per product URL for "bought X times this week" {%- endcomment -%}
+{% assign letter = product.handle | slice: 0, 1 | upcase %}
+{% assign letter_num = letter
+  | replace: 'A', '1'  | replace: 'B', '2'  | replace: 'C', '3'
+  | replace: 'D', '4'  | replace: 'E', '5'  | replace: 'F', '6'
+  | replace: 'G', '7'  | replace: 'H', '8'  | replace: 'I', '9'
+  | replace: 'J', '10' | replace: 'K', '11' | replace: 'L', '12'
+  | replace: 'M', '13' | replace: 'N', '14' | replace: 'O', '15'
+  | replace: 'P', '16' | replace: 'Q', '17' | replace: 'R', '18'
+  | replace: 'S', '19' | replace: 'T', '20' | replace: 'U', '21'
+  | replace: 'V', '22' | replace: 'W', '23' | replace: 'X', '24'
+  | replace: 'Y', '25' | replace: 'Z', '26'
+%}
+{% assign base = letter_num | times: product.handle.size | times: 53 | modulo: 1000 %}
+{% assign final_number = base | plus: 1000 %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gilda+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+
+  .bps-section *,
+  .bps-section *::before,
+  .bps-section *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bps-section {
+    --bps-primary:        #C1633F;
+    --bps-primary-hover:  #A85432;
+    --bps-primary-bg:     #F7EDDC;
+    --bps-accent:         #C1633F;
+    --bps-text:           #1a1a1a;
+    --bps-text-muted:     #666;
+    --bps-border:         #e8e3da;
+    --bps-surface:        #ffffff;
+    --bps-gallery-bg:     #faf6ef;
+    --bps-success:        #2e7d32;
+    --bps-radius:         10px;
+    --bps-radius-sm:      6px;
+    --bps-serif:          'Gilda Display', Georgia, serif;
+    --bps-sans:           'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    font-family: var(--bps-sans);
+    color: var(--bps-text);
+    padding: 5px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .bps-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 14px 40px;
+    align-items: start;
+  }
+
+  .bps-gallery {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    position: sticky;
+    top: 24px;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 12px;
+    min-width: 0;
+  }
+  .bps-gallery.bps-gallery--single {
+    grid-template-columns: 1fr;
+  }
+
+  .bps-content-top {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .bps-description {
+    grid-column: 2;
+    grid-row: 2;
+    font-family: var(--bps-sans);
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+  }
+  .bps-description strong, .bps-description b { color: var(--bps-primary); }
+
+  .bps-content-bottom {
+    grid-column: 2;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  @media (max-width: 860px) {
+    .bps-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .bps-gallery        { position: static; order: 1; }
+    .bps-content-top    { order: 2; }
+    .bps-description    { order: 3; }
+    .bps-content-bottom { order: 4; }
+
+    /* Gallery becomes a simple full-width block on mobile */
+    .bps-gallery {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      grid-template-columns: none !important;
+      gap: 10px !important;
+    }
+
+    /* Main image area: full-width square using aspect-ratio (no padding-bottom) */
+    .bps-gallery__main {
+      width: 100% !important;
+      padding-bottom: 0 !important;
+      aspect-ratio: 1 / 1 !important;
+      position: relative !important;
+      background: var(--bps-gallery-bg) !important;
+      border-radius: var(--bps-radius) !important;
+      overflow: hidden !important;
+      display: block !important;
+      order: 1;
+    }
+
+    /* Horizontal thumbnail row BELOW the main image on mobile */
+    .bps-gallery__thumbs--vertical {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      gap: 8px !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      padding-bottom: 0;
+      order: 2;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .bps-gallery__thumbs--vertical::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    .bps-gallery__thumb {
+      flex: 0 0 64px !important;
+      width: 64px !important;
+      height: 64px !important;
+      padding: 0 !important;
+      aspect-ratio: 1 / 1 !important;
+      border-radius: 6px !important;
+    }
+
+    /* Hide static main image, show swipeable carousel instead */
+    #bps-main-img { display: none !important; }
+
+    .bps-carousel-slides {
+      display: flex !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      transition: transform 0.35s ease;
+    }
+    .bps-carousel-slide {
+      flex: 0 0 100% !important;
+      width: 100% !important;
+      height: 100% !important;
+      position: relative !important;
+    }
+    .bps-carousel-slide img {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      object-fit: contain !important;
+      display: block !important;
+    }
+
+    .bps-carousel-prev, .bps-carousel-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.9); border: none; border-radius: 50%;
+      width: 36px; height: 36px; display: flex !important; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 5; font-size: 18px; color: var(--bps-primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .bps-carousel-prev { left: 10px; }
+    .bps-carousel-next { right: 10px; }
+
+    .bps-carousel-dots {
+      display: none !important;
+    }
+    .bps-carousel-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #ccc;
+      border: none; cursor: pointer; padding: 0; transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .bps-carousel-dot.is-active { background: var(--bps-primary); }
+  }
+
+  @media (min-width: 861px) {
+    .bps-carousel-prev, .bps-carousel-next, .bps-carousel-dots { display: none; }
+  }
+
+  /* ---------- GALLERY – vertical thumbs left, main right ---------- */
+  .bps-gallery__thumbs--vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .bps-gallery__thumb {
+    display: block;
+    width: 100%;
+    position: relative;
+    padding: 0 0 100% 0; /* 1:1 aspect ratio fallback */
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--bps-gallery-bg);
+    border: 1.5px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .bps-gallery__thumb.is-active { border-color: var(--bps-primary); }
+  .bps-gallery__thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Main image container – uses padding-bottom trick for bullet-proof 1:1 ratio */
+  .bps-gallery__main {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: var(--bps-radius);
+    overflow: hidden;
+    background: var(--bps-gallery-bg);
+    min-width: 0;
+  }
+
+  .bps-gallery__main > img,
+  .bps-gallery__main > .bps-carousel-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #bps-main-img {
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.25s ease;
+  }
+
+  .bps-carousel-slides { display: none; }
+
+  /* ---------- PRODUCT TITLE + RATING ---------- */
+  .bps-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--bps-serif);
+    font-style: italic;
+    cursor: pointer;
+  }
+  .bps-rating__stars { display: flex; gap: 1px; }
+  .bps-star { font-size: 16px; line-height: 1; color: var(--bps-primary); }
+  .bps-star--half { opacity: 0.6; }
+  .bps-star--empty { color: #ddd; }
+  .bps-rating__text {
+    font-size: 14px;
+    color: #333;
+    line-height: 1;
+    font-family: var(--bps-serif);
+    font-style: italic;
+  }
+
+  .bps-product-title {
+    font-family: var(--bps-serif);
+    font-style: normal;
+    font-size: 42px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--bps-text);
+    line-height: 1.1;
+  }
+
+  @media (max-width: 860px) {
+    .bps-product-title { font-size: 32px; }
+  }
+
+  .bps-tags { display: flex; gap: 0; flex-wrap: wrap; margin-top: 4px; }
+  .bps-tag {
+    font-family: var(--bps-sans);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+    color: var(--bps-text-muted); text-transform: uppercase;
+  }
+  .bps-tag + .bps-tag::before { content: ' | '; margin: 0 6px; color: #ccc; }
+
+  /* ---------- PRODUCT INFO (limited stock + delivery) ---------- */
+  .bps-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: var(--bps-sans);
+  }
+
+  .bps-almost-sold-out {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--bps-primary);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .bps-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--bps-primary);
+    border-radius: 50%;
+    animation: bps-heartbeat 1.5s ease-in-out infinite;
+  }
+
+  @keyframes bps-heartbeat {
+    0%   { transform: scale(1); }
+    14%  { transform: scale(1.3); }
+    28%  { transform: scale(1); }
+    42%  { transform: scale(1.3); }
+    70%  { transform: scale(1); }
+  }
+
+  .bps-product-stats {
+    color: #333;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .bps-product-stats strong {
+    color: var(--bps-primary);
+    font-weight: 700;
+  }
+
+  .bps-delivery-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    font-size: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+    font-weight: 500;
+  }
+  .bps-delivery-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: #666;
+  }
+
+  /* ---------- SUBSCRIPTION BANNER (replaces gift banner) ---------- */
+  .bps-gift-banner {
+    background-color: #F1EADE;
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--bps-sans);
+  }
+  .bps-gift-banner__icon {
+    flex-shrink: 0;
+  }
+  .bps-gift-banner__icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: #c23b3b;
+    opacity: 0.9;
+    animation: bps-spin 10s linear infinite;
+  }
+  @keyframes bps-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  .bps-gift-banner__text {
+    color: #1a1a1a;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .bps-gift-banner__title {
+    font-weight: 700;
+    color: #c23b3b;
+    margin-bottom: 2px;
+  }
+  .bps-gift-banner__highlight {
+    font-weight: 700;
+    color: #c23b3b;
+  }
+  @media (max-width: 749px) {
+    .bps-gift-banner__text { font-size: 12px; }
+  }
+
+  /* ---------- BUNDLE BUILDER ---------- */
+  .bps-bundle__label {
+    font-family: var(--bps-sans);
+    font-weight: 700; font-size: 15px;
+    color: var(--bps-text); margin-bottom: 14px;
+  }
+
+  .bps-slider-tiers { position: relative; margin-bottom: 20px; padding-top: 36px; }
+
+  .bps-best-deal {
+    position: absolute; top: 0; right: 0;
+    background: #e63030; color: #fff;
+    font-family: var(--bps-sans); font-size: 11px; font-weight: 800;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 4px; transform: rotate(2deg);
+  }
+
+  .bps-slider-labels { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .bps-slider-labels span {
+    font-family: var(--bps-sans); font-size: 13px; font-weight: 700;
+    color: var(--bps-text-muted); text-align: center; flex: 1; transition: color 0.2s;
+  }
+  .bps-slider-labels span.is-active { color: var(--bps-primary); }
+
+  .bps-slider-track {
+    position: relative; height: 4px; background: #e8e3da; border-radius: 4px;
+    margin: 0 12px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .bps-slider-fill {
+    position: absolute; left: 0; top: 0; height: 100%; width: 0%;
+    background: var(--bps-primary); border-radius: 4px; transition: width 0.3s ease;
+  }
+  .bps-slider-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #e8e3da; border: 2px solid #fff;
+    position: relative; z-index: 1;
+    transition: background 0.2s, transform 0.2s; flex-shrink: 0;
+  }
+  .bps-slider-dot.is-active, .bps-slider-dot.is-passed { background: var(--bps-primary); }
+  .bps-slider-dot.is-active { transform: scale(1.3); }
+
+  .bps-slider-prices { display: flex; justify-content: space-between; margin-top: 10px; }
+  .bps-slider-prices span {
+    font-family: var(--bps-sans); font-size: 13px; color: var(--bps-text-muted);
+    text-align: center; flex: 1; transition: color 0.2s, font-weight 0.2s;
+  }
+  .bps-slider-prices span.is-active { color: var(--bps-primary); font-weight: 700; }
+
+  .bps-items { display: flex; flex-direction: column; gap: 10px; }
+
+  .bps-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 13px 14px;
+    border: 1.5px solid var(--bps-border); border-radius: var(--bps-radius);
+    background: var(--bps-surface); transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .bps-item.is-selected {
+    border-color: var(--bps-primary);
+    box-shadow: 0 0 0 3px rgba(193,99,63,0.09);
+  }
+
+  .bps-item.is-out-of-stock { opacity: 0.55; pointer-events: none; }
+  .bps-btn-add.is-oos {
+    background: #999 !important; cursor: not-allowed !important;
+    font-size: 12px !important; pointer-events: none;
+  }
+
+  .bps-item__img {
+    width: 66px; height: 66px; border-radius: var(--bps-radius-sm);
+    overflow: hidden; flex-shrink: 0; background: var(--bps-gallery-bg);
+  }
+  .bps-item__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .bps-item__info { flex: 1; min-width: 0; }
+  .bps-item__name { font-family: var(--bps-sans); font-weight: 700; font-size: 14px; color: var(--bps-text); margin-bottom: 3px; }
+  .bps-item__desc { font-family: var(--bps-sans); font-size: 12px; color: var(--bps-text-muted); line-height: 1.4; }
+  .bps-item__price { display: none; }
+
+  .bps-item__action { flex-shrink: 0; }
+
+  .bps-btn-add {
+    font-family: var(--bps-sans); background: var(--bps-primary); color: #fff;
+    border: none; border-radius: var(--bps-radius-sm); padding: 9px 15px;
+    font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .bps-btn-add:hover { background: var(--bps-primary-hover); transform: translateY(-1px); }
+  .bps-btn-add:active { transform: translateY(0); }
+
+  .bps-qty {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--bps-primary); border-radius: var(--bps-radius-sm); padding: 5px 8px;
+  }
+  .bps-qty__btn {
+    font-family: var(--bps-sans); background: none; border: none; color: #fff;
+    font-size: 18px; line-height: 1; font-weight: 700; cursor: pointer; padding: 0 3px;
+    transition: opacity 0.15s;
+  }
+  .bps-qty__btn:hover { opacity: 0.7; }
+  .bps-qty__val {
+    font-family: var(--bps-sans); color: #fff; font-weight: 700;
+    font-size: 14px; min-width: 22px; text-align: center;
+  }
+
+  .bps-summary {
+    border-top: 1px solid var(--bps-border); padding-top: 14px; margin-top: 4px;
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  .bps-summary__row { display: none; }
+  .bps-summary__row--discount {
+    display: flex; justify-content: space-between;
+    font-family: var(--bps-sans); font-size: 14px;
+    color: var(--bps-success); font-weight: 600;
+  }
+
+  /* ---------- PURCHASE OPTIONS ---------- */
+  .bps-purchase { display: flex; flex-direction: column; gap: 10px; }
+  .bps-purchase-options { display: flex; flex-direction: column; gap: 10px; }
+
+  .bps-purchase-option {
+    border: 2px solid var(--bps-border);
+    border-radius: var(--bps-radius);
+    padding: 16px 18px;
+    cursor: pointer;
+    position: relative;
+    background: var(--bps-surface);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    text-align: left;
+    width: 100%;
+    font-family: var(--bps-sans);
+  }
+  .bps-purchase-option:hover { border-color: var(--bps-primary); }
+  .bps-purchase-option.is-selected {
+    border-color: var(--bps-primary);
+    box-shadow: 0 0 0 3px rgba(193,99,63,0.09);
+  }
+
+  .bps-purchase-option__radio {
+    position: absolute; top: 18px; right: 18px;
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 2px solid var(--bps-border); background: var(--bps-surface);
+    transition: border-color 0.2s; flex-shrink: 0;
+  }
+  .bps-purchase-option.is-selected .bps-purchase-option__radio {
+    border-color: var(--bps-primary); background: var(--bps-primary);
+    box-shadow: inset 0 0 0 3px #fff;
+  }
+
+  .bps-subscribe__badge {
+    display: inline-block; margin-bottom: 10px;
+    background: var(--bps-primary); color: #fff;
+    font-family: var(--bps-sans); font-size: 11px; font-weight: 800;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+  }
+
+  .bps-purchase-option__top {
+    display: flex; justify-content: space-between; align-items: flex-start; padding-right: 28px;
+  }
+  .bps-purchase-option__title {
+    font-family: var(--bps-sans); font-weight: 800; font-size: 16px;
+    color: var(--bps-text); margin-bottom: 2px;
+  }
+  .bps-subscribe__freq { font-family: var(--bps-sans); font-size: 13px; color: var(--bps-text-muted); }
+  .bps-purchase-option__pricing { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+  .bps-price-was { font-family: var(--bps-sans); font-size: 14px; color: #aaa; text-decoration: line-through; }
+  .bps-price-now { font-family: var(--bps-sans); font-size: 18px; font-weight: 800; color: var(--bps-text); }
+  .bps-price-unit { font-family: var(--bps-sans); font-size: 13px; color: var(--bps-text-muted); }
+
+  .bps-perks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; margin-top: 14px; }
+  .bps-perk {
+    display: flex; align-items: flex-start; gap: 6px;
+    font-family: var(--bps-sans); font-size: 12px; color: #333; line-height: 1.35;
+  }
+  .bps-perk__icon { color: var(--bps-success); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+
+  /* ---------- ATC BUTTON ---------- */
+  .bps-atc-wrap { display: flex; flex-direction: column; gap: 12px; }
+
+  .bps-btn-atc {
+    font-family: var(--bps-sans);
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    width: 100%; padding: 18px 24px;
+    background: var(--bps-primary); color: #fff;
+    border: none; border-radius: 10px;
+    font-size: 17px; font-weight: 800; cursor: pointer;
+    transition: background 0.2s, transform 0.1s; letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .bps-btn-atc:disabled { opacity: 0.4; cursor: not-allowed; }
+  .bps-btn-atc:not(:disabled):hover { background: var(--bps-primary-hover); }
+  .bps-btn-atc:not(:disabled):active { transform: scale(0.98); }
+
+  .bps-btn-atc__prices {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--bps-sans); font-size: 15px;
+  }
+  .bps-btn-atc__was { text-decoration: line-through; opacity: 0.6; font-weight: 400; }
+  .bps-btn-atc__now { font-weight: 800; }
+
+  /* ---------- TRUST BADGES ---------- */
+  .bps-trust-badges {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+  }
+  .bps-badge-block {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    background: var(--bps-primary-bg);
+    border-radius: 6px;
+    flex: 1;
+    justify-content: center;
+    font-family: var(--bps-sans);
+  }
+  .bps-badge-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: #333;
+  }
+  .bps-badge-text {
+    font-size: 12px;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  @media (max-width: 480px) {
+    .bps-badge-text { font-size: 11px; }
+    .bps-badge-block { padding: 8px 10px; }
+  }
+
+  /* ---------- SHOPSUITE TRUST BADGES ---------- */
+  #ss-trust-badges {
+    width: 100%;
+  }
+
+  /* ---------- HIDE UPCART REWARDS BANNER (B variant only) ---------- */
+  /* This <style> block only loads on the bundle template, so these rules
+     apply exclusively to the B variant PDP — A variant keeps the banner. */
+  .upcart-internal-rewards,
+  .upcart-public-rewards,
+  .upcart-internal-rewards__message,
+  .upcart-public-rewards__message,
+  .upcart-internal-rewards__bar,
+  .upcart-public-rewards__bar,
+  [data-upcart-chunk="rewards-message"],
+  .upcart-internal-component-segmented-progress-bar,
+  .upcart-public-component-segmented-progress-bar {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .bps-guarantee {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-family: var(--bps-sans); font-size: 13px; color: #444; line-height: 1.5;
+  }
+  .bps-guarantee__icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    border: 2px solid var(--bps-primary); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--bps-primary); font-size: 18px;
+  }
+  .bps-guarantee__text strong { font-family: var(--bps-sans); font-weight: 800; color: var(--bps-text); }
+
+  /* ---------- INFO TABS (Description, Ingredients, How to use) ---------- */
+  .bps-info-tabs {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #eee;
+  }
+  .bps-info-tab {
+    border-bottom: 1px solid #eee;
+  }
+  .bps-info-tab__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--bps-sans);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--bps-text);
+    text-align: left;
+  }
+  .bps-info-tab__icon {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--bps-text);
+    transition: transform 0.25s ease;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .bps-info-tab.is-open .bps-info-tab__icon {
+    transform: rotate(45deg);
+  }
+  .bps-info-tab__body {
+    display: none;
+    padding: 0 4px 18px;
+    font-family: var(--bps-sans);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+  }
+  .bps-info-tab.is-open .bps-info-tab__body {
+    display: block;
+  }
+  .bps-info-tab__body strong, .bps-info-tab__body b {
+    color: var(--bps-primary);
+  }
+  .bps-info-tab__body p { margin-bottom: 10px; }
+  .bps-info-tab__body p:last-child { margin-bottom: 0; }
+  .bps-info-tab__body ul, .bps-info-tab__body ol {
+    margin: 0 0 10px 20px;
+  }
+
+  /* ---------- NUTRITION ACCORDION ---------- */
+  .bps-nutrition {
+    border: 1.5px solid var(--bps-border); border-radius: var(--bps-radius);
+    overflow: hidden; background: var(--bps-surface);
+  }
+  .bps-nutrition__header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 18px; cursor: pointer; user-select: none;
+    background: var(--bps-surface); border: none; width: 100%; text-align: left;
+  }
+  .bps-nutrition__header-left {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--bps-sans); font-weight: 700; font-size: 15px; color: var(--bps-text);
+  }
+  .bps-nutrition__header-left svg { color: var(--bps-text-muted); flex-shrink: 0; }
+  .bps-nutrition__chevron { transition: transform 0.25s ease; color: var(--bps-text-muted); }
+  .bps-nutrition.is-open .bps-nutrition__chevron { transform: rotate(180deg); }
+  .bps-nutrition__body { display: none; padding: 0 18px 18px; }
+  .bps-nutrition.is-open .bps-nutrition__body { display: block; }
+
+  .bps-flavor-select { position: relative; margin-bottom: 20px; }
+  .bps-flavor-select__btn {
+    font-family: var(--bps-sans); display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 12px 16px; border: 1.5px solid var(--bps-primary);
+    border-radius: var(--bps-radius-sm); background: var(--bps-surface);
+    font-size: 14px; font-weight: 600; color: var(--bps-text); cursor: pointer; text-align: left;
+  }
+  .bps-flavor-select__chevron { transition: transform 0.2s; color: var(--bps-text-muted); flex-shrink: 0; }
+  .bps-flavor-select.is-open .bps-flavor-select__chevron { transform: rotate(180deg); }
+  .bps-flavor-select__dropdown {
+    display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+    background: var(--bps-surface); border: 1.5px solid var(--bps-border);
+    border-radius: var(--bps-radius-sm); z-index: 10;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1); max-height: 280px; overflow-y: auto;
+  }
+  .bps-flavor-select.is-open .bps-flavor-select__dropdown { display: block; }
+  .bps-flavor-option {
+    display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+    cursor: pointer; transition: background 0.15s; border: none; background: none; width: 100%; text-align: left;
+  }
+  .bps-flavor-option:hover { background: var(--bps-primary-bg); }
+  .bps-flavor-option.is-selected { background: var(--bps-primary-bg); }
+  .bps-flavor-option__img { width: 44px; height: 44px; border-radius: 6px; object-fit: cover; flex-shrink: 0; background: var(--bps-gallery-bg); }
+  .bps-flavor-option__name { font-family: var(--bps-sans); font-size: 14px; font-weight: 600; color: var(--bps-text); line-height: 1.3; }
+
+  .bps-flavor-selected-label {
+    font-family: var(--bps-sans); display: inline-block; padding: 10px 16px;
+    background: #fff3e0; border: 1.5px solid #f0a500; border-radius: var(--bps-radius-sm);
+    font-size: 14px; font-weight: 700; color: var(--bps-text); margin-bottom: 16px; width: 100%;
+  }
+  .bps-nutrition__panels > div { display: none; }
+  .bps-nutrition__panels > div.is-active { display: block; }
+  .bps-nutrition__img { display: block; max-width: 260px; margin: 0 auto 16px; border-radius: 8px; }
+  .bps-nutrition__ingredients { font-family: var(--bps-sans); font-size: 13px; line-height: 1.6; color: #333; }
+  .bps-nutrition__ingredients strong { font-family: var(--bps-sans); font-weight: 700; color: var(--bps-text); }
+
+  /* ---------- STICKY ATC BAR (desktop top, mobile bottom) ---------- */
+  /* Hardcoded colors — sticky bar is OUTSIDE .bps-section so CSS vars don't cascade */
+  .bps-sticky-atc {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    background: #ffffff;
+    border-bottom: 1px solid #e8e3da;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    padding: 10px 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    transform: translateY(-120%);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: #1a1a1a;
+  }
+  .bps-sticky-atc.is-visible {
+    transform: translateY(0);
+  }
+
+  /* Desktop: top */
+  @media (min-width: 861px) {
+    .bps-sticky-atc {
+      top: 0;
+    }
+  }
+
+  /* Mobile: bottom */
+  @media (max-width: 860px) {
+    .bps-sticky-atc {
+      top: auto;
+      bottom: 0;
+      padding: 10px 14px;
+      padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+      border-bottom: none;
+      border-top: 1px solid #e8e3da;
+      box-shadow: 0 -4px 18px rgba(0,0,0,0.08);
+      transform: translateY(120%);
+    }
+    .bps-sticky-atc.is-visible {
+      transform: translateY(0);
+    }
+  }
+
+  .bps-sticky-atc__info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+    max-width: 520px;
+  }
+
+  .bps-sticky-atc__img {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    background: #faf6ef;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .bps-sticky-atc__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .bps-sticky-atc__title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bps-sticky-atc__pricing {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1;
+  }
+  .bps-sticky-atc__was {
+    color: #aaa;
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+  .bps-sticky-atc__now {
+    color: #1a1a1a;
+    font-weight: 800;
+  }
+  .bps-sticky-atc__empty {
+    color: #666;
+    font-size: 12px;
+    font-style: italic;
+  }
+
+  .bps-sticky-atc__btn {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #C1633F !important;
+    color: #ffffff !important;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 26px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.1s, opacity 0.2s;
+    min-width: 140px;
+    text-align: center;
+    line-height: 1;
+  }
+  .bps-sticky-atc__btn:not(:disabled):hover {
+    background: #A85432 !important;
+  }
+  .bps-sticky-atc__btn:not(:disabled):active {
+    transform: scale(0.97);
+  }
+  .bps-sticky-atc__btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #C1633F !important;
+    color: #ffffff !important;
+  }
+  .bps-sticky-atc__btn span {
+    color: #ffffff !important;
+  }
+
+  @media (max-width: 860px) {
+    .bps-sticky-atc { gap: 10px; }
+    .bps-sticky-atc__img { width: 40px; height: 40px; }
+    .bps-sticky-atc__title { font-size: 13px; }
+    .bps-sticky-atc__pricing { font-size: 12px; }
+    .bps-sticky-atc__btn { padding: 12px 18px; font-size: 13px; min-width: 120px; }
+  }
+
+  @media (max-width: 480px) {
+    .bps-sticky-atc__img { display: none; }
+    .bps-sticky-atc__btn { padding: 12px 14px; min-width: 110px; }
+  }
+</style>
+
+<section class="bps-section" data-section-id="{{ section.id }}">
+  <div class="bps-inner">
+
+    <!-- CONTENT TOP -->
+    <div class="bps-content-top">
+
+      {%- if section.settings.show_rating -%}
+        <div class="bps-rating" id="bps-scroll-to-reviews">
+          <span class="bps-rating__stars" aria-label="{{ section.settings.rating_score }} out of 5 stars">
+            {%- assign full_stars = section.settings.rating_score | floor -%}
+            {%- assign half_position = full_stars | plus: 1 -%}
+            {%- assign has_half = false -%}
+            {%- assign decimal = section.settings.rating_score | minus: full_stars -%}
+            {%- if decimal >= 0.25 and decimal < 0.75 -%}{%- assign has_half = true -%}{%- endif -%}
+            {%- for i in (1..5) -%}
+              {%- if i <= full_stars -%}<span class="bps-star">★</span>
+              {%- elsif i == half_position and has_half -%}<span class="bps-star bps-star--half">★</span>
+              {%- else -%}<span class="bps-star bps-star--empty">★</span>
+              {%- endif -%}
+            {%- endfor -%}
+          </span>
+          <span class="bps-rating__text" id="bps-rating-text">
+            {{ section.settings.rating_count }}+ feel the benefits monthly
+          </span>
+        </div>
+      {%- endif -%}
+
+      <h1 class="bps-product-title">
+        {{ section.settings.product_title | default: product.title }}
+      </h1>
+
+      {%- if section.settings.show_tags and product.tags.size > 0 -%}
+        <div class="bps-tags">
+          {%- for tag in product.tags -%}<span class="bps-tag">{{ tag }}</span>{%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.short_description != blank -%}
+        <div class="bps-description" style="grid-column:unset;grid-row:unset;">
+          {{ section.settings.short_description }}
+        </div>
+      {%- endif -%}
+
+      <!-- LIMITED STOCK + DELIVERY INFO -->
+      <div class="bps-info-section">
+        {%- if section.settings.show_limited_stock -%}
+          <div class="bps-almost-sold-out">
+            <div class="bps-pulse-dot"></div>
+            <span>{{ section.settings.limited_stock_text | default: 'Limited Stock Remaining' }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_bought_count -%}
+          <div class="bps-product-stats">
+            This product was bought <strong>{{ final_number }}</strong> times this week
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_delivery_date -%}
+          <div class="bps-delivery-info">
+            <svg class="bps-delivery-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2"></path>
+            </svg>
+            <span>
+              Order today, receive
+              {{ "now" | date: "%s" | plus: 432000 | date: "%A, %B %d" }}
+            </span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- SUBSCRIPTION BANNER (spinning repeat icon) -->
+      {%- if section.settings.show_gift_banner -%}
+        <div class="bps-gift-banner">
+          <div class="bps-gift-banner__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 2v6h-6"></path>
+              <path d="M3 22v-6h6"></path>
+              <path d="M21 8a9 9 0 0 0-15-3.36L3 8"></path>
+              <path d="M3 16a9 9 0 0 0 15 3.36L21 16"></path>
+            </svg>
+          </div>
+          <div class="bps-gift-banner__text">
+            {%- if section.settings.gift_banner_title != blank -%}
+              <div class="bps-gift-banner__title">{{ section.settings.gift_banner_title }}</div>
+            {%- endif -%}
+            {%- if section.settings.gift_banner_line_2 != blank -%}
+              {{ section.settings.gift_banner_line_2 }}
+            {%- endif -%}
+            {%- if section.settings.gift_banner_highlight != blank -%}
+              <span class="bps-gift-banner__highlight">{{ section.settings.gift_banner_highlight }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- GALLERY (thumbs left vertical, main right) -->
+    {%- comment -%} Build a list of images to display {%- endcomment -%}
+    {%- assign gallery_image_blocks = section.blocks | where: 'type', 'gallery_image' -%}
+    {%- assign has_main_image = false -%}
+    {%- if section.settings.main_image != blank -%}
+      {%- assign has_main_image = true -%}
+    {%- endif -%}
+
+    {%- comment -%} Count valid gallery block images {%- endcomment -%}
+    {%- assign valid_gallery_blocks = 0 -%}
+    {%- for block in gallery_image_blocks -%}
+      {%- if block.settings.image != blank -%}
+        {%- assign valid_gallery_blocks = valid_gallery_blocks | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- comment -%} Determine if we have extra images beyond the main {%- endcomment -%}
+    {%- assign use_product_images = false -%}
+    {%- if valid_gallery_blocks == 0 and product.images.size > 1 -%}
+      {%- assign use_product_images = true -%}
+    {%- endif -%}
+
+    {%- assign total_thumbs = 0 -%}
+    {%- if has_main_image or product.featured_image -%}
+      {%- assign total_thumbs = 1 -%}
+    {%- endif -%}
+    {%- assign total_thumbs = total_thumbs | plus: valid_gallery_blocks -%}
+    {%- if use_product_images -%}
+      {%- assign total_thumbs = product.images.size -%}
+    {%- endif -%}
+
+    <div class="bps-gallery{% if total_thumbs <= 1 %} bps-gallery--single{% endif %}">
+
+      {%- if total_thumbs > 1 -%}
+        <div class="bps-gallery__thumbs--vertical">
+          {%- if has_main_image -%}
+            <button type="button" class="bps-gallery__thumb is-active"
+              data-img="{{ section.settings.main_image | img_url: '800x' }}">
+              <img src="{{ section.settings.main_image | img_url: '160x160' }}" alt="{{ section.settings.product_title | escape }}" width="160" height="160" loading="lazy">
+            </button>
+          {%- elsif product.featured_image and use_product_images == false -%}
+            <button type="button" class="bps-gallery__thumb is-active"
+              data-img="{{ product.featured_image | image_url: width: 800 }}">
+              <img src="{{ product.featured_image | image_url: width: 160 }}" alt="{{ product.title | escape }}" width="160" height="160" loading="lazy">
+            </button>
+          {%- endif -%}
+
+          {%- if use_product_images -%}
+            {%- for img in product.images -%}
+              <button type="button" class="bps-gallery__thumb{% if forloop.first %} is-active{% endif %}"
+                data-img="{{ img | image_url: width: 800 }}">
+                <img src="{{ img | image_url: width: 160 }}" alt="{{ img.alt | escape }}" width="160" height="160" loading="lazy">
+              </button>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'gallery_image' and block.settings.image != blank -%}
+                <button type="button" class="bps-gallery__thumb"
+                  data-img="{{ block.settings.image | img_url: '800x' }}"
+                  {{ block.shopify_attributes }}>
+                  <img src="{{ block.settings.image | img_url: '160x160' }}" alt="{{ block.settings.image.alt | escape }}" width="160" height="160" loading="lazy">
+                </button>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="bps-gallery__main">
+        {%- if has_main_image -%}
+          <img id="bps-main-img" src="{{ section.settings.main_image | img_url: '800x' }}" alt="{{ section.settings.product_title | escape }}" width="800" height="800" loading="eager">
+        {%- elsif use_product_images -%}
+          <img id="bps-main-img" src="{{ product.images.first | image_url: width: 800 }}" alt="{{ product.title | escape }}" width="800" height="800" loading="eager">
+        {%- elsif product.featured_image -%}
+          <img id="bps-main-img" src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}" width="800" height="800" loading="eager">
+        {%- else -%}
+          <img id="bps-main-img" src="{{ 'placeholder' | placeholder_svg_tag: 'placeholder-svg' }}" alt="" width="800" height="800">
+        {%- endif -%}
+
+        <div class="bps-carousel-slides" id="bps-carousel-slides">
+          {%- if has_main_image -%}
+            <div class="bps-carousel-slide">
+              <img src="{{ section.settings.main_image | img_url: '800x' }}" alt="{{ section.settings.product_title | escape }}" width="800" height="800" loading="eager">
+            </div>
+          {%- elsif use_product_images -%}
+            {%- for img in product.images -%}
+              <div class="bps-carousel-slide">
+                <img src="{{ img | image_url: width: 800 }}" alt="{{ img.alt | escape }}" width="800" height="800" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+              </div>
+            {%- endfor -%}
+          {%- elsif product.featured_image -%}
+            <div class="bps-carousel-slide">
+              <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}" width="800" height="800" loading="eager">
+            </div>
+          {%- endif -%}
+          {%- unless use_product_images -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'gallery_image' and block.settings.image != blank -%}
+                <div class="bps-carousel-slide">
+                  <img src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.image.alt | escape }}" width="800" height="800" loading="lazy">
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endunless -%}
+        </div>
+
+        <button class="bps-carousel-prev" id="bps-carousel-prev" type="button" aria-label="Previous photo">&#8249;</button>
+        <button class="bps-carousel-next" id="bps-carousel-next" type="button" aria-label="Next photo">&#8250;</button>
+      </div>
+
+      <div class="bps-carousel-dots" id="bps-carousel-dots"></div>
+    </div>
+
+    <!-- DESCRIPTION (hidden if moved to content-top) -->
+    <div class="bps-description" style="display:none;"></div>
+
+    <!-- CONTENT BOTTOM -->
+    <div class="bps-content-bottom">
+
+      <!-- APP BLOCKS (Recharge etc.) -->
+      {%- for block in section.blocks -%}
+        {%- if block.type == '@app' -%}
+          {% render block %}
+        {%- endif -%}
+      {%- endfor -%}
+
+      <!-- BUNDLE BUILDER -->
+      <div id="bps-builder">
+        <p class="bps-bundle__label">{{ section.settings.bundle_label | default: 'Build your bundle:' }}</p>
+
+        {%- if section.settings.enable_discount -%}
+          <div class="bps-slider-tiers">
+            {%- if section.settings.best_deal_badge != blank -%}
+              <div class="bps-best-deal">{{ section.settings.best_deal_badge }}</div>
+            {%- endif -%}
+            <div class="bps-slider-labels">
+              <span>1 item</span><span>2 items</span><span>3 items</span><span>4+ items</span>
+            </div>
+            <div class="bps-slider-track">
+              <div class="bps-slider-fill"></div>
+              <div class="bps-slider-dot is-active" data-index="0"></div>
+              <div class="bps-slider-dot" data-index="1"></div>
+              <div class="bps-slider-dot" data-index="2"></div>
+              <div class="bps-slider-dot" data-index="3"></div>
+            </div>
+            <div class="bps-slider-prices">
+              <span id="bps-tier-price-1">—</span>
+              <span id="bps-tier-price-2">—</span>
+              <span id="bps-tier-price-3">—</span>
+              <span id="bps-tier-price-4">—</span>
+            </div>
+          </div>
+        {%- endif -%}
+
+        <div class="bps-items">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'bundle_item' -%}
+              {%- assign bp = all_products[block.settings.product] -%}
+              {%- if bp != blank -%}
+                {%- assign resolved_vid = bp.variants.first.id -%}
+                {%- assign bp_available = false -%}
+                {%- for variant in bp.variants -%}
+                  {%- if variant.available -%}
+                    {%- assign bp_available = true -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                <div class="bps-item{% unless bp_available %} is-out-of-stock{% endunless %}"
+                  data-variant-id="{{ resolved_vid }}"
+                  data-price="{{ bp.price }}"
+                  data-available="{{ bp_available }}"
+                  data-selling-plan="{{ block.settings.selling_plan_id }}"
+                  {{ block.shopify_attributes }}>
+                  <div class="bps-item__img">
+                    {%- if block.settings.item_image != blank -%}
+                      <img src="{{ block.settings.item_image | img_url: '130x130' }}" alt="{{ bp.title | escape }}" width="130" height="130" loading="lazy">
+                    {%- elsif bp.featured_image -%}
+                      <img src="{{ bp.featured_image | image_url: width: 130 }}" alt="{{ bp.featured_image.alt | escape }}" width="130" height="130" loading="lazy">
+                    {%- endif -%}
+                  </div>
+                  <div class="bps-item__info">
+                    <p class="bps-item__name">{{ bp.title }}</p>
+                    <p class="bps-item__desc">
+                      {%- if block.settings.item_description != blank -%}{{ block.settings.item_description }}
+                      {%- else -%}{{ bp.description | strip_html | truncatewords: 12 }}
+                      {%- endif -%}
+                    </p>
+                    <p class="bps-item__price">{{ bp.price | money }}</p>
+                  </div>
+                  <div class="bps-item__action">
+                    {%- if bp_available -%}
+                      <button class="bps-btn-add" type="button">Add +</button>
+                      <div class="bps-qty" style="display:none;">
+                        <button class="bps-qty__btn bps-qty--minus" type="button">−</button>
+                        <span class="bps-qty__val">1</span>
+                        <button class="bps-qty__btn bps-qty--plus" type="button">+</button>
+                      </div>
+                    {%- else -%}
+                      <button class="bps-btn-add is-oos" type="button" disabled>Out of stock</button>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div class="bps-summary" id="bps-summary" style="display:none;">
+          <div class="bps-summary__row bps-summary__row--discount" id="bps-discount-row" style="display:none;">
+            <span>Bundle discount:</span>
+            <span id="bps-discount-pct">-0%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PURCHASE OPTIONS -->
+      <div class="bps-purchase">
+        <div class="bps-purchase-options">
+
+          {%- if section.settings.enable_subscription -%}
+          <button class="bps-purchase-option is-selected" id="bps-opt-sub" type="button" data-mode="subscribe">
+            <div class="bps-purchase-option__radio"></div>
+            {%- if section.settings.subscribe_badge != blank -%}
+              <span class="bps-subscribe__badge">{{ section.settings.subscribe_badge }}</span>
+            {%- endif -%}
+            <div class="bps-purchase-option__top">
+              <div>
+                <p class="bps-purchase-option__title">Subscribe &amp; Save</p>
+                <p class="bps-subscribe__freq">
+                  Every {{ section.settings.subscription_interval_count | default: 45 }}
+                  {{ section.settings.subscription_interval | default: 'days' }}
+                </p>
+              </div>
+              <div class="bps-purchase-option__pricing">
+                <span class="bps-price-was" id="bps-sub-was"></span>
+                <span class="bps-price-now" id="bps-sub-now">—</span>
+                <span class="bps-price-unit">/ea</span>
+              </div>
+            </div>
+            <div class="bps-perks">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'subscription_perk' -%}
+                  <span class="bps-perk" {{ block.shopify_attributes }}>
+                    <span class="bps-perk__icon">✓</span>
+                    <span>{{ block.settings.perk_text }}</span>
+                  </span>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </button>
+          {%- endif -%}
+
+          <button class="bps-purchase-option{% unless section.settings.enable_subscription %} is-selected{% endunless %}" id="bps-opt-onetime" type="button" data-mode="onetime">
+            <div class="bps-purchase-option__radio"></div>
+            <div class="bps-purchase-option__top">
+              <div>
+                <p class="bps-purchase-option__title">One-time Purchase</p>
+              </div>
+              <div class="bps-purchase-option__pricing">
+                <span class="bps-price-now" id="bps-onetime-price">—</span>
+                <span class="bps-price-unit">/ea</span>
+              </div>
+            </div>
+          </button>
+
+        </div>
+
+        <div class="bps-atc-wrap">
+          <button class="bps-btn-atc" id="bps-btn-atc" type="button" disabled>
+            <span id="bps-atc-label">{{ section.settings.atc_button_label | default: 'Add to Cart' }}</span>
+            <span class="bps-btn-atc__prices">
+              <span class="bps-btn-atc__was" id="bps-atc-was"></span>
+              <span class="bps-btn-atc__now" id="bps-atc-now"></span>
+            </span>
+          </button>
+
+          {%- if section.settings.show_trust_badges -%}
+            <div class="bps-trust-badges">
+              <div class="bps-badge-block">
+                <svg class="bps-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="1" y="6" width="14" height="10" rx="1"/>
+                  <path d="M15 12h7l-2-3h-5v12"/>
+                  <circle cx="5" cy="18" r="1"/>
+                  <circle cx="19" cy="18" r="1"/>
+                </svg>
+                <span class="bps-badge-text">{{ section.settings.badge_text_1 | default: 'Free Shipping' }}</span>
+              </div>
+              <div class="bps-badge-block">
+                <svg class="bps-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  <polyline points="12 8 12 12 14 14"/>
+                </svg>
+                <span class="bps-badge-text">{{ section.settings.badge_text_2 | default: 'Money Back Guarantee' }}</span>
+              </div>
+            </div>
+
+            <!-- ShopSuite trust badges (app container) -->
+            <div id='ss-trust-badges'></div>
+          {%- endif -%}
+
+          {%- if section.settings.guarantee_text != blank -%}
+            <div class="bps-guarantee">
+              <div class="bps-guarantee__icon">✓</div>
+              <p class="bps-guarantee__text">{{ section.settings.guarantee_text }}</p>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- INFO TABS (Description, Ingredients, How to use) -->
+      {%- assign info_tab_blocks = section.blocks | where: 'type', 'info_tab' -%}
+      {%- if info_tab_blocks.size > 0 -%}
+        <div class="bps-info-tabs">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'info_tab' -%}
+              <div class="bps-info-tab{% if block.settings.open_by_default %} is-open{% endif %}" {{ block.shopify_attributes }}>
+                <button class="bps-info-tab__header" type="button">
+                  <span>{{ block.settings.tab_title }}</span>
+                  <span class="bps-info-tab__icon">+</span>
+                </button>
+                <div class="bps-info-tab__body">
+                  {{ block.settings.tab_content }}
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <!-- NUTRITION ACCORDION -->
+      {%- assign nutri_blocks = section.blocks | where: 'type', 'nutrition_flavor' -%}
+      {%- if nutri_blocks.size > 0 -%}
+        <div class="bps-nutrition" id="bps-nutrition">
+          <button class="bps-nutrition__header" type="button" id="bps-nutrition-toggle">
+            <span class="bps-nutrition__header-left">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+              </svg>
+              Nutritional Information
+            </span>
+            <svg class="bps-nutrition__chevron" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="bps-nutrition__body">
+            <div class="bps-flavor-select" id="bps-flavor-select">
+              <button class="bps-flavor-select__btn" type="button" id="bps-flavor-btn">
+                <span id="bps-flavor-label">Select Flavor</span>
+                <svg class="bps-flavor-select__chevron" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              <div class="bps-flavor-select__dropdown" id="bps-flavor-dropdown">
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'nutrition_flavor' -%}
+                    <button class="bps-flavor-option{% if forloop.first %} is-selected{% endif %}" type="button"
+                      data-flavor-index="{{ forloop.index0 }}"
+                      data-flavor-name="{{ block.settings.flavor_name | escape }}"
+                      {{ block.shopify_attributes }}>
+                      {%- if block.settings.flavor_thumb != blank -%}
+                        <img class="bps-flavor-option__img" src="{{ block.settings.flavor_thumb | img_url: '88x88' }}" alt="{{ block.settings.flavor_name | escape }}" width="44" height="44">
+                      {%- endif -%}
+                      <span class="bps-flavor-option__name">{{ block.settings.flavor_name }}</span>
+                    </button>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+            <div class="bps-nutrition__panels">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'nutrition_flavor' -%}
+                  <div class="bps-nutrition__panel{% if forloop.first %} is-active{% endif %}" data-panel-index="{{ forloop.index0 }}">
+                    <div class="bps-flavor-selected-label">Flavor: {{ block.settings.flavor_name }}</div>
+                    {%- if block.settings.nutrition_image != blank -%}
+                      <img class="bps-nutrition__img" src="{{ block.settings.nutrition_image | img_url: '520x' }}" alt="Nutrition facts {{ block.settings.flavor_name | escape }}" loading="lazy">
+                    {%- endif -%}
+                    {%- if block.settings.ingredients != blank -%}
+                      <p class="bps-nutrition__ingredients"><strong>Ingredients:</strong> {{ block.settings.ingredients }}</p>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+<!-- STICKY ATC BAR (appears when main ATC is out of viewport) -->
+<div class="bps-sticky-atc" id="bps-sticky-atc" role="region" aria-label="Add to cart">
+  <div class="bps-sticky-atc__info">
+    {%- if section.settings.main_image != blank -%}
+      <img class="bps-sticky-atc__img" src="{{ section.settings.main_image | img_url: '88x88' }}" alt="{{ section.settings.product_title | escape }}" width="44" height="44" loading="lazy">
+    {%- elsif product.featured_image -%}
+      <img class="bps-sticky-atc__img" src="{{ product.featured_image | image_url: width: 88 }}" alt="{{ product.title | escape }}" width="44" height="44" loading="lazy">
+    {%- endif -%}
+    <div class="bps-sticky-atc__text">
+      <div class="bps-sticky-atc__title">{{ section.settings.product_title | default: product.title }}</div>
+      <div class="bps-sticky-atc__pricing" id="bps-sticky-pricing">
+        <span class="bps-sticky-atc__empty" id="bps-sticky-empty">Select items to start</span>
+        <span class="bps-sticky-atc__was" id="bps-sticky-was" style="display:none;"></span>
+        <span class="bps-sticky-atc__now" id="bps-sticky-now" style="display:none;"></span>
+      </div>
+    </div>
+  </div>
+  <button class="bps-sticky-atc__btn" id="bps-sticky-btn" type="button" disabled>
+    <span id="bps-sticky-label">{{ section.settings.atc_button_label | default: 'Add to Cart' }}</span>
+  </button>
+</div>
+
+<script>
+  window.bpsMoneyFormat = {{ shop.money_format | json }};
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  var DISCOUNT_2   = {{ section.settings.discount_tier_2 | default: 10 }};
+  var DISCOUNT_3   = {{ section.settings.discount_tier_3 | default: 15 }};
+  var DISCOUNT_4   = {{ section.settings.discount_tier_4 | default: 20 }};
+  var SUB_DISCOUNT = {{ section.settings.subscription_discount | default: 10 }};
+  var SUB_ENABLED  = {{ section.settings.enable_subscription | json }};
+
+  var purchaseMode = SUB_ENABLED ? 'subscribe' : 'onetime';
+  var bundle = {};
+
+  var elSummary      = document.getElementById('bps-summary');
+  var elDiscRow      = document.getElementById('bps-discount-row');
+  var elDiscPct      = document.getElementById('bps-discount-pct');
+  var elSubWas       = document.getElementById('bps-sub-was');
+  var elSubNow       = document.getElementById('bps-sub-now');
+  var elOnetimePrice = document.getElementById('bps-onetime-price');
+  var elAtcWas       = document.getElementById('bps-atc-was');
+  var elAtcNow       = document.getElementById('bps-atc-now');
+  var elAtcLabel     = document.getElementById('bps-atc-label');
+  var btnAtc         = document.getElementById('bps-btn-atc');
+  var btnOptSub      = document.getElementById('bps-opt-sub');
+  var btnOptOnetime  = document.getElementById('bps-opt-onetime');
+  var elTierPrice1   = document.getElementById('bps-tier-price-1');
+  var elTierPrice2   = document.getElementById('bps-tier-price-2');
+  var elTierPrice3   = document.getElementById('bps-tier-price-3');
+  var elTierPrice4   = document.getElementById('bps-tier-price-4');
+  var sliderDots     = document.querySelectorAll('.bps-slider-dot');
+  var sliderLabels   = document.querySelectorAll('.bps-slider-labels span');
+  var sliderPrices   = document.querySelectorAll('.bps-slider-prices span');
+  var sliderFill     = document.querySelector('.bps-slider-fill');
+
+  /* Sticky ATC bar refs */
+  var stickyBar      = document.getElementById('bps-sticky-atc');
+  var stickyBtn      = document.getElementById('bps-sticky-btn');
+  var stickyLabel    = document.getElementById('bps-sticky-label');
+  var stickyEmpty    = document.getElementById('bps-sticky-empty');
+  var stickyWas      = document.getElementById('bps-sticky-was');
+  var stickyNow      = document.getElementById('bps-sticky-now');
+
+  /* ---------- RATING: seeded random count + scroll to reviews ---------- */
+  (function () {
+    var min = 17000;
+    var max = 35000;
+    var url = window.location.pathname;
+    function hashString(str) {
+      var hash = 0;
+      for (var i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return Math.abs(hash);
+    }
+    var base = Math.floor((hashString(url) % (max - min + 1)) + min);
+    var lastDigit = base % 10;
+    if (lastDigit === 0 || lastDigit === 5) {
+      base = base + 1 <= max ? base + 1 : base - 1;
+    }
+    var textEl = document.getElementById('bps-rating-text');
+    if (textEl) {
+      textEl.textContent = base.toLocaleString() + '+ feel the benefits monthly';
+    }
+    var trigger = document.getElementById('bps-scroll-to-reviews');
+    var reviewsSection = document.querySelector('#shopify-block-AUURVMUlseVpmVUNIR__okendo_reviews_widget_kW3zJT');
+    if (trigger && reviewsSection) {
+      trigger.addEventListener('click', function () {
+        reviewsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  })();
+
+  function money(cents) {
+    var format = window.bpsMoneyFormat || '${% raw %}{{amount}}{% endraw %}';
+    var amount = (cents / 100).toFixed(2);
+    return format.replace('{' + '{amount}' + '}', amount)
+                 .replace('{' + '{amount_no_decimals}' + '}', Math.round(cents / 100))
+                 .replace('{' + '{amount_with_comma_separator}' + '}', amount.replace('.', ','))
+                 .replace('{' + '{amount_no_decimals_with_comma_separator}' + '}', String(Math.round(cents / 100)));
+  }
+
+  function totalQty() {
+    return Object.values(bundle).reduce(function (s, i) { return s + i.qty; }, 0);
+  }
+
+  function totalPrice() {
+    return Object.values(bundle).reduce(function (s, i) { return s + i.price * i.qty; }, 0);
+  }
+
+  function discountPct(qty) {
+    if (qty >= 4) return DISCOUNT_4;
+    if (qty >= 3) return DISCOUNT_3;
+    if (qty >= 2) return DISCOUNT_2;
+    return 0;
+  }
+
+  function baseUnitPrice() {
+    var qty = totalQty();
+    if (qty > 0) return Math.round(totalPrice() / qty);
+    var firstItem = document.querySelector('.bps-item:not(.is-out-of-stock)');
+    return firstItem ? parseInt(firstItem.dataset.price) : 0;
+  }
+
+  function initTierPrices() {
+    var firstItem = document.querySelector('.bps-item:not(.is-out-of-stock)');
+    if (!firstItem) return;
+    var base = parseInt(firstItem.dataset.price);
+    if (!base) return;
+    if (elTierPrice1) elTierPrice1.textContent = money(base) + '/ea';
+    if (elTierPrice2) elTierPrice2.textContent = money(Math.round(base * (1 - DISCOUNT_2 / 100))) + '/ea';
+    if (elTierPrice3) elTierPrice3.textContent = money(Math.round(base * (1 - DISCOUNT_3 / 100))) + '/ea';
+    if (elTierPrice4) elTierPrice4.textContent = money(Math.round(base * (1 - DISCOUNT_4 / 100))) + '/ea';
+  }
+
+  function updateSlider(qty) {
+    var index = qty >= 4 ? 3 : qty >= 3 ? 2 : qty >= 2 ? 1 : 0;
+    var fillPct = [0, 33.3, 66.6, 100];
+    if (sliderFill) sliderFill.style.width = fillPct[index] + '%';
+    sliderDots.forEach(function (dot, i) {
+      dot.classList.toggle('is-active', i === index);
+      dot.classList.toggle('is-passed', i < index);
+    });
+    sliderLabels.forEach(function (lbl, i) { lbl.classList.toggle('is-active', i === index); });
+    sliderPrices.forEach(function (p, i) { p.classList.toggle('is-active', i === index); });
+  }
+
+  function update() {
+    var qty      = totalQty();
+    var raw      = totalPrice();
+    var pct      = discountPct(qty);
+    var unitBase = baseUnitPrice();
+    var unitOTP  = qty > 0 ? Math.round(unitBase * (1 - pct / 100)) : unitBase;
+    var unitSub  = Math.round(unitOTP * (1 - SUB_DISCOUNT / 100));
+    var totalOTP = Math.round(raw * (1 - pct / 100));
+    var totalSub = Math.round(totalOTP * (1 - SUB_DISCOUNT / 100));
+
+    elSummary.style.display = (qty > 0 && pct > 0) ? '' : 'none';
+    if (pct > 0) {
+      elDiscRow.style.display = '';
+      elDiscPct.textContent = '-' + pct + '%';
+    } else {
+      elDiscRow.style.display = 'none';
+    }
+
+    if (elSubWas) elSubWas.textContent = qty > 0 ? money(unitOTP) : '';
+    if (elSubNow) elSubNow.textContent = money(unitSub);
+    if (elOnetimePrice) elOnetimePrice.textContent = money(unitOTP);
+
+    if (qty > 0) {
+      if (purchaseMode === 'subscribe') {
+        if (elAtcWas) elAtcWas.textContent = money(raw);
+        if (elAtcNow) elAtcNow.textContent = money(totalSub);
+      } else {
+        if (elAtcWas) elAtcWas.textContent = pct > 0 ? money(raw) : '';
+        if (elAtcNow) elAtcNow.textContent = money(totalOTP);
+      }
+    } else {
+      if (elAtcWas) elAtcWas.textContent = '';
+      if (elAtcNow) elAtcNow.textContent = '';
+    }
+
+    if (elAtcLabel) {
+      elAtcLabel.textContent = purchaseMode === 'subscribe' ? 'Subscribe \u0026 Save' : 'Add to Cart';
+    }
+
+    if (btnAtc) btnAtc.disabled = qty === 0;
+
+    /* ---- Sync sticky ATC bar ---- */
+    if (stickyBtn) stickyBtn.disabled = qty === 0;
+    if (stickyLabel) {
+      stickyLabel.textContent = purchaseMode === 'subscribe' ? 'Subscribe \u0026 Save' : 'Add to Cart';
+    }
+    if (stickyEmpty && stickyWas && stickyNow) {
+      if (qty === 0) {
+        stickyEmpty.style.display = '';
+        stickyWas.style.display = 'none';
+        stickyNow.style.display = 'none';
+      } else {
+        stickyEmpty.style.display = 'none';
+        stickyNow.style.display = '';
+        if (purchaseMode === 'subscribe') {
+          stickyWas.style.display = '';
+          stickyWas.textContent = money(raw);
+          stickyNow.textContent = money(totalSub);
+        } else {
+          if (pct > 0) {
+            stickyWas.style.display = '';
+            stickyWas.textContent = money(raw);
+          } else {
+            stickyWas.style.display = 'none';
+          }
+          stickyNow.textContent = money(totalOTP);
+        }
+      }
+    }
+
+    updateSlider(qty);
+  }
+
+  function selectMode(mode) {
+    purchaseMode = mode;
+    if (btnOptSub)     btnOptSub.classList.toggle('is-selected',     mode === 'subscribe');
+    if (btnOptOnetime) btnOptOnetime.classList.toggle('is-selected', mode === 'onetime');
+    update();
+  }
+
+  if (btnOptSub)     btnOptSub.addEventListener('click',     function () { selectMode('subscribe'); });
+  if (btnOptOnetime) btnOptOnetime.addEventListener('click', function () { selectMode('onetime'); });
+
+  document.querySelectorAll('.bps-item').forEach(function (itemEl) {
+    if (itemEl.dataset.available === 'false') return;
+
+    var vid         = itemEl.dataset.variantId;
+    var price       = parseInt(itemEl.dataset.price);
+    var sellingPlan = itemEl.dataset.sellingPlan || '';
+    var addBtn      = itemEl.querySelector('.bps-btn-add');
+    var qtyEl       = itemEl.querySelector('.bps-qty');
+    var valEl       = itemEl.querySelector('.bps-qty__val');
+    var minBtn      = itemEl.querySelector('.bps-qty--minus');
+    var plusBtn     = itemEl.querySelector('.bps-qty--plus');
+
+    function setQty(n) {
+      if (n <= 0) {
+        delete bundle[vid];
+        addBtn.style.display = '';
+        qtyEl.style.display  = 'none';
+        itemEl.classList.remove('is-selected');
+      } else {
+        bundle[vid] = { qty: n, price: price, sellingPlan: sellingPlan };
+        valEl.textContent    = n;
+        addBtn.style.display = 'none';
+        qtyEl.style.display  = '';
+        itemEl.classList.add('is-selected');
+      }
+      update();
+    }
+
+    addBtn.addEventListener('click', function () { setQty(1); });
+    minBtn.addEventListener('click', function () { setQty((bundle[vid] ? bundle[vid].qty : 0) - 1); });
+    plusBtn.addEventListener('click', function () { setQty((bundle[vid] ? bundle[vid].qty : 0) + 1); });
+  });
+
+  /* ---------- CART DRAWER OPENER ---------- */
+  /* Fetches fresh cart state first, dispatches refresh events for all common
+     drawer systems, THEN opens the drawer — so it never renders "empty". */
+  function refreshAndOpenCartDrawer() {
+    return fetch('/cart.js', { headers: { 'Accept': 'application/json' } })
+      .then(function (r) { return r.json(); })
+      .then(function (cart) {
+
+        /* 1. Broadcast cart update events — each theme/app listens for its own */
+        var updateEvents = [
+          'cart:refresh',
+          'cart:updated',
+          'cart:update',
+          'cart:change',
+          'cart:build',
+          'cart:added',
+          'cart.requestComplete',
+          'theme:cart:added',
+          'theme:cart:change'
+        ];
+        updateEvents.forEach(function (name) {
+          document.dispatchEvent(new CustomEvent(name, {
+            bubbles: true,
+            detail: { cart: cart, data: { itemCount: cart.item_count, source: 'product-form-component' } }
+          }));
+        });
+
+        /* 2. Publish via Shopify's PubSub if available (Dawn / OS 2.0 themes) */
+        if (window.PUB_SUB_EVENTS && window.subscribe) {
+          try { window.PubSubEvent && window.PubSubEvent.publish('cart-update', { cart: cart }); } catch (e) {}
+        }
+        if (window.publish) {
+          try { window.publish('cart-update', { cart: cart }); } catch (e) {}
+        }
+
+        /* 3. Refresh cart sections that use Shopify Section Rendering API */
+        var sectionNames = ['cart-drawer', 'cart-icon-bubble', 'cart-live-region-text'];
+        fetch('/?sections=' + sectionNames.join(','))
+          .then(function (r) { return r.json(); })
+          .catch(function () {})
+          .then(function (sections) {
+            if (sections) {
+              Object.keys(sections).forEach(function (name) {
+                var html = sections[name];
+                var targets = document.querySelectorAll('[id*="' + name + '"], [data-section-type*="' + name + '"]');
+                targets.forEach(function (t) {
+                  try {
+                    var parsed = new DOMParser().parseFromString(html, 'text/html');
+                    var fresh = parsed.querySelector('[id*="' + name + '"], [data-section-type*="' + name + '"]');
+                    if (fresh && t.innerHTML !== undefined) t.innerHTML = fresh.innerHTML;
+                  } catch (e) {}
+                });
+              });
+            }
+            openAnyCartDrawer();
+          });
+      })
+      .catch(function () { openAnyCartDrawer(); });
+  }
+
+  function openAnyCartDrawer() {
+    /* Try every known drawer selector & open method */
+
+    /* Recharge storefront experiences */
+    var rcCart = document.getElementById('recharge-storefront-experiences__cart-drawer');
+    if (rcCart) {
+      document.dispatchEvent(new CustomEvent('recharge:cart:open'));
+      rcCart.setAttribute('open', '');
+      rcCart.style.display = '';
+      var rcOverlay = document.getElementById('recharge-storefront-experiences__cart-overlay');
+      if (rcOverlay) rcOverlay.style.display = '';
+    }
+
+    /* Shopify Dawn / Horizon / OS 2.0 cart-drawer custom element */
+    var customDrawer = document.querySelector('cart-drawer, cart-drawer-component');
+    if (customDrawer) {
+      if (typeof customDrawer.open === 'function') {
+        try { customDrawer.open(); } catch (e) {}
+      } else {
+        customDrawer.open = true;
+        customDrawer.classList.add('active', 'is-open', 'open');
+        customDrawer.removeAttribute('hidden');
+        customDrawer.setAttribute('open', '');
+      }
+    }
+
+    /* Stretch / generic theme: trigger cart icon click (common pattern) */
+    var stretchDrawer = document.querySelector('[class*="CartPreview"], [class*="cart-preview"], [data-cart-drawer], .drawer--cart, #CartDrawer, #cart-drawer');
+    if (stretchDrawer) {
+      stretchDrawer.classList.add('is-open', 'active', 'open', 'drawer--is-open');
+      stretchDrawer.setAttribute('aria-hidden', 'false');
+      stretchDrawer.removeAttribute('hidden');
+    }
+
+    /* Fire generic open events — theme JS may listen for any of these */
+    var openEvents = ['cart:open', 'drawer:open', 'cart-drawer:open', 'cart:toggle', 'cartOpen'];
+    openEvents.forEach(function (name) {
+      document.dispatchEvent(new CustomEvent(name, { bubbles: true }));
+      window.dispatchEvent(new CustomEvent(name, { bubbles: true }));
+    });
+
+    /* Last resort: click a cart-drawer-toggle button if nothing else worked */
+    var toggleBtn = document.querySelector('[data-cart-drawer-toggle], a[href="/cart"][data-drawer-toggle], .js-drawer-open-cart');
+    if (toggleBtn && !customDrawer && !rcCart) {
+      toggleBtn.click();
+    }
+  }
+
+  function addToCart() {
+    var items = Object.keys(bundle).map(function (vid) {
+      var entry = bundle[vid];
+      var item = { id: parseInt(vid), quantity: entry.qty };
+      if (purchaseMode === 'subscribe' && entry.sellingPlan) {
+        item.selling_plan = parseInt(entry.sellingPlan);
+      }
+      return item;
+    });
+    if (!items.length) return;
+
+    var origLabel = elAtcLabel ? elAtcLabel.textContent : 'Add to Cart';
+    if (btnAtc) { btnAtc.disabled = true; if (elAtcLabel) elAtcLabel.textContent = 'Adding...'; }
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ items: items })
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (data.status) {
+        alert(data.description || 'Something went wrong.');
+        if (btnAtc) btnAtc.disabled = false;
+        if (elAtcLabel) elAtcLabel.textContent = origLabel;
+        return;
+      }
+      /* Wait for cart refresh to complete before re-enabling UI */
+      refreshAndOpenCartDrawer().then(function () {
+        if (btnAtc) btnAtc.disabled = false;
+        if (elAtcLabel) elAtcLabel.textContent = origLabel;
+      });
+    })
+    .catch(function () {
+      alert('Something went wrong.');
+      if (btnAtc) btnAtc.disabled = false;
+      if (elAtcLabel) elAtcLabel.textContent = origLabel;
+    });
+  }
+
+  if (btnAtc) btnAtc.addEventListener('click', addToCart);
+
+  /* ---------- STICKY ATC BAR: click handler + visibility ---------- */
+  if (stickyBtn) {
+    stickyBtn.addEventListener('click', addToCart);
+  }
+
+  /* Show sticky bar only when the main ATC button is out of the viewport.
+     Uses IntersectionObserver for efficiency; falls back to scroll on older browsers. */
+  (function () {
+    if (!stickyBar || !btnAtc) return;
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            stickyBar.classList.remove('is-visible');
+          } else {
+            stickyBar.classList.add('is-visible');
+          }
+        });
+      }, {
+        /* Trigger slightly before the button fully leaves the viewport */
+        rootMargin: '-40px 0px -40px 0px',
+        threshold: 0
+      });
+      observer.observe(btnAtc);
+    } else {
+      /* Fallback for older browsers */
+      var checkVisibility = function () {
+        var rect = btnAtc.getBoundingClientRect();
+        var viewHeight = window.innerHeight || document.documentElement.clientHeight;
+        var isVisible = rect.bottom > 40 && rect.top < (viewHeight - 40);
+        stickyBar.classList.toggle('is-visible', !isVisible);
+      };
+      window.addEventListener('scroll', checkVisibility, { passive: true });
+      window.addEventListener('resize', checkVisibility);
+      checkVisibility();
+    }
+  })();
+
+  /* ---------- GALLERY THUMB CLICK HANDLER (desktop) ---------- */
+  (function () {
+    var thumbs = document.querySelectorAll('.bps-gallery__thumb');
+    var mainImg = document.getElementById('bps-main-img');
+    if (!thumbs.length || !mainImg) return;
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        var newSrc = thumb.dataset.img;
+        if (!newSrc) return;
+        mainImg.style.opacity = '0';
+        setTimeout(function () {
+          mainImg.src = newSrc;
+          mainImg.style.opacity = '1';
+        }, 150);
+        thumbs.forEach(function (t) { t.classList.remove('is-active'); });
+        thumb.classList.add('is-active');
+      });
+    });
+  })();
+
+  /* ---------- MOBILE CAROUSEL ---------- */
+  (function () {
+    var slidesWrapper = document.getElementById('bps-carousel-slides');
+    var prevBtn       = document.getElementById('bps-carousel-prev');
+    var nextBtn       = document.getElementById('bps-carousel-next');
+    var dotsContainer = document.getElementById('bps-carousel-dots');
+    if (!slidesWrapper) return;
+    var slides  = slidesWrapper.querySelectorAll('.bps-carousel-slide');
+    var total   = slides.length;
+    var current = 0;
+    if (total === 0) return;
+    slides.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'bps-carousel-dot' + (i === 0 ? ' is-active' : '');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+      dot.addEventListener('click', function () { goTo(i); });
+      dotsContainer.appendChild(dot);
+    });
+    function goTo(index) {
+      current = (index + total) % total;
+      slidesWrapper.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dotsContainer.querySelectorAll('.bps-carousel-dot').forEach(function (d, i) {
+        d.classList.toggle('is-active', i === current);
+      });
+    }
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+    var startX = 0;
+    slidesWrapper.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    slidesWrapper.addEventListener('touchend', function (e) {
+      var diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    }, { passive: true });
+    goTo(0);
+  })();
+
+  /* ---------- INFO TABS (Description, Ingredients, How to use) ---------- */
+  document.querySelectorAll('.bps-info-tab__header').forEach(function (header) {
+    header.addEventListener('click', function () {
+      var tab = header.closest('.bps-info-tab');
+      if (tab) tab.classList.toggle('is-open');
+    });
+  });
+
+  /* ---------- KILL UPCART REWARDS BANNER (B variant only) ---------- */
+  /* UpCart injects the rewards banner asynchronously + potentially inside
+     shadow roots. CSS alone is not always enough, so we also physically
+     remove matching nodes and keep watching for new ones. */
+  (function () {
+    var UPCART_REWARDS_SELECTORS = [
+      '.upcart-internal-rewards',
+      '.upcart-public-rewards',
+      '.upcart-internal-rewards__message',
+      '.upcart-public-rewards__message',
+      '.upcart-internal-rewards__bar',
+      '.upcart-public-rewards__bar',
+      '[data-upcart-chunk="rewards-message"]',
+      '.upcart-internal-component-segmented-progress-bar',
+      '.upcart-public-component-segmented-progress-bar'
+    ];
+    var selectorString = UPCART_REWARDS_SELECTORS.join(',');
+
+    function hideIn(root) {
+      if (!root || !root.querySelectorAll) return;
+      try {
+        root.querySelectorAll(selectorString).forEach(function (el) {
+          if (el && el.parentNode) {
+            el.style.display = 'none';
+            // Physically remove — UpCart may re-inject on open but observer catches it
+            el.parentNode.removeChild(el);
+          }
+        });
+      } catch (e) {}
+    }
+
+    function walkShadow(node) {
+      if (!node) return;
+      if (node.shadowRoot) {
+        hideIn(node.shadowRoot);
+      }
+      if (node.querySelectorAll) {
+        node.querySelectorAll('*').forEach(function (child) {
+          if (child.shadowRoot) hideIn(child.shadowRoot);
+        });
+      }
+    }
+
+    function sweep() {
+      hideIn(document);
+      walkShadow(document.body);
+    }
+
+    // Initial sweeps — UpCart may load at various timing points
+    sweep();
+    setTimeout(sweep, 200);
+    setTimeout(sweep, 800);
+    setTimeout(sweep, 2000);
+    setTimeout(sweep, 4000);
+
+    // Keep watching — UpCart injects/re-injects when drawer opens
+    var observer = new MutationObserver(function () { sweep(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+  })();
+
+  /* ---------- NUTRITION ACCORDION ---------- */
+  var nutriEl     = document.getElementById('bps-nutrition');
+  var nutriToggle = document.getElementById('bps-nutrition-toggle');
+  if (nutriToggle && nutriEl) {
+    nutriToggle.addEventListener('click', function () { nutriEl.classList.toggle('is-open'); });
+  }
+
+  var flavorSelect   = document.getElementById('bps-flavor-select');
+  var flavorBtn      = document.getElementById('bps-flavor-btn');
+  var flavorLabel    = document.getElementById('bps-flavor-label');
+  var flavorDropdown = document.getElementById('bps-flavor-dropdown');
+  var panels         = document.querySelectorAll('.bps-nutrition__panel');
+  if (flavorBtn && flavorSelect) {
+    flavorBtn.addEventListener('click', function (e) { e.stopPropagation(); flavorSelect.classList.toggle('is-open'); });
+    document.addEventListener('click', function () { flavorSelect.classList.remove('is-open'); });
+    if (flavorDropdown) flavorDropdown.addEventListener('click', function (e) { e.stopPropagation(); });
+    document.querySelectorAll('.bps-flavor-option').forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        var idx = parseInt(opt.dataset.flavorIndex);
+        flavorLabel.textContent = opt.dataset.flavorName;
+        flavorSelect.classList.remove('is-open');
+        document.querySelectorAll('.bps-flavor-option').forEach(function (o) { o.classList.remove('is-selected'); });
+        opt.classList.add('is-selected');
+        panels.forEach(function (p) { p.classList.remove('is-active'); });
+        var target = document.querySelector('.bps-nutrition__panel[data-panel-index="' + idx + '"]');
+        if (target) target.classList.add('is-active');
+      });
+    });
+    var firstOpt = document.querySelector('.bps-flavor-option');
+    if (firstOpt && flavorLabel) flavorLabel.textContent = firstOpt.dataset.flavorName || 'Select Flavor';
+  }
+
+  initTierPrices();
+  updateSlider(0);
+  update();
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Bundle Product",
+  "tag": "section",
+  "class": "bundle-product-wrapper",
+  "settings": [
+    { "type": "header", "content": "Image" },
+    { "type": "image_picker", "id": "main_image", "label": "Main image" },
+    { "type": "header", "content": "Product info" },
+    { "type": "text", "id": "product_title", "label": "Product name (leave blank = automatic)" },
+    { "type": "header", "content": "Rating" },
+    { "type": "checkbox", "id": "show_rating", "label": "Show star rating", "default": true },
+    { "type": "range", "id": "rating_score", "min": 1, "max": 5, "step": 0.5, "label": "Average score", "default": 4.5 },
+    { "type": "number", "id": "rating_count", "label": "Base rating count (actual number seeded from URL 17k–35k)", "default": 21598 },
+    { "type": "checkbox", "id": "show_tags", "label": "Show product tags", "default": false },
+    { "type": "header", "content": "Description" },
+    { "type": "richtext", "id": "short_description", "label": "Short description (leave blank = auto from product)" },
+    { "type": "header", "content": "Social proof" },
+    { "type": "checkbox", "id": "show_limited_stock", "label": "Show 'Limited Stock Remaining'", "default": true },
+    { "type": "text", "id": "limited_stock_text", "label": "Limited stock text", "default": "Limited Stock Remaining" },
+    { "type": "checkbox", "id": "show_bought_count", "label": "Show 'bought X times this week'", "default": true },
+    { "type": "checkbox", "id": "show_delivery_date", "label": "Show 'Order today, receive...' date", "default": true },
+    { "type": "header", "content": "Subscription banner" },
+    { "type": "checkbox", "id": "show_gift_banner", "label": "Show subscription banner", "default": true },
+    { "type": "text", "id": "gift_banner_title", "label": "Title (red, bold)", "default": "MOST PEOPLE SUBSCRIBE & SAVE 20%" },
+    { "type": "text", "id": "gift_banner_line_2", "label": "Subtext", "default": "Stay consistent. Never run out. Never lose progress." },
+    { "type": "text", "id": "gift_banner_highlight", "label": "Highlight (rood, vet, aan einde subtext)", "default": "20% OFF." },
+    { "type": "header", "content": "Bundle builder" },
+    { "type": "text", "id": "bundle_label", "label": "Label above bundle", "default": "Build your bundle:" },
+    { "type": "checkbox", "id": "enable_discount", "label": "Enable bundle discount", "default": true },
+    { "type": "text", "id": "best_deal_badge", "label": "Best deal badge text", "default": "BEST DEAL" },
+    { "type": "range", "id": "discount_tier_2", "min": 0, "max": 50, "step": 1, "unit": "%", "label": "Discount at 2 items", "default": 10 },
+    { "type": "range", "id": "discount_tier_3", "min": 0, "max": 50, "step": 1, "unit": "%", "label": "Discount at 3 items", "default": 15 },
+    { "type": "range", "id": "discount_tier_4", "min": 0, "max": 50, "step": 1, "unit": "%", "label": "Discount at 4+ items", "default": 20 },
+    { "type": "header", "content": "Subscription" },
+    { "type": "checkbox", "id": "enable_subscription", "label": "Enable subscription", "default": true },
+    { "type": "text", "id": "subscribe_badge", "label": "Badge text", "default": "SAVE 23% ON FIRST ORDER" },
+    { "type": "range", "id": "subscription_discount", "min": 0, "max": 50, "step": 1, "unit": "%", "label": "Extra subscription discount", "default": 10 },
+    { "type": "number", "id": "subscription_interval_count", "label": "Interval count", "default": 45 },
+    { "type": "select", "id": "subscription_interval", "label": "Interval unit", "options": [
+      { "value": "days", "label": "Days" },
+      { "value": "weeks", "label": "Weeks" },
+      { "value": "months", "label": "Months" }
+    ], "default": "days" },
+    { "type": "text", "id": "atc_button_label", "label": "Add to Cart button text (one-time)", "default": "Add to Cart" },
+    { "type": "header", "content": "Trust badges" },
+    { "type": "checkbox", "id": "show_trust_badges", "label": "Show trust badges under ATC", "default": true },
+    { "type": "text", "id": "badge_text_1", "label": "Badge 1 text", "default": "Free Shipping" },
+    { "type": "text", "id": "badge_text_2", "label": "Badge 2 text", "default": "Money Back Guarantee" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "Try it risk-free for 30 days. If you're not totally in love with the product, we will refund you 100%." }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "gallery_image",
+      "name": "Gallery image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "bundle_item",
+      "name": "Bundle item",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "image_picker", "id": "item_image", "label": "Custom image (optional)" },
+        { "type": "text", "id": "item_description", "label": "Custom description (optional)" },
+        { "type": "text", "id": "selling_plan_id", "label": "Recharge Selling Plan ID (for subscription)" }
+      ]
+    },
+    {
+      "type": "subscription_perk",
+      "name": "Subscription perk",
+      "settings": [
+        { "type": "text", "id": "perk_text", "label": "Perk text", "default": "FREE SHIPPING on first order" }
+      ]
+    },
+    {
+      "type": "info_tab",
+      "name": "Info tab (collapsible)",
+      "settings": [
+        { "type": "text", "id": "tab_title", "label": "Tab title", "default": "Description" },
+        { "type": "richtext", "id": "tab_content", "label": "Tab content", "default": "<p>Tab content goes here. Use <strong>bold</strong> to highlight key info.</p>" },
+        { "type": "checkbox", "id": "open_by_default", "label": "Open by default", "default": false }
+      ]
+    },
+    {
+      "type": "nutrition_flavor",
+      "name": "Nutritional Info – Flavor",
+      "settings": [
+        { "type": "text", "id": "flavor_name", "label": "Flavor name", "default": "Original" },
+        { "type": "image_picker", "id": "flavor_thumb", "label": "Flavor thumbnail (in dropdown)" },
+        { "type": "image_picker", "id": "nutrition_image", "label": "Nutrition Facts image" },
+        { "type": "textarea", "id": "ingredients", "label": "Ingredients text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Product",
+      "blocks": [
+        { "type": "subscription_perk", "settings": { "perk_text": "FREE SHIPPING on first order" } },
+        { "type": "subscription_perk", "settings": { "perk_text": "NO CONTRACT — cancel easily" } },
+        { "type": "subscription_perk", "settings": { "perk_text": "15% OFF future orders" } },
+        { "type": "subscription_perk", "settings": { "perk_text": "OUT OF STOCK PROTECTION" } },
+        { "type": "info_tab", "settings": { "tab_title": "Description", "tab_content": "<p>Product description goes here.</p>", "open_by_default": true } },
+        { "type": "info_tab", "settings": { "tab_title": "Ingredients", "tab_content": "<p>Ingredient list goes here.</p>", "open_by_default": false } },
+        { "type": "info_tab", "settings": { "tab_title": "How to use", "tab_content": "<p>Usage instructions go here.</p>", "open_by_default": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,156 @@
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.background }};
+  }
+
+  #shopify-section-{{ section.id }} > div {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #shopify-section-{{ section.id }} .simple-bar {
+    display: flex;
+    align-items: center;
+    justify-content: {{ section.settings.text_align }};
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .simple-bar-text {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: {{ section.settings.font_weight }};
+    font-size: {{ section.settings.font_size }}px;
+    line-height: 1.2;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    text-align: {{ section.settings.text_align }};
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .simple-bar-text {
+      font-size: {{ section.settings.font_size_mobile }}px;
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="simple-bar">
+    {%- if section.settings.text != blank -%}
+      <p class="simple-bar-text">{{ section.settings.text }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Simpele tekstbalk",
+  "class": "shopify-section--simple-bar",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Tekst",
+      "default": "Limited Time Offer | Buy 2 Get 2 FREE!"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Uitlijning",
+      "options": [
+        { "value": "flex-start", "label": "Links" },
+        { "value": "center", "label": "Midden" },
+        { "value": "flex-end", "label": "Rechts" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Lettergewicht",
+      "options": [
+        { "value": "400", "label": "Normaal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Tekstgrootte (desktop)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Tekstgrootte (mobiel)",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Kleuren"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrondkleur balk",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Tekstkleur",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding boven",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding onder",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simpele tekstbalk",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

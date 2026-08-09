@@ -1,0 +1,443 @@
+{%- if section.blocks.size > 0 -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap');
+
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.background }};
+    }
+
+    #shopify-section-{{ section.id }} .wi2,
+    #shopify-section-{{ section.id }} .wi2 * {
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    #shopify-section-{{ section.id }} .wi2 {
+      max-width: {{ section.settings.max_width }}px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-heading {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: {{ section.settings.heading_color }};
+      margin: 0 0 16px;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-subheading {
+      font-size: 18px;
+      font-weight: 500;
+      color: {{ section.settings.text_color }};
+      margin: 0 0 48px;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+      margin: 0 0 48px;
+      padding: 0;
+      list-style: none;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: {{ section.settings.heading_color }};
+      margin: 0 0 4px;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-subtitle {
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 400;
+      color: {{ section.settings.subtitle_color }};
+      margin: 0 0 20px;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-image-wrap {
+      width: 100%;
+      aspect-ratio: {{ section.settings.image_ratio }};
+      border-radius: {{ section.settings.image_radius }}px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      background-color: #ffffff;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-description {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: {{ section.settings.heading_color }};
+      margin: 0 0 20px;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-list li {
+      font-size: 16px;
+      line-height: 1.6;
+      color: {{ section.settings.text_color }};
+    }
+
+    #shopify-section-{{ section.id }} .wi2-button-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-button {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      color: {{ section.settings.button_text_color }};
+      background-color: {{ section.settings.button_background }};
+      font-size: clamp({{ section.settings.button_size_mobile }}px, 4vw, {{ section.settings.button_size }}px) !important;
+      padding: 0.85em 1.5em !important;
+      max-width: 100%;
+      white-space: nowrap !important;
+      border-radius: 999px;
+      border-width: {{ section.settings.button_border_width }}px;
+      border-style: solid;
+      border-color: {{ section.settings.button_border_color }};
+      transition: opacity 0.2s ease;
+    }
+
+    #shopify-section-{{ section.id }} .wi2-button:hover {
+      opacity: 0.85;
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .wi2-heading {
+        font-size: 32px;
+      }
+
+      #shopify-section-{{ section.id }} .wi2-subheading {
+        font-size: 16px;
+      }
+    }
+  </style>
+
+  <div {% render 'section-properties' %}>
+    <div class="wi2">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="wi2-heading hyphenate">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="wi2-subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+
+      <ul class="wi2-grid" role="list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'ingredient' -%}
+            <li {{ block.shopify_attributes }}>
+              {%- if block.settings.title != blank -%}
+                <p class="wi2-title">{{ block.settings.title | escape }}</p>
+              {%- endif -%}
+
+              {%- if block.settings.subtitle != blank -%}
+                <p class="wi2-subtitle">({{ block.settings.subtitle | escape }})</p>
+              {%- endif -%}
+
+              <div class="wi2-image-wrap">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 600 | image_tag: sizes: '(max-width: 749px) 90vw, 380px', widths: '300,400,500,600', class: 'wi2-image' }}
+                {%- endif -%}
+              </div>
+
+              {%- if block.settings.description != blank -%}
+                <p class="wi2-description">{{ block.settings.description }}</p>
+              {%- endif -%}
+
+              {%- if block.settings.list != blank -%}
+                <ul class="wi2-list">
+                  {%- assign items = block.settings.list | newline_to_br | split: '<br />' -%}
+                  {%- for item in items -%}
+                    {%- if item != blank -%}
+                      <li>{{ item | strip }}</li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      {%- if section.settings.button_text != blank -%}
+        <div class="wi2-button-row">
+          <a href="{{ section.settings.button_url | default: '#' }}" class="wi2-button">
+            {{- section.settings.button_text -}}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "What's Inside (v2)",
+  "class": "shopify-section--whats-inside-v2",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What's Inside"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "A thoughtfully selected blend of plant extracts, amino acids, and essential vitamins — delivered in an easy-to-use patch format."
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 40,
+      "unit": "px",
+      "label": "Maximale breedte",
+      "default": 1280
+    },
+    {
+      "type": "header",
+      "content": "Kleuren"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrondkleur sectie",
+      "default": "#F2F0EC"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Kop-, titel- en introkleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Kleur cursieve ondertitel",
+      "default": "#8A8A8A"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Overige tekstkleur",
+      "default": "#3A3A3A"
+    },
+    {
+      "type": "header",
+      "content": "Afbeelding"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Beeldverhouding",
+      "options": [
+        { "value": "1 / 1", "label": "Vierkant" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "3 / 4", "label": "3:4 (staand)" }
+      ],
+      "default": "4 / 3"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Afronding hoeken afbeelding",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Knop"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Knoptekst",
+      "default": "Shop Berberine Patches"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Knoplink"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Knop achtergrondkleur",
+      "default": "#E8A99A"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Knop tekstkleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Grootte knop (desktop)",
+      "info": "Bepaalt zowel de tekstgrootte als de padding van de knop (schaalt automatisch mee)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Grootte knop (mobiel)",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Knop randkleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "min": 0,
+      "max": 6,
+      "step": 1,
+      "unit": "px",
+      "label": "Randdikte knop",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Padding sectie"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding boven",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding onder",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingrediënt",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Ingrediënt naam"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Cursieve ondertitel (zonder haakjes)",
+          "default": "Bestanddeel 1, Bestanddeel 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Afbeelding"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Vetgedrukte intro-zin",
+          "default": "Korte, vetgedrukte omschrijving van dit ingrediënt."
+        },
+        {
+          "type": "textarea",
+          "id": "list",
+          "label": "Losse regels (1 per regel)",
+          "default": "Eigenschap 1\nEigenschap 2\nEigenschap 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "What's Inside (v2)",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Berberine Blend",
+            "subtitle": "Berberine, Pomegranate, Cinnamon",
+            "description": "A botanical blend featuring plant-derived compounds with a long history of traditional use and modern research interest.",
+            "list": "Plant-derived ingredients\nTraditionally used botanicals\nWidely studied compounds"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "L-Glutamine",
+            "subtitle": "",
+            "description": "A naturally occurring amino acid found in the body and in many protein-rich foods.",
+            "list": "Common building block of proteins\nNaturally present in the body\nIncluded in a transdermal format"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Vitamin B Complex",
+            "subtitle": "B1, B2, B3, B6, B9, B12",
+            "description": "A blend of essential B vitamins commonly included in daily wellness formulations.",
+            "list": "Essential vitamins\nFound in many foods\nWidely used in nutrition products"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,74 @@
+{% comment %} Dopamine Patches - Full Custom Headline Block {% endcomment %}
+<div class="dp-headline-block">
+  <p class="dp-eyebrow">Dopamine Patches</p>
+  <h1 class="dp-headline">Support Your Mood, Motivation &amp; Focus — Naturally</h1>
+  <p class="dp-subheadline">Dopamine Patches</p>
+</div>
+
+<style>
+/* ============================================
+   PAS HIER ALLES AAN — elke regel heeft eigen instellingen
+   ============================================ */
+.dp-headline-block {
+
+  /* Regel 1: klein label bovenaan, bijv. "DOPAMINE PATCHES" */
+  --eyebrow-font: 'Arial', sans-serif;
+  --eyebrow-size: 13px;
+  --eyebrow-weight: 600;
+  --eyebrow-color: #8A8A8A;
+  --eyebrow-letter-spacing: 1.5px;
+
+  /* Regel 2: grote belofte-kop, bijv. "Support Your Mood..." */
+  --headline-font: 'Georgia', serif;
+  --headline-size: 40px;
+  --headline-weight: 700;
+  --headline-color: #1A1A1A;
+  --headline-line-height: 1.15;
+
+  /* Regel 3: de "Dopamine Patches"-regel — hier kun je kleur, grootte en dikte los aanpassen */
+  --subheadline-font: 'Georgia', serif;
+  --subheadline-size: 26px;
+  --subheadline-weight: 400;
+  --subheadline-color: #4A4A4A;
+  --subheadline-line-height: 1.2;
+
+  margin-bottom: 16px;
+}
+
+.dp-eyebrow {
+  font-family: var(--eyebrow-font);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--eyebrow-weight);
+  color: var(--eyebrow-color);
+  letter-spacing: var(--eyebrow-letter-spacing);
+  text-transform: uppercase;
+  margin: 0 0 6px 0;
+}
+
+.dp-headline {
+  font-family: var(--headline-font);
+  font-size: var(--headline-size);
+  font-weight: var(--headline-weight);
+  color: var(--headline-color);
+  line-height: var(--headline-line-height);
+  margin: 0 0 8px 0;
+}
+
+.dp-subheadline {
+  font-family: var(--subheadline-font);
+  font-size: var(--subheadline-size);
+  font-weight: var(--subheadline-weight);
+  color: var(--subheadline-color);
+  line-height: var(--subheadline-line-height);
+  margin: 0;
+}
+
+/* Mobiel: alles iets kleiner */
+@media (max-width: 599px) {
+  .dp-headline-block {
+    --headline-size: 28px;
+    --subheadline-size: 20px;
+    --eyebrow-size: 11px;
+  }
+}
+</style>

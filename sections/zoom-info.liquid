@@ -1,0 +1,1452 @@
+{%- style -%}
+
+  #shopify-section-{{ section.id }} {
+
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+
+    --background-color: {{ section.settings.background_color }};
+    --text-color: {{ section.settings.text_color }};
+    --card-text-color: {{ section.settings.card_text_color }};
+    --expand-icon-color: {{ section.settings.expand_icon_color }};
+    --expand-icon-bg: {{ section.settings.expand_icon_bg }};
+    --overlay-bg: {{ section.settings.overlay_bg }};
+    --overlay-text-color: {{ section.settings.overlay_text_color }};
+    --image-overlay-opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+    --card-shadow-opacity: {{ section.settings.card_shadow_opacity | divided_by: 100.0 }};
+
+    --title-font-size: {{ section.settings.title_font_size }}px;
+    --title-font-size-mobile: {{ section.settings.title_font_size_mobile }}px;
+    --title-font-weight: {{ section.settings.title_font_weight }};
+    --card-font-size: {{ section.settings.card_font_size }}px;
+    --card-font-size-mobile: {{ section.settings.card_font_size_mobile }}px;
+    
+    /* Animation timing variables for smooth performance */
+    --animation-duration: 0.3s;
+    --animation-timing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --hover-translate: -8px;
+    --hover-scale: 1.02;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Canela:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  #shopify-section-{{ section.id }} .titanium-features {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__title {
+    font-family: 'Canela', serif;
+    font-size: var(--title-font-size);
+    font-weight: var(--title-font-weight);
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  /* Desktop Grid Layout */
+  #shopify-section-{{ section.id }} .titanium-features__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.desktop_columns }}, 1fr);
+    gap: 32px;
+  }
+
+  /* Swiper Container - Hidden on Desktop */
+  #shopify-section-{{ section.id }} .titanium-features__swiper-container {
+    display: none;
+    position: relative;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: visible;
+    /* Prevent scroll chaining and improve scroll isolation */
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__swiper-wrapper {
+    display: flex;
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    /* Ensure horizontal-only touch handling */
+    touch-action: pan-y pinch-zoom;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    padding: 0 12px;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: {{ section.settings.card_aspect_ratio }};
+    cursor: pointer;
+    transform: translateZ(0); /* Create new layer for smooth animations */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  /* Add subtle scale when expanded without shadow */
+  #shopify-section-{{ section.id }} .titanium-features__card.expanded {
+    transform: scale(1.02) translateZ(0);
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    z-index: -1;
+    transition: opacity var(--animation-duration) var(--animation-timing);
+    opacity: 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, var(--card-shadow-opacity));
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__image {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* Dark overlay on top of image */
+  #shopify-section-{{ section.id }} .titanium-features__image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, var(--image-overlay-opacity));
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px;
+    color: var(--card-text-color);
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  #shopify-section-{{ section.id }} .titanium-features__text {
+    font-size: var(--card-font-size);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    pointer-events: none;
+  }
+
+  /* Overlay for expanded content */
+  #shopify-section-{{ section.id }} .titanium-features__overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--overlay-bg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                visibility 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 15;
+    pointer-events: none;
+  }
+
+  /* Expanded state - smooth transition when opening */
+  #shopify-section-{{ section.id }} .titanium-features__card.expanded {
+    z-index: 100;
+  }
+  
+  #shopify-section-{{ section.id }} .titanium-features__card.expanded .titanium-features__overlay {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__overlay-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--overlay-text-color);
+    max-width: 90%;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0.1s;
+  }
+  
+  #shopify-section-{{ section.id }} .titanium-features__card.expanded .titanium-features__overlay-text {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Close button for overlay */
+  #shopify-section-{{ section.id }} .titanium-features__close {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--overlay-text-color);
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform var(--animation-duration) var(--animation-timing),
+                background-color var(--animation-duration) var(--animation-timing),
+                opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 20;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  
+  #shopify-section-{{ section.id }} .titanium-features__card.expanded .titanium-features__close {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__close:hover {
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__close-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--overlay-text-color);
+    stroke-width: 2.5;
+    transform: rotate(45deg);
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__expand {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    border: 2px solid {{ section.settings.expand_icon_border_color }};
+    border-radius: 50%;
+    background: var(--expand-icon-bg);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(0);
+    will-change: transform, background-color, border-color;
+    transition: transform var(--animation-duration) var(--animation-timing),
+                background-color var(--animation-duration) var(--animation-timing),
+                border-color var(--animation-duration) var(--animation-timing),
+                opacity var(--animation-duration) var(--animation-timing);
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__card.expanded .titanium-features__expand {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__expand-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--expand-icon-color);
+    stroke-width: 2.5;
+    will-change: transform;
+    transition: transform var(--animation-duration) var(--animation-timing);
+  }
+
+  /* Swiper Pagination */
+  #shopify-section-{{ section.id }} .titanium-features__pagination {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 32px;
+    padding: 0 16px;
+    height: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__pagination-bullet {
+    width: 6px;
+    height: 3px;
+    border-radius: 1.5px;
+    background: #FCFAF6;
+    opacity: 0.2;
+    transition: all var(--animation-duration) var(--animation-timing);
+    cursor: pointer;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__pagination-bullet.active {
+    opacity: 1;
+    width: 24px;
+    height: 3px;
+    border-radius: 1.5px;
+    background: #FCFAF6;
+  }
+
+  #shopify-section-{{ section.id }} .titanium-features__pagination-bullet:hover {
+    opacity: 0.5;
+  }
+
+  /* Performance optimizations for parallax */
+  #shopify-section-{{ section.id }} .titanium-features__card.parallax-active .titanium-features__image {
+    will-change: transform;
+  }
+
+  /* HOVER EFFECTS - Only apply on devices that support hover AND not mobile */
+  @media (hover: hover) and (pointer: fine) and (min-width: 641px) {
+    #shopify-section-{{ section.id }} .titanium-features__card:hover {
+      transform: translateY(var(--hover-translate)) scale(var(--hover-scale));
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__card:hover::before {
+      opacity: 1;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__card:hover .titanium-features__image {
+      transform: scale(1.05);
+    }
+
+    /* Show overlay on hover for desktop */
+    #shopify-section-{{ section.id }} .titanium-features__card:hover .titanium-features__overlay {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    
+    /* Ensure text is visible on hover */
+    #shopify-section-{{ section.id }} .titanium-features__card:hover .titanium-features__overlay-text {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    /* Show close button on hover */
+    #shopify-section-{{ section.id }} .titanium-features__card:hover .titanium-features__close {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__card:hover .titanium-features__expand {
+      background: {{ section.settings.expand_icon_hover_bg }};
+      border-color: var(--expand-icon-color);
+      transform: scale(1.1);
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__card:hover .titanium-features__expand-icon {
+      transform: rotate(90deg);
+    }
+  }
+
+  /* Tablet - Still use grid but with 2 columns */
+  @media screen and (max-width: 1024px) and (min-width: 641px) {
+    #shopify-section-{{ section.id }} .titanium-features__container {
+      padding: 0 24px;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__title {
+      font-size: 40px;
+      margin-bottom: 64px;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  /* Mobile - Switch to Swiper */
+  @media screen and (max-width: 640px) {
+    /* FIXED: Only hide overflow within the section, not the entire page */
+    #shopify-section-{{ section.id }} {
+      --hover-translate: -4px;
+      --hover-scale: 1.01;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features {
+      padding-top: var(--section-padding-top-mobile);
+      padding-bottom: var(--section-padding-bottom-mobile);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__container {
+      padding: 0;
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__title {
+      font-size: var(--title-font-size-mobile);
+      margin-bottom: 48px;
+      padding: 0 16px;
+    }
+
+    /* Hide grid on mobile */
+    #shopify-section-{{ section.id }} .titanium-features__grid {
+      display: none;
+    }
+
+    /* Show swiper on mobile */
+    #shopify-section-{{ section.id }} .titanium-features__swiper-container {
+      display: block;
+      overflow-x: hidden !important;
+      max-width: 100vw;
+      position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__swiper-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__swiper-slide {
+      width: 80vw;
+      max-width: 320px;
+      flex-shrink: 0;
+      padding-left: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__swiper-slide:first-child {
+      padding-left: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__card {
+      aspect-ratio: 0.85;
+      max-width: 350px;
+      margin: 0;
+    }
+    
+    /* Mobile-specific expanded state without shadow */
+    #shopify-section-{{ section.id }} .titanium-features__card.expanded {
+      transform: scale(1.01) translateZ(0);
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__content {
+      padding: 24px;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__text {
+      font-size: var(--card-font-size-mobile);
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__overlay {
+      padding: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__overlay-text {
+      font-size: 16px;
+      transform: translateY(8px);
+    }
+    
+    #shopify-section-{{ section.id }} .titanium-features__card.expanded .titanium-features__overlay-text {
+      transform: translateY(0);
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__expand,
+    #shopify-section-{{ section.id }} .titanium-features__close {
+      bottom: 24px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .titanium-features__expand-icon,
+    #shopify-section-{{ section.id }} .titanium-features__close-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Show pagination on mobile */
+    #shopify-section-{{ section.id }} .titanium-features__pagination {
+      display: flex;
+    }
+  }
+
+  /* Touch device specific styles */
+  @media (hover: none) {
+    #shopify-section-{{ section.id }} .titanium-features__card:active {
+      transform: scale(0.98);
+    }
+  }
+{%- endstyle -%}
+
+<section class="titanium-features">
+  <div class="titanium-features__container" 
+       data-section-id="{{ section.id }}" 
+       data-section-type="titanium-features-showcase">
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="titanium-features__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    <!-- Desktop Grid Layout -->
+    <div class="titanium-features__grid">
+      {%- for block in section.blocks -%}
+        <div class="titanium-features__card" 
+             style="background: {{ block.settings.gradient_background }};"
+             {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img 
+              src="{{ block.settings.image | image_url: width: 600 }}" 
+              alt="{{ block.settings.image_alt | default: block.settings.feature_text }}" 
+              class="titanium-features__image"
+              loading="lazy" />
+            <div class="titanium-features__image-overlay"></div>
+          {%- endif -%}
+
+          <div class="titanium-features__content">
+            {%- if block.settings.feature_text != blank -%}
+              <div class="titanium-features__text">{{ block.settings.feature_text | newline_to_br }}</div>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.show_expand_icon -%}
+            <div class="titanium-features__expand">
+              <svg class="titanium-features__expand-icon" viewBox="0 0 24 24" fill="none">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.expanded_text != blank -%}
+            <div class="titanium-features__overlay">
+              <div class="titanium-features__overlay-text">
+                {{ block.settings.expanded_text }}
+              </div>
+              <div class="titanium-features__close">
+                <svg class="titanium-features__close-icon" viewBox="0 0 24 24" fill="none">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <!-- Mobile Swiper Layout -->
+    <div class="titanium-features__swiper-container">
+      <div class="titanium-features__swiper-wrapper">
+        {%- for block in section.blocks -%}
+          <div class="titanium-features__swiper-slide">
+            <div class="titanium-features__card" 
+                 style="background: {{ block.settings.gradient_background }};"
+                 data-block-id="{{ block.id }}"
+                 {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                <img 
+                  src="{{ block.settings.image | image_url: width: 600 }}" 
+                  alt="{{ block.settings.image_alt | default: block.settings.feature_text }}" 
+                  class="titanium-features__image"
+                  loading="lazy" />
+                <div class="titanium-features__image-overlay"></div>
+              {%- endif -%}
+
+              <div class="titanium-features__content">
+                {%- if block.settings.feature_text != blank -%}
+                  <div class="titanium-features__text">{{ block.settings.feature_text | newline_to_br }}</div>
+                {%- endif -%}
+              </div>
+
+              {%- if section.settings.show_expand_icon -%}
+                <div class="titanium-features__expand">
+                  <svg class="titanium-features__expand-icon" viewBox="0 0 24 24" fill="none">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.expanded_text != blank -%}
+                <div class="titanium-features__overlay">
+                  <div class="titanium-features__overlay-text">
+                    {{ block.settings.expanded_text }}
+                  </div>
+                  <div class="titanium-features__close">
+                    <svg class="titanium-features__close-icon" viewBox="0 0 24 24" fill="none">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </div>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Pagination Progress Dots -->
+      <div class="titanium-features__pagination">
+        {%- for block in section.blocks -%}
+          <button class="titanium-features__pagination-bullet{% if forloop.first %} active{% endif %}" 
+                  aria-label="Go to slide {{ forloop.index }}"
+                  data-slide="{{ forloop.index0 }}"></button>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+
+    // Mobile swiper initialization
+    function initMobileSwiper() {
+      const swiperContainer = section.querySelector('.titanium-features__swiper-container');
+      if (!swiperContainer) return;
+      
+      const swiperWrapper = section.querySelector('.titanium-features__swiper-wrapper');
+      const slides = section.querySelectorAll('.titanium-features__swiper-slide');
+      const bullets = section.querySelectorAll('.titanium-features__pagination-bullet');
+      const cards = section.querySelectorAll('.titanium-features__card');
+      
+      if (!swiperWrapper || slides.length === 0) return;
+      
+      // State management with proper isolation
+      let currentIndex = 0;
+      let touchStartX = null;
+      let touchStartY = null;
+      let isDragging = false;
+      let gestureDirection = null; // null | 'horizontal' | 'vertical'
+      let currentTranslateX = 0;
+      let startTranslateX = 0;
+      
+      // Constants for gesture detection
+      const GESTURE_THRESHOLD = 10; // Minimum movement to determine direction
+      const SWIPE_THRESHOLD = 50; // Minimum horizontal distance for slide change
+      const ANGLE_THRESHOLD = 30; // Maximum angle (degrees) for horizontal gesture
+      
+      // Calculate angle of movement
+      function getAngle(dx, dy) {
+        return Math.atan2(Math.abs(dy), Math.abs(dx)) * 180 / Math.PI;
+      }
+      
+      // Update card position with safeguards
+      function setCardPosition(index, animate = true) {
+        // Clamp index to valid range
+        const newIndex = Math.max(0, Math.min(index, slides.length - 1));
+        
+        currentIndex = newIndex;
+        
+        const slideWidth = slides[0] ? slides[0].offsetWidth : 0;
+        const containerWidth = swiperContainer.offsetWidth;
+        
+        // Calculate position based on index
+        if (currentIndex === slides.length - 1) {
+          currentTranslateX = -currentIndex * slideWidth + (containerWidth - slideWidth) / 2;
+        } else {
+          currentTranslateX = -currentIndex * slideWidth + 16;
+        }
+        
+        // Apply transform without affecting content visibility
+        if (animate) {
+          swiperWrapper.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          setTimeout(() => {
+            swiperWrapper.style.transition = 'none';
+          }, 300);
+        } else {
+          swiperWrapper.style.transition = 'none';
+        }
+        swiperWrapper.style.transform = `translateX(${currentTranslateX}px)`;
+        
+        // Update pagination
+        bullets.forEach((bullet, i) => {
+          bullet.classList.toggle('active', i === currentIndex);
+        });
+      }
+      
+      // Touch start handler
+      swiperContainer.addEventListener('touchstart', function(e) {
+        // Ignore if clicking buttons
+        if (e.target.closest('.titanium-features__expand') || 
+            e.target.closest('.titanium-features__close')) {
+          return;
+        }
+        
+        // Reset gesture detection
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        startTranslateX = currentTranslateX;
+        isDragging = false;
+        gestureDirection = null;
+        
+        // Prepare for immediate response
+        swiperWrapper.style.transition = 'none';
+      }, { passive: true });
+      
+      // Touch move handler
+      swiperContainer.addEventListener('touchmove', function(e) {
+        // Exit if no start position or gesture already determined as vertical
+        if (touchStartX === null || touchStartY === null || gestureDirection === 'vertical') {
+          return;
+        }
+        
+        const touchX = e.touches[0].clientX;
+        const touchY = e.touches[0].clientY;
+        const diffX = touchX - touchStartX;
+        const diffY = touchY - touchStartY;
+        const absX = Math.abs(diffX);
+        const absY = Math.abs(diffY);
+        
+        // Determine gesture direction once threshold is met
+        if (gestureDirection === null && (absX > GESTURE_THRESHOLD || absY > GESTURE_THRESHOLD)) {
+          const angle = getAngle(absX, absY);
+          
+          // Determine if gesture is horizontal (angle < 30 degrees from horizontal)
+          if (angle < ANGLE_THRESHOLD) {
+            gestureDirection = 'horizontal';
+            isDragging = true;
+          } else {
+            gestureDirection = 'vertical';
+            // Allow normal vertical scroll - don't prevent default
+            return;
+          }
+        }
+        
+        // Handle horizontal dragging only
+        if (gestureDirection === 'horizontal' && isDragging) {
+          e.preventDefault(); // Prevent vertical scroll only for horizontal swipes
+          
+          // Calculate drag position with bounds
+          const dragTranslate = startTranslateX + diffX;
+          
+          // Add rubber band resistance at boundaries
+          const maxTranslate = 50; // Maximum overscroll
+          const slideWidth = slides[0] ? slides[0].offsetWidth : 0;
+          const maxNegativeTranslate = -(slides.length - 1) * slideWidth - 50;
+          
+          let boundedTranslate = dragTranslate;
+          if (dragTranslate > maxTranslate) {
+            // Resistance when pulling past first card
+            const overshoot = dragTranslate - maxTranslate;
+            boundedTranslate = maxTranslate + (overshoot * 0.2);
+          } else if (dragTranslate < maxNegativeTranslate) {
+            // Resistance when pulling past last card
+            const overshoot = dragTranslate - maxNegativeTranslate;
+            boundedTranslate = maxNegativeTranslate + (overshoot * 0.2);
+          }
+          
+          swiperWrapper.style.transform = `translateX(${boundedTranslate}px)`;
+        }
+      }, { passive: false });
+      
+      // Touch end handler
+      swiperContainer.addEventListener('touchend', function(e) {
+        // Exit early if gesture was vertical or not started
+        if (gestureDirection === 'vertical' || touchStartX === null || touchStartY === null) {
+          touchStartX = null;
+          touchStartY = null;
+          gestureDirection = null;
+          isDragging = false;
+          return;
+        }
+        
+        // Process horizontal swipe
+        if (gestureDirection === 'horizontal' && isDragging) {
+          const touchEndX = e.changedTouches[0].clientX;
+          const diffX = touchEndX - touchStartX;
+          
+          // Determine if swipe was significant enough
+          if (Math.abs(diffX) > SWIPE_THRESHOLD) {
+            if (diffX < 0 && currentIndex < slides.length - 1) {
+              // Swipe left - next card
+              setCardPosition(currentIndex + 1, true);
+            } else if (diffX > 0 && currentIndex > 0) {
+              // Swipe right - previous card
+              setCardPosition(currentIndex - 1, true);
+            } else {
+              // Can't go further - snap back
+              setCardPosition(currentIndex, true);
+            }
+            
+            // Close expanded cards on successful slide change
+            setTimeout(() => {
+              const expanded = section.querySelectorAll('.titanium-features__card.expanded');
+              expanded.forEach(card => card.classList.remove('expanded'));
+            }, 100);
+          } else {
+            // Not enough movement - snap back to current
+            setCardPosition(currentIndex, true);
+          }
+        }
+        
+        // Reset all tracking variables
+        touchStartX = null;
+        touchStartY = null;
+        gestureDirection = null;
+        isDragging = false;
+      }, { passive: true });
+      
+      // Touch cancel handler - reset to current position
+      swiperContainer.addEventListener('touchcancel', function() {
+        if (isDragging && gestureDirection === 'horizontal') {
+          setCardPosition(currentIndex, true);
+        }
+        touchStartX = null;
+        touchStartY = null;
+        gestureDirection = null;
+        isDragging = false;
+      }, { passive: true });
+      
+      // Mouse events for desktop testing
+      let mouseStartX = null;
+      let mouseDown = false;
+      
+      swiperContainer.addEventListener('mousedown', function(e) {
+        if (e.target.closest('.titanium-features__expand') || 
+            e.target.closest('.titanium-features__close')) {
+          return;
+        }
+        
+        mouseStartX = e.clientX;
+        startTranslateX = currentTranslateX;
+        mouseDown = true;
+        isDragging = true;
+        gestureDirection = 'horizontal'; // Mouse is always horizontal
+        swiperWrapper.style.cursor = 'grabbing';
+        swiperWrapper.style.transition = 'none';
+        e.preventDefault();
+      });
+      
+      document.addEventListener('mousemove', function(e) {
+        if (!mouseDown || !isDragging || mouseStartX === null) return;
+        
+        const diffX = e.clientX - mouseStartX;
+        const dragTranslate = startTranslateX + diffX;
+        
+        // Add bounds checking for mouse drag
+        const maxTranslate = 50;
+        const slideWidth = slides[0] ? slides[0].offsetWidth : 0;
+        const maxNegativeTranslate = -(slides.length - 1) * slideWidth - 50;
+        
+        let boundedTranslate = dragTranslate;
+        if (dragTranslate > maxTranslate) {
+          const overshoot = dragTranslate - maxTranslate;
+          boundedTranslate = maxTranslate + (overshoot * 0.2);
+        } else if (dragTranslate < maxNegativeTranslate) {
+          const overshoot = dragTranslate - maxNegativeTranslate;
+          boundedTranslate = maxNegativeTranslate + (overshoot * 0.2);
+        }
+        
+        swiperWrapper.style.transform = `translateX(${boundedTranslate}px)`;
+      });
+      
+      document.addEventListener('mouseup', function(e) {
+        if (!mouseDown || !isDragging || mouseStartX === null) return;
+        
+        const diffX = e.clientX - mouseStartX;
+        
+        if (Math.abs(diffX) > SWIPE_THRESHOLD) {
+          if (diffX < 0 && currentIndex < slides.length - 1) {
+            setCardPosition(currentIndex + 1, true);
+          } else if (diffX > 0 && currentIndex > 0) {
+            setCardPosition(currentIndex - 1, true);
+          } else {
+            setCardPosition(currentIndex, true);
+          }
+        } else {
+          setCardPosition(currentIndex, true);
+        }
+        
+        mouseDown = false;
+        isDragging = false;
+        gestureDirection = null;
+        mouseStartX = null;
+        swiperWrapper.style.cursor = 'grab';
+      });
+      
+      // Pagination click handlers
+      bullets.forEach((bullet, index) => {
+        bullet.addEventListener('click', function() {
+          if (index !== currentIndex) {
+            setCardPosition(index, true);
+            // Close any expanded cards
+            const expanded = section.querySelectorAll('.titanium-features__card.expanded');
+            expanded.forEach(card => card.classList.remove('expanded'));
+          }
+        });
+      });
+      
+      // Initialize first card position
+      setCardPosition(0, false);
+      
+      // Handle resize with debouncing
+      let resizeTimeout;
+      let lastWidth = window.innerWidth;
+      
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          // Only recalculate if width actually changed
+          if (window.innerWidth !== lastWidth) {
+            lastWidth = window.innerWidth;
+            // Maintain current position without animation
+            setCardPosition(currentIndex, false);
+          }
+        }, 100);
+      });
+      
+      // Prevent position reset on scroll
+      let scrollTimeout;
+      window.addEventListener('scroll', function() {
+        // Clear any pending scroll handlers
+        clearTimeout(scrollTimeout);
+        // Don't change swiper position during scroll
+      }, { passive: true });
+    }
+    
+    // Expand/Close buttons and card click handlers
+    function initExpandButtons() {
+      const cards = section.querySelectorAll('.titanium-features__card');
+      const isMobile = window.matchMedia('(max-width: 640px)').matches;
+      
+      cards.forEach(card => {
+        const expandBtn = card.querySelector('.titanium-features__expand');
+        const closeBtn = card.querySelector('.titanium-features__close');
+        const overlay = card.querySelector('.titanium-features__overlay');
+        
+        if (isMobile) {
+          // Make whole card clickable on mobile
+          card.style.cursor = 'pointer';
+          
+          // Track if we're swiping to avoid false clicks
+          let touchStartTime = 0;
+          let touchStartPos = null;
+          
+          card.addEventListener('touchstart', function(e) {
+            touchStartTime = Date.now();
+            touchStartPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+          }, { passive: true });
+          
+          card.addEventListener('click', function(e) {
+            // Ignore clicks on buttons
+            if (e.target.closest('.titanium-features__expand') || 
+                e.target.closest('.titanium-features__close')) {
+              return;
+            }
+            
+            // Check if this was a tap (not a swipe)
+            const clickTime = Date.now();
+            const timeDiff = clickTime - touchStartTime;
+            
+            // Only toggle if it was a quick tap (< 300ms) and not during a swipe
+            if (timeDiff < 300) {
+              if (card.classList.contains('expanded')) {
+                card.classList.remove('expanded');
+              } else {
+                // Close other cards and expand this one
+                const otherCards = section.querySelectorAll('.titanium-features__card.expanded');
+                otherCards.forEach(otherCard => {
+                  otherCard.classList.remove('expanded');
+                });
+                card.classList.add('expanded');
+              }
+            }
+          });
+        }
+        
+        // Expand button handler
+        if (expandBtn) {
+          expandBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!card.classList.contains('expanded')) {
+              const otherCards = section.querySelectorAll('.titanium-features__card.expanded');
+              otherCards.forEach(otherCard => {
+                otherCard.classList.remove('expanded');
+              });
+              card.classList.add('expanded');
+            }
+          });
+        }
+        
+        // Close button handler
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            card.classList.remove('expanded');
+          });
+        }
+        
+        // Desktop expand on hover/click
+        if (!isMobile && expandBtn) {
+          expandBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            card.classList.add('expanded');
+          });
+        }
+      });
+      
+      // Close on clicking outside (desktop only)
+      if (!isMobile) {
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.titanium-features__card')) {
+            cards.forEach(card => card.classList.remove('expanded'));
+          }
+        });
+      }
+      
+      // Close on ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          cards.forEach(card => card.classList.remove('expanded'));
+        }
+      });
+    }
+    
+    // Initialize based on screen size
+    function initialize() {
+      const isMobile = window.matchMedia('(max-width: 640px)').matches;
+      
+      if (isMobile) {
+        initMobileSwiper();
+      }
+      
+      initExpandButtons();
+    }
+    
+    // Initial setup
+    initialize();
+    
+    // Reinitialize on significant resize only
+    let resizeTimer;
+    let lastViewportWidth = window.innerWidth;
+    
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        // Only reinitialize if crossing mobile breakpoint
+        const currentWidth = window.innerWidth;
+        const wasMobile = lastViewportWidth <= 640;
+        const isMobile = currentWidth <= 640;
+        
+        if (wasMobile !== isMobile) {
+          lastViewportWidth = currentWidth;
+          initialize();
+        }
+      }, 250);
+    });
+    
+    // Parallax for desktop (unchanged)
+    {%- if section.settings.enable_parallax -%}
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
+    if (!isMobile) {
+      const cards = section.querySelectorAll('.titanium-features__card');
+      
+      function updateParallax() {
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const image = card.querySelector('.titanium-features__image');
+          
+          if (!image) return;
+          
+          if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+            const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight * 20;
+            image.style.transform = `translateY(${offset}px)`;
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', function() {
+        requestAnimationFrame(updateParallax);
+      }, { passive: true });
+      
+      updateParallax();
+    }
+    {%- endif -%}
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Titanium Features",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "A Closer Look"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "desktop_columns",
+      "label": "Desktop Columns",
+      "options": [
+        {
+          "value": "2",
+          "label": "2 columns"
+        },
+        {
+          "value": "3",
+          "label": "3 columns"
+        },
+        {
+          "value": "4",
+          "label": "4 columns"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "text",
+      "id": "card_aspect_ratio",
+      "label": "Card Aspect Ratio (Desktop)",
+      "default": "1",
+      "info": "Width:Height ratio (e.g., 1 for square, 1.5 for landscape)"
+    },
+    {
+      "type": "text",
+      "id": "mobile_card_aspect_ratio",
+      "label": "Card Aspect Ratio (Mobile)",
+      "default": "0.85",
+      "info": "Width:Height ratio for mobile cards"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#35312E"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Title Text Color",
+      "default": "#F5F2F0"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "expand_icon_color",
+      "label": "Expand Icon Color",
+      "default": "#F5F2F0"
+    },
+    {
+      "type": "color",
+      "id": "expand_icon_bg",
+      "label": "Expand Icon Background",
+      "default": "rgba(245, 242, 240, 0.1)"
+    },
+    {
+      "type": "color",
+      "id": "expand_icon_hover_bg",
+      "label": "Expand Icon Hover Background",
+      "default": "rgba(245, 242, 240, 0.2)"
+    },
+    {
+      "type": "color",
+      "id": "expand_icon_border_color",
+      "label": "Expand Icon Border Color",
+      "default": "rgba(245, 242, 240, 0.6)"
+    },
+    {
+      "type": "color",
+      "id": "overlay_bg",
+      "label": "Overlay Background",
+      "default": "rgba(245, 242, 240, 0.98)"
+    },
+    {
+      "type": "color",
+      "id": "overlay_text_color",
+      "label": "Overlay Text Color",
+      "default": "#35312E"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "label": "Image Overlay Darkness",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 20,
+      "info": "Adds a dark overlay on top of the image to improve text readability"
+    },
+    {
+      "type": "range",
+      "id": "card_shadow_opacity",
+      "label": "Card Shadow Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 40,
+      "info": "Controls the opacity of the shadow on hover/expanded cards"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title Font Size",
+      "min": 32,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title Font Size (Mobile)",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Title Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400",
+      "info": "Select the weight of the section title"
+    },
+    {
+      "type": "range",
+      "id": "card_font_size",
+      "label": "Card Font Size",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_font_size_mobile",
+      "label": "Card Font Size (Mobile)",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Features"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_expand_icon",
+      "label": "Show Expand Icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Enable Parallax Effect",
+      "default": true,
+      "info": "Subtle movement on scroll (desktop only)"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Feature Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt Text",
+          "info": "Describe the image for accessibility"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_text",
+          "label": "Feature Text",
+          "default": "Made With\n100% Pure\nTitanium",
+          "info": "Use line breaks for multi-line text"
+        },
+        {
+          "type": "textarea",
+          "id": "expanded_text",
+          "label": "Expanded Description",
+          "default": "There's no need to be precious when the pan is built from such durable materials and is heat safe up to 1000°F*. Get all the high heat searing power you need with the ease of a nonstick — you'll never want to go back.",
+          "info": "Text shown when hovering or clicking the expand button"
+        },
+        {
+          "type": "text",
+          "id": "gradient_background",
+          "label": "Gradient Background",
+          "default": "linear-gradient(135deg, #AF593C 0%, #974E35 50%, #7A3E2A 100%)",
+          "info": "CSS gradient value"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL (Optional)",
+          "info": "Where to navigate when clicked"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Titanium Features",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Heat Safe up to\n1000°F",
+            "expanded_text": "There's no need to be precious when the pan is built from such durable materials and is heat safe up to 1000°F*. Get all the high heat searing power you need with the ease of a nonstick — you'll never want to go back.",
+            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #974E35 50%, #7A3E2A 100%)"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Oven &\nDishwasher\nSafe",
+            "expanded_text": "From stovetop to oven to table, this pan does it all. The pure titanium construction means it's completely dishwasher safe without any coating to worry about wearing off.",
+            "gradient_background": "linear-gradient(135deg, #5A544F 0%, #4A453F 50%, #423D38 100%)"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Lifetime\nWarranty*",
+            "expanded_text": "We stand behind our titanium cookware with a lifetime warranty against manufacturing defects. This pan is built to last generations with proper care.",
+            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #8B472F 50%, #6B3522 100%)"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

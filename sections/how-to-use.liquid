@@ -1,0 +1,418 @@
+{%- if section.blocks.size > 0 -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.background }};
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use,
+    #shopify-section-{{ section.id }} .how-to-use * {
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use {
+      max-width: {{ section.settings.max_width }}px;
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-heading {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: {{ section.settings.heading_color }};
+      margin: 0 0 16px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-subheading {
+      font-size: 20px;
+      line-height: 1.5;
+      color: {{ section.settings.text_color }};
+      margin: 0 auto 48px;
+      max-width: 700px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin: 0 0 48px;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-card {
+      background-color: {{ section.settings.card_background }};
+      border-radius: {{ section.settings.card_radius }}px;
+      padding: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-image-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: {{ section.settings.image_radius }}px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      background-color: #e5e5e5;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-number {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: {{ section.settings.number_background }};
+      color: {{ section.settings.number_text_color }};
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: {{ section.settings.heading_color }};
+      margin: 0 0 10px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-description {
+      font-size: 16px;
+      line-height: 1.5;
+      color: {{ section.settings.text_color }};
+      margin: 0;
+    }
+
+    /* Button: sized in em units so padding always scales proportionally
+       with the font-size, instead of a fixed pixel box that looks
+       oversized/out of proportion on narrow screens. */
+    #shopify-section-{{ section.id }} .how-to-use-button {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      color: {{ section.settings.button_text_color }};
+      background-color: {{ section.settings.button_background }};
+      font-size: {{ section.settings.button_size }}px;
+      padding: 0.95em 1.9em;
+      border-radius: 999px;
+      transition: opacity 0.2s ease;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-button:hover {
+      opacity: 0.85;
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .how-to-use-heading {
+        font-size: 32px;
+      }
+
+      #shopify-section-{{ section.id }} .how-to-use-subheading {
+        font-size: 17px;
+      }
+
+      #shopify-section-{{ section.id }} .how-to-use-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 16px;
+      }
+
+      #shopify-section-{{ section.id }} .how-to-use-button {
+        font-size: {{ section.settings.button_size_mobile }}px;
+      }
+    }
+  </style>
+
+  <div {% render 'section-properties' %}>
+    <div class="how-to-use">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="how-to-use-heading hyphenate">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="how-to-use-subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+
+      <ul class="how-to-use-grid" role="list">
+        {%- assign step_number = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'step' -%}
+            {%- assign step_number = step_number | plus: 1 -%}
+            <li class="how-to-use-card" {{ block.shopify_attributes }}>
+              <div class="how-to-use-image-wrap">
+                <span class="how-to-use-number">{{ step_number }}</span>
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 600 | image_tag: sizes: '(max-width: 749px) 45vw, 280px', widths: '200,300,400,600', class: 'how-to-use-image' }}
+                {%- endif -%}
+              </div>
+
+              {%- if block.settings.title != blank -%}
+                <p class="how-to-use-title">{{ block.settings.title | escape }}</p>
+              {%- endif -%}
+
+              {%- if block.settings.description != blank -%}
+                <p class="how-to-use-description">{{ block.settings.description }}</p>
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      {%- if section.settings.button_text != blank -%}
+        <a href="{{ section.settings.button_url | default: '#' }}" class="how-to-use-button">
+          {{- section.settings.button_text -}}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "How to Use",
+  "class": "shopify-section--how-to-use",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How to Use"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "A simple, once-daily patch routine designed for easy, consistent wear."
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 40,
+      "unit": "px",
+      "label": "Maximale breedte",
+      "default": 1280
+    },
+    {
+      "type": "header",
+      "content": "Kleuren"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrondkleur sectie",
+      "default": "#F2F0EC"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Achtergrondkleur kaart",
+      "default": "#FAF9F7"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Kop- en titelkleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Tekstkleur",
+      "default": "#3A3A3A"
+    },
+    {
+      "type": "color",
+      "id": "number_background",
+      "label": "Achtergrondkleur nummer",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "number_text_color",
+      "label": "Tekstkleur nummer",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Vormgeving"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Afronding kaart",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Afronding afbeelding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Knop"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Knoptekst",
+      "default": "Try Berberine Patches"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Knoplink"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Knop achtergrondkleur",
+      "default": "#E8A798"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Knop tekstkleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Grootte knop (desktop)",
+      "info": "Bepaalt zowel de tekstgrootte als de padding van de knop (schaalt automatisch mee)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Grootte knop (mobiel)",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Padding sectie"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding boven",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding onder",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Stap",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Afbeelding"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Stap titel"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Beschrijving",
+          "default": "Korte omschrijving van deze stap."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How to Use",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Clean skin",
+            "description": "Remove the patch from its backing and prepare it for application."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Peel patch",
+            "description": "Remove the patch from its backing and prepare it for application."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Stick on",
+            "description": "Place the patch on clean, dry skin in a comfortable area."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Wear all day",
+            "description": "Wear for the day, then remove and discard."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

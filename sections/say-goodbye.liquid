@@ -1,0 +1,448 @@
+{%- if section.blocks.size > 0 -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye,
+    #shopify-section-{{ section.id }} .say-goodbye * {
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye {
+      max-width: {{ section.settings.max_width }}px;
+      margin: 0 auto;
+      background-color: {{ section.settings.background }};
+      border-radius: {{ section.settings.card_radius }}px;
+      padding: {{ section.settings.card_padding }}px;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-heading {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 0 0 56px;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-heading .light {
+      color: {{ section.settings.heading_light_color }};
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-heading .dark {
+      color: {{ section.settings.heading_dark_color }};
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-badge {
+      position: relative;
+      width: 220px;
+      max-width: 100%;
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-badge-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-badge-inner {
+      position: absolute;
+      inset: {{ section.settings.ring_thickness }}px;
+      border-radius: 50%;
+      background-color: {{ section.settings.badge_background }};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-badge-percentage {
+      color: {{ section.settings.badge_text_color }};
+      font-size: 48px;
+      font-weight: 800;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-badge-percent-sign {
+      font-size: 24px;
+      font-weight: 700;
+      vertical-align: top;
+      position: relative;
+      top: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-badge-label-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-features {
+      margin: 0 0 40px;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-feature-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: {{ section.settings.feature_title_color }};
+      margin: 0 0 4px;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-feature-description {
+      font-size: 17px;
+      color: {{ section.settings.feature_text_color }};
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-button {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      color: {{ section.settings.button_text_color }};
+      background-color: {{ section.settings.button_background }};
+      padding: 18px 40px;
+      border-radius: 999px;
+      transition: opacity 0.2s ease;
+    }
+
+    #shopify-section-{{ section.id }} .say-goodbye-button:hover {
+      opacity: 0.85;
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .say-goodbye-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #shopify-section-{{ section.id }} .say-goodbye-heading {
+        font-size: 32px;
+        margin-bottom: 40px;
+      }
+
+      #shopify-section-{{ section.id }} .say-goodbye-feature-title {
+        font-size: 22px;
+      }
+    }
+  </style>
+
+  <div {% render 'section-properties' %}>
+    <div class="say-goodbye">
+      {%- if section.settings.heading_light != blank or section.settings.heading_dark != blank -%}
+        <h2 class="say-goodbye-heading hyphenate">
+          {%- if section.settings.heading_light != blank -%}<span class="light">{{ section.settings.heading_light }}</span> {%- endif -%}
+          {%- if section.settings.heading_dark != blank -%}<span class="dark">{{ section.settings.heading_dark }}</span>{%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      <div class="say-goodbye-grid">
+        <ul class="say-goodbye-stats" role="list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'ring_stat' -%}
+              {%- assign deg = block.settings.percentage | times: 3.6 -%}
+              <li {{ block.shopify_attributes }}>
+                <div class="say-goodbye-badge">
+                  <div class="say-goodbye-badge-ring" style="background: conic-gradient({{ section.settings.ring_progress_color }} 0deg {{ deg }}deg, {{ section.settings.ring_gap_color }} {{ deg }}deg 360deg);"></div>
+                  <div class="say-goodbye-badge-inner">
+                    <span class="say-goodbye-badge-percentage">{{ block.settings.percentage }}<span class="say-goodbye-badge-percent-sign">%</span></span>
+                  </div>
+                  <svg class="say-goodbye-badge-label-svg" viewBox="0 0 200 200">
+                    <path id="stat-path-{{ block.id }}" d="M 22,112 A 82,82 0 0 1 178,112" fill="none"/>
+                    <text font-size="13" font-weight="700" fill="{{ section.settings.badge_text_color }}">
+                      <textPath href="#stat-path-{{ block.id }}" startOffset="50%" text-anchor="middle">{{ block.settings.label }}</textPath>
+                    </text>
+                  </svg>
+                </div>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+
+        <div class="say-goodbye-features-col">
+          <ul class="say-goodbye-features" role="list">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'feature' -%}
+                <li {{ block.shopify_attributes }}>
+                  {%- if block.settings.title != blank -%}
+                    <p class="say-goodbye-feature-title">{{ block.settings.title | escape }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.description != blank -%}
+                    <p class="say-goodbye-feature-description">{{ block.settings.description }}</p>
+                  {%- endif -%}
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+
+          {%- if section.settings.button_text != blank -%}
+            <a href="{{ section.settings.button_url | default: '#' }}" class="say-goodbye-button">
+              {{- section.settings.button_text -}}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Say Goodbye To Cravings",
+  "class": "shopify-section--say-goodbye",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_light",
+      "label": "Heading (lichte kleur)",
+      "default": "Say Goodbye"
+    },
+    {
+      "type": "text",
+      "id": "heading_dark",
+      "label": "Heading (donkere kleur)",
+      "default": "To Cravings"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 40,
+      "unit": "px",
+      "label": "Maximale breedte",
+      "default": 1280
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Afronding hoeken box",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Binnenkant padding box",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "ring_thickness",
+      "min": 6,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Dikte progress-ring",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Kleuren"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrondkleur box",
+      "default": "#E8A99A"
+    },
+    {
+      "type": "color",
+      "id": "heading_light_color",
+      "label": "Heading kleur (licht deel)",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_dark_color",
+      "label": "Heading kleur (donker deel)",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "ring_progress_color",
+      "label": "Ring voortgangskleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "ring_gap_color",
+      "label": "Ring restkleur (gat)",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Achtergrond binnenste cirkel",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Tekstkleur in cirkel",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "feature_title_color",
+      "label": "Titelkleur features",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "feature_text_color",
+      "label": "Tekstkleur features",
+      "default": "#2C2C2C"
+    },
+    {
+      "type": "header",
+      "content": "Knop"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Knoptekst",
+      "default": "Shop Berberine Patches"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Knoplink"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Knop achtergrondkleur",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Knop tekstkleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "header",
+      "content": "Padding sectie"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding boven",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding onder",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ring_stat",
+      "name": "Percentage badge",
+      "settings": [
+        {
+          "type": "range",
+          "id": "percentage",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Percentage",
+          "default": 90
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tekst rond de cirkel",
+          "default": "Experienced Reduced Cravings"
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Feature titel"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Beschrijving",
+          "default": "Korte beschrijving van deze feature."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Say Goodbye To Cravings",
+      "category": "Content",
+      "blocks": [
+        { "type": "ring_stat", "settings": { "percentage": 92, "label": "Experienced Reduced Cravings" } },
+        { "type": "ring_stat", "settings": { "percentage": 82, "label": "Experienced Reduced Snacking" } },
+        { "type": "feature", "settings": { "title": "Daily Appetite Ritual", "description": "A simple patch routine designed to fit into your day." } },
+        { "type": "feature", "settings": { "title": "No Pills or Powders", "description": "A modern transdermal alternative to capsules." } },
+        { "type": "feature", "settings": { "title": "Clean, Familiar Ingredients", "description": "Features berberine, glutamine, and chromium." } },
+        { "type": "feature", "settings": { "title": "Thoughtfully Formulated", "description": "A blend of well-known, widely studied compounds." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

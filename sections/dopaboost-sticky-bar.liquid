@@ -1,0 +1,201 @@
+{% style %}
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {{ section.settings.body_font | font_face: font_display: 'swap' }}
+
+  #shopify-section-{{ section.id }} {
+    --heading-font: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    --body-font: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+
+    --bar-bg: {{ section.settings.bar_bg_color }};
+    --star-color: {{ section.settings.star_color }};
+    --text-color: {{ section.settings.text_color }};
+
+    --label-pill-bg: {{ section.settings.label_pill_bg_color }};
+    --label-pill-text: {{ section.settings.label_pill_text_color }};
+    --button-bg: {{ section.settings.button_bg_color }};
+    --button-text: {{ section.settings.button_text_color }};
+    --button-radius: {{ section.settings.button_border_radius }}px;
+  }
+
+  .dbsb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: var(--bar-bg);
+    font-family: var(--body-font);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .dbsb.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media (max-width: 768px) {
+    .dbsb { padding: 10px 16px; gap: 10px; }
+  }
+
+  .dbsb__left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+    font-size: 15px;
+    flex-wrap: wrap;
+  }
+
+  .dbsb__stars {
+    color: var(--star-color);
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .dbsb__left { font-size: 12px; }
+    .dbsb__left br { display: none; }
+  }
+
+  .dbsb__right {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .dbsb__label-pill {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--label-pill-bg);
+    color: var(--label-pill-text);
+    font-weight: 700;
+    font-size: 11px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  .dbsb__button {
+    display: inline-block;
+    background: var(--button-bg);
+    color: var(--button-text);
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: var(--button-radius);
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+  }
+
+  @media (max-width: 640px) {
+    .dbsb__button { padding: 10px 18px; font-size: 13px; }
+  }
+{% endstyle %}
+
+<div class="dbsb" id="dbsb-{{ section.id }}" data-dbsb-threshold="{{ section.settings.scroll_threshold }}">
+  <div class="dbsb__left">
+    {% if section.settings.show_stars %}
+      <span class="dbsb__stars" aria-hidden="true">{% for i in (1..5) %}★{% endfor %}</span>
+    {% endif %}
+    <span>
+      <strong>{{ section.settings.badge_rating }}</strong> stars |
+      <strong>{{ section.settings.badge_reviews }}</strong> reviews |
+      <strong>{{ section.settings.badge_members }}</strong> members
+    </span>
+  </div>
+
+  <div class="dbsb__right">
+    {% if section.settings.label_pill_text != blank %}
+      <span class="dbsb__label-pill">{{ section.settings.label_pill_text }}</span>
+    {% endif %}
+    <button type="button" class="dbsb__button" data-dbsb-scroll-btn data-target="{{ section.settings.scroll_target_id }}">
+      {{ section.settings.button_text }}
+    </button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var bar = document.getElementById('dbsb-{{ section.id }}');
+    if (!bar) return;
+
+    var threshold = parseInt(bar.getAttribute('data-dbsb-threshold'), 10) || 600;
+
+    function onScroll() {
+      if (window.scrollY > threshold) {
+        bar.classList.add('is-visible');
+      } else {
+        bar.classList.remove('is-visible');
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    var btn = bar.querySelector('[data-dbsb-scroll-btn]');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var targetId = btn.getAttribute('data-target');
+        if (!targetId) return;
+        var target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "DopaBoost Sticky Bar",
+  "class": "dbsb-section",
+  "settings": [
+    { "type": "header", "content": "Fonts" },
+    { "type": "font_picker", "id": "heading_font", "label": "Heading font", "default": "poppins_n7" },
+    { "type": "font_picker", "id": "body_font", "label": "Body font", "default": "inter_n4" },
+
+    { "type": "header", "content": "Behavior" },
+    { "type": "range", "id": "scroll_threshold", "label": "Appears after scrolling this many pixels", "min": 100, "max": 2000, "step": 50, "default": 600 },
+    { "type": "text", "id": "scroll_target_id", "label": "ID of element to scroll to when button is clicked (without #)", "default": "product-form" },
+    { "type": "paragraph", "content": "Find the target ID by inspecting your product/buy-box section, or ask your developer/theme support which section ID to use for your Add to Cart block." },
+
+    { "type": "header", "content": "Left side — rating text" },
+    { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
+    { "type": "text", "id": "badge_rating", "label": "Rating", "default": "4.8" },
+    { "type": "text", "id": "badge_reviews", "label": "Review count", "default": "10K+" },
+    { "type": "text", "id": "badge_members", "label": "Member count", "default": "50K+" },
+
+    { "type": "header", "content": "Right side — button" },
+    { "type": "text", "id": "label_pill_text", "label": "Small label above button", "default": "10K+ Patches Worn Daily" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Save 30% + Free Gifts" },
+
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bar_bg_color", "label": "Bar background", "default": "#1E4620" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#FFFFFF" },
+    { "type": "color", "id": "star_color", "label": "Stars", "default": "#E7D600" },
+    { "type": "color", "id": "label_pill_bg_color", "label": "Label pill background", "default": "#E7D600" },
+    { "type": "color", "id": "label_pill_text_color", "label": "Label pill text", "default": "#1A1A1A" },
+    { "type": "color", "id": "button_bg_color", "label": "Button background", "default": "#2D6A34" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#FFFFFF" },
+    { "type": "range", "id": "button_border_radius", "label": "Button corner radius (px)", "min": 0, "max": 40, "step": 1, "default": 28 }
+  ],
+  "presets": [
+    { "name": "DopaBoost Sticky Bar" }
+  ]
+}
+{% endschema %}

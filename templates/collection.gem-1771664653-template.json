@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "enable_parallax": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h0",
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "filter_layout": "sidebar",
+        "show_sort_by": true,
+        "show_filters": true,
+        "show_filter_group_name": false,
+        "show_filter_values_count": false,
+        "open_first_filter_group": false,
+        "show_collection_navigation": true,
+        "collection_nav_1": "",
+        "collection_nav_2": "",
+        "collection_nav_3": "",
+        "collection_nav_4": "",
+        "collection_nav_5": "",
+        "collection_nav_6": "",
+        "collection_nav_7": "",
+        "collection_nav_8": "",
+        "show_collection_banner": true,
+        "collection_banner_image": "shopify:\/\/shop_images\/GLP-1_Support_Patches_offer_a_gentle_steady_approach_to_appetite_and_glucose_balance._Their_transdermal_delivery_ensures_consistent_support_without_the_fluctuations_typical_of_oral_su_73635680-df37-406e-8dbb-dcda06cddc2d.png",
+        "collection_custom_title": "",
+        "collection_default_description": "Effortless wellness, delivered through clean, high-potency patches. One step a day, real results.",
+        "collection_banner_bg_color": "#8f403f",
+        "collection_banner_title_color": "#ffffff",
+        "collection_banner_desc_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main"
+  ]
+}

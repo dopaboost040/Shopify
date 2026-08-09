@@ -1,0 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "promotion_image_eqHcKp": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 3,
+            "image": "shopify://shop_images/Add_a_heading_4.png",
+            "mobile_image": "shopify://shop_images/Add_a_heading_375_x_560_px_1.png"
+          }
+        },
+        "promotion_text_UkJYUb": {
+          "type": "promotion_text",
+          "settings": {
+            "position": 7,
+            "column_span": "1",
+            "background_color": "#8f403f",
+            "text_color": "#ffffff",
+            "accent_color": "#ffffff",
+            "bottom_bg_color": "",
+            "title": "More Bundles = More Savings",
+            "title_size_desktop": "text-2xl",
+            "title_position_desktop": "middle-center",
+            "title_size_mobile": "text-lg",
+            "title_position_mobile": "middle-center",
+            "subtitle": "Stack your essentials and get the highest value of the entire year.",
+            "content": "",
+            "subtitle_size_desktop": "text-lg",
+            "subtitle_position_desktop": "bottom-center",
+            "subtitle_gap_desktop": 0,
+            "subtitle_size_mobile": "text-sm",
+            "subtitle_position_mobile": "bottom-center",
+            "subtitle_gap_mobile": 35
+          }
+        },
+        "promotion_text_8HCdV3": {
+          "type": "promotion_text",
+          "settings": {
+            "position": 11,
+            "column_span": "1",
+            "background_color": "#8f403f",
+            "text_color": "#ffffff",
+            "accent_color": "#ffffff",
+            "bottom_bg_color": "",
+            "title": "Black Friday – Low Stock",
+            "title_size_desktop": "text-4xl",
+            "title_position_desktop": "middle-center",
+            "title_size_mobile": "text-lg",
+            "title_position_mobile": "middle-center",
+            "subtitle": "These exclusive bundle prices won’t return — act fast.",
+            "content": "",
+            "subtitle_size_desktop": "text-lg",
+            "subtitle_position_desktop": "bottom-center",
+            "subtitle_gap_desktop": 0,
+            "subtitle_size_mobile": "text-sm",
+            "subtitle_position_mobile": "bottom-center",
+            "subtitle_gap_mobile": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_image_eqHcKp",
+        "promotion_text_UkJYUb",
+        "promotion_text_8HCdV3"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "filter_layout": "sidebar",
+        "show_sort_by": true,
+        "show_filters": true,
+        "show_filter_group_name": false,
+        "show_filter_values_count": false,
+        "open_first_filter_group": false,
+        "show_collection_navigation": true,
+        "collection_nav_1": "black-friday-sale",
+        "collection_nav_2": "boost-your-performance",
+        "collection_nav_3": "boost-your-wellness",
+        "collection_nav_4": "boost-your-mind",
+        "collection_nav_5": "boost-your-mood",
+        "collection_nav_6": "boost-your-lifestyle",
+        "collection_nav_7": "",
+        "collection_nav_8": "",
+        "show_collection_banner": true,
+        "collection_banner_image": "shopify://shop_images/transparent-Photoroom_13.jpg",
+        "collection_custom_title": "BLACK FRIDAY",
+        "collection_default_description": "Elevate your wellness, energy and daily performance with our most powerful bundles!",
+        "collection_banner_bg_color": "#8f403f",
+        "collection_banner_title_color": "#ffffff",
+        "collection_banner_desc_color": "#ffffff"
+      }
+    },
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "enable_parallax": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h0",
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    }
+  },
+  "order": [
+    "main",
+    "banner"
+  ]
+}

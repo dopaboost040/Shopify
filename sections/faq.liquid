@@ -1,0 +1,791 @@
+{%- style -%}
+  /* =========================================================================
+     1. CSS Variables for this section (padding, colors, spacing)
+     ========================================================================= */
+  #shopify-section-{{ section.id }} {
+    /* Vertical padding controlled by section.settings */
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+
+    /* Background & text colors */
+    --background-color: {{ section.settings.background_color }};
+    --text-color: {{ section.settings.text_color }};
+    --subtitle-color: {{ section.settings.subtitle_color }};
+    --answer-color: {{ section.settings.answer_color }};
+    --border-color: {{ section.settings.border_color }};
+    --accent-color: {{ section.settings.accent_color }};
+    --cta-bg-color: {{ section.settings.cta_bg_color }};
+    --cta-button-bg: {{ section.settings.cta_button_bg }};
+    --cta-button-hover-bg: {{ section.settings.cta_button_hover_bg }};
+    
+    /* Typography */
+    --title-font-size: {{ section.settings.title_font_size }}px;
+    --title-font-size-mobile: {{ section.settings.title_font_size_mobile }}px;
+    --question-font-size: {{ section.settings.question_font_size }}px;
+    --question-font-size-mobile: {{ section.settings.question_font_size_mobile }}px;
+    
+    /* Ultra-smooth animation timing */
+    --animation-duration: 0.35s;
+    --animation-timing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --icon-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Import fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Canela:wght@300;400;500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  /* =========================================================================
+     2. Base section wrapper styles
+     ========================================================================= */
+  #shopify-section-{{ section.id }} .faq {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* =========================================================================
+     3. Inner wrapper/container
+     ========================================================================= */
+  #shopify-section-{{ section.id }} .faq__container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* =========================================================================
+     4. Header area
+     ========================================================================= */
+  #shopify-section-{{ section.id }} .faq__header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  #shopify-section-{{ section.id }} .faq__title {
+    font-family: 'Canela', serif;
+    font-size: var(--title-font-size);
+    font-weight: 400;
+    color: var(--text-color);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  #shopify-section-{{ section.id }} .faq__subtitle {
+    font-size: 16px;
+    color: var(--subtitle-color);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* =========================================================================
+     5. FAQ List and Items
+     ========================================================================= */
+  #shopify-section-{{ section.id }} .faq__list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .faq__item {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .faq__item:last-child {
+    border-bottom: none;
+  }
+
+  #shopify-section-{{ section.id }} .faq__question {
+    width: 100%;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #shopify-section-{{ section.id }} .faq__question:hover {
+    color: var(--accent-color);
+  }
+
+  #shopify-section-{{ section.id }} .faq__question-text {
+    font-size: var(--question-font-size);
+    font-weight: 500;
+    color: var(--text-color);
+    transition: color 0.2s ease;
+    padding-right: 24px;
+    line-height: 1.4;
+  }
+
+  #shopify-section-{{ section.id }} .faq__question:hover .faq__question-text {
+    color: var(--accent-color);
+  }
+
+  #shopify-section-{{ section.id }} .faq__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    stroke: var(--accent-color);
+    transition: transform var(--animation-duration) var(--icon-timing);
+    will-change: transform;
+  }
+
+  #shopify-section-{{ section.id }} .faq__item.active .faq__icon {
+    transform: rotate(45deg);
+  }
+
+  /* New smooth animation approach */
+  #shopify-section-{{ section.id }} .faq__answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--animation-duration) var(--animation-timing);
+  }
+
+  #shopify-section-{{ section.id }} .faq__item.active .faq__answer {
+    grid-template-rows: 1fr;
+  }
+
+  #shopify-section-{{ section.id }} .faq__answer-inner {
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: padding-bottom var(--animation-duration) var(--animation-timing);
+  }
+
+  #shopify-section-{{ section.id }} .faq__item.active .faq__answer-inner {
+    padding-bottom: 28px;
+  }
+
+  #shopify-section-{{ section.id }} .faq__answer-content {
+    font-size: 16px;
+    color: var(--answer-color);
+    line-height: 1.6;
+    padding-right: 48px;
+    opacity: 0;
+    transition: opacity calc(var(--animation-duration) * 0.6) ease-out;
+  }
+
+  #shopify-section-{{ section.id }} .faq__item.active .faq__answer-content {
+    opacity: 1;
+    transition-delay: calc(var(--animation-duration) * 0.3);
+  }
+
+  #shopify-section-{{ section.id }} .faq__answer-content p {
+    margin-bottom: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .faq__answer-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .faq__answer-content strong {
+    color: var(--text-color);
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .faq__answer-content ul {
+    margin: 16px 0;
+    padding-left: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .faq__answer-content li {
+    margin-bottom: 8px;
+    color: var(--answer-color);
+  }
+
+  /* =========================================================================
+     6. Contact CTA
+     ========================================================================= */
+  #shopify-section-{{ section.id }} .faq__contact {
+    margin-top: 64px;
+    text-align: center;
+    padding: 40px;
+    background: var(--cta-bg-color);
+    border-radius: 16px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.3s forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+
+  #shopify-section-{{ section.id }} .faq__contact h3 {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  #shopify-section-{{ section.id }} .faq__contact p {
+    font-size: 14px;
+    color: var(--subtitle-color);
+    margin-bottom: 0px;
+  }
+
+  #shopify-section-{{ section.id }} .faq__contact-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--cta-button-bg);
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transform: translateZ(0);
+    transition: all 0.2s ease;
+    will-change: transform;
+  }
+
+  #shopify-section-{{ section.id }} .faq__contact-button:hover {
+    background: var(--cta-button-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  #shopify-section-{{ section.id }} .faq__contact-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #shopify-section-{{ section.id }} .faq__contact-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* =========================================================================
+     7. Responsive styles
+     ========================================================================= */
+  @media screen and (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .faq__container {
+      padding: 0 24px;
+    }
+    
+    #shopify-section-{{ section.id }} .faq__title {
+      font-size: 40px;
+    }
+    
+    #shopify-section-{{ section.id }} .faq__header {
+      margin-bottom: 48px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    #shopify-section-{{ section.id }} .faq {
+      padding-top: var(--section-padding-top-mobile);
+      padding-bottom: var(--section-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .faq__container {
+      padding: 0 16px;
+    }
+    
+    #shopify-section-{{ section.id }} .faq__title {
+      font-size: var(--title-font-size-mobile);
+    }
+    
+    #shopify-section-{{ section.id }} .faq__subtitle {
+      font-size: 16px;
+    }
+    
+    #shopify-section-{{ section.id }} .faq__question {
+      padding: 24px 0;
+    }
+    
+    #shopify-section-{{ section.id }} .faq__question-text {
+      font-size: var(--question-font-size-mobile);
+      padding-right: 16px;
+    }
+    
+    #shopify-section-{{ section.id }} .faq__answer-content {
+      font-size: 15px;
+      padding-right: 32px;
+    }
+    
+    #shopify-section-{{ section.id }} .faq__contact {
+      margin-top: 48px;
+      padding: 32px 24px;
+    }
+    
+    #shopify-section-{{ section.id }} .faq__contact h3 {
+      font-size: 20px;
+    }
+    
+    #shopify-section-{{ section.id }} .faq__contact p {
+      font-size: 15px;
+    }
+  }
+
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    #shopify-section-{{ section.id }} .faq__contact-button:active {
+      transform: scale(0.98);
+    }
+  }
+{%- endstyle -%}
+
+<section class="faq" id="faq">
+  <div class="faq__container" 
+       data-section-id="{{ section.id }}" 
+       data-section-type="faq-section">
+
+    {%- comment -%} === Header === {%- endcomment -%}
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="faq__header">
+        {%- if section.settings.title != blank -%}
+          <h2 class="faq__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="faq__subtitle">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} === FAQ List === {%- endcomment -%}
+    <div class="faq__list">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'faq_item' -%}
+            <div class="faq__item" {{ block.shopify_attributes }}>
+              <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-{{ block.id }}">
+                <span class="faq__question-text">{{ block.settings.question }}</span>
+                <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </button>
+              <div class="faq__answer" id="faq-answer-{{ block.id }}">
+                <div class="faq__answer-inner">
+                  <div class="faq__answer-content">
+                    {{ block.settings.answer }}
+                  </div>
+                </div>
+              </div>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} === Contact CTA === {%- endcomment -%}
+    {%- if section.settings.show_cta -%}
+      <div class="faq__contact">
+        {%- if section.settings.cta_title != blank -%}
+          <h3>{{ section.settings.cta_title }}</h3>
+        {%- endif -%}
+        {%- if section.settings.cta_text != blank -%}
+          <p>{{ section.settings.cta_text }}</p>
+        {%- endif -%}
+        {%- if section.settings.cta_button_text != blank and section.settings.cta_button_url != blank -%}
+          <a href="{{ section.settings.cta_button_url }}" class="faq__contact-button">
+            <svg class="faq__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m22 2-7 20-4-9-9-4 20-7z"/>
+            </svg>
+            {{ section.settings.cta_button_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function() {
+    // Scope to this section only
+    const section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+
+    const faqItems = section.querySelectorAll('.faq__item');
+    const faqQuestions = section.querySelectorAll('.faq__question');
+
+    // Ultra-smooth toggle function
+    function toggleFAQ(button) {
+      const faqItem = button.parentElement;
+      const isActive = faqItem.classList.contains('active');
+      
+      {%- if section.settings.close_others -%}
+      // Close all other FAQ items
+      faqItems.forEach(item => {
+        if (item !== faqItem && item.classList.contains('active')) {
+          item.classList.remove('active');
+          const otherButton = item.querySelector('.faq__question');
+          otherButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+      {%- endif -%}
+      
+      // Toggle current item
+      if (isActive) {
+        faqItem.classList.remove('active');
+        button.setAttribute('aria-expanded', 'false');
+      } else {
+        faqItem.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // Add click handlers
+    faqQuestions.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleFAQ(this);
+      });
+    });
+
+    {%- if section.settings.close_on_outside_click -%}
+    // Optimized outside click handler
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.faq__item')) {
+        faqItems.forEach(item => {
+          if (item.classList.contains('active')) {
+            item.classList.remove('active');
+            const button = item.querySelector('.faq__question');
+            button.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    });
+    {%- endif -%}
+
+    // Smooth entrance for FAQ items (simplified)
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '50px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Add CSS for smooth entrance
+    const style = document.createElement('style');
+    style.textContent = `
+      [data-section-id="${section.id}"] .faq__item {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      [data-section-id="${section.id}"] .faq__item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Observe FAQ items
+    faqItems.forEach((item, index) => {
+      item.style.transitionDelay = `${index * 0.05}s`;
+      observer.observe(item);
+    });
+
+    // Handle hash navigation
+    function handleHashNavigation() {
+      if (window.location.hash === '#faq') {
+        // Smooth scroll with reduced motion support
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        section.scrollIntoView({
+          behavior: prefersReducedMotion ? 'auto' : 'smooth',
+          block: 'start'
+        });
+      }
+    }
+
+    // Check on load and hash change
+    handleHashNavigation();
+    window.addEventListener('hashchange', handleHashNavigation);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Everything you need to know about our titanium cookware and what makes it exceptional."
+    },
+    {
+      "type": "header",
+      "content": "Contact CTA"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show Contact CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Still have questions?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Our culinary experts are here to help you get the most out of your titanium cookware."
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "CTA Button Text",
+      "default": "Contact Our Team"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_url",
+      "label": "CTA Button URL",
+      
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#35312E"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#F5F2F0"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#B5B1AE"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer Text Color",
+      "default": "#B5B1AE"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#4A453F"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#AF593C"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "CTA Background Color",
+      "default": "#4A453F"
+    },
+    {
+      "type": "color",
+      "id": "cta_button_bg",
+      "label": "CTA Button Background",
+      "default": "#AF593C"
+    },
+    {
+      "type": "color",
+      "id": "cta_button_hover_bg",
+      "label": "CTA Button Hover Background",
+      "default": "#974E35"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title Font Size",
+      "min": 32,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title Font Size (Mobile)",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "question_font_size",
+      "label": "Question Font Size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "question_font_size_mobile",
+      "label": "Question Font Size (Mobile)",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Behavior"
+    },
+    {
+      "type": "checkbox",
+      "id": "close_others",
+      "label": "Close other FAQs when opening",
+      "default": true,
+      "info": "Only one FAQ can be open at a time"
+    },
+    {
+      "type": "checkbox",
+      "id": "close_on_outside_click",
+      "label": "Close FAQs when clicking outside",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What makes titanium superior to other cookware materials?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p><strong>Pure titanium offers unmatched benefits:</strong> It's completely non-toxic with zero chemical coatings, incredibly lightweight yet stronger than steel, and provides superior heat distribution. Unlike traditional non-stick pans, titanium develops a natural seasoning that improves with use.</p><p>Titanium is also highly corrosion-resistant, dishwasher safe, and can withstand extreme temperatures up to 1000°F, making it suitable for stovetop-to-oven cooking.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What makes titanium superior to other cookware materials?",
+            "answer": "<p><strong>Pure titanium offers unmatched benefits:</strong> It's completely non-toxic with zero chemical coatings, incredibly lightweight yet stronger than steel, and provides superior heat distribution. Unlike traditional non-stick pans, titanium develops a natural seasoning that improves with use.</p><p>Titanium is also highly corrosion-resistant, dishwasher safe, and can withstand extreme temperatures up to 1000°F, making it suitable for stovetop-to-oven cooking.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I care for and maintain my titanium pan?",
+            "answer": "<p><strong>Titanium is remarkably low-maintenance:</strong></p><ul><li>Wash with warm soapy water or place in the dishwasher</li><li>No special cleaners or scrubbing required</li><li>Avoid extreme temperature shocks (don't put a hot pan in cold water)</li><li>Season occasionally with a light coating of oil for enhanced non-stick properties</li></ul><p>The natural patina that develops over time is normal and actually improves the pan's performance.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is the titanium pan truly non-stick without coatings?",
+            "answer": "<p><strong>Yes, but it works differently than chemical coatings.</strong> Pure titanium develops natural non-stick properties through proper heating and seasoning. Unlike PTFE coatings that can chip or wear off, titanium's surface actually improves with use.</p><p>For best results, preheat the pan for 2-3 minutes and use a small amount of oil or butter. Once properly seasoned, foods release easily without any toxic chemicals.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,967 @@
+{% comment %}
+  Problem Section - Static Layout WITH GRADIENT ACCENT
+  Enhanced version with gradient accent line
+  
+  INSTALLATION:
+  Save as: sections/problem-static.liquid
+{% endcomment %}
+
+<style>
+  /* ========================================
+     PROBLEM SECTION - STATIC WITH GRADIENT ACCENT
+     ======================================== */
+  .problem-static-section {
+    padding: {{ section.settings.section_padding_desktop }};
+    background: {{ section.settings.background_color }};
+  }
+
+  .problem-container {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  /* NEW: Gradient Accent Wrapper */
+  .problem-content-wrapper {
+    position: relative;
+    padding-left: 35px;
+  }
+
+  /* NEW: Gradient Accent Line - Coral/Salmon */
+  .problem-content-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #ff6b6b 0%, #feca57 100%);
+    border-radius: 2px;
+  }
+
+  /* NEW: Optional Glow Effect */
+  .problem-content-wrapper::after {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 0;
+    bottom: 0;
+    width: 14px;
+    background: linear-gradient(to bottom, rgba(255, 107, 107, 0.15) 0%, rgba(254, 202, 87, 0.15) 100%);
+    border-radius: 2px;
+    filter: blur(12px);
+    z-index: -1;
+  }
+
+  /* Section Label */
+  .problem-label {
+    font-size: {{ section.settings.label_size }}px;
+    color: {{ section.settings.label_color }};
+    letter-spacing: {{ section.settings.label_spacing }}px;
+    text-transform: uppercase;
+    margin-bottom: {{ section.settings.label_margin }}px;
+    font-weight: {{ section.settings.label_weight }};
+  }
+
+  /* Main Headline */
+  .problem-headline {
+    font-size: {{ section.settings.headline_size_desktop }}px;
+    line-height: 1.2;
+    font-weight: {{ section.settings.headline_weight }};
+    color: {{ section.settings.headline_color }};
+    margin-bottom: {{ section.settings.headline_margin }}px;
+    letter-spacing: -0.5px;
+  }
+
+  /* NEW: Gradient text for highlight - Coral */
+  .problem-headline .highlight {
+    font-weight: {{ section.settings.headline_bold_weight }};
+    background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Description - Enhanced with dashed border */
+  .problem-description {
+    font-size: {{ section.settings.description_size }}px;
+    line-height: 1.6;
+    color: {{ section.settings.description_color }};
+    max-width: {{ section.settings.description_max_width }}px;
+    margin-bottom: {{ section.settings.description_margin }}px;
+    padding-bottom: 35px;
+    font-weight: 300;
+    border-bottom: 1px dashed #e0e0e0;
+  }
+
+  /* Problem Items Grid */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: {{ section.settings.grid_gap }}px;
+    margin-top: {{ section.settings.grid_margin_top }}px;
+  }
+
+  /* Individual Problem Item - Enhanced */
+  .problem-item {
+    padding: {{ section.settings.item_padding }};
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .problem-item:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Large Number - Enhanced with coral color */
+  .problem-number {
+    font-size: {{ section.settings.number_size }}px;
+    font-weight: {{ section.settings.number_weight }};
+    color: #ff6b6b;
+    line-height: 1;
+    margin-bottom: {{ section.settings.number_margin }}px;
+    letter-spacing: -2px;
+  }
+
+  /* Problem Title */
+  .problem-item h3 {
+    font-size: {{ section.settings.item_title_size }}px;
+    font-weight: {{ section.settings.item_title_weight }};
+    color: {{ section.settings.item_title_color }};
+    margin-bottom: {{ section.settings.item_title_margin }}px;
+    line-height: 1.3;
+  }
+
+  /* Problem Description */
+  .problem-item p {
+    font-size: {{ section.settings.item_text_size }}px;
+    line-height: 1.6;
+    color: {{ section.settings.item_text_color }};
+    font-weight: 300;
+  }
+
+  /* Responsive - Tablet */
+  @media (max-width: 1024px) {
+    .problem-static-section {
+      padding: {{ section.settings.section_padding_tablet }};
+    }
+
+    .problem-content-wrapper {
+      padding-left: 25px;
+    }
+
+    .problem-content-wrapper::before {
+      width: 3px;
+    }
+
+    .problem-headline {
+      font-size: {{ section.settings.headline_size_tablet }}px;
+    }
+
+    .problem-grid {
+      grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
+      gap: {{ section.settings.grid_gap_tablet }}px;
+    }
+  }
+
+  /* Responsive - Mobile */
+  @media (max-width: 640px) {
+    .problem-static-section {
+      padding: {{ section.settings.section_padding_mobile }};
+    }
+
+    .problem-content-wrapper {
+      padding-left: 20px;
+    }
+
+    .problem-content-wrapper::before {
+      width: 3px;
+    }
+
+    .problem-label {
+      font-size: {{ section.settings.label_size_mobile }}px;
+      margin-bottom: {{ section.settings.label_margin_mobile }}px;
+    }
+
+    .problem-headline {
+      font-size: {{ section.settings.headline_size_mobile }}px;
+      margin-bottom: {{ section.settings.headline_margin_mobile }}px;
+    }
+
+    .problem-description {
+      font-size: {{ section.settings.description_size_mobile }}px;
+      margin-bottom: {{ section.settings.description_margin_mobile }}px;
+      padding-bottom: 25px;
+    }
+
+    /* Mobile Slider */
+    .problem-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 0;
+      margin-top: {{ section.settings.grid_margin_top_mobile }}px;
+      padding-bottom: 60px;
+    }
+
+    .problem-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .problem-item {
+      flex: 0 0 85%;
+      scroll-snap-align: center;
+      padding: {{ section.settings.mobile_card_padding }};
+      background: {{ section.settings.mobile_card_background }};
+      border-radius: {{ section.settings.mobile_card_radius }}px;
+      margin-right: {{ section.settings.mobile_card_gap }}px;
+      box-shadow: {{ section.settings.mobile_card_shadow }};
+      /* NEW: Gradient border option for mobile cards - Coral */
+      border: 2px solid transparent;
+      background-image: 
+        linear-gradient(white, white),
+        linear-gradient(135deg, #ff6b6b, #feca57);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    }
+
+    .problem-item:last-child {
+      margin-right: 0;
+    }
+
+    .problem-number {
+      font-size: {{ section.settings.number_size_mobile }}px;
+    }
+
+    .problem-item h3 {
+      font-size: {{ section.settings.item_title_size_mobile }}px;
+    }
+
+    .problem-item p {
+      font-size: {{ section.settings.item_text_size_mobile }}px;
+    }
+  }
+
+  /* Progress Dots - Mobile Only - ENHANCED with gradient */
+  .progress-dots {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: {{ section.settings.dot_inactive_color }};
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .progress-dot.active {
+      background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+      width: 24px;
+      border-radius: 4px;
+    }
+  }
+</style>
+
+<!-- HTML Structure - ENHANCED -->
+<section class="problem-static-section">
+  <div class="problem-container">
+    
+    <!-- NEW: Wrapped in content wrapper for accent line -->
+    <div class="problem-content-wrapper">
+      <!-- Section Label -->
+      {% if section.settings.section_label != blank %}
+      <div class="problem-label">
+        {{ section.settings.section_label }}
+      </div>
+      {% endif %}
+
+      <!-- Main Headline -->
+      {% if section.settings.headline_part1 != blank %}
+      <h2 class="problem-headline">
+        {{ section.settings.headline_part1 }}
+        {% if section.settings.headline_part2 != blank %}
+        <span class="highlight">{{ section.settings.headline_part2 }}</span>
+        {% endif %}
+      </h2>
+      {% endif %}
+
+      <!-- Description -->
+      {% if section.settings.description != blank %}
+      <p class="problem-description">
+        {{ section.settings.description }}
+      </p>
+      {% endif %}
+
+      <!-- Problem Items Grid -->
+      <div class="problem-grid" id="problem-grid-{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="problem-item" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            <div class="problem-number">{{ block.settings.number }}</div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Progress Dots - Mobile Only -->
+      <div class="progress-dots" id="progress-dots-{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="progress-dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"></div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  if (window.innerWidth <= 640) {
+    const grid = document.getElementById('problem-grid-{{ section.id }}');
+    const dots = document.querySelectorAll('#progress-dots-{{ section.id }} .progress-dot');
+    const items = grid.querySelectorAll('.problem-item');
+    
+    if (!grid || !dots.length) return;
+
+    // Update active dot based on scroll position
+    function updateActiveDot() {
+      const scrollLeft = grid.scrollLeft;
+      const itemWidth = items[0].offsetWidth;
+      const gap = {{ section.settings.mobile_card_gap }};
+      const currentIndex = Math.round(scrollLeft / (itemWidth + gap));
+      
+      dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    // Scroll to item when dot is clicked
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', function() {
+        const itemWidth = items[0].offsetWidth;
+        const gap = {{ section.settings.mobile_card_gap }};
+        grid.scrollTo({
+          left: (itemWidth + gap) * index,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Update dots on scroll
+    grid.addEventListener('scroll', updateActiveDot);
+    
+    // Initial update
+    updateActiveDot();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Problem Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "📝 Content"
+    },
+    {
+      "type": "text",
+      "id": "section_label",
+      "label": "Section Label",
+      "default": "01 — THE PROBLEM"
+    },
+    {
+      "type": "text",
+      "id": "headline_part1",
+      "label": "Headline - Part 1",
+      "default": "The Hidden Cost of"
+    },
+    {
+      "type": "text",
+      "id": "headline_part2",
+      "label": "Headline - Part 2 (Bold with Gradient)",
+      "default": "Low Collagen"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "When your collagen levels drop, your skin begins to lose its strength and glow. Here's what you might notice:"
+    },
+    {
+      "type": "header",
+      "content": "🎨 Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label Color",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number Color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "item_title_color",
+      "label": "Item Title Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "item_text_color",
+      "label": "Item Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "📐 Typography"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "label": "Label Size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "label_size_mobile",
+      "label": "Label Size (Mobile)",
+      "min": 10,
+      "max": 14,
+      "step": 1,
+      "default": 11,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "label_spacing",
+      "label": "Label Letter Spacing",
+      "min": 0,
+      "max": 3,
+      "step": 0.5,
+      "default": 1.5,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "label_weight",
+      "label": "Label Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-Bold" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "range",
+      "id": "headline_size_desktop",
+      "label": "Headline Size (Desktop)",
+      "min": 32,
+      "max": 80,
+      "step": 2,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "headline_size_tablet",
+      "label": "Headline Size (Tablet)",
+      "min": 28,
+      "max": 60,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "headline_size_mobile",
+      "label": "Headline Size (Mobile)",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "headline_weight",
+      "label": "Headline Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-Bold" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "select",
+      "id": "headline_bold_weight",
+      "label": "Headline Bold Weight",
+      "options": [
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description Size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "default": 17,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "label": "Description Size (Mobile)",
+      "min": 14,
+      "max": 18,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "label": "Number Size",
+      "min": 60,
+      "max": 120,
+      "step": 5,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "number_size_mobile",
+      "label": "Number Size (Mobile)",
+      "min": 48,
+      "max": 80,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "number_weight",
+      "label": "Number Weight",
+      "options": [
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra Bold" },
+        { "value": "900", "label": "Black" }
+      ],
+      "default": "800"
+    },
+    {
+      "type": "range",
+      "id": "item_title_size",
+      "label": "Item Title Size",
+      "min": 18,
+      "max": 32,
+      "step": 2,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "item_title_size_mobile",
+      "label": "Item Title Size (Mobile)",
+      "min": 18,
+      "max": 28,
+      "step": 2,
+      "default": 22,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "item_title_weight",
+      "label": "Item Title Weight",
+      "options": [
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "item_text_size",
+      "label": "Item Text Size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "item_text_size_mobile",
+      "label": "Item Text Size (Mobile)",
+      "min": 13,
+      "max": 18,
+      "step": 1,
+      "default": 15,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "📏 Spacing & Layout"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_desktop",
+      "label": "Section Padding (Desktop)",
+      "default": "120px 60px"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_tablet",
+      "label": "Section Padding (Tablet)",
+      "default": "80px 40px"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_mobile",
+      "label": "Section Padding (Mobile)",
+      "default": "60px 24px"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum Content Width",
+      "min": 1000,
+      "max": 1600,
+      "step": 100,
+      "default": 1400,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "label_margin",
+      "label": "Space Below Label",
+      "min": 16,
+      "max": 60,
+      "step": 4,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "label_margin_mobile",
+      "label": "Space Below Label (Mobile)",
+      "min": 12,
+      "max": 40,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "headline_margin",
+      "label": "Space Below Headline",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "headline_margin_mobile",
+      "label": "Space Below Headline (Mobile)",
+      "min": 16,
+      "max": 60,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description_max_width",
+      "label": "Description Max Width",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "default": 700,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description_margin",
+      "label": "Space Below Description",
+      "min": 40,
+      "max": 120,
+      "step": 4,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "description_margin_mobile",
+      "label": "Space Below Description (Mobile)",
+      "min": 32,
+      "max": 80,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "number_margin",
+      "label": "Space Below Number",
+      "min": 12,
+      "max": 40,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "item_title_margin",
+      "label": "Space Below Item Title",
+      "min": 8,
+      "max": 32,
+      "step": 4,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "item_padding",
+      "label": "Item Padding",
+      "default": "0",
+      "info": "Padding around each item"
+    },
+    {
+      "type": "header",
+      "content": "🔲 Grid Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (Desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns (Tablet)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid Gap (Desktop)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_tablet",
+      "label": "Grid Gap (Tablet)",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_mobile",
+      "label": "Grid Gap (Mobile)",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_margin_top",
+      "label": "Grid Top Margin (Desktop)",
+      "min": 40,
+      "max": 120,
+      "step": 4,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_margin_top_mobile",
+      "label": "Grid Top Margin (Mobile)",
+      "min": 32,
+      "max": 80,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "📱 Mobile Slider"
+    },
+    {
+      "type": "text",
+      "id": "mobile_card_padding",
+      "label": "Mobile Card Padding",
+      "default": "40px 30px",
+      "info": "Padding inside each card on mobile"
+    },
+    {
+      "type": "color",
+      "id": "mobile_card_background",
+      "label": "Mobile Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_radius",
+      "label": "Mobile Card Border Radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "mobile_card_shadow",
+      "label": "Mobile Card Shadow",
+      "default": "0 2px 16px rgba(0, 0, 0, 0.08)",
+      "info": "CSS box-shadow value"
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_gap",
+      "label": "Space Between Cards",
+      "min": 12,
+      "max": 32,
+      "step": 4,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "dot_active_color",
+      "label": "Active Dot Color (Gradient overrides this)",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "dot_inactive_color",
+      "label": "Inactive Dot Color",
+      "default": "#d0d0d0"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "problem_item",
+      "name": "Problem Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fine Lines and Wrinkles"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Your skin starts to lose elasticity, making lines and creases more visible over time."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Problem Section with Gradient",
+      "blocks": [
+        {
+          "type": "problem_item",
+          "settings": {
+            "number": "01",
+            "title": "Fine Lines and Wrinkles",
+            "description": "Your skin starts to lose elasticity, making lines and creases more visible over time."
+          }
+        },
+        {
+          "type": "problem_item",
+          "settings": {
+            "number": "02",
+            "title": "Loss of Firmness",
+            "description": "Collagen breakdown leads to sagging skin and a lack of definition around the face and neck."
+          }
+        },
+        {
+          "type": "problem_item",
+          "settings": {
+            "number": "03",
+            "title": "Dull, Tired-Looking Skin",
+            "description": "Reduced collagen slows cell renewal, leaving your skin less radiant and hydrated."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

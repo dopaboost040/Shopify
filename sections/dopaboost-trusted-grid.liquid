@@ -1,0 +1,223 @@
+{% style %}
+  {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {{ section.settings.body_font | font_face: font_display: 'swap' }}
+
+  #shopify-section-{{ section.id }} {
+    --heading-font: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    --body-font: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+
+    --section-bg: {{ section.settings.section_bg_color }};
+    --eyebrow-color: {{ section.settings.eyebrow_color }};
+    --headline-color: {{ section.settings.headline_color }};
+    --body-color: {{ section.settings.body_text_color }};
+
+    --grid-bg: {{ section.settings.grid_bg_color }};
+
+    --badge-bg: {{ section.settings.badge_bg_color }};
+    --badge-icon-color: {{ section.settings.badge_icon_color }};
+    --badge-title-color: {{ section.settings.badge_title_color }};
+    --badge-subtitle-color: {{ section.settings.badge_subtitle_color }};
+  }
+
+  .dbtb {
+    width: 100%;
+    background: var(--section-bg);
+    font-family: var(--body-font);
+    padding: 80px 56px;
+  }
+
+  @media (max-width: 989px) {
+    .dbtb { padding: 48px 24px; }
+  }
+
+  .dbtb__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 989px) {
+    .dbtb__inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
+
+  .dbtb__eyebrow {
+    font-family: var(--heading-font);
+    color: var(--eyebrow-color);
+    font-weight: 800;
+    font-size: 18px;
+    margin: 0 0 8px 0;
+  }
+
+  .dbtb__headline {
+    font-family: var(--heading-font);
+    color: var(--headline-color);
+    font-weight: 800;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1.15;
+    margin: 0 0 20px 0;
+  }
+
+  .dbtb__body {
+    color: var(--body-color);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 520px;
+  }
+  .dbtb__body p { margin: 0; }
+
+  .dbtb__media {
+    position: relative;
+  }
+
+  .dbtb__single-image {
+    border-radius: 28px;
+    overflow: hidden;
+    background: var(--grid-bg);
+    aspect-ratio: 4 / 3;
+  }
+
+  .dbtb__single-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .dbtb__badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 34%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: var(--badge-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    z-index: 5;
+  }
+
+  .dbtb__badge-icon-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .dbtb__badge-star {
+    width: 20px;
+    height: 20px;
+    color: var(--badge-icon-color);
+    flex-shrink: 0;
+  }
+
+  .dbtb__badge-title {
+    font-family: var(--heading-font);
+    color: var(--badge-title-color);
+    font-weight: 700;
+    font-size: clamp(14px, 1.6vw, 18px);
+    margin: 0;
+  }
+
+  .dbtb__badge-subtitle {
+    font-family: var(--heading-font);
+    color: var(--badge-subtitle-color);
+    font-weight: 800;
+    font-size: clamp(15px, 1.8vw, 20px);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  @media (max-width: 989px) {
+    .dbtb__badge { width: 42%; }
+  }
+{% endstyle %}
+
+<div class="dbtb">
+  <div class="dbtb__inner">
+
+    <div class="dbtb__text">
+      {% if section.settings.eyebrow_text != blank %}
+        <p class="dbtb__eyebrow">{{ section.settings.eyebrow_text }}</p>
+      {% endif %}
+      <h2 class="dbtb__headline">{{ section.settings.headline }}</h2>
+      <div class="dbtb__body">{{ section.settings.body_text }}</div>
+    </div>
+
+    <div class="dbtb__media">
+      {% if section.settings.main_image %}
+        <div class="dbtb__single-image">
+          <img
+            src="{{ section.settings.main_image | image_url: width: 1600 }}"
+            alt="{{ section.settings.main_image_alt | escape }}"
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
+
+      {% if section.settings.show_badge %}
+        <div class="dbtb__badge">
+          <div class="dbtb__badge-icon-row">
+            <svg class="dbtb__badge-star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8L5.8 21l1.6-7L2 9.2l7.1-.6L12 2z"/>
+            </svg>
+            <p class="dbtb__badge-title">{{ section.settings.badge_title }}</p>
+          </div>
+          <p class="dbtb__badge-subtitle">{{ section.settings.badge_subtitle }}</p>
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "DopaBoost Trusted Grid",
+  "class": "dbtb-section",
+  "settings": [
+    { "type": "header", "content": "Fonts" },
+    { "type": "font_picker", "id": "heading_font", "label": "Heading font", "default": "poppins_n7" },
+    { "type": "font_picker", "id": "body_font", "label": "Body font", "default": "inter_n4" },
+
+    { "type": "header", "content": "Left side — text" },
+    { "type": "text", "id": "eyebrow_text", "label": "Eyebrow number/label", "default": "06" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Trusted by 50,000+ customers" },
+    { "type": "richtext", "id": "body_text", "label": "Body text", "default": "<p>With thousands of five-star reviews and a growing customer base, DopaBoost is the top choice for those looking to support focus and energy in a simple, convenient way.</p>" },
+
+    { "type": "header", "content": "Right side — image" },
+    { "type": "image_picker", "id": "main_image", "label": "Image" },
+    { "type": "text", "id": "main_image_alt", "label": "Image alt text" },
+
+    { "type": "header", "content": "Center badge overlay" },
+    { "type": "checkbox", "id": "show_badge", "label": "Show badge", "default": true },
+    { "type": "text", "id": "badge_title", "label": "Badge top line", "default": "Trustpilot" },
+    { "type": "text", "id": "badge_subtitle", "label": "Badge bottom line", "default": "Rated Excellent" },
+
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "section_bg_color", "label": "Section background", "default": "#FBF7F0" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow text", "default": "#1E4620" },
+    { "type": "color", "id": "headline_color", "label": "Headline text", "default": "#1E4620" },
+    { "type": "color", "id": "body_text_color", "label": "Body text", "default": "#333333" },
+    { "type": "color", "id": "grid_bg_color", "label": "Image background (visible while loading)", "default": "#1E4620" },
+    { "type": "color", "id": "badge_bg_color", "label": "Badge background", "default": "#14213D" },
+    { "type": "color", "id": "badge_icon_color", "label": "Badge star icon", "default": "#00B67A" },
+    { "type": "color", "id": "badge_title_color", "label": "Badge top line text", "default": "#FFFFFF" },
+    { "type": "color", "id": "badge_subtitle_color", "label": "Badge bottom line text", "default": "#FFFFFF" }
+  ],
+  "presets": [
+    { "name": "DopaBoost Trusted Grid" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1127 @@
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="product-features-wrapper" id="product-features-wrapper-{{ section.id }}" style="padding: 0 {{ section.settings.side_margin }}px;">
+  <div class="product-features-section" id="product-features-{{ section.id }}" style="background-color: {{ section.settings.background_color }}; margin: {{ section.settings.margin_top }}px auto {{ section.settings.margin_bottom }}px auto; padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0; border-radius: {{ section.settings.border_radius }}px;">
+  <div class="page-width" id="page-width-{{ section.id }}">
+
+    <!-- Desktop Layout -->
+    <div class="features-layout" style="display: grid; grid-template-columns: 500px 1fr auto; gap: 60px; align-items: start;">
+      
+      <!-- Left Column: Small Image -->
+      <div style="position: relative; width: 100%; max-width: 500px; z-index: 1;">
+        <!-- Desktop Image -->
+        <div class="desktop-image" style="display: block; position: relative;">
+          {% if section.settings.image %}
+            <img src="{{ section.settings.image | image_url: width: 750 }}" alt="{{ section.settings.image.alt | escape }}" style="width: 100%; height: auto; display: block; border-radius: {{ section.settings.image_border_radius }}px;">
+          {% else %}
+            {{ 'product-1' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+        
+        <!-- Mobile Image -->
+        <div class="mobile-image" style="display: none; position: relative;">
+          {% if section.settings.mobile_image %}
+            <img src="{{ section.settings.mobile_image | image_url: width: section.settings.mobile_image_width }}" alt="{{ section.settings.mobile_image.alt | escape }}" style="width: 100%; height: auto; display: block; border-radius: {{ section.settings.image_border_radius }}px;">
+          {% elsif section.settings.image %}
+            <img src="{{ section.settings.image | image_url: width: section.settings.mobile_image_width }}" alt="{{ section.settings.image.alt | escape }}" style="width: 100%; height: auto; display: block; border-radius: {{ section.settings.image_border_radius }}px;">
+          {% else %}
+            {{ 'product-1' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+
+        <!-- Hotspots on Image -->
+        <div id="hotspots-{{ section.id }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+          {% assign hotspot_count = 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'hotspot' %}
+              {% assign hotspot_count = hotspot_count | plus: 1 %}
+              <div 
+                class="hotspot-btn" 
+                data-index="{{ hotspot_count }}"
+                data-desktop-top="{{ block.settings.vertical }}"
+                data-desktop-left="{{ block.settings.horizontal }}"
+                data-mobile-top="{{ block.settings.mobile_vertical | default: block.settings.vertical }}"
+                data-mobile-left="{{ block.settings.mobile_horizontal | default: block.settings.horizontal }}"
+                style="position: absolute; top: {{ block.settings.vertical }}%; left: {{ block.settings.horizontal }}%; transform: translate(-50%, -50%); width: {{ section.settings.hotspot_size }}px; height: {{ section.settings.hotspot_size }}px; background-color: {{ section.settings.hotspot_bg_color }}; border: {{ section.settings.hotspot_border_width }}px solid {{ section.settings.hotspot_border_color }}; border-radius: {{ section.settings.hotspot_border_radius }}%; display: flex; align-items: center; justify-content: center; z-index: 9999; font-size: {{ section.settings.hotspot_font_size }}px; font-weight: {{ section.settings.hotspot_font_weight }}; color: {{ section.settings.hotspot_text_color }}; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.3s ease; pointer-events: auto;">
+                {{ hotspot_count }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Center Column: Title and Feature Content -->
+      <div class="feature-cards-column" id="feature-cards-{{ section.id }}" style="padding-right: 40px;">
+        {% if section.settings.heading %}
+          <h2 class="section-heading-{{ section.id }}" style="margin: 0 0 {{ section.settings.heading_margin_bottom }}px 0; font-size: {{ section.settings.heading_size }}px; color: {{ section.settings.heading_color }}; font-weight: {{ section.settings.heading_weight }}; letter-spacing: {{ section.settings.heading_letter_spacing }}px; font-family: 'Gilda Display', serif; line-height: 1.1;">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subheading %}
+          <p class="section-subheading-{{ section.id }}" style="margin: 0 0 {{ section.settings.heading_margin_bottom }}px; font-size: {{ section.settings.subheading_size }}px; color: {{ section.settings.subheading_color }}; line-height: 1.6; font-family: 'Inter', sans-serif;">
+            {{ section.settings.subheading | escape }}
+          </p>
+        {% endif %}
+
+        {% assign feature_count = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'feature' %}
+            {% assign feature_count = feature_count | plus: 1 %}
+            <div class="feature-card" data-index="{{ feature_count }}" style="display: none; padding: 0; margin-bottom: 24px;">
+              <div style="display: flex; align-items: start; gap: 0;">
+                <div style="flex: 1;">
+                  <h3 style="margin: 0 0 16px 0; font-size: {{ section.settings.feature_title_size }}px; font-weight: {{ section.settings.feature_title_weight }}; color: {{ section.settings.feature_title_color }}; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2;">
+                    {{ block.settings.heading | escape }}
+                  </h3>
+                  <p style="margin: 0; font-size: {{ section.settings.feature_subtitle_size }}px; color: {{ section.settings.feature_subtitle_color }}; line-height: 1.5; font-family: 'Inter', sans-serif;">
+                    {{ block.settings.subtitle | escape }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Right Column: Dots -->
+      <div id="side-dots-{{ section.id }}" class="side-dots-column" style="display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; padding-right: 40px; align-self: center;">
+        {% assign dot_count = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'hotspot' %}
+            {% assign dot_count = dot_count | plus: 1 %}
+            <div 
+              class="side-dot" 
+              data-index="{{ dot_count }}"
+              style="width: {{ section.settings.hotspot_size }}px; height: {{ section.settings.hotspot_size }}px; background-color: {{ section.settings.hotspot_bg_color }}; border: {{ section.settings.hotspot_border_width }}px solid {{ section.settings.hotspot_border_color }}; border-radius: {{ section.settings.hotspot_border_radius }}%; display: flex; align-items: center; justify-content: center; font-size: {{ section.settings.hotspot_font_size }}px; font-weight: {{ section.settings.hotspot_font_weight }}; color: {{ section.settings.hotspot_text_color }}; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.3s ease; flex-shrink: 0;">
+              {{ dot_count }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Mobile Feature Dots Navigation -->
+    <div class="mobile-feature-dots" style="display: none; flex-direction: column; margin-top: 30px;">
+      <!-- Mobile Title -->
+      {% if section.settings.heading %}
+        <h2 class="mobile-section-heading mobile-section-heading-{{ section.id }}" style="margin: 0 0 20px 0; font-size: {{ section.settings.mobile_heading_size }}px; color: {{ section.settings.heading_color }}; font-weight: {{ section.settings.heading_weight }}; letter-spacing: {{ section.settings.heading_letter_spacing }}px; font-family: 'Gilda Display', serif; line-height: 1.1;">
+          {{ section.settings.heading | escape }}
+        </h2>
+      {% endif %}
+
+      <!-- Mobile Feature Content (shows first) -->
+      <div class="mobile-feature-content" id="mobile-feature-content-{{ section.id }}" style="margin-bottom: 20px;">
+        {% assign mobile_feature_count = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'feature' %}
+            {% assign mobile_feature_count = mobile_feature_count | plus: 1 %}
+            <div class="mobile-feature-card" data-index="{{ mobile_feature_count }}" style="display: none;">
+              <h3 class="mobile-feature-title-{{ section.id }}" style="margin: 0 0 16px 0; font-size: {{ section.settings.feature_title_size }}px; font-weight: {{ section.settings.feature_title_weight }}; color: {{ section.settings.feature_title_color }}; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2;">
+                {{ block.settings.heading | escape }}
+              </h3>
+              <p class="mobile-feature-subtitle-{{ section.id }}" style="margin: 0; font-size: {{ section.settings.feature_subtitle_size }}px; color: {{ section.settings.feature_subtitle_color }}; line-height: 1.5; font-family: 'Inter', sans-serif;">
+                {{ block.settings.subtitle | escape }}
+              </p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Mobile Dots Row (at bottom) -->
+      <div style="display: flex; justify-content: flex-start; gap: 12px; flex-wrap: wrap;">
+        {% assign feature_count_dots = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'feature' %}
+            {% assign feature_count_dots = feature_count_dots | plus: 1 %}
+            <div class="feature-dot mobile-dot" data-index="{{ feature_count_dots }}" style="width: {{ section.settings.hotspot_size }}px; height: {{ section.settings.hotspot_size }}px; background: {{ section.settings.hotspot_bg_color }}; color: {{ section.settings.hotspot_text_color }}; border: {{ section.settings.hotspot_border_width }}px solid {{ section.settings.hotspot_border_color }}; border-radius: {{ section.settings.hotspot_border_radius }}%; display: flex; align-items: center; justify-content: center; font-weight: {{ section.settings.hotspot_font_weight }}; font-size: {{ section.settings.mobile_hotspot_font_size }}px; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.3s ease;">
+              {{ feature_count_dots }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<style>
+  /* Background width wrapper */
+  #product-features-wrapper-{{ section.id }} {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Desktop background width */
+  #product-features-{{ section.id }} {
+    width: 100%;
+    max-width: {{ section.settings.desktop_background_width }}px;
+  }
+
+  /* Apply desktop width settings */
+  #page-width-{{ section.id }} {
+    max-width: {{ section.settings.desktop_max_width }}px;
+    margin: 0 auto;
+    padding: 0 {{ section.settings.desktop_side_padding }}px;
+  }
+
+  /* Hotspot styles with enhanced z-index and positioning */
+  #hotspots-{{ section.id }} {
+    position: relative;
+    z-index: 9999;
+    isolation: isolate;
+  }
+
+  .hotspot-btn {
+    position: relative;
+    z-index: 9999 !important;
+    isolation: isolate !important;
+  }
+
+  .hotspot-btn:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 10000 !important;
+  }
+
+  .hotspot-btn.active {
+    background-color: {{ section.settings.hotspot_active_bg }} !important;
+    color: {{ section.settings.hotspot_active_text }} !important;
+    border-color: {{ section.settings.hotspot_active_border }} !important;
+    z-index: 10000 !important;
+  }
+
+  /* Ensure parent containers don't create overlay issues */
+  .features-layout > div:first-child,
+  .desktop-image,
+  .mobile-image {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Prevent any pseudo-elements or overlays from covering hotspots */
+  .features-layout > div:first-child::before,
+  .features-layout > div:first-child::after,
+  .desktop-image::before,
+  .desktop-image::after,
+  .mobile-image::before,
+  .mobile-image::after {
+    z-index: 1 !important;
+  }
+
+  .side-dot:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .side-dot.active {
+    background-color: {{ section.settings.hotspot_active_bg }} !important;
+    color: {{ section.settings.hotspot_active_text }} !important;
+    border-color: {{ section.settings.hotspot_active_border }} !important;
+  }
+
+  .mobile-dot:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-dot.active {
+    background-color: {{ section.settings.hotspot_active_bg }} !important;
+    color: {{ section.settings.hotspot_active_text }} !important;
+    border-color: {{ section.settings.hotspot_active_border }} !important;
+  }
+
+  /* Mobile Styles */
+  @media screen and (max-width: 768px) {
+    /* Apply mobile background width */
+    #product-features-{{ section.id }} {
+      max-width: {{ section.settings.mobile_background_width }}px;
+    }
+
+    /* Apply mobile width settings */
+    #page-width-{{ section.id }} {
+      max-width: {{ section.settings.mobile_max_width }}px;
+      padding: 0 {{ section.settings.mobile_side_padding }}px;
+    }
+
+    /* Mobile heading font size */
+    .section-heading-{{ section.id }} {
+      font-size: {{ section.settings.mobile_heading_size }}px !important;
+    }
+
+    /* Mobile subheading font size */
+    .section-subheading-{{ section.id }} {
+      font-size: {{ section.settings.mobile_subheading_size }}px !important;
+    }
+
+    /* Mobile hotspot font size */
+    #hotspots-{{ section.id }} .hotspot-btn {
+      font-size: {{ section.settings.mobile_hotspot_font_size }}px !important;
+    }
+
+    /* Mobile feature title and subtitle sizes */
+    .mobile-feature-title-{{ section.id }} {
+      font-size: {{ section.settings.mobile_feature_title_size }}px !important;
+    }
+
+    .mobile-feature-subtitle-{{ section.id }} {
+      font-size: {{ section.settings.mobile_feature_subtitle_size }}px !important;
+    }
+
+    /* Mobile heading margin bottom */
+    .mobile-section-heading-{{ section.id }} {
+      margin-bottom: {{ section.settings.mobile_heading_margin_bottom }}px !important;
+    }
+
+    .features-layout {
+      grid-template-columns: 1fr !important;
+      gap: 30px !important;
+    }
+
+    .feature-cards-column {
+      display: none !important;
+    }
+
+    .desktop-image {
+      display: none !important;
+    }
+
+    .mobile-image {
+      display: block !important;
+    }
+
+    .mobile-feature-dots {
+      display: flex !important;
+    }
+
+    .side-dots-column {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+(function() {
+  const sectionId = '{{ section.id }}';
+  const hotspots = document.querySelectorAll('#hotspots-' + sectionId + ' .hotspot-btn');
+  const sideDots = document.querySelectorAll('#side-dots-' + sectionId + ' .side-dot');
+  const featureCards = document.querySelectorAll('#feature-cards-' + sectionId + ' .feature-card');
+  const mobileDots = document.querySelectorAll('.mobile-feature-dots .mobile-dot');
+  const mobileFeatureCards = document.querySelectorAll('.mobile-feature-content .mobile-feature-card');
+
+  // Function to update hotspot positions based on screen size
+  function updateHotspotPositions() {
+    const isMobile = window.innerWidth <= 768;
+    hotspots.forEach(hotspot => {
+      if (isMobile) {
+        hotspot.style.top = hotspot.dataset.mobileTop + '%';
+        hotspot.style.left = hotspot.dataset.mobileLeft + '%';
+      } else {
+        hotspot.style.top = hotspot.dataset.desktopTop + '%';
+        hotspot.style.left = hotspot.dataset.desktopLeft + '%';
+      }
+    });
+  }
+
+  // Function to toggle feature card visibility (desktop)
+  function toggleFeature(index) {
+    const hotspot = document.querySelector('#hotspots-' + sectionId + ' .hotspot-btn[data-index="' + index + '"]');
+    const sideDot = document.querySelector('#side-dots-' + sectionId + ' .side-dot[data-index="' + index + '"]');
+    const card = document.querySelector('#feature-cards-' + sectionId + ' .feature-card[data-index="' + index + '"]');
+    
+    if (!card) return;
+    
+    const isActive = (hotspot && hotspot.classList.contains('active')) || (sideDot && sideDot.classList.contains('active'));
+    
+    if (isActive) {
+      // Hide the card
+      if (hotspot) hotspot.classList.remove('active');
+      if (sideDot) sideDot.classList.remove('active');
+      card.style.display = 'none';
+    } else {
+      // Hide all other cards and deactivate all hotspots/dots
+      hotspots.forEach(h => h.classList.remove('active'));
+      sideDots.forEach(d => d.classList.remove('active'));
+      featureCards.forEach(c => c.style.display = 'none');
+      
+      // Show this card
+      if (hotspot) hotspot.classList.add('active');
+      if (sideDot) sideDot.classList.add('active');
+      card.style.display = 'block';
+    }
+  }
+
+  // Function to toggle mobile feature card visibility
+  function toggleMobileFeature(index) {
+    const hotspot = document.querySelector('#hotspots-' + sectionId + ' .hotspot-btn[data-index="' + index + '"]');
+    const mobileDot = document.querySelectorAll('.mobile-feature-dots .mobile-dot[data-index="' + index + '"]')[0];
+    const mobileCard = document.querySelectorAll('.mobile-feature-content .mobile-feature-card[data-index="' + index + '"]')[0];
+    
+    if (!mobileCard) return;
+    
+    const isActive = (mobileDot && mobileDot.classList.contains('active')) || (hotspot && hotspot.classList.contains('active'));
+    
+    if (isActive) {
+      // Hide the card and deactivate all
+      if (mobileDot) mobileDot.classList.remove('active');
+      if (hotspot) hotspot.classList.remove('active');
+      mobileCard.style.display = 'none';
+    } else {
+      // Hide all other cards and deactivate all dots/hotspots
+      mobileDots.forEach(d => d.classList.remove('active'));
+      hotspots.forEach(h => h.classList.remove('active'));
+      mobileFeatureCards.forEach(c => c.style.display = 'none');
+      
+      // Show this card and activate
+      if (mobileDot) mobileDot.classList.add('active');
+      if (hotspot) hotspot.classList.add('active');
+      mobileCard.style.display = 'block';
+    }
+  }
+
+  // Add click event listeners to hotspots
+  hotspots.forEach(hotspot => {
+    hotspot.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      const isMobile = window.innerWidth <= 768;
+      
+      if (isMobile) {
+        // On mobile, use mobile toggle function
+        toggleMobileFeature(index);
+      } else {
+        // On desktop, use desktop toggle function
+        toggleFeature(index);
+      }
+    });
+  });
+
+  // Add click event listeners to side dots
+  sideDots.forEach(sideDot => {
+    sideDot.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      toggleFeature(index);
+    });
+  });
+
+  // Add click event listeners to mobile dots
+  mobileDots.forEach(mobileDot => {
+    mobileDot.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      toggleMobileFeature(index);
+    });
+  });
+
+  // Initialize hotspot positions
+  updateHotspotPositions();
+
+  // Update on window resize
+  window.addEventListener('resize', updateHotspotPositions);
+
+  // OPEN FIRST FEATURE BY DEFAULT ON PAGE LOAD
+  // Desktop
+  if (featureCards.length > 0) {
+    const firstHotspot = document.querySelector('#hotspots-' + sectionId + ' .hotspot-btn[data-index="1"]');
+    const firstSideDot = document.querySelector('#side-dots-' + sectionId + ' .side-dot[data-index="1"]');
+    const firstCard = document.querySelector('#feature-cards-' + sectionId + ' .feature-card[data-index="1"]');
+    
+    if (firstCard) {
+      if (firstHotspot) firstHotspot.classList.add('active');
+      if (firstSideDot) firstSideDot.classList.add('active');
+      firstCard.style.display = 'block';
+    }
+  }
+
+  // Mobile
+  if (mobileFeatureCards.length > 0) {
+    const firstMobileHotspot = document.querySelector('#hotspots-' + sectionId + ' .hotspot-btn[data-index="1"]');
+    const firstMobileDot = document.querySelector('.mobile-feature-dots .mobile-dot[data-index="1"]');
+    const firstMobileCard = document.querySelector('.mobile-feature-content .mobile-feature-card[data-index="1"]');
+    
+    if (firstMobileCard && firstMobileDot) {
+      if (firstMobileHotspot) firstMobileHotspot.classList.add('active');
+      firstMobileDot.classList.add('active');
+      firstMobileCard.style.display = 'block';
+    }
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Product Features",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Width Settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "Control the width of the content area on desktop and mobile separately"
+    },
+    {
+      "type": "range",
+      "id": "desktop_max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop max width",
+      "default": 1200,
+      "info": "Maximum width of the content on desktop screens"
+    },
+    {
+      "type": "range",
+      "id": "desktop_side_padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop side padding",
+      "default": 40,
+      "info": "Padding on left and right sides on desktop"
+    },
+    {
+      "type": "range",
+      "id": "mobile_max_width",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile max width",
+      "default": 600,
+      "info": "Maximum width of the content on mobile screens"
+    },
+    {
+      "type": "range",
+      "id": "mobile_side_padding",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile side padding",
+      "default": 20,
+      "info": "Padding on left and right sides on mobile"
+    },
+    {
+      "type": "header",
+      "content": "Background Width Settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "Control the width of the colored background area separately from content width"
+    },
+    {
+      "type": "range",
+      "id": "desktop_background_width",
+      "min": 1000,
+      "max": 2000,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop background width",
+      "default": 2000,
+      "info": "Maximum width of the background color on desktop (use 2000px for full width)"
+    },
+    {
+      "type": "range",
+      "id": "mobile_background_width",
+      "min": 300,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile background width",
+      "default": 1000,
+      "info": "Maximum width of the background color on mobile (use 1000px for full width)"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 80,
+      "info": "Space inside section at top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 80,
+      "info": "Space inside section at bottom"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Margin top",
+      "default": 0,
+      "info": "Space outside section at top"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Margin bottom",
+      "default": 0,
+      "info": "Space outside section at bottom"
+    },
+    {
+      "type": "range",
+      "id": "side_margin",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Side margins",
+      "default": 0,
+      "info": "Space outside section on left and right"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 0,
+      "info": "Rounded corners for the section"
+    },
+    {
+      "type": "header",
+      "content": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FCFAF6"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Discover the Details"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_family",
+      "label": "Heading font",
+      "default": "assistant_n4",
+      "info": "Choose the font for the main heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Desktop heading size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile heading size",
+      "default": 28,
+      "info": "Font size for heading on mobile devices"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#35312E"
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "options": [
+        {"value": "300", "label": "Light"},
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semi Bold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "min": -2,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Letter spacing",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Click on the numbered hotspots to explore each feature in detail"
+    },
+    {
+      "type": "font_picker",
+      "id": "subheading_font_family",
+      "label": "Subheading font",
+      "default": "assistant_n4",
+      "info": "Choose the font for the subheading"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop subheading size",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "mobile_subheading_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile subheading size",
+      "default": 13,
+      "info": "Font size for subheading on mobile devices"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#6B6662"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Space below heading (desktop)",
+      "default": 40,
+      "info": "Space between section heading and feature content on desktop"
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_margin_bottom",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Space below heading (mobile)",
+      "default": 20,
+      "info": "Space between section heading and feature content on mobile"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "range",
+      "id": "desktop_image_width",
+      "min": 400,
+      "max": 2000,
+      "step": 100,
+      "unit": "px",
+      "label": "Desktop image width",
+      "default": 800
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image (optional)",
+      "info": "If not provided, desktop image will be used"
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_width",
+      "min": 300,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile image width",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Hotspot Style"
+    },
+    {
+      "type": "font_picker",
+      "id": "hotspot_font_family",
+      "label": "Hotspot font",
+      "default": "assistant_n4",
+      "info": "Choose the font for hotspot numbers"
+    },
+    {
+      "type": "range",
+      "id": "hotspot_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot size",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "hotspot_bg_color",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "hotspot_text_color",
+      "label": "Text color",
+      "default": "#35312E"
+    },
+    {
+      "type": "color",
+      "id": "hotspot_border_color",
+      "label": "Border color",
+      "default": "#35312E"
+    },
+    {
+      "type": "range",
+      "id": "hotspot_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "hotspot_border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Border radius",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "hotspot_font_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop font size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_hotspot_font_size",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile font size",
+      "default": 12,
+      "info": "Font size for hotspot numbers on mobile devices"
+    },
+    {
+      "type": "select",
+      "id": "hotspot_font_weight",
+      "label": "Font weight",
+      "options": [
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semi Bold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Feature Cards"
+    },
+    {
+      "type": "font_picker",
+      "id": "feature_title_font_family",
+      "label": "Feature title font",
+      "default": "assistant_n4",
+      "info": "Choose the font for feature titles"
+    },
+    {
+      "type": "range",
+      "id": "feature_title_size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Feature title size (desktop)",
+      "default": 20,
+      "info": "Size of the feature title text on desktop"
+    },
+    {
+      "type": "range",
+      "id": "mobile_feature_title_size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Feature title size (mobile)",
+      "default": 18,
+      "info": "Size of the feature title text on mobile"
+    },
+    {
+      "type": "color",
+      "id": "feature_title_color",
+      "label": "Feature title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "feature_title_weight",
+      "label": "Feature title weight",
+      "options": [
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semi Bold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": "600"
+    },
+    {
+      "type": "font_picker",
+      "id": "feature_subtitle_font_family",
+      "label": "Feature subtitle font",
+      "default": "assistant_n4",
+      "info": "Choose the font for feature subtitles"
+    },
+    {
+      "type": "range",
+      "id": "feature_subtitle_size",
+      "min": 11,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Feature subtitle size (desktop)",
+      "default": 14,
+      "info": "Size of the feature subtitle text on desktop"
+    },
+    {
+      "type": "range",
+      "id": "mobile_feature_subtitle_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Feature subtitle size (mobile)",
+      "default": 13,
+      "info": "Size of the feature subtitle text on mobile"
+    },
+    {
+      "type": "color",
+      "id": "feature_subtitle_color",
+      "label": "Feature subtitle color",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Background (deprecated)",
+      "default": "#FFFFFF",
+      "info": "This setting is no longer used"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Border color (deprecated)",
+      "default": "#E8E5E1",
+      "info": "This setting is no longer used"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Title color (deprecated)",
+      "default": "#35312E",
+      "info": "Use 'Feature title color' instead"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Text color (deprecated)",
+      "default": "#6B6662",
+      "info": "Use 'Feature subtitle color' instead"
+    },
+    {
+      "type": "color",
+      "id": "card_number_bg",
+      "label": "Number background",
+      "default": "#35312E"
+    },
+    {
+      "type": "color",
+      "id": "card_number_text",
+      "label": "Number text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Hotspot Active State"
+    },
+    {
+      "type": "color",
+      "id": "hotspot_active_bg",
+      "label": "Active background",
+      "default": "#948979"
+    },
+    {
+      "type": "color",
+      "id": "hotspot_active_text",
+      "label": "Active text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "hotspot_active_border",
+      "label": "Active border",
+      "default": "#35312E"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Hotspot",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Desktop Position"
+        },
+        {
+          "type": "range",
+          "id": "horizontal",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Horizontal position",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "vertical",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Vertical position",
+          "default": 50
+        },
+        {
+          "type": "header",
+          "content": "Mobile Position"
+        },
+        {
+          "type": "range",
+          "id": "mobile_horizontal",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Mobile horizontal",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "mobile_vertical",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Mobile vertical",
+          "default": 50
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Dishwasher safe for effortless cleanup"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Features",
+      "blocks": [
+        {"type": "hotspot", "settings": {"horizontal": 46, "vertical": 59}},
+        {"type": "feature", "settings": {"heading": "5-PLY CONSTRUCTION", "subtitle": "For performance, heat retention, and durability"}},
+        {"type": "hotspot", "settings": {"horizontal": 52, "vertical": 72}},
+        {"type": "feature", "settings": {"heading": "INDUCTION OPTIMIZED", "subtitle": "Works perfectly on all cooktop surfaces"}},
+        {"type": "hotspot", "settings": {"horizontal": 60, "vertical": 50}},
+        {"type": "feature", "settings": {"heading": "STAINLESS STEEL RIVETS", "subtitle": "Premium rivets for lifetime comfort"}},
+        {"type": "hotspot", "settings": {"horizontal": 60, "vertical": 35}},
+        {"type": "feature", "settings": {"heading": "STAY COOL HANDLE", "subtitle": "Handles stay cool during cooking"}},
+        {"type": "hotspot", "settings": {"horizontal": 34, "vertical": 63}},
+        {"type": "feature", "settings": {"heading": "EASY MAINTENANCE", "subtitle": "Dishwasher safe for effortless cleanup"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

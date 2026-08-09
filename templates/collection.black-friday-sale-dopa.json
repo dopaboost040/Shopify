@@ -1,0 +1,139 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_Ee9WBA": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_9pkaDa": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_kqWMW7": {
+          "type": "heading",
+          "settings": {
+            "text": "More Support. More Savings. More DopaBoost.",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_eTThPx": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Discover carefully selected patch combinations designed to support your daily health, energy, focus, mood, and overall well-being. All while saving more.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_9pkaDa",
+        "heading_kqWMW7",
+        "richtext_eTThPx"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#321E1E"
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "promotion_text_UkJYUb": {
+          "type": "promotion_text",
+          "settings": {
+            "position": 7,
+            "column_span": "1",
+            "background_color": "#C1633F",
+            "text_color": "#ffffff",
+            "accent_color": "#ffffff",
+            "bottom_bg_color": "",
+            "title": "More Bundles = More Savings",
+            "title_size_desktop": "text-2xl",
+            "title_position_desktop": "middle-center",
+            "title_size_mobile": "text-lg",
+            "title_position_mobile": "middle-center",
+            "subtitle": "",
+            "content": "",
+            "subtitle_size_desktop": "text-lg",
+            "subtitle_position_desktop": "middle-center",
+            "subtitle_gap_desktop": 0,
+            "subtitle_size_mobile": "text-sm",
+            "subtitle_position_mobile": "bottom-center",
+            "subtitle_gap_mobile": 35
+          }
+        }
+      },
+      "block_order": [
+        "promotion_text_UkJYUb"
+      ],
+      "custom_css": [],
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "filter_layout": "sidebar",
+        "show_sort_by": false,
+        "show_filters": false,
+        "show_filter_group_name": false,
+        "show_filter_values_count": false,
+        "open_first_filter_group": false,
+        "show_collection_navigation": true,
+        "collection_nav_1": "black-friday-sale",
+        "collection_nav_2": "boost-your-performance",
+        "collection_nav_3": "boost-your-wellness",
+        "collection_nav_4": "boost-your-mind",
+        "collection_nav_5": "boost-your-mood",
+        "collection_nav_6": "boost-your-lifestyle",
+        "collection_nav_7": "",
+        "collection_nav_8": "",
+        "show_collection_banner": false,
+        "collection_banner_image": "shopify://shop_images/HEX_321E1E_1920_x_400_px.png",
+        "collection_custom_title": "More Support. More Savings. More DopaBoost.",
+        "collection_default_description": "Discover carefully selected patch combinations designed to support your daily health, energy, focus, mood, and overall well-being — all while saving more.",
+        "collection_banner_bg_color": "#321E1E",
+        "collection_banner_title_color": "#FEF9F1",
+        "collection_banner_desc_color": "#FEF9F1"
+      }
+    },
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "enable_parallax": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "collection_title_size": "h0",
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    }
+  },
+  "order": [
+    "rich_text_Ee9WBA",
+    "main",
+    "banner"
+  ]
+}

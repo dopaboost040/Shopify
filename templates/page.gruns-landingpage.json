@@ -1,0 +1,548 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "dopaboost_fullpage_hero_9eLbEX": {
+      "type": "dopaboost-fullpage-hero",
+      "blocks": {
+        "slide_KyUVCf": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Timothy_Patattas_Ibiza_Express_Raasdorperweg_181G_1175_KV_Lijnden_Nederland_7.png",
+            "alt": ""
+          }
+        },
+        "slide_TxHgUt": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Timothy_Patattas_Ibiza_Express_Raasdorperweg_181G_1175_KV_Lijnden_Nederland_8.png",
+            "alt": ""
+          }
+        },
+        "slide_VyMdky": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Timothy_Patattas_Ibiza_Express_Raasdorperweg_181G_1175_KV_Lijnden_Nederland_9.png",
+            "alt": ""
+          }
+        },
+        "slide_qn7c4e": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Timothy_Patattas_Ibiza_Express_Raasdorperweg_181G_1175_KV_Lijnden_Nederland_10.png",
+            "alt": ""
+          }
+        },
+        "slide_zi6XCa": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Timothy_Patattas_Ibiza_Express_Raasdorperweg_181G_1175_KV_Lijnden_Nederland_19.png",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_KyUVCf",
+        "slide_TxHgUt",
+        "slide_VyMdky",
+        "slide_qn7c4e",
+        "slide_zi6XCa"
+      ],
+      "name": "DopaBoost Hero",
+      "settings": {
+        "heading_font": "poppins_n7",
+        "body_font": "inter_n4",
+        "show_promo_bar": true,
+        "promo_title": "☀️ SUMMER SALE ☀️",
+        "promo_subtitle": "UP TO 30% OFF W/ FREE GIFTS",
+        "show_countdown": true,
+        "countdown_duration_hours": 24,
+        "info_tooltip_text": "Offer resets every 24 hours.",
+        "show_logo_header": true,
+        "header_bg_color": "#fffaf4",
+        "logo_height": 64,
+        "show_badge": true,
+        "badge_avatar_1": "shopify://shop_images/Timothy_Patattas_Ibiza_Express_Raasdorperweg_181G_1175_KV_Lijnden_Nederland_6.png",
+        "badge_avatar_2": "shopify://shop_images/Designed_for_elatic_skin_and_firmness_68.png",
+        "badge_rating": "4.8",
+        "badge_reviews": "10K+",
+        "badge_members": "50K+",
+        "headline": "6 Reasons Why DopaBoost Is Your Nervous System's New Bestie",
+        "body_text": "<p>Your nervous system is like your body's alarm system—it affects everything from racing thoughts to sleep and mood. DopaBoost helps it settle with a clinically-studied blend, delivered through a simple daily patch instead of another pill to remember.</p><p></p>",
+        "label_pill_text": "10K+ Patches Worn Daily",
+        "button_text": "Save 30% + Free Gifts",
+        "button_link": "",
+        "trust_line_prefix": "Try It",
+        "trust_line_text": "Risk-Free For 30 Days",
+        "trust_line_link": "",
+        "right_image_alt": "",
+        "carousel_autoplay_seconds": 4,
+        "right_bg_color": "#f6f5f1",
+        "promo_bg_color": "#321e1e",
+        "promo_title_color": "#ffffff",
+        "promo_subtitle_color": "#ffdd00",
+        "timer_bg_color": "#ffffff",
+        "timer_number_color": "#1a1a1a",
+        "timer_label_color": "#666666",
+        "info_icon_color": "#ffffff",
+        "left_bg_color_start": "#fbf7f0",
+        "left_bg_color_end": "#f6f5f1",
+        "headline_color": "#af593c",
+        "body_text_color": "#321e1e",
+        "badge_bg_color": "#ffffff",
+        "badge_text_color": "#1a1a1a",
+        "badge_star_color": "#ffdd00",
+        "label_pill_bg_color": "#ffdd00",
+        "label_pill_text_color": "#321e1e",
+        "button_bg_color": "#af593c",
+        "button_text_color": "#ffffff",
+        "button_border_radius": 28,
+        "trust_icon_bg_color": "#1a1a1a",
+        "trust_text_color": "#1a1a1a",
+        "trust_link_color": "#1a1a1a",
+        "arrow_bg_color": "#ffffff",
+        "arrow_icon_color": "#1a1a1a",
+        "dot_color": "#c9c9c9",
+        "dot_active_color": "#1a1a1a",
+        "show_mobile_reasons": true,
+        "reason_bg_color": "#fbfaf5",
+        "reason_number_color": "#1e4620",
+        "reason_title_color": "#1e4620",
+        "reason_body_color": "#333333",
+        "show_mobile_sticky_bar": false,
+        "mobile_sticky_bar_dismissible": true,
+        "sticky_bar_bg_color": "#1e4620",
+        "sticky_bar_text_color": "#ffffff",
+        "sticky_pill_bg_color": "#e7d600",
+        "sticky_pill_text_color": "#1a1a1a",
+        "sticky_button_bg_color": "#ffffff",
+        "sticky_button_text_color": "#1a1a1a"
+      }
+    },
+    "dopaboost_trusted_grid_yqqxpK": {
+      "type": "dopaboost-trusted-grid",
+      "name": "DopaBoost Trusted Grid",
+      "settings": {
+        "heading_font": "poppins_n7",
+        "body_font": "inter_n4",
+        "eyebrow_text": "01",
+        "headline": "Calm You Can Feel (Seriously)",
+        "body_text": "<p>A racing mind affects a large share of adults on a regular basis—not because they're overthinking on purpose, but because their nervous system is stuck in overdrive. DopaBoost delivers a clinically-studied dose of [ingredient] to support calm signaling directly—no sedation, no fog. Just steadier, more present calm, every day.</p>",
+        "main_image": "shopify://shop_images/Timothy_Patattas_Ibiza_Express_Raasdorperweg_181G_1175_KV_Lijnden_Nederland_1.png",
+        "main_image_alt": "",
+        "show_badge": false,
+        "badge_title": "Trustpilot",
+        "badge_subtitle": "Rated Excellent",
+        "section_bg_color": "#fbf7f0",
+        "eyebrow_color": "#af593c",
+        "headline_color": "#af593c",
+        "body_text_color": "#321e1e",
+        "grid_bg_color": "#af593c",
+        "badge_bg_color": "#af593c",
+        "badge_icon_color": "#00b67a",
+        "badge_title_color": "#ffffff",
+        "badge_subtitle_color": "#ffffff"
+      }
+    },
+    "dopaboost_trusted_grid_JXt3KD": {
+      "type": "dopaboost-trusted-grid",
+      "name": "DopaBoost Trusted Grid",
+      "settings": {
+        "heading_font": "poppins_n7",
+        "body_font": "inter_n4",
+        "eyebrow_text": "02",
+        "headline": "Closing the Calm Gap",
+        "body_text": "<p>Chronic stress keeps your body's cortisol response running higher than it should. DopaBoost feeds that gap with [ingredient/dose] shown to support a balanced stress response. A steadier nervous system means less racing, better sleep, and a calmer baseline.</p><p></p>",
+        "main_image": "shopify://shop_images/Timothy_Patattas_Ibiza_Express_Raasdorperweg_181G_1175_KV_Lijnden_Nederland_5.png",
+        "main_image_alt": "",
+        "show_badge": false,
+        "badge_title": "Trustpilot",
+        "badge_subtitle": "Rated Excellent",
+        "section_bg_color": "#fbf7f0",
+        "eyebrow_color": "#af593c",
+        "headline_color": "#af593c",
+        "body_text_color": "#321e1e",
+        "grid_bg_color": "#1e4620",
+        "badge_bg_color": "#14213d",
+        "badge_icon_color": "#00b67a",
+        "badge_title_color": "#ffffff",
+        "badge_subtitle_color": "#ffffff"
+      }
+    },
+    "dopaboost_trusted_grid_jy4wNH": {
+      "type": "dopaboost-trusted-grid",
+      "name": "DopaBoost Trusted Grid",
+      "settings": {
+        "heading_font": "poppins_n7",
+        "body_font": "inter_n4",
+        "eyebrow_text": "03",
+        "headline": "Steadier Mood, Less Static",
+        "body_text": "<p>Your nervous system plays a major role in how safe and settled you feel. With [ingredients] to support a balanced stress response and reduce the spiral-and-crash cycle, DopaBoost supports your body's own calm—so you're not just numbing out, you're actually present.</p><p></p>",
+        "main_image": "shopify://shop_images/ee1892149a94ef66e19d60caa1c74c7b.jpg",
+        "main_image_alt": "",
+        "show_badge": false,
+        "badge_title": "Trustpilot",
+        "badge_subtitle": "Rated Excellent",
+        "section_bg_color": "#fbf7f0",
+        "eyebrow_color": "#af593c",
+        "headline_color": "#af593c",
+        "body_text_color": "#321e1e",
+        "grid_bg_color": "#1e4620",
+        "badge_bg_color": "#14213d",
+        "badge_icon_color": "#00b67a",
+        "badge_title_color": "#ffffff",
+        "badge_subtitle_color": "#ffffff"
+      }
+    },
+    "dopaboost_trusted_grid_Ckcr4B": {
+      "type": "dopaboost-trusted-grid",
+      "name": "DopaBoost Trusted Grid",
+      "settings": {
+        "heading_font": "poppins_n7",
+        "body_font": "inter_n4",
+        "eyebrow_text": "04",
+        "headline": "A Nervous System That Has Your Back",
+        "body_text": "<p>Cortisol regulation drives a significant part of your body's stress response. A dysregulated system makes everyday moments feel like emergencies. DopaBoost supports that system with [ingredients], helping your body tell the difference between real danger and a full inbox.</p><p></p>",
+        "main_image": "shopify://shop_images/Timothy_Patattas_Ibiza_Express_Raasdorperweg_181G_1175_KV_Lijnden_Nederland_6.png",
+        "main_image_alt": "",
+        "show_badge": false,
+        "badge_title": "Trustpilot",
+        "badge_subtitle": "Rated Excellent",
+        "section_bg_color": "#fbf7f0",
+        "eyebrow_color": "#af593c",
+        "headline_color": "#af593c",
+        "body_text_color": "#321e1e",
+        "grid_bg_color": "#1e4620",
+        "badge_bg_color": "#14213d",
+        "badge_icon_color": "#00b67a",
+        "badge_title_color": "#ffffff",
+        "badge_subtitle_color": "#ffffff"
+      }
+    },
+    "dopaboost_trusted_grid_NykHmL": {
+      "type": "dopaboost-trusted-grid",
+      "name": "DopaBoost Trusted Grid",
+      "settings": {
+        "heading_font": "poppins_n7",
+        "body_font": "inter_n4",
+        "eyebrow_text": "05",
+        "headline": "A Habit You'll Actually Stick To",
+        "body_text": "<p>Let's be honest—remembering pills is hard when your mind is already racing. DopaBoost is the one routine that actually sticks. One patch, applied in seconds, with a clinically-studied blend built in. No pills to count, no capsules to dread.</p><p></p>",
+        "main_image": "shopify://shop_images/Designed_for_elatic_skin_and_firmness_66.png",
+        "main_image_alt": "",
+        "show_badge": false,
+        "badge_title": "Trustpilot",
+        "badge_subtitle": "Rated Excellent",
+        "section_bg_color": "#fbf7f0",
+        "eyebrow_color": "#af593c",
+        "headline_color": "#af593c",
+        "body_text_color": "#321e1e",
+        "grid_bg_color": "#1e4620",
+        "badge_bg_color": "#14213d",
+        "badge_icon_color": "#00b67a",
+        "badge_title_color": "#ffffff",
+        "badge_subtitle_color": "#ffffff"
+      }
+    },
+    "dopaboost_trusted_grid_MD7yYP": {
+      "type": "dopaboost-trusted-grid",
+      "name": "DopaBoost Trusted Grid",
+      "settings": {
+        "heading_font": "poppins_n7",
+        "body_font": "inter_n4",
+        "eyebrow_text": "06",
+        "headline": "Trusted by 50,000+ customers",
+        "body_text": "<p>With thousands of five-star reviews and a growing customer base, DopaBoost is the top choice for those looking to support focus and energy in a simple, convenient way.</p>",
+        "main_image": "shopify://shop_images/Timothy_Patattas_Ibiza_Express_Raasdorperweg_181G_1175_KV_Lijnden_Nederland.png",
+        "main_image_alt": "",
+        "show_badge": true,
+        "badge_title": "",
+        "badge_subtitle": "Over 100.000 Customers",
+        "section_bg_color": "#fbf7f0",
+        "eyebrow_color": "#af593c",
+        "headline_color": "#af593c",
+        "body_text_color": "#321e1e",
+        "grid_bg_color": "#1e4620",
+        "badge_bg_color": "#321e1e",
+        "badge_icon_color": "#00b67a",
+        "badge_title_color": "#ffffff",
+        "badge_subtitle_color": "#ffffff"
+      }
+    },
+    "bundle_product_EhkA39": {
+      "type": "bundle-product",
+      "blocks": {
+        "subscription_perk_jYpfrH": {
+          "type": "subscription_perk",
+          "settings": {
+            "perk_text": "FREE SHIPPING on first order"
+          }
+        },
+        "subscription_perk_imdKHr": {
+          "type": "subscription_perk",
+          "settings": {
+            "perk_text": "NO CONTRACT — cancel easily"
+          }
+        },
+        "subscription_perk_hBzLVg": {
+          "type": "subscription_perk",
+          "settings": {
+            "perk_text": "15% OFF future orders"
+          }
+        },
+        "subscription_perk_VgQCtz": {
+          "type": "subscription_perk",
+          "settings": {
+            "perk_text": "OUT OF STOCK PROTECTION"
+          }
+        },
+        "info_tab_H84ymY": {
+          "type": "info_tab",
+          "settings": {
+            "tab_title": "Description",
+            "tab_content": "<p>Product description goes here.</p>",
+            "open_by_default": true
+          }
+        },
+        "info_tab_4CDkH4": {
+          "type": "info_tab",
+          "settings": {
+            "tab_title": "Ingredients",
+            "tab_content": "<p>Ingredient list goes here.</p>",
+            "open_by_default": false
+          }
+        },
+        "info_tab_Cydn9G": {
+          "type": "info_tab",
+          "settings": {
+            "tab_title": "How to use",
+            "tab_content": "<p>Usage instructions go here.</p>",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "subscription_perk_jYpfrH",
+        "subscription_perk_imdKHr",
+        "subscription_perk_hBzLVg",
+        "subscription_perk_VgQCtz",
+        "info_tab_H84ymY",
+        "info_tab_4CDkH4",
+        "info_tab_Cydn9G"
+      ],
+      "name": "Bundle Product",
+      "settings": {
+        "product_title": "",
+        "show_rating": true,
+        "rating_score": 4.5,
+        "rating_count": 21598,
+        "show_tags": false,
+        "short_description": "",
+        "show_limited_stock": true,
+        "limited_stock_text": "Limited Stock Remaining",
+        "show_bought_count": true,
+        "show_delivery_date": true,
+        "show_gift_banner": true,
+        "gift_banner_title": "MOST PEOPLE SUBSCRIBE & SAVE 20%",
+        "gift_banner_line_2": "Stay consistent. Never run out. Never lose progress.",
+        "gift_banner_highlight": "20% OFF.",
+        "bundle_label": "Build your bundle:",
+        "enable_discount": true,
+        "best_deal_badge": "BEST DEAL",
+        "discount_tier_2": 10,
+        "discount_tier_3": 15,
+        "discount_tier_4": 20,
+        "enable_subscription": true,
+        "subscribe_badge": "SAVE 23% ON FIRST ORDER",
+        "subscription_discount": 10,
+        "subscription_interval_count": 45,
+        "subscription_interval": "days",
+        "atc_button_label": "Add to Cart",
+        "show_trust_badges": true,
+        "badge_text_1": "Free Shipping",
+        "badge_text_2": "Money Back Guarantee",
+        "guarantee_text": "Try it risk-free for 30 days. If you're not totally in love with the product, we will refund you 100%."
+      }
+    },
+    "testimonials_WGedhc": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_krp6BV": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Emma L. 29",
+            "title": "",
+            "content": "<p>Didn't expect much, but my mind feels so much quieter now. I'm not overthinking every little thing anymore.</p>"
+          }
+        },
+        "testimonial_HEztnL": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "James T. 38",
+            "title": "",
+            "content": "<p>I've dealt with anxiety for years. These patches help me feel calmer without making me feel tired.</p>"
+          }
+        },
+        "testimonial_tjMrjE": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "Sophia M. 32",
+            "title": "",
+            "content": "<p>I finally stopped replaying every conversation in my head. That alone makes these worth it.</p>"
+          }
+        },
+        "testimonial_8crXJ7": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Michael R. 54",
+            "title": "",
+            "content": "<p>I'm not constantly waiting for something to go wrong anymore. I genuinely feel more at ease.</p>"
+          }
+        },
+        "testimonial_jCc8qr": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Olivia H. 27",
+            "title": "",
+            "content": "<p>The constant feeling of being overwhelmed has eased so much. I honestly didn't think that was possible.</p>"
+          }
+        },
+        "testimonial_HdyQAT": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "Daniel C. 47",
+            "title": "",
+            "content": "<p>My brain finally has an off switch. That's the best way I can describe it.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_krp6BV",
+        "testimonial_HEztnL",
+        "testimonial_tjMrjE",
+        "testimonial_8crXJ7",
+        "testimonial_jCc8qr",
+        "testimonial_HdyQAT"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "reviews_section_good_rmb7qx": {
+      "type": "Reviews-section-good",
+      "blocks": {
+        "review_MEnqtP": {
+          "type": "review",
+          "settings": {
+            "name": "Klantnaam",
+            "verified": true,
+            "rating": 5,
+            "title": "Geweldig",
+            "date": "01/01/26",
+            "text": "Schrijf hier de review tekst."
+          }
+        },
+        "review_ewq4aL": {
+          "type": "review",
+          "settings": {
+            "name": "Klantnaam",
+            "verified": true,
+            "rating": 5,
+            "title": "Geweldig",
+            "date": "01/01/26",
+            "text": "Schrijf hier de review tekst."
+          }
+        }
+      },
+      "block_order": [
+        "review_MEnqtP",
+        "review_ewq4aL"
+      ],
+      "name": "Klantreviews",
+      "settings": {
+        "heading": "Real Customers. Real Relief.",
+        "subheading": "",
+        "average_rating": "4.7",
+        "review_count": "2731",
+        "button_label": "Schrijf Een Review",
+        "count_5": "2080",
+        "count_4": "418",
+        "count_3": "224",
+        "count_2": "1",
+        "count_1": "8",
+        "heading_font": "sans_serif_n4",
+        "body_font": "sans_serif_n4",
+        "bg_color": "#fbf7f0",
+        "text_color": "#321e1e",
+        "text_secondary_color": "#321e1e",
+        "icon_color": "#af593c",
+        "bar_color": "#af593c",
+        "border_color": "#e4e1d8",
+        "button_bg": "#fbf7f0",
+        "button_text": "#fbf7f0",
+        "padding_top": 56,
+        "padding_x": 40,
+        "block_gap": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "dopaboost_fullpage_hero_9eLbEX",
+    "dopaboost_trusted_grid_yqqxpK",
+    "dopaboost_trusted_grid_JXt3KD",
+    "dopaboost_trusted_grid_jy4wNH",
+    "dopaboost_trusted_grid_Ckcr4B",
+    "dopaboost_trusted_grid_NykHmL",
+    "dopaboost_trusted_grid_MD7yYP",
+    "bundle_product_EhkA39",
+    "testimonials_WGedhc",
+    "reviews_section_good_rmb7qx"
+  ]
+}

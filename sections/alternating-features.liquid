@@ -1,0 +1,575 @@
+{%- style -%}
+  /* =========================================================================
+     Unified Alternating Media & Text Section
+     ========================================================================= */
+  #shopify-section-{{ section.id }} {
+    --section-bg: {{ section.settings.background_color }};
+    --text-color: {{ section.settings.text_color }};
+    --heading-color: {{ section.settings.heading_color }};
+    --number-bg: {{ section.settings.number_bg_color }};
+    --number-text: {{ section.settings.number_text_color }};
+  }
+
+  #shopify-section-{{ section.id }} .media-text-unified {
+    background: var(--section-bg);
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-unified__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  /* Individual Block Styles */
+  #shopify-section-{{ section.id }} .media-text-block {
+    margin-bottom: {{ section.settings.block_spacing }}px;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block:last-child {
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* Number Badge */
+  #shopify-section-{{ section.id }} .media-text-block__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--number-bg);
+    color: var(--number-text);
+    border-radius: 50%;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  /* Content Styles */
+  #shopify-section-{{ section.id }} .media-text-block__content {
+    padding: 20px 0;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block__heading {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-size: {{ section.settings.heading_font_size }}px;
+    line-height: 1.2;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block__text {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    font-size: {{ section.settings.text_font_size }}px;
+    line-height: 1.6;
+    color: var(--text-color);
+  }
+
+  /* Media Styles */
+  #shopify-section-{{ section.id }} .media-text-block__media-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ section.settings.media_border_radius }}px;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block__video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Alternating Layout */
+  #shopify-section-{{ section.id }} .media-text-block:nth-child(even) .media-text-block__content {
+    order: 2;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block:nth-child(even) .media-text-block__media-wrapper {
+    order: 1;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block:nth-child(odd) .media-text-block__content {
+    order: 1;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block:nth-child(odd) .media-text-block__media-wrapper {
+    order: 2;
+  }
+
+  /* Animations */
+  #shopify-section-{{ section.id }} .media-text-block__content,
+  #shopify-section-{{ section.id }} .media-text-block__media-wrapper {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block__content.animate-in,
+  #shopify-section-{{ section.id }} .media-text-block__media-wrapper.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block:nth-child(even) .media-text-block__content {
+    transition-delay: 0.1s;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block:nth-child(even) .media-text-block__media-wrapper {
+    transition-delay: 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block:nth-child(odd) .media-text-block__content {
+    transition-delay: 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .media-text-block:nth-child(odd) .media-text-block__media-wrapper {
+    transition-delay: 0.1s;
+  }
+
+  /* Mobile Styles */
+  @media screen and (max-width: 990px) {
+    #shopify-section-{{ section.id }} .media-text-unified {
+      padding: {{ section.settings.padding_top_mobile }}px 0 {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .media-text-unified__container {
+      padding: 0 32px;
+    }
+
+    #shopify-section-{{ section.id }} .media-text-block {
+      margin-bottom: {{ section.settings.block_spacing_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .media-text-block__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    /* Mobile Order - Media always first */
+    #shopify-section-{{ section.id }} .media-text-block__media-wrapper {
+      order: 1 !important;
+    }
+
+    #shopify-section-{{ section.id }} .media-text-block__content {
+      order: 2 !important;
+    }
+
+    #shopify-section-{{ section.id }} .media-text-block__heading {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .media-text-block__text {
+      font-size: {{ section.settings.text_font_size_mobile }}px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .media-text-unified__container {
+      padding: 0 20px;
+    }
+
+    #shopify-section-{{ section.id }} .media-text-block__grid {
+      gap: 30px;
+    }
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .media-text-block__content,
+    #shopify-section-{{ section.id }} .media-text-block__media-wrapper {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+{%- endstyle -%}
+
+<div class="media-text-unified">
+  <div class="media-text-unified__container">
+    
+    {% for block in section.blocks %}
+      {% if block.type == 'media_text_block' %}
+        <div class="media-text-block" {{ block.shopify_attributes }}>
+          <div class="media-text-block__grid">
+            
+            <!-- Content -->
+            <div class="media-text-block__content" data-animate>
+              {% if block.settings.show_number %}
+                <div class="media-text-block__number">{{ forloop.index }}</div>
+              {% endif %}
+              
+              {% if block.settings.heading != blank %}
+                <h2 class="media-text-block__heading">{{ block.settings.heading }}</h2>
+              {% endif %}
+              
+              {% if block.settings.text != blank %}
+                <div class="media-text-block__text">{{ block.settings.text }}</div>
+              {% endif %}
+            </div>
+
+            <!-- Media -->
+            <div class="media-text-block__media-wrapper" data-animate>
+              {% if block.settings.media_type == 'image' %}
+                {% if block.settings.image != blank %}
+                  <img 
+                    src="{{ block.settings.image | image_url: width: 800 }}"
+                    srcset="{{ block.settings.image | image_url: width: 400 }} 400w,
+                            {{ block.settings.image | image_url: width: 800 }} 800w,
+                            {{ block.settings.image | image_url: width: 1200 }} 1200w"
+                    sizes="(max-width: 990px) 100vw, 50vw"
+                    alt="{{ block.settings.heading | escape }}"
+                    class="media-text-block__image"
+                    loading="lazy"
+                  >
+                {% else %}
+                  <div style="width: 100%; height: 400px; background: #333; display: flex; align-items: center; justify-content: center; color: #666; font-size: 14px;">
+                    Image placeholder
+                  </div>
+                {% endif %}
+                
+              {% elsif block.settings.media_type == 'video' %}
+                {% if block.settings.video != blank %}
+                  {{ block.settings.video | video_tag: 
+                    autoplay: true, 
+                    loop: true, 
+                    muted: true,
+                    controls: false,
+                    class: 'media-text-block__video'
+                  }}
+                {% elsif block.settings.video_url != blank %}
+                  <video 
+                    autoplay 
+                    loop 
+                    muted 
+                    playsinline
+                    class="media-text-block__video"
+                  >
+                    <source src="{{ block.settings.video_url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                {% else %}
+                  <div style="width: 100%; height: 400px; background: #333; display: flex; align-items: center; justify-content: center; color: #666; font-size: 14px;">
+                    Video placeholder
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const section = document.querySelector('#shopify-section-{{ section.id }}');
+  if (!section) return;
+
+  // Intersection Observer for animations
+  const animateElements = section.querySelectorAll('[data-animate]');
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, observerOptions);
+
+  animateElements.forEach(el => {
+    observer.observe(el);
+  });
+
+  // Clean up observer on page unload
+  window.addEventListener('beforeunload', () => {
+    observer.disconnect();
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Media & Text Blocks",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "block_spacing",
+      "label": "Space Between Blocks",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 100,
+      "info": "Space between each media/text block"
+    },
+    {
+      "type": "range",
+      "id": "block_spacing_mobile",
+      "label": "Space Between Blocks (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "media_border_radius",
+      "label": "Media Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading Font Size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading Font Size (Mobile)",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "text_font_size",
+      "label": "Text Font Size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_font_size_mobile",
+      "label": "Text Font Size (Mobile)",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "color",
+      "id": "number_bg_color",
+      "label": "Number Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "number_text_color",
+      "label": "Number Text",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "media_text_block",
+      "name": "Media & Text",
+      "limit": 7,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_number",
+          "label": "Show Number Badge",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Cook everything in one pan"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>The titanium surface lets you transition between stovetop right to the oven. Making every meal easier and reducing a sink full of dishes. If you cherish convenience and efficiency this is it.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Media"
+        },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "Media Type",
+          "options": [
+            {
+              "value": "image",
+              "label": "Image"
+            },
+            {
+              "value": "video",
+              "label": "Video"
+            }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Used when Media Type is set to Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video (Shopify hosted)",
+          "info": "Upload video through Shopify's Files"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Video URL (External)",
+          "info": "Direct URL to video file (MP4)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Media & Text Blocks",
+      "blocks": [
+        {
+          "type": "media_text_block",
+          "settings": {
+            "heading": "Cook everything in one pan",
+            "text": "<p>The titanium surface lets you transition between stovetop right to the oven. Making every meal easier and reducing a sink full of dishes. If you cherish convenience and efficiency this is it.</p>",
+            "show_number": true,
+            "media_type": "image"
+          }
+        },
+        {
+          "type": "media_text_block",
+          "settings": {
+            "heading": "No more scrubbing and soaking",
+            "text": "<p>Cooking is fun, cleaning is not so much. The hammered technology ensures for a quick rinse, not feeling that either? Just put it in the dishwasher and you're good to go.</p>",
+            "show_number": true,
+            "media_type": "image"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

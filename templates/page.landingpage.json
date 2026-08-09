@@ -1,0 +1,1624 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "image_with_text_overlay_y8Vcm9": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "button_dPCdGw": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Shop Dopamine Patches",
+            "url": "",
+            "background": "#321e1e",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "button_dPCdGw"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "md",
+        "image": "shopify://shop_images/The_Missing_Spark_You_ve_Been_Looking_For_3.png",
+        "mobile_image": "shopify://shop_images/Ontwerp_zonder_titel_49_6627c57a-40e1-4fcb-b38f-08ec9aaf1a15.png",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end sm:text-end",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "trusted_banner_zEjhP7": {
+      "type": "trusted-banner",
+      "blocks": {
+        "logo_Rhejxc": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-edead21c-d237-4128-a22f-c52500ba8969.svg",
+            "logo_text": "ELLE",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_TCdeiw": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-ca212e65-d20d-4bed-b31e-57bbb046c8b1.svg",
+            "logo_text": "allure",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_AaBCXg": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-b00a20fa-26fb-42e0-a0a6-60c86a2f3c30.svg",
+            "logo_text": "Forbes",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_iBtKF9": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-06d4bf63-2d9e-43c0-9f2d-d5e60cd15ff1.svg",
+            "logo_text": "BAZAAR",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_Wnwphw": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gempages_589464796735210386-d0047f1b-f4f1-46c3-b588-76477155b2ec.svg",
+            "logo_text": "BYRDIE",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_Rhejxc",
+        "logo_TCdeiw",
+        "logo_AaBCXg",
+        "logo_iBtKF9",
+        "logo_Wnwphw"
+      ],
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#fef9f1",
+        "text_color": "#000000",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": false,
+        "title_text": "AS SEEN IN",
+        "title_font": "sans_serif_n4",
+        "title_size": 18,
+        "scroll_speed": 20,
+        "pause_on_hover": true,
+        "logo_display_mode": "gradient",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "sans_serif_n4",
+        "logo_height": 50,
+        "logo_text_size": 24,
+        "logo_spacing": 40
+      }
+    },
+    "featured_product_Lgxtqj": {
+      "type": "featured-product",
+      "blocks": {
+        "liquid_UnMPPC": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% comment %} Product Rating Display With Diagonal 4.5 Stars {% endcomment %}\n<div class=\"product-ratings\" id=\"scroll-to-reviews\">\n  <div class=\"star-rating\" id=\"goToReviews\" aria-label=\"4.5 out of 5 stars\">\n\n    {% for i in (1..4) %}\n      <svg class=\"star-icon filled\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M12 1.8l3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 20.8 7 13.93 2 9.06l6.91-1L12 1.8z\"/>\n      </svg>\n    {% endfor %}\n\n    <svg class=\"star-icon diagonal-half\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n      <defs>\n        <clipPath id=\"diag-fill-star\">\n          <!-- ongeveer 2/3 gevuld -->\n          <polygon points=\"0,24 0,0 18,0 12,24\"></polygon>\n        </clipPath>\n      </defs>\n\n      <!-- achtergrond ster -->\n      <path class=\"star-bg\" d=\"M12 1.8l3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 20.8 7 13.93 2 9.06l6.91-1L12 1.8z\"/>\n\n      <!-- gevulde ster -->\n      <path class=\"star-fg\" clip-path=\"url(#diag-fill-star)\" d=\"M12 1.8l3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 20.8 7 13.93 2 9.06l6.91-1L12 1.8z\"/>\n    </svg>\n\n  </div>\n  \n  <p class=\"rating-text\">\n    <strong id=\"dynamicMonthlyCount\"></strong>\n  </p>\n</div>\n\n<style>\n@import url('https://fonts.googleapis.com/css2?family=Gilda+Display:ital@1&display=swap');\n\n.product-ratings {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  margin: 10px 0;\n  font-family: 'Gilda Display', serif;\n  font-style: italic;\n  cursor: pointer;\n}\n\n.star-rating {\n  display: flex;\n  align-items: center;\n  gap: 1px;\n  line-height: 1;\n}\n\n.star-icon {\n  width: 16px;\n  height: 16px;\n  display: block;\n}\n\n.star-icon.filled path {\n  fill: #C1633F;\n}\n\n.diagonal-half .star-bg {\n  fill: #E4E0DA;\n}\n\n.diagonal-half .star-fg {\n  fill: #C1633F;\n}\n\n.rating-text {\n  font-size: 14px;\n  margin: 0;\n  color: #333;\n  line-height: 1;\n  font-weight: 400;\n  font-family: 'Gilda Display', serif;\n  font-style: italic;\n}\n</style>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n\n  const min = 17000;\n  const max = 35000;\n  const url = window.location.pathname;\n\n  function hashString(str) {\n    let hash = 0;\n    for (let i = 0; i < str.length; i++) {\n      hash = str.charCodeAt(i) + ((hash << 5) - hash);\n    }\n    return Math.abs(hash);\n  }\n\n  let base = Math.floor((hashString(url) % (max - min + 1)) + min);\n\n  let lastDigit = base % 10;\n  if (lastDigit === 0 || lastDigit === 5) {\n    if (base + 1 <= max) {\n      base = base + 1;\n    } else {\n      base = base - 1;\n    }\n  }\n\n  const seededNumber = base;\n\n  const textElement = document.getElementById(\"dynamicMonthlyCount\");\n  if (textElement) {\n    textElement.textContent = seededNumber.toLocaleString() + \"+ feel the benefits monthly\";\n  }\n\n  const trigger = document.querySelector('.product-ratings');\n  const reviewsSection = document.querySelector('#shopify-block-AUURVMUlseVpmVUNIR__okendo_reviews_widget_kW3zJT');\n\n  if (trigger && reviewsSection) {\n    trigger.addEventListener('click', function() {\n      reviewsSection.scrollIntoView({\n        behavior: 'smooth',\n        block: 'start'\n      });\n    });\n  }\n\n});\n</script>"
+          }
+        },
+        "title_MRLL7H": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "text_TPDKGY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Aims to support mood, motivation, and emotional wellbeing.<strong> 30 patches</strong> in each pack</p>"
+          }
+        },
+        "liquid_NbBHfM": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% comment %}\n  Generate pseudo-random number per product URL (between 1000–1999)\n{% endcomment %}\n{% assign letter = product.handle | slice: 0, 1 | upcase %}\n{% assign letter_num = letter \n  | replace: 'A', '1'  | replace: 'B', '2'  | replace: 'C', '3'\n  | replace: 'D', '4'  | replace: 'E', '5'  | replace: 'F', '6'\n  | replace: 'G', '7'  | replace: 'H', '8'  | replace: 'I', '9'\n  | replace: 'J', '10' | replace: 'K', '11' | replace: 'L', '12'\n  | replace: 'M', '13' | replace: 'N', '14' | replace: 'O', '15'\n  | replace: 'P', '16' | replace: 'Q', '17' | replace: 'R', '18'\n  | replace: 'S', '19' | replace: 'T', '20' | replace: 'U', '21'\n  | replace: 'V', '22' | replace: 'W', '23' | replace: 'X', '24'\n  | replace: 'Y', '25' | replace: 'Z', '26' \n%}\n\n{% assign base = letter_num | times: product.handle.size | times: 53 | modulo: 1000 %}\n{% assign final_number = base | plus: 1000 %}\n\n{% comment %}\n  Product Info Section with HEARTBEAT ANIMATION\n{% endcomment %}\n<style>\n  .product-info-section {\n    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\n    padding: 5px 0;\n  }\n  \n  .product-info-section .almost-sold-out {\n    display: inline-flex !important;\n    align-items: center;\n    gap: 8px;\n    margin-bottom: 6px;\n    color: #C1633F;\n    font-size: 14px;\n    font-weight: 600;\n  }\n  \n  .product-info-section .pulse-dot {\n    width: 8px;\n    height: 8px;\n    background-color: #C1633F;\n    border-radius: 50%;\n    animation: heartbeat 1.5s ease-in-out infinite;\n  }\n  \n  @keyframes heartbeat {\n    0% { transform: scale(1); }\n    14% { transform: scale(1.3); }\n    28% { transform: scale(1); }\n    42% { transform: scale(1.3); }\n    70% { transform: scale(1); }\n  }\n  \n  .product-info-section .product-stats {\n    color: #333333;\n    font-size: 14px;\n    margin-bottom: 12px;\n    line-height: 1.4;\n    font-weight: 500;\n  }\n  \n  .product-info-section .product-stats strong {\n    color: #C1633F;\n    font-weight: 700;\n  }\n  \n  .product-info-section .delivery-info {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    color: #333333;\n    font-size: 14px;\n    padding-top: 12px;\n    border-top: 1px solid #eeeeee;\n    font-weight: 500;\n  }\n  \n  .product-info-section .delivery-icon {\n    width: 20px;\n    height: 20px;\n    flex-shrink: 0;\n    color: #666666;\n  }\n</style>\n\n<div class=\"product-info-section\">\n  <div class=\"almost-sold-out\">\n    <div class=\"pulse-dot\"></div>\n    <span>Limited Stock Remaining</span>\n  </div>\n  \n  <div class=\"product-stats\">\n    This product was bought <strong>{{ final_number }}</strong> times this week\n  </div>\n  \n  <div class=\"delivery-info\">\n    <svg class=\"delivery-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n      <circle cx=\"12\" cy=\"12\" r=\"10\" stroke-width=\"2\"></circle>\n      <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 6v6l4 2\"></path>\n    </svg>\n    <span>\n      Order today, receive \n      {{ \"now\" | date: \"%s\" | plus: 259200 | date: \"%A, %B %d\" }}\n    </span>\n  </div>\n</div>\n\n{% comment %}\n  HEARTBEAT ANIMATION ACTIVE\n{% endcomment %}"
+          }
+        },
+        "badges_DytDrE": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_aDirmD": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "liquid_btPCip": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% comment %} Premium Deal Banner - No Ribbon {% endcomment %}\n<style>\n.premium-deal-banner {\n  background-color: #f8f4ed;\n  border: 1px solid #e8d9c0;\n  border-radius: 12px;\n  padding: 14px 20px;\n  margin-bottom: 20px;\n  text-align: center;\n  font-size: 14px;\n  line-height: 1.4;\n  color: #2c2c2c;\n}\n\n.premium-deal-banner .highlight {\n  color: #d32f2f;\n  font-weight: 700;\n}\n\n.premium-deal-banner .subtext {\n  font-size: 13px;\n  color: #555;\n  margin-top: 4px;\n}\n</style>\n\n<div class=\"premium-deal-banner\">\n  <strong>Limited Time Offer</strong><br>\n  <span class=\"highlight\">BUY 2, GET 2 FREE</span> + <span class=\"highlight\">20% OFF</span> with Subscribe & Save<br>\n  <span class=\"subtext\">Perfect for yourself or as a thoughtful gift</span>\n</div>"
+          }
+        },
+        "description_QcWia6": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "variant_picker_KCHE4T": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_4xm44e": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "liquid_8Qripm": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"dopa-offer-text\">\n  Add 4 Packs To Your Cart, Pay For 2\n</div>\n\n<style>\n  .dopa-offer-text {\n    color: #C1633F;\n    text-align: center;\n    font-size: 16px;\n    font-weight: 700;\n    line-height: 1.2;\n    margin: 0 0 -10px 0;\n    padding: 0;\n    font-family: inherit;\n  }\n\n  @media (min-width: 750px) {\n    .dopa-offer-text {\n      font-size: 22px;\n      margin-bottom: 4px;\n    }\n  }\n</style>"
+          }
+        },
+        "button_JLTzcw": {
+          "type": "button",
+          "settings": {
+            "link": "",
+            "text": "ADD TO CART",
+            "size": "xl",
+            "style": "fill",
+            "stretch": true,
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "liquid_aWcFV3": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<!-- Trust Badges - Add this code right after your add to cart button -->\n<div class=\"trust-badges\">\n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <rect x=\"1\" y=\"6\" width=\"14\" height=\"10\" rx=\"1\"/>\n            <path d=\"M15 12h7l-2-3h-5v12\"/>\n            <circle cx=\"5\" cy=\"18\" r=\"1\"/>\n            <circle cx=\"19\" cy=\"18\" r=\"1\"/>\n        </svg>\n        <span class=\"badge-text\">Free Shipping</span>\n    </div>\n    \n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/>\n            <polyline points=\"12 8 12 12 14 14\"/>\n        </svg>\n        <span class=\"badge-text\">Money Back Guarantee</span>\n    </div>\n</div>\n\n<style>\n.trust-badges {\n    display: flex;\n    gap: 5px;\n    width: 100%;\n    margin-top: -20px !important; /* NEGATIVE margin to pull it up closer */\n    margin-bottom: 4px;\n    position: relative;\n    z-index: 1;\n}\n\n.badge-block {\n    display: flex;\n    align-items: center;\n    gap: 6px;\n    padding: 8px 10px;\n    background: #F7EDDC;\n    border-radius: 4px;\n    flex: 1;\n    justify-content: center;\n}\n\n.badge-icon {\n    width: 18px;\n    height: 18px;\n    flex-shrink: 0;\n    color: #333;\n}\n\n.badge-text {\n    font-size: 12px;\n    color: #333;\n    font-weight: 500;\n    line-height: 1.2;\n}\n\n@media (max-width: 480px) {\n    .badge-text {\n        font-size: 11px;\n    }\n    .badge-block {\n        padding: 6px 8px;\n    }\n}\n</style>"
+          }
+        },
+        "liquid_EKbLjp": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div id='ss-trust-badges'></div>"
+          }
+        },
+        "collapsible_text_Qc9dA7": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Description",
+            "content": "<p>Our <strong>Dopamine Patches</strong> naturally support mood, motivation, and emotional balance. Formulated with <strong>Mucuna Pruriens, 5-HTP, Lion’s Mane, and Rhodiola</strong>, they help promote mental clarity and a positive sense of well-being. Each vegan pack of <strong>30 patches</strong> offers a simple, natural boost for your daily mindset.</p><p></p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_PTW3CM": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Ingredients",
+            "content": "<p>Mucuna Pruiens Extract 12mg, 5-HTP 5mg, Lion's Mane Mushroom Extract 4.5mg, Rhodiola Extract 3.5mg<br/></p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_9iqp8V": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "How To Use",
+            "content": "<p>Gently remove it from its backing and place it on a clean, hair-free area of your skin. For optimal results, wear the patch for approximately 8 hours.<br/><br/>Avoid stretching the skin prior to application. This helps maintain natural tension and prevents tension blisters, ensuring a smoother application process. Ensure the application area is free from lotions, creams, or oils, as these can interfere with absorption.<br/><br/>Before applying, avoid stretching the skin. This helps maintain natural tension, preventing tension blisters and ensuring a smoother application.<br/><br/>Since every body is different, experiment with different locations to find the area that works best for you, and be sure to rotate patch location on your body with each use.<br/><br/>Wet removal method: Using a wet removal method can reduce the adhesiveness of the product, making it easier to remove. This involves moistening the area before attempting to remove the product.<br/>Using oil for enhanced removal: For optimal results, apply oil to the area before removal.<br/><br/>Oil helps deactivate the adhesive, allowing for an even smoother removal.</p>",
+            "page": ""
+          }
+        },
+        "pickup_availability_aq7Fb6": {
+          "type": "pickup_availability",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "liquid_UnMPPC",
+        "title_MRLL7H",
+        "text_TPDKGY",
+        "liquid_NbBHfM",
+        "badges_DytDrE",
+        "price_aDirmD",
+        "liquid_btPCip",
+        "description_QcWia6",
+        "variant_picker_KCHE4T",
+        "quantity_selector_4xm44e",
+        "liquid_8Qripm",
+        "button_JLTzcw",
+        "liquid_aWcFV3",
+        "liquid_EKbLjp",
+        "collapsible_text_Qc9dA7",
+        "collapsible_text_PTW3CM",
+        "collapsible_text_9iqp8V",
+        "pickup_availability_aq7Fb6"
+      ],
+      "name": "Featured product",
+      "settings": {
+        "full_width": true,
+        "product": "dopamine-patches-1",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "thumbnails",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "trusted_banner_CN3GTy": {
+      "type": "trusted-banner",
+      "blocks": {
+        "logo_KArWzN": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Subscribe & Save 20%",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_QbXGL6": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Cancel Anytime",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_XpYeXj": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Free Shipping",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_LBQ7bg": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Buy 2 Get 2 FREE!",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_KArWzN",
+        "logo_QbXGL6",
+        "logo_XpYeXj",
+        "logo_LBQ7bg"
+      ],
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#000000",
+        "text_color": "#fef9f1",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": false,
+        "title_text": "AS SEEN IN",
+        "title_font": "dm_sans_n4",
+        "title_size": 14,
+        "scroll_speed": 39,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "poppins_n1",
+        "logo_height": 50,
+        "logo_text_size": 16,
+        "logo_spacing": 40
+      }
+    },
+    "trusted_banner_8G7fLU": {
+      "type": "trusted-banner",
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#fcd900",
+        "text_color": "#ffffff",
+        "padding_top": 20,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": true,
+        "title_text": "Why Dopamine Patches",
+        "title_font": "dm_sans_n4",
+        "title_size": 23,
+        "scroll_speed": 5,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "poppins_n1",
+        "logo_height": 50,
+        "logo_text_size": 16,
+        "logo_spacing": 10
+      }
+    },
+    "solution_V6tbpy": {
+      "type": "solution",
+      "blocks": {
+        "feature_BiBTQe": {
+          "type": "feature",
+          "settings": {
+            "feature_label": "",
+            "title": "L-Tyrosine (20mg)",
+            "description": "An essential amino acid that serves as a building block for dopamine, helping support healthy motivation, mental focus, and cognitive performance throughout the day."
+          }
+        },
+        "feature_8YtVCk": {
+          "type": "feature",
+          "settings": {
+            "feature_label": "",
+            "title": "Mucuna Pruriens Extract (20mg)",
+            "description": "Naturally rich in L-DOPA, Mucuna Pruriens helps support healthy dopamine production, promoting motivation, drive, and overall mental well-being."
+          }
+        },
+        "feature_TjBJYi": {
+          "type": "feature",
+          "settings": {
+            "feature_label": "",
+            "title": "Vitamin B6 (5mg)",
+            "description": "An important nutrient involved in dopamine synthesis, Vitamin B6 helps convert amino acids into neurotransmitters that support focus, mood, and energy."
+          }
+        },
+        "feature_HfjWd4": {
+          "type": "feature",
+          "settings": {
+            "feature_label": "",
+            "title": "Vitamin B12 (5mg)",
+            "description": "Supports normal nervous system function and healthy energy metabolism, helping maintain mental clarity and reduce everyday fatigue."
+          }
+        }
+      },
+      "block_order": [
+        "feature_BiBTQe",
+        "feature_8YtVCk",
+        "feature_TjBJYi",
+        "feature_HfjWd4"
+      ],
+      "name": "Solution Section",
+      "settings": {
+        "section_label": "",
+        "headline_part1": "",
+        "headline_part2": "",
+        "intro_text": "",
+        "image": "shopify://shop_images/hf_20260703_074936_bcddcb96-3b2a-44ea-a48b-6d5d151749ed.png",
+        "cta_text": "Shop Now",
+        "cta_link": "",
+        "cta_bg_color": "#000000",
+        "cta_text_color": "#ffffff",
+        "cta_font_size": 15,
+        "cta_font_weight": 500,
+        "cta_padding_vertical": 16,
+        "cta_padding_horizontal": 36,
+        "cta_border_radius": 4,
+        "cta_margin_top": 24,
+        "cta_margin_top_mobile": 20,
+        "background_color": "#fef9f1",
+        "label_color": "#321e1e",
+        "headline_color": "#000000",
+        "intro_color": "#4a4a4a",
+        "enable_feature_gradient": true,
+        "feature_gradient_start": "#ff8c42",
+        "feature_gradient_end": "#ff5757",
+        "feature_gradient_angle": 90,
+        "feature_label_color": "#0066cc",
+        "feature_label_fallback": "#ff6b6b",
+        "feature_title_color": "#000000",
+        "feature_text_color": "#4a4a4a",
+        "image_placeholder_color": "#f5f5f5",
+        "label_size": 12,
+        "label_size_mobile": 11,
+        "label_spacing": 2,
+        "label_weight": 500,
+        "headline_size_desktop": 56,
+        "headline_size_tablet": 44,
+        "headline_size_mobile": 36,
+        "headline_weight": 300,
+        "headline_bold_weight": 500,
+        "intro_size": 20,
+        "intro_size_mobile": 17,
+        "feature_label_size": 11,
+        "feature_title_size": 24,
+        "feature_title_size_mobile": 20,
+        "feature_title_weight": 500,
+        "feature_text_size": 16,
+        "feature_text_size_mobile": 15,
+        "section_padding_sides": 40,
+        "section_padding_sides_tablet": 30,
+        "section_padding_sides_mobile": 16,
+        "section_padding_bottom": 20,
+        "section_padding_bottom_tablet": 20,
+        "section_padding_bottom_mobile": 20,
+        "max_width": 1400,
+        "label_margin": 16,
+        "label_margin_mobile": 12,
+        "headline_margin": 20,
+        "headline_margin_mobile": 16,
+        "content_margin_top": 40,
+        "content_margin_top_mobile": 16,
+        "intro_margin": 32,
+        "intro_margin_mobile": 24,
+        "feature_label_margin": 8,
+        "feature_title_margin": 8,
+        "feature_gap_desktop": 20,
+        "feature_gap_mobile": 16,
+        "split_gap": 80,
+        "split_gap_tablet": 60,
+        "split_gap_mobile": 40,
+        "sticky_top": 40,
+        "image_aspect_ratio": "4/5",
+        "image_aspect_ratio_mobile": "3/4",
+        "image_border_radius": 0,
+        "image_border_radius_mobile": 0,
+        "image_fit": "cover",
+        "image_position": "center"
+      }
+    },
+    "trusted_banner_fTnULc": {
+      "type": "trusted-banner",
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#fcd900",
+        "text_color": "#ffffff",
+        "padding_top": 20,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": true,
+        "title_text": "Our Powerful, Plant-Based Ingredients.",
+        "title_font": "dm_sans_n4",
+        "title_size": 23,
+        "scroll_speed": 5,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "poppins_n1",
+        "logo_height": 50,
+        "logo_text_size": 16,
+        "logo_spacing": 10
+      }
+    },
+    "solution_GyVWbD": {
+      "type": "solution",
+      "blocks": {
+        "feature_inxCnQ": {
+          "type": "feature",
+          "settings": {
+            "feature_label": "",
+            "title": "L-Tyrosine (20mg)",
+            "description": "An essential amino acid that serves as a building block for dopamine, helping support healthy motivation, mental focus, and cognitive performance throughout the day."
+          }
+        },
+        "feature_mm44xY": {
+          "type": "feature",
+          "settings": {
+            "feature_label": "",
+            "title": "Mucuna Pruriens Extract (20mg)",
+            "description": "Naturally rich in L-DOPA, Mucuna Pruriens helps support healthy dopamine production, promoting motivation, drive, and overall mental well-being."
+          }
+        },
+        "feature_nPbdjL": {
+          "type": "feature",
+          "settings": {
+            "feature_label": "",
+            "title": "Vitamin B6 (5mg)",
+            "description": "An important nutrient involved in dopamine synthesis, Vitamin B6 helps convert amino acids into neurotransmitters that support focus, mood, and energy."
+          }
+        },
+        "feature_i73VqW": {
+          "type": "feature",
+          "settings": {
+            "feature_label": "",
+            "title": "Vitamin B12 (5mg)",
+            "description": "Supports normal nervous system function and healthy energy metabolism, helping maintain mental clarity and reduce everyday fatigue."
+          }
+        }
+      },
+      "block_order": [
+        "feature_inxCnQ",
+        "feature_mm44xY",
+        "feature_nPbdjL",
+        "feature_i73VqW"
+      ],
+      "name": "Solution Section",
+      "settings": {
+        "section_label": "",
+        "headline_part1": "",
+        "headline_part2": "",
+        "intro_text": "",
+        "image": "shopify://shop_images/hf_20260703_074936_bcddcb96-3b2a-44ea-a48b-6d5d151749ed.png",
+        "cta_text": "Shop Now",
+        "cta_link": "",
+        "cta_bg_color": "#000000",
+        "cta_text_color": "#ffffff",
+        "cta_font_size": 15,
+        "cta_font_weight": 500,
+        "cta_padding_vertical": 16,
+        "cta_padding_horizontal": 36,
+        "cta_border_radius": 4,
+        "cta_margin_top": 24,
+        "cta_margin_top_mobile": 20,
+        "background_color": "#fef9f1",
+        "label_color": "#321e1e",
+        "headline_color": "#000000",
+        "intro_color": "#4a4a4a",
+        "enable_feature_gradient": true,
+        "feature_gradient_start": "#ff8c42",
+        "feature_gradient_end": "#ff5757",
+        "feature_gradient_angle": 90,
+        "feature_label_color": "#0066cc",
+        "feature_label_fallback": "#ff6b6b",
+        "feature_title_color": "#000000",
+        "feature_text_color": "#4a4a4a",
+        "image_placeholder_color": "#f5f5f5",
+        "label_size": 12,
+        "label_size_mobile": 11,
+        "label_spacing": 2,
+        "label_weight": 500,
+        "headline_size_desktop": 56,
+        "headline_size_tablet": 44,
+        "headline_size_mobile": 36,
+        "headline_weight": 300,
+        "headline_bold_weight": 500,
+        "intro_size": 20,
+        "intro_size_mobile": 17,
+        "feature_label_size": 11,
+        "feature_title_size": 24,
+        "feature_title_size_mobile": 20,
+        "feature_title_weight": 500,
+        "feature_text_size": 16,
+        "feature_text_size_mobile": 15,
+        "section_padding_sides": 40,
+        "section_padding_sides_tablet": 30,
+        "section_padding_sides_mobile": 16,
+        "section_padding_bottom": 20,
+        "section_padding_bottom_tablet": 20,
+        "section_padding_bottom_mobile": 20,
+        "max_width": 1400,
+        "label_margin": 16,
+        "label_margin_mobile": 12,
+        "headline_margin": 20,
+        "headline_margin_mobile": 16,
+        "content_margin_top": 40,
+        "content_margin_top_mobile": 16,
+        "intro_margin": 32,
+        "intro_margin_mobile": 24,
+        "feature_label_margin": 8,
+        "feature_title_margin": 8,
+        "feature_gap_desktop": 20,
+        "feature_gap_mobile": 16,
+        "split_gap": 80,
+        "split_gap_tablet": 60,
+        "split_gap_mobile": 40,
+        "sticky_top": 40,
+        "image_aspect_ratio": "4/5",
+        "image_aspect_ratio_mobile": "3/4",
+        "image_border_radius": 0,
+        "image_border_radius_mobile": 0,
+        "image_fit": "cover",
+        "image_position": "center"
+      }
+    },
+    "trusted_banner_FDzkhK": {
+      "type": "trusted-banner",
+      "blocks": {
+        "logo_YtAUxR": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Subscribe & Save 20%",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_7kpBng": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Cancel Anytime",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_yMgEFi": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Free Shipping",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_f7BK3h": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Buy 2 Get 2 FREE!",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_YtAUxR",
+        "logo_7kpBng",
+        "logo_yMgEFi",
+        "logo_f7BK3h"
+      ],
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#000000",
+        "text_color": "#fef9f1",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": false,
+        "title_text": "AS SEEN IN",
+        "title_font": "poppins_n2",
+        "title_size": 14,
+        "scroll_speed": 39,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "poppins_n1",
+        "logo_height": 50,
+        "logo_text_size": 16,
+        "logo_spacing": 40
+      }
+    },
+    "trusted_banner_hCGy77": {
+      "type": "trusted-banner",
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#fcd900",
+        "text_color": "#ffffff",
+        "padding_top": 20,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": true,
+        "title_text": "Clinically Inspired Ingredients That Deliver Real Results",
+        "title_font": "poppins_n2",
+        "title_size": 23,
+        "scroll_speed": 5,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "poppins_n1",
+        "logo_height": 50,
+        "logo_text_size": 16,
+        "logo_spacing": 10
+      }
+    },
+    "blocks_wEmXVR": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_6b2b47e_HJ7EMR": {
+          "type": "ai_gen_block_6b2b47e",
+          "settings": {
+            "main_title": "",
+            "title_font": "gilda_display_n4",
+            "title_size": 80,
+            "title_color": "#1a1a1a",
+            "step_1_image": "shopify://shop_images/Designed_for_elatic_skin_and_firmness_39.png",
+            "step_1_title": "15 Minutes",
+            "step_1_description": "Daily support begins — targeted nutrients start supporting healthy dopamine function and your brain's natural motivation pathways.",
+            "step_2_image": "shopify://shop_images/Designed_for_elatic_skin_and_firmness_39.png",
+            "step_2_title": "1+ Week",
+            "step_2_description": "Steadier focus and motivation — ingredients like L-Tyrosine and Mucuna Pruriens help support healthy dopamine production and mental performance.",
+            "step_3_image": "shopify://shop_images/Designed_for_elatic_skin_and_firmness_39.png",
+            "step_3_title": "1+ Month",
+            "step_3_description": "Long-term daily support — continued use helps maintain healthy dopamine levels for lasting focus, motivation, and cognitive well-being.",
+            "step_title_size": 24,
+            "step_title_color": "#321e1e",
+            "step_description_size": 18,
+            "step_description_color": "#677279",
+            "image_border_radius": 8,
+            "background_color": "#fef9f1",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_6b2b47e_HJ7EMR"
+      ],
+      "name": "How it works",
+      "settings": {
+        "full_width": false,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "impact_text_H8hQpk": {
+      "type": "impact-text",
+      "blocks": {
+        "item_fENHzb": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "subheading": "",
+            "content": "",
+            "button_text": "Shop Now",
+            "button_url": "shopify://collections/all",
+            "animate_impact_text": false,
+            "animate_impact_text_duration": 2
+          }
+        }
+      },
+      "block_order": [
+        "item_fENHzb"
+      ],
+      "custom_css": [],
+      "name": "Impact text",
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "text_alignment": "center",
+        "impact_text_style": "fill",
+        "text_divider": "none",
+        "impact_text_size_ratio": 1,
+        "background": "",
+        "background_gradient": "",
+        "heading_text_color": "",
+        "heading_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "trusted_banner_aMmnHN": {
+      "type": "trusted-banner",
+      "blocks": {
+        "logo_TTdML9": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Subscribe & Save 20%",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_tzN8Ef": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Cancel Anytime",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_mwiELC": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Free Shipping",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_iXhyjn": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Buy 2 Get 2 FREE!",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_TTdML9",
+        "logo_tzN8Ef",
+        "logo_mwiELC",
+        "logo_iXhyjn"
+      ],
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#000000",
+        "text_color": "#fef9f1",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": false,
+        "title_text": "AS SEEN IN",
+        "title_font": "poppins_n2",
+        "title_size": 27,
+        "scroll_speed": 39,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "dm_sans_n4",
+        "logo_height": 50,
+        "logo_text_size": 20,
+        "logo_spacing": 40
+      }
+    },
+    "compare_table_RxqBkW": {
+      "type": "compare-table",
+      "blocks": {
+        "row_iACfNz": {
+          "type": "row",
+          "settings": {
+            "feature": "Ease of Use",
+            "status1": "cross",
+            "status2": "cross",
+            "status3": "check"
+          }
+        },
+        "row_9jtBHw": {
+          "type": "row",
+          "settings": {
+            "feature": "Digestive Load",
+            "status1": "cross",
+            "status2": "cross",
+            "status3": "check"
+          }
+        },
+        "row_7G6zCF": {
+          "type": "row",
+          "settings": {
+            "feature": "Bioavailability",
+            "status1": "cross",
+            "status2": "cross",
+            "status3": "check"
+          }
+        },
+        "row_gTXmgG": {
+          "type": "row",
+          "settings": {
+            "feature": "Consistency",
+            "status1": "cross",
+            "status2": "cross",
+            "status3": "check"
+          }
+        },
+        "row_PMnMMp": {
+          "type": "row",
+          "settings": {
+            "feature": "Convenience",
+            "status1": "cross",
+            "status2": "cross",
+            "status3": "check"
+          }
+        }
+      },
+      "block_order": [
+        "row_iACfNz",
+        "row_9jtBHw",
+        "row_7G6zCF",
+        "row_gTXmgG",
+        "row_PMnMMp"
+      ],
+      "name": "Vergelijkingstabel",
+      "settings": {
+        "heading": "Pills vs Gummies vs Kind Patches",
+        "column_feature_label": "Feature",
+        "column1_label": "Pills",
+        "column2_label": "Gummies",
+        "column3_label": "Kind Patches",
+        "max_width": 1280,
+        "background": "#F2F0EC",
+        "heading_color": "#1F2340",
+        "text_color": "#1F2340",
+        "header_background": "#E8A99A",
+        "header_text_color": "#1F2340",
+        "border_color": "#1F2340",
+        "check_color": "#2E7D32",
+        "cross_color": "#C62828",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "trusted_banner_Vta7gG": {
+      "type": "trusted-banner",
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#fcd900",
+        "text_color": "#ffffff",
+        "padding_top": 20,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": true,
+        "title_text": "See & Feel the Difference After Every Use",
+        "title_font": "dm_sans_n4",
+        "title_size": 23,
+        "scroll_speed": 5,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "poppins_n1",
+        "logo_height": 50,
+        "logo_text_size": 16,
+        "logo_spacing": 10
+      }
+    },
+    "multiple_images_with_text_7CDyeF": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_rqd7ei": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": -2,
+            "subheading": "",
+            "title": "",
+            "content": "<p><strong>If you're tired of feeling unmotivated, unfocused, or low on energy, DopaBoost Dopamine Patches are a simple way to support your daily routine.</strong></p><p>By supporting healthy dopamine function, you can stay motivated, mentally focused, and energized throughout the day. Infused with carefully selected ingredients, our patches deliver:<br/><br/></p><ul><li>Effortless use – just stick and go<br/><br/><br/></li><li>A stimulant-free, targeted formula<br/><br/><br/></li><li>A simple addition to your daily routine<br/></li></ul>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_rqd7ei"
+      ],
+      "name": "Multiple images with text",
+      "settings": {
+        "full_width": true,
+        "images_layout": "collage",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "trusted_banner_jTyFqT": {
+      "type": "trusted-banner",
+      "blocks": {
+        "logo_fY7aKi": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Subscribe & Save 20%",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_yRN8ac": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Cancel Anytime",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_wCFLGQ": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Free Shipping",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_V8tw3K": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Buy 2 Get 2 FREE!",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_fY7aKi",
+        "logo_yRN8ac",
+        "logo_wCFLGQ",
+        "logo_V8tw3K"
+      ],
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#000000",
+        "text_color": "#fef9f1",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": false,
+        "title_text": "AS SEEN IN",
+        "title_font": "poppins_n2",
+        "title_size": 14,
+        "scroll_speed": 39,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "poppins_n1",
+        "logo_height": 50,
+        "logo_text_size": 16,
+        "logo_spacing": 40
+      }
+    },
+    "trusted_banner_kQeQrR": {
+      "type": "trusted-banner",
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#f6d60f",
+        "text_color": "#ffffff",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": true,
+        "title_text": "Complete Your Routine",
+        "title_font": "dm_sans_n4",
+        "title_size": 32,
+        "scroll_speed": 5,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "dm_sans_i1",
+        "logo_height": 50,
+        "logo_text_size": 16,
+        "logo_spacing": 10
+      }
+    },
+    "trusted_banner_wqW8fL": {
+      "type": "trusted-banner",
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#f6d60f",
+        "text_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": true,
+        "title_text": "Try our number one most selling patch stack designed to target puffiness, metabolism and appetite.",
+        "title_font": "dm_sans_n4",
+        "title_size": 14,
+        "scroll_speed": 5,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "poppins_n1",
+        "logo_height": 50,
+        "logo_text_size": 16,
+        "logo_spacing": 10
+      }
+    },
+    "ss_shoppable_video_B7GFCR": {
+      "type": "ss-shoppable-video",
+      "blocks": {
+        "item_76dWwa": {
+          "type": "item",
+          "settings": {
+            "video_url": "",
+            "autoplay": true,
+            "product": "energy-patches",
+            "use_variants": true,
+            "modal_heading": "<h4>Modal heading</h4>",
+            "modal_text": "<p>Modal text</p>"
+          }
+        },
+        "item_6maJLJ": {
+          "type": "item",
+          "settings": {
+            "video_url": "",
+            "autoplay": true,
+            "product": "glp-1-berberine-patches",
+            "use_variants": true,
+            "modal_heading": "<h4>Modal heading</h4>",
+            "modal_text": "<p>Modal text</p>"
+          }
+        },
+        "item_k3GM48": {
+          "type": "item",
+          "settings": {
+            "video_url": "",
+            "autoplay": true,
+            "product": "nad-patches",
+            "use_variants": true,
+            "modal_heading": "<h4>Modal heading</h4>",
+            "modal_text": "<p>Modal text</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_76dWwa",
+        "item_6maJLJ",
+        "item_k3GM48"
+      ],
+      "name": "SS - Shoppable video",
+      "settings": {
+        "heading": "",
+        "heading_custom": false,
+        "heading_font": "josefin_sans_n4",
+        "heading_size": 28,
+        "heading_size_mobile": 28,
+        "heading_height": 130,
+        "heading_align": "center",
+        "heading_align_mobile": "center",
+        "slider_view": 3,
+        "slider_view_mobile": 1.3,
+        "slider_gap": 16,
+        "slider_gap_mobile": 16,
+        "slider_mt": 20,
+        "card_radius": 10,
+        "card_border_thickness": 0,
+        "card_shadow": true,
+        "video_ratio": "portrait",
+        "video_ratio_mobile": "portrait",
+        "video_overlay": 0.2,
+        "image_width": 44,
+        "image_width_mobile": 44,
+        "image_radius": 6,
+        "image_border_thickness": 0,
+        "title_custom": false,
+        "title_font": "josefin_sans_n4",
+        "title_size": 14,
+        "title_size_mobile": 14,
+        "title_height": 130,
+        "title_uppercase": false,
+        "price_custom": false,
+        "price_font": "josefin_sans_n4",
+        "price_size": 14,
+        "price_size_mobile": 14,
+        "price_height": 130,
+        "button": "Add To Cart",
+        "button_soldout": "Sold Out",
+        "button_custom": false,
+        "button_font": "josefin_sans_n4",
+        "button_size": 16,
+        "button_size_mobile": 16,
+        "button_padding_vertical": 10,
+        "button_padding_vertical_mobile": 10,
+        "button_padding_horizontal": 10,
+        "button_padding_horizontal_mobile": 10,
+        "reload_after_adding": false,
+        "redirect_after_adding": false,
+        "option_custom": false,
+        "option_font": "josefin_sans_n4",
+        "option_size": 12,
+        "option_size_mobile": 12,
+        "option_height": 100,
+        "option_mt": 24,
+        "variants_price_custom": false,
+        "variants_price_font": "josefin_sans_n4",
+        "variants_price_size": 14,
+        "variants_price_size_mobile": 14,
+        "variants_price_height": 130,
+        "variants_price_mt": 10,
+        "variants_price_align": "center",
+        "variants_price_align_mobile": "center",
+        "modal_width": 740,
+        "modal_width_mobile": 100,
+        "modal_radius": 16,
+        "modal_border_thickness": 0,
+        "modal_overlay": 50,
+        "close_size": 42,
+        "close_size_mobile": 42,
+        "close_radius": 8,
+        "close_border_thickness": 0,
+        "buttons_size": 48,
+        "buttons_size_mobile": 48,
+        "buttons_radius": 8,
+        "buttons_border_thickness": 0,
+        "modal_video_radius": 0,
+        "modal_video_border_thickness": 0,
+        "modal_video_ratio": "portrait",
+        "modal_video_ratio_mobile": "portrait",
+        "modal_heading_custom": false,
+        "modal_heading_font": "josefin_sans_n4",
+        "modal_heading_size": 28,
+        "modal_heading_size_mobile": 28,
+        "modal_heading_height": 130,
+        "modal_heading_align": "center",
+        "modal_heading_align_mobile": "center",
+        "modal_text_custom": false,
+        "modal_text_font": "josefin_sans_n4",
+        "modal_text_size": 16,
+        "modal_text_size_mobile": 16,
+        "modal_text_height": 150,
+        "modal_text_align": "center",
+        "modal_text_align_mobile": "center",
+        "modal_text_mt": 16,
+        "use_modal_product": true,
+        "modal_image_width": 70,
+        "modal_image_width_mobile": 66,
+        "modal_image_radius": 12,
+        "modal_image_border_thickness": 0,
+        "modal_title_custom": false,
+        "modal_title_font": "josefin_sans_n4",
+        "modal_title_size": 16,
+        "modal_title_size_mobile": 16,
+        "modal_title_height": 130,
+        "modal_title_uppercase": false,
+        "modal_price_custom": false,
+        "modal_price_font": "josefin_sans_n4",
+        "modal_price_size": 14,
+        "modal_price_size_mobile": 14,
+        "modal_price_height": 130,
+        "modal_button": "Add To Cart",
+        "modal_button_soldout": "Sold Out",
+        "modal_button_custom": false,
+        "modal_button_font": "josefin_sans_n4",
+        "modal_button_size": 16,
+        "modal_button_size_mobile": 16,
+        "modal_button_radius": 8,
+        "modal_button_border_thickness": 1,
+        "modal_button_mt": 16,
+        "modal_button_align": "center",
+        "modal_button_align_mobile": "center",
+        "card_bg_color": "#ffffff",
+        "card_border_color": "#121212",
+        "video_overlay_color": "#121212",
+        "card_shadow_color": "#121212",
+        "title_color": "#ffffff",
+        "price_color": "#ffffff",
+        "image_border_color": "#121212",
+        "button_color": "#ffffff",
+        "button_hover_color": "#ffffff",
+        "button_bg_color": "#121212",
+        "button_bg_hover_color": "#121212",
+        "arrow_icon_color": "#ffffff",
+        "arrow_bg_color": "#121212",
+        "arrow_border_color": "#ffffff",
+        "option_color": "#121212",
+        "variants_price_color": "#121212",
+        "modal_heading_color": "#121212",
+        "modal_text_color": "#121212",
+        "modal_video_border_color": "#121212",
+        "modal_content_bg_color": "#ffffff",
+        "modal_border_color": "#121212",
+        "close_icon_color": "#ffffff",
+        "close_bg_color": "#ffffff",
+        "close_border_color": "#121212",
+        "buttons_icon_color": "#ffffff",
+        "buttons_bg_color": "#ffffff",
+        "buttons_border_color": "#121212",
+        "modal_title_color": "#121212",
+        "modal_price_color": "#121212",
+        "modal_image_border_color": "#121212",
+        "modal_button_color": "#ffffff",
+        "modal_button_hover_color": "#121212",
+        "modal_button_bg_color": "#121212",
+        "modal_button_bg_hover_color": "#ffffff",
+        "modal_button_border_color": "#121212",
+        "modal_button_border_hover_color": "#121212",
+        "heading_color": "#121212",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#121212",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": false,
+        "content_width": 1400,
+        "border_thickness": 0,
+        "lazy": true
+      }
+    },
+    "zoom_info_63Aay8": {
+      "type": "zoom-info",
+      "blocks": {
+        "feature_CXrWAH": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/hf_20260626_115519_73609a41-5122-4ad2-ba54-23130393c445.png",
+            "image_alt": "",
+            "feature_text": "",
+            "expanded_text": "",
+            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #974E35 50%, #7A3E2A 100%)",
+            "link_url": ""
+          }
+        },
+        "feature_tACWFa": {
+          "type": "feature",
+          "settings": {
+            "image_alt": "",
+            "feature_text": "",
+            "expanded_text": "",
+            "gradient_background": "linear-gradient(135deg, #5A544F 0%, #4A453F 50%, #423D38 100%)",
+            "link_url": ""
+          }
+        },
+        "feature_6Vg9eW": {
+          "type": "feature",
+          "settings": {
+            "image_alt": "",
+            "feature_text": "",
+            "expanded_text": "",
+            "gradient_background": "linear-gradient(135deg, #AF593C 0%, #8B472F 50%, #6B3522 100%)",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_CXrWAH",
+        "feature_tACWFa",
+        "feature_6Vg9eW"
+      ],
+      "name": "Titanium Features",
+      "settings": {
+        "title": "",
+        "desktop_columns": "3",
+        "card_aspect_ratio": "1",
+        "mobile_card_aspect_ratio": "0.85",
+        "background_color": "#fef9f1",
+        "text_color": "#f5f2f0",
+        "card_text_color": "#ffffff",
+        "expand_icon_color": "#f5f2f0",
+        "expand_icon_bg": "#f5f2f01a",
+        "expand_icon_hover_bg": "#f5f2f033",
+        "expand_icon_border_color": "#f5f2f099",
+        "overlay_bg": "#f5f2f0fa",
+        "overlay_text_color": "#35312e",
+        "image_overlay_opacity": 20,
+        "card_shadow_opacity": 40,
+        "title_font_size": 48,
+        "title_font_size_mobile": 32,
+        "title_font_weight": "400",
+        "card_font_size": 24,
+        "card_font_size_mobile": 20,
+        "show_expand_icon": true,
+        "enable_parallax": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mobile": 65,
+        "padding_bottom_mobile": 65
+      }
+    },
+    "trusted_banner_tKhxVg": {
+      "type": "trusted-banner",
+      "blocks": {
+        "logo_3n9ynj": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Subscribe & Save 20%",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_4tycjF": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Cancel Anytime",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_XDmg9W": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Free Shipping",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        },
+        "logo_NixaB8": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Buy 2 Get 2 FREE!",
+            "logo_alt_text": "",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_3n9ynj",
+        "logo_4tycjF",
+        "logo_XDmg9W",
+        "logo_NixaB8"
+      ],
+      "name": "Trusted By Banner",
+      "settings": {
+        "remove_section_spacing": true,
+        "full_width": true,
+        "background_color": "#000000",
+        "text_color": "#fef9f1",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0,
+        "show_title": false,
+        "title_text": "AS SEEN IN",
+        "title_font": "poppins_n2",
+        "title_size": 14,
+        "scroll_speed": 39,
+        "pause_on_hover": true,
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "debug_mode": false,
+        "logo_font": "poppins_n1",
+        "logo_height": 50,
+        "logo_text_size": 16,
+        "logo_spacing": 40
+      }
+    },
+    "faq_6bJQJx": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_imYpd4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What makes titanium superior to other cookware materials?",
+            "answer": "<p><strong>Pure titanium offers unmatched benefits:</strong> It's completely non-toxic with zero chemical coatings, incredibly lightweight yet stronger than steel, and provides superior heat distribution. Unlike traditional non-stick pans, titanium develops a natural seasoning that improves with use.</p><p>Titanium is also highly corrosion-resistant, dishwasher safe, and can withstand extreme temperatures up to 1000°F, making it suitable for stovetop-to-oven cooking.</p>"
+          }
+        },
+        "faq_item_XXpWJQ": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I care for and maintain my titanium pan?",
+            "answer": "<p><strong>Titanium is remarkably low-maintenance:</strong></p><ul><li>Wash with warm soapy water or place in the dishwasher</li><li>No special cleaners or scrubbing required</li><li>Avoid extreme temperature shocks (don't put a hot pan in cold water)</li><li>Season occasionally with a light coating of oil for enhanced non-stick properties</li></ul><p>The natural patina that develops over time is normal and actually improves the pan's performance.</p>"
+          }
+        },
+        "faq_item_LcweF9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is the titanium pan truly non-stick without coatings?",
+            "answer": "<p><strong>Yes, but it works differently than chemical coatings.</strong> Pure titanium develops natural non-stick properties through proper heating and seasoning. Unlike PTFE coatings that can chip or wear off, titanium's surface actually improves with use.</p><p>For best results, preheat the pan for 2-3 minutes and use a small amount of oil or butter. Once properly seasoned, foods release easily without any toxic chemicals.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_imYpd4",
+        "faq_item_XXpWJQ",
+        "faq_item_LcweF9"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about DopaBoost Patches and how they support your daily wellness routine.",
+        "show_cta": true,
+        "cta_title": "Still have questions?",
+        "cta_text": "Our  experts are here to help you get the most out of your daily routine.",
+        "cta_button_text": "Contact Our Team",
+        "cta_button_url": "",
+        "background_color": "#fef9f1",
+        "text_color": "#321e1e",
+        "subtitle_color": "#321e1e",
+        "answer_color": "#000000",
+        "border_color": "#4a453f",
+        "accent_color": "#af593c",
+        "cta_bg_color": "#c1633f",
+        "cta_button_bg": "#af593c",
+        "cta_button_hover_bg": "#974e35",
+        "title_font_size": 48,
+        "title_font_size_mobile": 32,
+        "question_font_size": 18,
+        "question_font_size_mobile": 16,
+        "close_others": true,
+        "close_on_outside_click": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mobile": 65,
+        "padding_bottom_mobile": 65
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_y8Vcm9",
+    "trusted_banner_zEjhP7",
+    "featured_product_Lgxtqj",
+    "trusted_banner_CN3GTy",
+    "trusted_banner_8G7fLU",
+    "solution_V6tbpy",
+    "trusted_banner_fTnULc",
+    "solution_GyVWbD",
+    "trusted_banner_FDzkhK",
+    "trusted_banner_hCGy77",
+    "blocks_wEmXVR",
+    "impact_text_H8hQpk",
+    "trusted_banner_aMmnHN",
+    "compare_table_RxqBkW",
+    "trusted_banner_Vta7gG",
+    "multiple_images_with_text_7CDyeF",
+    "trusted_banner_jTyFqT",
+    "trusted_banner_kQeQrR",
+    "trusted_banner_wqW8fL",
+    "ss_shoppable_video_B7GFCR",
+    "zoom_info_63Aay8",
+    "trusted_banner_tKhxVg",
+    "faq_6bJQJx"
+  ]
+}

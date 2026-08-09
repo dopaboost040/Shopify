@@ -1,0 +1,424 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_pyGX6H": {
+      "type": "slideshow",
+      "blocks": {
+        "image_RnM6Pf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GLP-1_Support_Patches_offer_a_gentle_steady_approach_to_appetite_and_glucose_balance._Their_transdermal_delivery_ensures_consistent_support_without_the_fluctuations_typical_of_oral_su_73635680-df37-406e-8dbb-dcda06cddc2d.png",
+            "mobile_image": "shopify://shop_images/GLP-1_Support_Patches_offer_a_gentle_steady_approach_to_appetite_and_glucose_balance._Their_transdermal_delivery_ensures_consistent_support_without_the_fluctuations_typical_of_oral_su_f0823855-8fa3-40a2-b5e4-70c567efe3b4.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RnM6Pf"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "show_initial_transition": false,
+        "image_size": "md",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "featured_collection_d433tC": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "",
+        "products": [
+          "collagen-patches",
+          "dopamine-patches-1",
+          "energy-patches",
+          "focus-patches",
+          "glp-1-berberine-patches",
+          "love-patches",
+          "nad-patches",
+          "stress-down-patches"
+        ],
+        "full_width": false,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "section-6": {
+      "type": "impact-text",
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "text_alignment": "center",
+        "impact_text_style": "fill",
+        "text_divider": "none",
+        "impact_text_size_ratio": 1,
+        "background": "",
+        "background_gradient": "",
+        "heading_text_color": "",
+        "heading_gradient": "linear-gradient(180deg, rgba(26, 26, 26, 0.2), rgba(26, 26, 26, 0) 100%)",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "section-15": {
+      "type": "feature-chart",
+      "blocks": {
+        "block-1": {
+          "type": "headings",
+          "settings": {
+            "heading_1": "Driver",
+            "heading_2": "Weight",
+            "heading_3": "Dimensions",
+            "heading_4": "Battery",
+            "heading_5": "",
+            "heading_6": "",
+            "heading_7": "",
+            "heading_8": "",
+            "heading_9": "",
+            "heading_10": "",
+            "heading_11": "",
+            "heading_12": "",
+            "heading_13": "",
+            "heading_14": "",
+            "heading_15": "",
+            "heading_16": "",
+            "heading_17": "",
+            "heading_18": "",
+            "heading_19": "",
+            "heading_20": ""
+          }
+        },
+        "block-2": {
+          "type": "values",
+          "settings": {
+            "product": "",
+            "value_1": "<p>40mm Beryllium</p>",
+            "value_2": "<p>245g</p>",
+            "value_3": "<p>165mm x 190mm x 66mm</p>",
+            "value_4": "<p>24 hours</p>",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": "",
+            "view_button_background": "",
+            "view_button_text_color": ""
+          }
+        },
+        "block-3": {
+          "type": "values",
+          "settings": {
+            "product": "",
+            "value_1": "<p>40mm Beryllium</p>",
+            "value_2": "<p>205g (On-Ear), 239g (Over-Ear)</p>",
+            "value_3": "<p>190mm x 155mm x 34mm (On-Ear), 200mm x 165mm x 40mm (Over-Ear)</p>",
+            "value_4": "<p>16 hours</p>",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": "",
+            "view_button_background": "",
+            "view_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "block-2",
+        "block-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "subheading": "Compare",
+        "title": "Highlight key differences at a glance",
+        "content": "<p>This section is perfect for showcasing product comparisons side-by-side. Use it to display key features, specifications, and pricing so customers can quickly decide which item fits their needs.</p>",
+        "button_text": "Learn more",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 5,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "view_product": "View",
+        "viewing_product": "",
+        "show_product_swatch": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
+      }
+    },
+    "unique_section_XiRH3U": {
+      "type": "unique-section",
+      "blocks": {
+        "feature_8h967Q": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/skin.png",
+            "feature_title": "Absorbs Through Skin",
+            "feature_description": "Transdermal delivery allows nutrients to enter your bloodstream directly for faster, more efficient results."
+          }
+        },
+        "feature_TW9NN4": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/blood.png",
+            "feature_title": "Bypasses Digestion",
+            "feature_description": "Avoid stomach upset and nutrient loss that comes with pills and powders for a smoother experience."
+          }
+        },
+        "feature_UcLzFp": {
+          "type": "feature",
+          "settings": {
+            "feature_icon": "shopify://shop_images/absorption.png",
+            "feature_title": "Steady Release",
+            "feature_description": "Time-release technology provides consistent support throughout the day without peaks and crashes."
+          }
+        }
+      },
+      "block_order": [
+        "feature_8h967Q",
+        "feature_TW9NN4",
+        "feature_UcLzFp"
+      ],
+      "name": "Technology DopaBoost",
+      "settings": {
+        "section_label": "",
+        "title_part1": "What Makes Our Patches",
+        "title_part2": "So Unique?",
+        "background_color": "#fef9f1",
+        "label_color": "#666666",
+        "title_color": "#1a1a1a",
+        "feature_border_color": "#1a1a1a",
+        "feature_background": "rgba(0,0,0,0)",
+        "feature_title_color": "#1a1a1a",
+        "feature_text_color": "#999999",
+        "max_width": 1400,
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "grid_gap": 60,
+        "grid_gap_tablet": 40,
+        "grid_gap_mobile": 40,
+        "section_padding_desktop": "120px 60px",
+        "section_padding_tablet": "100px 40px",
+        "section_padding_mobile": "80px 24px",
+        "feature_padding": "40px 0 0 0",
+        "feature_border_width": 1,
+        "feature_border_radius": 0,
+        "icon_size": 40,
+        "icon_size_tablet": 36,
+        "icon_size_mobile": 32,
+        "icon_spacing": 16,
+        "icon_spacing_mobile": 12,
+        "label_font": "gilda_display_n4",
+        "title_font": "gilda_display_n4",
+        "feature_title_font": "inter_n4",
+        "feature_text_font": "inter_n4",
+        "label_size": 13,
+        "label_margin": 30,
+        "title_size_desktop": 48,
+        "title_size_tablet": 36,
+        "title_size_mobile": 28,
+        "title_regular_weight": "500",
+        "title_light_weight": "300",
+        "title_letter_spacing": 0,
+        "title_margin": 80,
+        "title_margin_mobile": 50,
+        "feature_title_size": 22,
+        "feature_title_size_mobile": 20,
+        "feature_title_weight": "400",
+        "feature_title_margin": 20,
+        "feature_text_size": 16,
+        "feature_text_size_mobile": 15
+      }
+    },
+    "media_grid_tgDTFf": {
+      "type": "media-grid",
+      "blocks": {
+        "image_dzYCnq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/canvas-image-1761221626832.jpg",
+            "icon_size_mobile": 48,
+            "icon_size_desktop": 64,
+            "title": "30,000+ happy customers",
+            "heading_font_size_mobile": 24,
+            "heading_font_size_desktop": 32,
+            "description": "",
+            "description_font_size_mobile": 12,
+            "description_font_size_desktop": 14,
+            "heading_tag": "h4",
+            "link_url": "",
+            "link_text": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 2,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "image_bgWqxW": {
+          "type": "image",
+          "settings": {
+            "icon_image": "shopify://shop_images/Untitled_design_71.png",
+            "icon_size_mobile": 60,
+            "icon_size_desktop": 80,
+            "title": "Plant-based",
+            "heading_font_size_mobile": 28,
+            "heading_font_size_desktop": 32,
+            "description": "No animal products or testing, just clean, vegan formulations.",
+            "description_font_size_mobile": 12,
+            "description_font_size_desktop": 14,
+            "heading_tag": "h4",
+            "link_url": "",
+            "link_text": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#c1633f",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_6XFDeR": {
+          "type": "image",
+          "settings": {
+            "icon_image": "shopify://shop_images/Untitled_design_70.png",
+            "icon_size_mobile": 60,
+            "icon_size_desktop": 80,
+            "title": "Science-Backed",
+            "heading_font_size_mobile": 24,
+            "heading_font_size_desktop": 32,
+            "description": "very patch designed with clinically studied ingredients.",
+            "description_font_size_mobile": 12,
+            "description_font_size_desktop": 14,
+            "heading_tag": "h4",
+            "link_url": "",
+            "link_text": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#c1633f",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_dzYCnq",
+        "image_bgWqxW",
+        "image_6XFDeR"
+      ],
+      "name": "Media grid",
+      "settings": {
+        "full_width": true,
+        "reduce_width": false,
+        "desktop_row_height": 310,
+        "mobile_row_height": 250,
+        "background": "",
+        "background_gradient": ""
+      }
+    }
+  },
+  "order": [
+    "slideshow_pyGX6H",
+    "featured_collection_d433tC",
+    "section-6",
+    "section-15",
+    "unique_section_XiRH3U",
+    "media_grid_tgDTFf"
+  ]
+}

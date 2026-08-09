@@ -1,0 +1,635 @@
+<!-- trusted-banner.liquid -->
+<style>
+  {% if section.settings.remove_section_spacing %}
+  #shopify-section-{{ section.id }} {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  {% endif %}
+
+  .trusted-banner-{{ section.id }} {
+    background: {{ section.settings.background_color | default: '#2c5530' }};
+    color: {{ section.settings.text_color | default: '#ffffff' }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    margin-top: {{ section.settings.margin_top | default: 0 }}px;
+    margin-bottom: {{ section.settings.margin_bottom | default: 0 }}px;
+    position: relative;
+    overflow: hidden;
+    {% if section.settings.full_width %}
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    {% endif %}
+  }
+
+  .trusted-title-{{ section.id }} {
+    text-align: center;
+    font-family: {{ section.settings.title_font.family }}, {{ section.settings.title_font.fallback_families }};
+    font-style: {{ section.settings.title_font.style }};
+    font-size: {{ section.settings.title_size | default: 18 }}px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+    color: {{ section.settings.text_color | default: '#ffffff' }};
+  }
+
+  .trusted-scroll-container-{{ section.id }} {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  /* Gradient edges */
+  .trusted-scroll-container-{{ section.id }}::before,
+  .trusted-scroll-container-{{ section.id }}::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .trusted-scroll-container-{{ section.id }}::before {
+    left: 0;
+    background: linear-gradient(to right, {{ section.settings.background_color | default: '#2c5530' }}, transparent);
+  }
+
+  .trusted-scroll-container-{{ section.id }}::after {
+    right: 0;
+    background: linear-gradient(to left, {{ section.settings.background_color | default: '#2c5530' }}, transparent);
+  }
+
+  /* The scrolling track */
+  .scroll-track-{{ section.id }} {
+    display: flex;
+    width: max-content;
+  }
+
+  /* The animated content */
+  .scroll-content-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    animation: seamless-scroll-{{ section.id }} {{ section.settings.scroll_speed | default: 20 }}s linear infinite;
+    padding-right: 0;
+  }
+
+  {% if section.settings.pause_on_hover %}
+  .scroll-track-{{ section.id }}:hover .scroll-content-{{ section.id }} {
+    animation-play-state: paused;
+  }
+  {% endif %}
+
+  /* Individual logo item */
+  .logo-item-{{ section.id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: {{ section.settings.logo_height | default: 50 }}px;
+    padding: 0 {{ section.settings.logo_spacing | default: 40 }}px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* Logo images */
+  .logo-item-{{ section.id }} img {
+    height: 100%;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    display: block;
+    
+    {% if section.settings.logo_display_mode == 'original' %}
+      opacity: {{ section.settings.logo_opacity | default: 1 }};
+    {% elsif section.settings.logo_display_mode == 'white' %}
+      filter: brightness(0) invert(1);
+      opacity: {{ section.settings.logo_opacity | default: 0.9 }};
+    {% elsif section.settings.logo_display_mode == 'black' %}
+      filter: brightness(0);
+      opacity: {{ section.settings.logo_opacity | default: 0.8 }};
+    {% elsif section.settings.logo_display_mode == 'grayscale' %}
+      filter: grayscale(100%);
+      opacity: {{ section.settings.logo_opacity | default: 0.9 }};
+    {% else %}
+      opacity: {{ section.settings.logo_opacity | default: 1 }};
+    {% endif %}
+    
+    transition: all 0.3s ease;
+  }
+
+  .logo-item-{{ section.id }}:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  /* Text logos */
+  .logo-text-{{ section.id }} {
+    font-family: {{ section.settings.logo_font.family }}, {{ section.settings.logo_font.fallback_families }};
+    font-style: {{ section.settings.logo_font.style }};
+    font-size: {{ section.settings.logo_text_size | default: 24 }}px;
+    font-weight: bold;
+    opacity: {{ section.settings.logo_opacity | default: 0.9 }};
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    
+    {% if section.settings.logo_display_mode == 'white' %}
+      color: #ffffff;
+    {% elsif section.settings.logo_display_mode == 'black' %}
+      color: #000000;
+    {% else %}
+      color: {{ section.settings.text_color | default: '#ffffff' }};
+    {% endif %}
+  }
+
+  /* Ensure links work */
+  .logo-item-{{ section.id }} a {
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .logo-item-{{ section.id }}:hover .logo-text-{{ section.id }} {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  /* The seamless animation */
+  @keyframes seamless-scroll-{{ section.id }} {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Debug mode */
+  {% if section.settings.debug_mode %}
+  .logo-item-{{ section.id }} {
+    border: 2px solid red;
+    background: rgba(255, 0, 0, 0.1);
+  }
+  .scroll-content-{{ section.id }} {
+    border: 2px solid blue;
+  }
+  .scroll-track-{{ section.id }} {
+    border: 2px solid green;
+  }
+  {% endif %}
+
+  /* Mobile responsiveness */
+  @media screen and (max-width: 768px) {
+    .trusted-banner-{{ section.id }} {
+      margin-top: {{ section.settings.margin_top_mobile | default: 0 }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile | default: 0 }}px;
+    }
+
+    .trusted-title-{{ section.id }} {
+      font-size: {{ section.settings.title_size | default: 18 | minus: 2 }}px;
+      margin-bottom: 12px;
+    }
+    
+    .logo-item-{{ section.id }} {
+      padding: 0 {{ section.settings.logo_spacing | default: 40 | minus: 10 }}px;
+      height: {{ section.settings.logo_height | default: 50 | minus: 10 }}px;
+    }
+    
+    .logo-text-{{ section.id }} {
+      font-size: {{ section.settings.logo_text_size | default: 24 | minus: 6 }}px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .trusted-banner-{{ section.id }} {
+      padding: {{ section.settings.padding_top | minus: 5 }}px 0 {{ section.settings.padding_bottom | minus: 5 }}px;
+    }
+    
+    .trusted-title-{{ section.id }} {
+      font-size: {{ section.settings.title_size | default: 18 | minus: 4 }}px;
+      margin-bottom: 10px;
+    }
+    
+    .logo-item-{{ section.id }} {
+      padding: 0 {{ section.settings.logo_spacing | default: 40 | minus: 20 }}px;
+      height: {{ section.settings.logo_height | default: 50 | minus: 15 }}px;
+    }
+    
+    .logo-text-{{ section.id }} {
+      font-size: {{ section.settings.logo_text_size | default: 24 | minus: 8 }}px;
+    }
+  }
+</style>
+
+<div class="trusted-banner-{{ section.id }}">
+  {% if section.settings.show_title %}
+    <div class="trusted-title-{{ section.id }}">{{ section.settings.title_text | default: 'TRUSTED BY' }}</div>
+  {% endif %}
+  
+  <div class="trusted-scroll-container-{{ section.id }}">
+    <div class="scroll-track-{{ section.id }}">
+      <!-- First copy of logos -->
+      <div class="scroll-content-{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="logo-item-{{ section.id }}" {{ block.shopify_attributes }}>
+            {% if block.settings.logo_image %}
+              {% if block.settings.logo_link %}
+                <a href="{{ block.settings.logo_link }}" target="_blank" rel="noopener">
+                  <img src="{{ block.settings.logo_image | img_url: 'master' }}" 
+                       alt="{{ block.settings.logo_alt_text | default: block.settings.logo_text | default: 'Partner logo' }}"
+                       loading="eager">
+                </a>
+              {% else %}
+                <img src="{{ block.settings.logo_image | img_url: 'master' }}" 
+                     alt="{{ block.settings.logo_alt_text | default: block.settings.logo_text | default: 'Partner logo' }}"
+                     loading="eager">
+              {% endif %}
+            {% elsif block.settings.logo_text %}
+              {% if block.settings.logo_link %}
+                <a href="{{ block.settings.logo_link }}" target="_blank" rel="noopener">
+                  <div class="logo-text-{{ section.id }}">{{ block.settings.logo_text }}</div>
+                </a>
+              {% else %}
+                <div class="logo-text-{{ section.id }}">{{ block.settings.logo_text }}</div>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      
+      <!-- Second copy - EXACT duplicate for seamless loop -->
+      <div class="scroll-content-{{ section.id }}" aria-hidden="true">
+        {% for block in section.blocks %}
+          <div class="logo-item-{{ section.id }}">
+            {% if block.settings.logo_image %}
+              {% if block.settings.logo_link %}
+                <a href="{{ block.settings.logo_link }}" target="_blank" rel="noopener" tabindex="-1">
+                  <img src="{{ block.settings.logo_image | img_url: 'master' }}" 
+                       alt="{{ block.settings.logo_alt_text | default: block.settings.logo_text | default: 'Partner logo' }}"
+                       loading="eager">
+                </a>
+              {% else %}
+                <img src="{{ block.settings.logo_image | img_url: 'master' }}" 
+                     alt="{{ block.settings.logo_alt_text | default: block.settings.logo_text | default: 'Partner logo' }}"
+                     loading="eager">
+              {% endif %}
+            {% elsif block.settings.logo_text %}
+              {% if block.settings.logo_link %}
+                <a href="{{ block.settings.logo_link }}" target="_blank" rel="noopener" tabindex="-1">
+                  <div class="logo-text-{{ section.id }}">{{ block.settings.logo_text }}</div>
+                </a>
+              {% else %}
+                <div class="logo-text-{{ section.id }}">{{ block.settings.logo_text }}</div>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      
+      <!-- Third copy for extra smoothness -->
+      <div class="scroll-content-{{ section.id }}" aria-hidden="true">
+        {% for block in section.blocks %}
+          <div class="logo-item-{{ section.id }}">
+            {% if block.settings.logo_image %}
+              {% if block.settings.logo_link %}
+                <a href="{{ block.settings.logo_link }}" target="_blank" rel="noopener" tabindex="-1">
+                  <img src="{{ block.settings.logo_image | img_url: 'master' }}" 
+                       alt="{{ block.settings.logo_alt_text | default: block.settings.logo_text | default: 'Partner logo' }}"
+                       loading="eager">
+                </a>
+              {% else %}
+                <img src="{{ block.settings.logo_image | img_url: 'master' }}" 
+                     alt="{{ block.settings.logo_alt_text | default: block.settings.logo_text | default: 'Partner logo' }}"
+                     loading="eager">
+              {% endif %}
+            {% elsif block.settings.logo_text %}
+              {% if block.settings.logo_link %}
+                <a href="{{ block.settings.logo_link }}" target="_blank" rel="noopener" tabindex="-1">
+                  <div class="logo-text-{{ section.id }}">{{ block.settings.logo_text }}</div>
+                </a>
+              {% else %}
+                <div class="logo-text-{{ section.id }}">{{ block.settings.logo_text }}</div>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trusted By Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Algemene instellingen"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_section_spacing",
+      "label": "Verwijder alle Shopify sectie spacing",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Volledige breedte",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Achtergrondkleur",
+      "default": "#2c5530"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Tekstkleur",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding boven",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding onder",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Marge instellingen (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": -300,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Marge boven (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": -300,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Marge onder (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Marge instellingen (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": -300,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Marge boven (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": -300,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Marge onder (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Titel instellingen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Toon titel",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title_text",
+      "label": "Titel tekst",
+      "default": "AS SEEN IN"
+    },
+    {
+      "type": "font_picker",
+      "id": "title_font",
+      "label": "Titel lettertype",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Titel grootte",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Animatie"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Scroll snelheid (seconden)",
+      "default": 20,
+      "info": "Lagere waarde = sneller"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pauzeer bij hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Logo weergave"
+    },
+    {
+      "type": "select",
+      "id": "logo_display_mode",
+      "label": "Logo weergave modus",
+      "default": "original",
+      "options": [
+        {
+          "value": "original",
+          "label": "Origineel"
+        },
+        {
+          "value": "white",
+          "label": "Wit"
+        },
+        {
+          "value": "black",
+          "label": "Zwart"
+        },
+        {
+          "value": "grayscale",
+          "label": "Grijstinten"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "min": 0.3,
+      "max": 1,
+      "step": 0.1,
+      "label": "Logo transparantie",
+      "default": 0.9
+    },
+    {
+      "type": "checkbox",
+      "id": "debug_mode",
+      "label": "Debug modus",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Logo grootte"
+    },
+    {
+      "type": "font_picker",
+      "id": "logo_font",
+      "label": "Logo lettertype",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo hoogte",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "logo_text_size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Tekst grootte",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "logo_spacing",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Ruimte tussen logo's",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo/Merk",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo afbeelding"
+        },
+        {
+          "type": "text",
+          "id": "logo_text",
+          "label": "Logo tekst"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt_text",
+          "label": "Alt tekst"
+        },
+        {
+          "type": "url",
+          "id": "logo_link",
+          "label": "Link (optioneel)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trusted By Banner",
+      "settings": {
+        "background_color": "#ffffff",
+        "logo_display_mode": "original",
+        "logo_opacity": 0.9,
+        "logo_spacing": 40,
+        "logo_height": 50,
+        "scroll_speed": 20,
+        "title_text": "AS SEEN IN"
+      },
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "logo_text": "ELLE"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_text": "allure"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Forbes"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_text": "BAZAAR"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_text": "BYRDIE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

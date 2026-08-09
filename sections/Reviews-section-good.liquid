@@ -1,0 +1,367 @@
+<style>
+  #shopify-section-{{ section.id }} .cr-section{
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+  #shopify-section-{{ section.id }} .cr-inner{ width: 100%; }
+  #shopify-section-{{ section.id }} .cr-heading{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 0;
+  }
+  #shopify-section-{{ section.id }} .cr-subheading{
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  #shopify-section-{{ section.id }} .cr-summary-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+  #shopify-section-{{ section.id }} .cr-score-block{ text-align: center; }
+  #shopify-section-{{ section.id }} .cr-score-number{
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+  }
+  #shopify-section-{{ section.id }} .cr-score-stars{ margin: 8px 0 4px; }
+  #shopify-section-{{ section.id }} .cr-score-count{ font-size: 14px; margin: 0; }
+  #shopify-section-{{ section.id }} .cr-bars-block{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 260px;
+  }
+  #shopify-section-{{ section.id }} .cr-bar-row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+  #shopify-section-{{ section.id }} .cr-bar-track{
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 160px;
+  }
+  #shopify-section-{{ section.id }} .cr-bar-fill{
+    height: 100%;
+    border-radius: 3px;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .cr-bar-count{
+    min-width: 34px;
+    text-align: right;
+  }
+  #shopify-section-{{ section.id }} .cr-write-review-btn{
+    border: none;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #shopify-section-{{ section.id }} .cr-filter-row{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    margin-bottom: 6px;
+  }
+  #shopify-section-{{ section.id }} .cr-search-box{
+    flex: 1;
+    min-width: 200px;
+    background: #fff;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  #shopify-section-{{ section.id }} .cr-rating-select{
+    background: #fff;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 14px;
+    border: none;
+  }
+  #shopify-section-{{ section.id }} .cr-media-toggle{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+  #shopify-section-{{ section.id }} .cr-circle{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border-width: 1.5px;
+    border-style: solid;
+  }
+  #shopify-section-{{ section.id }} .cr-sort-row{ margin-left: auto; font-size: 14px; }
+  #shopify-section-{{ section.id }} .cr-review-item{
+    display: flex;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+  #shopify-section-{{ section.id }} .cr-reviewer{ min-width: 140px; }
+  #shopify-section-{{ section.id }} .cr-reviewer-name{ font-weight: 600; margin: 0 0 6px; }
+  #shopify-section-{{ section.id }} .cr-verified{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+  #shopify-section-{{ section.id }} .cr-check{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+  }
+  #shopify-section-{{ section.id }} .cr-review-head{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  #shopify-section-{{ section.id }} .cr-review-stars{ letter-spacing: 2px; }
+  #shopify-section-{{ section.id }} .cr-review-heading{ font-weight: 700; }
+  #shopify-section-{{ section.id }} .cr-review-date{ margin-left: auto; font-size: 13px; }
+  #shopify-section-{{ section.id }} .cr-review-text{ font-size: 14px; line-height: 1.6; margin: 0; }
+
+  @media (max-width: 700px){
+    #shopify-section-{{ section.id }} .cr-summary-row{ gap: 30px; }
+    #shopify-section-{{ section.id }} .cr-sort-row{ margin-left: 0; width: 100%; }
+  }
+
+  #shopify-section-{{ section.id }} .cr-section{
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_top }}px;
+    padding-left: {{ section.settings.padding_x }}px;
+    padding-right: {{ section.settings.padding_x }}px;
+  }
+  #shopify-section-{{ section.id }} .cr-heading{
+    font-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    font-weight: {{ section.settings.heading_font.weight }};
+    color: {{ section.settings.text_color }};
+    margin-bottom: {{ section.settings.block_gap }}px;
+  }
+  #shopify-section-{{ section.id }} .cr-subheading{
+    font-family: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+    color: {{ section.settings.text_color }};
+    margin-bottom: {{ section.settings.block_gap }}px;
+  }
+  #shopify-section-{{ section.id }} .cr-summary-row{
+    margin-bottom: {{ section.settings.block_gap }}px;
+  }
+  #shopify-section-{{ section.id }} .cr-body,
+  #shopify-section-{{ section.id }} .cr-review-text,
+  #shopify-section-{{ section.id }} .cr-reviewer-name,
+  #shopify-section-{{ section.id }} .cr-review-heading,
+  #shopify-section-{{ section.id }} .cr-search-box,
+  #shopify-section-{{ section.id }} .cr-rating-select,
+  #shopify-section-{{ section.id }} .cr-media-toggle,
+  #shopify-section-{{ section.id }} .cr-sort-row,
+  #shopify-section-{{ section.id }} .cr-write-review-btn{
+    font-family: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+  }
+  #shopify-section-{{ section.id }} .cr-text-secondary,
+  #shopify-section-{{ section.id }} .cr-score-count,
+  #shopify-section-{{ section.id }} .cr-bar-count,
+  #shopify-section-{{ section.id }} .cr-review-date,
+  #shopify-section-{{ section.id }} .cr-verified{
+    color: {{ section.settings.text_secondary_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-star-icon,
+  #shopify-section-{{ section.id }} .cr-score-stars,
+  #shopify-section-{{ section.id }} .cr-review-stars{
+    color: {{ section.settings.icon_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-verified .cr-check{
+    background: {{ section.settings.icon_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-media-toggle .cr-circle{
+    border-color: {{ section.settings.icon_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-bar-fill{
+    background: {{ section.settings.bar_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-write-review-btn{
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text }};
+  }
+  #shopify-section-{{ section.id }} .cr-review-item,
+  #shopify-section-{{ section.id }} .cr-filter-row{
+    border-color: {{ section.settings.border_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-bar-track{
+    background: {{ section.settings.border_color }};
+  }
+</style>
+
+<section class="cr-section">
+  <div class="cr-inner">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="cr-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="cr-subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="cr-summary-row">
+      <div class="cr-score-block">
+        <p class="cr-score-number">{{ section.settings.average_rating }}</p>
+        <div class="cr-score-stars">
+          {% for i in (1..5) %}★{% endfor %}
+        </div>
+        <p class="cr-score-count">Gebaseerd op {{ section.settings.review_count }} reviews</p>
+      </div>
+
+      <div class="cr-bars-block">
+        {% assign star_labels = "5,4,3,2,1" | split: "," %}
+        {% assign star_counts = "" %}
+        {% for label in star_labels %}
+          {% case label %}
+            {% when "5" %}{% assign count = section.settings.count_5 %}
+            {% when "4" %}{% assign count = section.settings.count_4 %}
+            {% when "3" %}{% assign count = section.settings.count_3 %}
+            {% when "2" %}{% assign count = section.settings.count_2 %}
+            {% when "1" %}{% assign count = section.settings.count_1 %}
+          {% endcase %}
+          {% assign total = section.settings.count_5 | plus: section.settings.count_4 | plus: section.settings.count_3 | plus: section.settings.count_2 | plus: section.settings.count_1 %}
+          {% if total > 0 %}
+            {% assign pct = count | times: 100.0 | divided_by: total %}
+          {% else %}
+            {% assign pct = 0 %}
+          {% endif %}
+          <div class="cr-bar-row">
+            <span>{{ label }}</span><span class="cr-star-icon">★</span>
+            <div class="cr-bar-track"><div class="cr-bar-fill" style="width:{{ pct }}%"></div></div>
+            <span class="cr-bar-count">{{ count }}</span>
+          </div>
+        {% endfor %}
+      </div>
+
+      <button type="button" class="cr-write-review-btn">{{ section.settings.button_label }}</button>
+    </div>
+
+    <div class="cr-filter-row">
+      <div class="cr-search-box">Zoek reviews</div>
+      <select class="cr-rating-select">
+        <option>Beoordeling</option>
+        <option>5 sterren</option>
+        <option>4 sterren</option>
+        <option>3 sterren</option>
+        <option>2 sterren</option>
+        <option>1 ster</option>
+      </select>
+      <div class="cr-media-toggle"><span class="cr-circle"></span> Met media</div>
+      <div class="cr-sort-row">Sorteren op: <b>Meest relevant</b></div>
+    </div>
+
+    {% for block in section.blocks %}
+      {% if block.type == 'review' %}
+        <div class="cr-review-item" {{ block.shopify_attributes }}>
+          <div class="cr-reviewer">
+            <p class="cr-reviewer-name">{{ block.settings.name }}</p>
+            {% if block.settings.verified %}
+              <div class="cr-verified"><span class="cr-check">✓</span> Geverifieerde koper</div>
+            {% endif %}
+          </div>
+          <div class="cr-body">
+            <div class="cr-review-head">
+              <span class="cr-review-stars">
+                {% for i in (1..block.settings.rating) %}★{% endfor %}
+              </span>
+              <span class="cr-review-heading">{{ block.settings.title }}</span>
+              <span class="cr-review-date">{{ block.settings.date }}</span>
+            </div>
+            <p class="cr-review-text">{{ block.settings.text }}</p>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Klantreviews",
+  "settings": [
+    { "type": "header", "content": "Inhoud" },
+    { "type": "text", "id": "heading", "label": "Titel", "default": "Echte Klantreviews" },
+    { "type": "text", "id": "subheading", "label": "Ondertitel", "default": "Lees fijne reviews" },
+    { "type": "text", "id": "average_rating", "label": "Gemiddelde score", "default": "4.7" },
+    { "type": "text", "id": "review_count", "label": "Aantal reviews", "default": "2731" },
+    { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Schrijf Een Review" },
+
+    { "type": "header", "content": "Sterverdeling" },
+    { "type": "text", "id": "count_5", "label": "Aantal 5 sterren", "default": "2080" },
+    { "type": "text", "id": "count_4", "label": "Aantal 4 sterren", "default": "418" },
+    { "type": "text", "id": "count_3", "label": "Aantal 3 sterren", "default": "224" },
+    { "type": "text", "id": "count_2", "label": "Aantal 2 sterren", "default": "1" },
+    { "type": "text", "id": "count_1", "label": "Aantal 1 ster", "default": "8" },
+
+    { "type": "header", "content": "Lettertype" },
+    { "type": "font_picker", "id": "heading_font", "label": "Lettertype titel", "default": "helvetica_n4" },
+    { "type": "font_picker", "id": "body_font", "label": "Lettertype tekst", "default": "helvetica_n4" },
+
+    { "type": "header", "content": "Kleuren" },
+    { "type": "color", "id": "bg_color", "label": "Achtergrondkleur", "default": "#F4F2EC" },
+    { "type": "color", "id": "text_color", "label": "Tekstkleur (hoofd)", "default": "#22223A" },
+    { "type": "color", "id": "text_secondary_color", "label": "Tekstkleur (subtiel)", "default": "#55556B" },
+    { "type": "color", "id": "icon_color", "label": "Kleur iconen / sterren", "default": "#7FA8E8" },
+    { "type": "color", "id": "bar_color", "label": "Kleur voortgangsbalken", "default": "#191927" },
+    { "type": "color", "id": "border_color", "label": "Kleur lijnen / balk-track", "default": "#E4E1D8" },
+    { "type": "color", "id": "button_bg", "label": "Knopkleur achtergrond", "default": "#191927" },
+    { "type": "color", "id": "button_text", "label": "Knopkleur tekst", "default": "#FFFFFF" },
+
+    { "type": "header", "content": "Ruimte / padding" },
+    { "type": "range", "id": "padding_top", "label": "Verticale padding", "min": 0, "max": 150, "step": 2, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding_x", "label": "Horizontale padding", "min": 0, "max": 150, "step": 2, "unit": "px", "default": 40 },
+    { "type": "range", "id": "block_gap", "label": "Ruimte tussen blokken", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 28 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Naam", "default": "Klantnaam" },
+        { "type": "checkbox", "id": "verified", "label": "Geverifieerde koper", "default": true },
+        { "type": "range", "id": "rating", "label": "Aantal sterren", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "text", "id": "title", "label": "Titel review", "default": "Geweldig" },
+        { "type": "text", "id": "date", "label": "Datum", "default": "01/01/26" },
+        { "type": "textarea", "id": "text", "label": "Reviewtekst", "default": "Schrijf hier de review tekst." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Klantreviews",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}

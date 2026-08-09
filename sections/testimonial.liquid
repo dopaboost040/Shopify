@@ -1,0 +1,369 @@
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@1,400;1,500&display=swap');
+
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background }};
+  }
+
+  #shopify-section-{{ section.id }} .testimonial,
+  #shopify-section-{{ section.id }} .testimonial * {
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-heading {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 {{ section.settings.heading_spacing }}px;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-subheading {
+    font-size: 18px;
+    font-weight: 500;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 {{ section.settings.subheading_spacing }}px;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-grid {
+    display: grid;
+    grid-template-columns: {{ section.settings.image_column_width }}fr {{ section.settings.text_column_width }}fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-image-wrap {
+    width: 100%;
+    aspect-ratio: {{ section.settings.image_ratio }};
+    border-radius: {{ section.settings.image_radius }}px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-quote {
+    font-size: {{ section.settings.quote_size }}px;
+    font-style: italic;
+    line-height: 1.5;
+    color: {{ section.settings.heading_color }};
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-author {
+    font-size: 20px;
+    font-weight: 500;
+    color: {{ section.settings.text_color }};
+    text-align: right;
+    margin: {{ section.settings.author_spacing }}px 0 0;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-button {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    color: {{ section.settings.button_text_color }};
+    background-color: {{ section.settings.button_background }};
+    padding: 18px 36px;
+    border-radius: 999px;
+    transition: opacity 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-button:hover {
+    opacity: 0.85;
+  }
+
+  @media screen and (max-width: 849px) {
+    #shopify-section-{{ section.id }} .testimonial-grid {
+      grid-template-columns: 1fr;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-heading {
+      font-size: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-quote {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="testimonial">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="testimonial-heading hyphenate">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="testimonial-subheading">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    <div class="testimonial-grid">
+      <div class="testimonial-image-wrap">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 900 | image_tag: sizes: '(max-width: 849px) 100vw, 45vw', widths: '400,600,800,900', class: 'testimonial-image' }}
+        {%- endif -%}
+      </div>
+
+      <div class="testimonial-content">
+        <div>
+          {%- if section.settings.quote != blank -%}
+            <p class="testimonial-quote">&quot;{{ section.settings.quote }}&quot;</p>
+          {%- endif -%}
+
+          {%- if section.settings.author != blank -%}
+            <p class="testimonial-author">&mdash;{{ section.settings.author }}</p>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.button_text != blank -%}
+          <a href="{{ section.settings.button_url | default: '#' }}" class="testimonial-button">
+            {{- section.settings.button_text -}}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonial",
+  "class": "shopify-section--testimonial",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Life-Changing"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real user, real results"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Afbeelding"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "I've been using weight loss patches and energy patches for the last 8 to 9 months with a better eating regime and regular walks, and have become a lot healthier both physically and mentally."
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Naam auteur",
+      "default": "Jo Niinemae"
+    },
+    {
+      "type": "range",
+      "id": "quote_size",
+      "min": 16,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Tekstgrootte quote",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "author_spacing",
+      "min": -20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Ruimte tussen quote en auteur",
+      "default": -16
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 40,
+      "unit": "px",
+      "label": "Maximale breedte",
+      "default": 1280
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Ruimte tussen heading en subheading",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "subheading_spacing",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Ruimte tussen subheading en afbeelding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "image_column_width",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Breedte afbeelding-kolom (verhouding)",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "text_column_width",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Breedte tekst-kolom (verhouding)",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Beeldverhouding afbeelding",
+      "options": [
+        { "value": "1 / 1", "label": "Vierkant" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "3 / 4", "label": "3:4 (staand)" },
+        { "value": "16 / 9", "label": "16:9" }
+      ],
+      "default": "3 / 4"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Afronding afbeelding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Kleuren"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrondkleur sectie",
+      "default": "#F2F0EC"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Kop- en quotekleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Overige tekstkleur",
+      "default": "#3A3A3A"
+    },
+    {
+      "type": "header",
+      "content": "Knop"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Knoptekst",
+      "default": "Shop Berberine Patches"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Knoplink"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Knop achtergrondkleur",
+      "default": "#E8A798"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Knop tekstkleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "header",
+      "content": "Padding sectie"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding boven",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding onder",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,398 @@
+{%- if section.blocks.size > 0 -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.background }};
+    }
+
+    #shopify-section-{{ section.id }} .compare-table,
+    #shopify-section-{{ section.id }} .compare-table * {
+      font-family: 'DM Sans', sans-serif;
+      box-sizing: border-box;
+    }
+
+    #shopify-section-{{ section.id }} .compare-table {
+      max-width: {{ section.settings.max_width }}px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    #shopify-section-{{ section.id }} .compare-table-heading {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: {{ section.settings.heading_color }};
+      margin: 0 0 48px;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .compare-table-grid {
+      display: grid;
+      /* minmax(0, ...) lets columns shrink below their content's intrinsic
+         width instead of forcing the grid to overflow the container */
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+      width: 100%;
+      border-top: 2px solid {{ section.settings.border_color }};
+    }
+
+    #shopify-section-{{ section.id }} .compare-table-cell {
+      min-width: 0;
+      padding: 20px 16px;
+      border-bottom: 1px solid {{ section.settings.border_color }};
+      display: flex;
+      align-items: center;
+      overflow-wrap: anywhere;
+    }
+
+    #shopify-section-{{ section.id }} .compare-table-cell.center {
+      justify-content: center;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .compare-table-header-row .compare-table-cell {
+      background-color: {{ section.settings.header_background }};
+      font-weight: 700;
+      font-size: 18px;
+      color: {{ section.settings.header_text_color }};
+    }
+
+    #shopify-section-{{ section.id }} .compare-table-header-row .highlight {
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    #shopify-section-{{ section.id }} .compare-table-feature {
+      font-weight: 600;
+      font-size: 18px;
+      color: {{ section.settings.text_color }};
+    }
+
+    #shopify-section-{{ section.id }} .compare-table-icon {
+      font-size: 22px;
+    }
+
+    #shopify-section-{{ section.id }} .compare-table-icon.check {
+      color: {{ section.settings.check_color }};
+    }
+
+    #shopify-section-{{ section.id }} .compare-table-icon.cross {
+      color: {{ section.settings.cross_color }};
+      font-weight: 700;
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .compare-table {
+        {%- if section.settings.full_width_mobile %}
+          max-width: 100%;
+          padding: 0 6px;
+        {%- else %}
+          padding: 0 16px;
+        {%- endif %}
+      }
+
+      #shopify-section-{{ section.id }} .compare-table-heading {
+        font-size: 26px;
+        margin-bottom: 28px;
+        padding: 0 4px;
+      }
+
+      #shopify-section-{{ section.id }} .compare-table-grid {
+        grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.8fr) minmax(0, 0.95fr) minmax(0, 1fr);
+      }
+
+      #shopify-section-{{ section.id }} .compare-table-cell {
+        padding: 12px 3px;
+      }
+
+      #shopify-section-{{ section.id }} .compare-table-cell.center {
+        padding-left: 2px;
+        padding-right: 2px;
+      }
+
+      #shopify-section-{{ section.id }} .compare-table-feature {
+        font-size: clamp(10px, 3.2vw, 13px);
+        line-height: 1.2;
+        padding-left: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #shopify-section-{{ section.id }} .compare-table-header-row .compare-table-cell {
+        font-size: clamp(9.5px, 3.1vw, 13px);
+        line-height: 1.15;
+        text-align: center;
+        padding-left: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #shopify-section-{{ section.id }} .compare-table-header-row .compare-table-cell:first-child {
+        padding-left: 8px;
+        text-align: left;
+      }
+
+      #shopify-section-{{ section.id }} .compare-table-header-row .highlight {
+        font-size: clamp(10px, 3.3vw, 14px);
+      }
+
+      #shopify-section-{{ section.id }} .compare-table-icon {
+        font-size: 18px;
+      }
+    }
+  </style>
+
+  <div {% render 'section-properties' %}>
+    <div class="compare-table">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="compare-table-heading hyphenate">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      <div class="compare-table-grid">
+        <div class="compare-table-header-row" style="display: contents;">
+          <div class="compare-table-cell">{{ section.settings.column_feature_label }}</div>
+          <div class="compare-table-cell center">{{ section.settings.column1_label }}</div>
+          <div class="compare-table-cell center">{{ section.settings.column2_label }}</div>
+          <div class="compare-table-cell center highlight">{{ section.settings.column3_label }}</div>
+        </div>
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'row' -%}
+            <div {{ block.shopify_attributes }} style="display: contents;">
+              <div class="compare-table-cell compare-table-feature">{{ block.settings.feature }}</div>
+              <div class="compare-table-cell center">
+                {%- if block.settings.status1 == 'check' -%}
+                  <span class="compare-table-icon check">✔</span>
+                {%- else -%}
+                  <span class="compare-table-icon cross">✕</span>
+                {%- endif -%}
+              </div>
+              <div class="compare-table-cell center">
+                {%- if block.settings.status2 == 'check' -%}
+                  <span class="compare-table-icon check">✔</span>
+                {%- else -%}
+                  <span class="compare-table-icon cross">✕</span>
+                {%- endif -%}
+              </div>
+              <div class="compare-table-cell center">
+                {%- if block.settings.status3 == 'check' -%}
+                  <span class="compare-table-icon check">✔</span>
+                {%- else -%}
+                  <span class="compare-table-icon cross">✕</span>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Vergelijkingstabel",
+  "class": "shopify-section--compare-table",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Pills vs Gummies vs Kind Patches"
+    },
+    {
+      "type": "header",
+      "content": "Kolomnamen"
+    },
+    {
+      "type": "text",
+      "id": "column_feature_label",
+      "label": "Kolomnaam (feature)",
+      "default": "Feature"
+    },
+    {
+      "type": "text",
+      "id": "column1_label",
+      "label": "Kolomnaam 1",
+      "default": "Pills"
+    },
+    {
+      "type": "text",
+      "id": "column2_label",
+      "label": "Kolomnaam 2",
+      "default": "Gummies"
+    },
+    {
+      "type": "text",
+      "id": "column3_label",
+      "label": "Kolomnaam 3 (uitgelicht)",
+      "default": "Kind Patches"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 40,
+      "unit": "px",
+      "label": "Maximale breedte",
+      "default": 1280
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width_mobile",
+      "label": "Volledige breedte op mobiel",
+      "info": "Verwijdert de zijmarges van de tabel op mobiele schermen.",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Kleuren"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrondkleur sectie",
+      "default": "#F2F0EC"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Kopkleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Tekstkleur (feature-namen)",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "header_background",
+      "label": "Achtergrondkleur header-rij",
+      "default": "#E8A99A"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Tekstkleur header-rij",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Lijnkleur",
+      "default": "#1F2340"
+    },
+    {
+      "type": "color",
+      "id": "check_color",
+      "label": "Kleur vinkje",
+      "default": "#2E7D32"
+    },
+    {
+      "type": "color",
+      "id": "cross_color",
+      "label": "Kleur kruisje",
+      "default": "#C62828"
+    },
+    {
+      "type": "header",
+      "content": "Padding sectie"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding boven",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding onder",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Rij",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature",
+          "label": "Feature naam",
+          "default": "Feature naam"
+        },
+        {
+          "type": "select",
+          "id": "status1",
+          "label": "Status kolom 1",
+          "options": [
+            { "value": "check", "label": "✔ Vinkje" },
+            { "value": "cross", "label": "✕ Kruisje" }
+          ],
+          "default": "cross"
+        },
+        {
+          "type": "select",
+          "id": "status2",
+          "label": "Status kolom 2",
+          "options": [
+            { "value": "check", "label": "✔ Vinkje" },
+            { "value": "cross", "label": "✕ Kruisje" }
+          ],
+          "default": "cross"
+        },
+        {
+          "type": "select",
+          "id": "status3",
+          "label": "Status kolom 3",
+          "options": [
+            { "value": "check", "label": "✔ Vinkje" },
+            { "value": "cross", "label": "✕ Kruisje" }
+          ],
+          "default": "check"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vergelijkingstabel",
+      "category": "Content",
+      "blocks": [
+        { "type": "row", "settings": { "feature": "Ease of Use" } },
+        { "type": "row", "settings": { "feature": "Digestive Load" } },
+        { "type": "row", "settings": { "feature": "Bioavailability" } },
+        { "type": "row", "settings": { "feature": "Consistency" } },
+        { "type": "row", "settings": { "feature": "Convenience" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

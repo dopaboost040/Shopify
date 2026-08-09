@@ -1,0 +1,98 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "message": {
+          "type": "message",
+          "settings": {
+            "text": "★★★★★ Trusted by 100,000+ Customers Worldwide",
+            "url": ""
+          }
+        },
+        "message_acYy8k": {
+          "type": "message",
+          "settings": {
+            "text": "Wellness Patches For Everyday Life",
+            "url": ""
+          }
+        },
+        "message_n8bAhT": {
+          "type": "message",
+          "settings": {
+            "text": "FREE SHIPPING | FREE RETURNS",
+            "url": ""
+          }
+        },
+        "message_iKDybH": {
+          "type": "message",
+          "settings": {
+            "text": "SUMMER SALE | Up to 50% Off",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "message",
+        "message_acYy8k",
+        "message_n8bAhT",
+        "message_iKDybH"
+      ],
+      "settings": {
+        "enable_sticky": true,
+        "navigation_mode": "arrows",
+        "autoplay": true,
+        "cycle_speed": 4,
+        "scrolling_speed": 10,
+        "text_size": "text-xs",
+        "background": "#321e1e",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [
+        ".header__wrapper {padding-top: 8px !important;}",
+        ".mega-menu__list,.header__submenu {text-align: left !important; align-items: flex-start !important;}"
+      ],
+      "settings": {
+        "enable_sticky": true,
+        "hide_on_scroll": false,
+        "logo": "shopify://shop_images/BUY_2_GET_2_FREE_10.png",
+        "logo_max_width": 125,
+        "logo_mobile_max_width": 85,
+        "menu": "mobile-menu",
+        "sidebar_menu": "mobile-menu",
+        "secondary_menu": "",
+        "menu_open_trigger": "click",
+        "opening_from": "left",
+        "layout": "logo_left_navigation_center",
+        "show_social_media": true,
+        "show_locale_selector": true,
+        "show_country_selector": true,
+        "show_country_flag": true,
+        "show_country_name": false,
+        "transparent_header_text_color": "#ffffff",
+        "reduce_padding": true,
+        "background_opacity": 100,
+        "background_blur_radius": 0
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

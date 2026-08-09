@@ -1,0 +1,638 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "media_with_text_7mn7HD": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_VrfXtM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/BenefitsofNAD_Patches_5.png",
+            "media_width": 40,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 120,
+            "subheading": "",
+            "title": "7 Reasons ADHD Feels Impossible When Dopamine Isn’t Stable",
+            "content": "<p>ADHD isn’t about effort or discipline. It’s about dopamine showing up inconsistently. These 7 reasons explain why starting feels so hard.<br/><br/>★★★★★ <strong>Trusted by thousands living with ADHD every day<br/><br/></strong></p>",
+            "link_text": "READ THE 7 REASONS ⬇⬇⬇",
+            "link_url": "",
+            "background": "#f0eadf",
+            "background_gradient": "",
+            "text_color": "#1a1a1a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_VrfXtM"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "small"
+      }
+    },
+    "alternating_features_Bj3ECD": {
+      "type": "alternating-features",
+      "blocks": {
+        "media_text_block_RA7h74": {
+          "type": "media_text_block",
+          "settings": {
+            "show_number": true,
+            "heading": "ADHD Isn’t a Willpower Problem",
+            "text": "<h2><strong>It’s a Dopamine Signal Problem.<br/><br/></strong></h2><p>You don’t struggle because you’re lazy.<br/><br/>You struggle because your brain doesn’t fire the “start” signal reliably.</p><p>You know what to do.<br/><br/>You want to do it.<br/><br/>But nothing moves.</p><p>Without stable dopamine, intention never turns into action.</p><p>This isn’t about trying harder.<br/><br/>It’s about a signal that isn’t strong enough.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/G1063392686-1.png",
+            "video_url": ""
+          }
+        },
+        "media_text_block_FiKwxb": {
+          "type": "media_text_block",
+          "settings": {
+            "show_number": true,
+            "heading": "ADHD Motivation Comes in Bursts",
+            "text": "<h2><strong>And Disappears Just as Fast.<br/><br/></strong></h2><p>Some days you feel unstoppable.<br/><br/>Clear. Driven. Locked in.</p><p>Then it’s gone.</p><p>Not slowly. Instantly.</p><p>That’s the dopamine spike-and-crash cycle.</p><p>Consistency feels impossible<br/><br/>because your motivation isn’t stable.</p><p>And without stability, nothing sticks.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/1_e31785f5-7d76-433d-81ab-2ddbcab13b58.png",
+            "video_url": ""
+          }
+        },
+        "media_text_block_PBHRkq": {
+          "type": "media_text_block",
+          "settings": {
+            "show_number": true,
+            "heading": "Low Dopamine Makes Everything Heavier",
+            "text": "<h2><strong>Focus, Time, and Emotions All Break Down</strong><br/><br/>Simple tasks feel overwhelming.<br/><br/>Time slips away without warning.<br/><br/>Your thoughts scatter.</h2><p>You try to push through.<br/><br/>Your emotions spike.<br/><br/>You shut down.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/hf_20260223_092341_4bac4afd-e9e8-4725-ae84-d73d1523db2f.jpg",
+            "video_url": ""
+          }
+        },
+        "media_text_block_DfcqPh": {
+          "type": "media_text_block",
+          "settings": {
+            "show_number": true,
+            "heading": "Why Most ADHD Solutions Fall Apart",
+            "text": "<h2><strong>They Rely on the One Thing ADHD Can’t Provide</strong><br/><br/>Routines rely on memory.<br/><br/>Systems rely on energy.<br/><br/>Habits rely on consistency.</h2><p>On good days they work.<br/><br/>On low-dopamine days they collapse.</p><p>More pressure doesn’t fix this.<br/><br/>Less friction does.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/2_5477775a-c424-4184-968f-66c8eab1306c.png",
+            "video_url": ""
+          }
+        },
+        "media_text_block_ePgKDA": {
+          "type": "media_text_block",
+          "settings": {
+            "show_number": true,
+            "heading": "Dopamine Patches Remove the Friction",
+            "text": "<h2><strong>Support That Doesn’t Depend on Motivation<br/><br/></strong></h2><p>No reminders.<br/><br/>No timing.<br/><br/>No effort to “stay on track.”</p><p>You apply it once.<br/><br/>Support runs quietly in the background.</p><p>Even when motivation disappears.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/hf_20260223_083938_eafd5f95-c15f-46a3-8c1c-1479c4f6bc33.jpg",
+            "video_url": ""
+          }
+        },
+        "media_text_block_eBCAnX": {
+          "type": "media_text_block",
+          "settings": {
+            "show_number": true,
+            "heading": "What Changes When Dopamine Stabilizes",
+            "text": "<h2><strong>Starting Feels Possible Again<br/><br/></strong></h2><p>Tasks feel smaller.<br/><br/>Emotional spikes soften.<br/><br/>The mental wall disappears.</p><p>You stop fighting your brain all day<br/><br/>and start moving forward with less resistance.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/3_0f75cbb8-f444-4231-be5d-3163e6b7149a.png",
+            "video_url": ""
+          }
+        },
+        "media_text_block_gnNydJ": {
+          "type": "media_text_block",
+          "settings": {
+            "show_number": true,
+            "heading": "This Isn’t About Becoming Perfect",
+            "text": "<h2><strong>It’s About Finally Moving Forward</strong><br/><br/></h2><p>You don’t need superhuman focus.<br/><br/>You need fewer internal roadblocks.</p><p>Dopamine Patches don’t fix you.<br/><br/>They support what ADHD disrupts.</p><p>Less friction.<br/><br/>More control.</p><p>Discover Dopamine Patches.</p>",
+            "media_type": "image",
+            "image": "shopify://shop_images/hf_20260223_084456_e024f6bc-c291-4548-bc3e-148125438790.png",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "media_text_block_RA7h74",
+        "media_text_block_FiKwxb",
+        "media_text_block_PBHRkq",
+        "media_text_block_DfcqPh",
+        "media_text_block_ePgKDA",
+        "media_text_block_eBCAnX",
+        "media_text_block_gnNydJ"
+      ],
+      "name": "Media & Text Blocks",
+      "settings": {
+        "block_spacing": 100,
+        "block_spacing_mobile": 60,
+        "media_border_radius": 0,
+        "heading_font_size": 42,
+        "heading_font_size_mobile": 28,
+        "text_font_size": 16,
+        "text_font_size_mobile": 15,
+        "background_color": "#f0eadf",
+        "heading_color": "#1a1a1a",
+        "text_color": "#1a1a1a",
+        "number_bg_color": "#1a1a1a",
+        "number_text_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "rich_text_87XHXi": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_cjHyFR": {
+          "type": "heading",
+          "settings": {
+            "text": "Ready to stop fighting your brain every day?",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_MLRVeA": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>See how Dopamine Patches support focus without relying on motivation.</p><p></p>"
+          }
+        },
+        "button_qXUYFD": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "View Dopamine Patches",
+            "url": "shopify://products/dopamine-patches-1",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_cjHyFR",
+        "richtext_MLRVeA",
+        "button_qXUYFD"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#35312e",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "featured_product_bLyzxt": {
+      "type": "featured-product",
+      "blocks": {
+        "liquid_JEnBrH": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% comment %} Product Rating Display With URL-Bound Random Number {% endcomment %}\n<div class=\"product-ratings\" id=\"scroll-to-reviews\">\n  <div class=\"star-rating\" id=\"goToReviews\">\n    {% for i in (1..4) %}\n      <span class=\"star filled\">★</span>\n    {% endfor %}\n    <span class=\"star half\">★</span>\n  </div>\n  \n  <p class=\"rating-text\">\n    <strong id=\"dynamicMonthlyCount\"></strong>\n  </p>\n</div>\n\n<style>\n  @import url('https://fonts.googleapis.com/css2?family=Gilda+Display:ital@1&display=swap');\n\n  .product-ratings {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    margin: 10px 0;\n    font-family: 'Gilda Display', serif;\n    font-style: italic;\n    cursor: pointer;\n  }\n  \n  .star-rating {\n    display: flex;\n    gap: 1px;\n  }\n  \n  .star {\n    font-size: 16px;\n    line-height: 1;\n  }\n  \n  .star.filled {\n    color: #C1633F;\n  }\n  \n  .star.half {\n    color: #C1633F;\n    opacity: 0.6;\n  }\n  \n  .rating-text {\n    font-size: 14px;\n    margin: 0;\n    color: #333;\n    line-height: 1;\n    font-weight: 400;\n    font-family: 'Gilda Display', serif;\n    font-style: italic;\n  }\n</style>\n\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n\n  /* ------------ FIXED-PER-URL RANDOM NUMBER ------------ */\n  const min = 17000;\n  const max = 35000;\n\n  // Gebruik de URL als 'seed'\n  const url = window.location.pathname;\n\n  // Simpele hash functie om consistent getal te genereren per URL\n  function hashString(str) {\n    let hash = 0;\n    for (let i = 0; i < str.length; i++) {\n      hash = str.charCodeAt(i) + ((hash << 5) - hash);\n    }\n    return Math.abs(hash);\n  }\n\n  // Basisgetal in de range\n  let base = Math.floor((hashString(url) % (max - min + 1)) + min);\n\n  // Geen afgeronde getallen zoals ...00 of ...05 (laatste digit 0 of 5)\n  let lastDigit = base % 10;\n  if (lastDigit === 0 || lastDigit === 5) {\n    if (base + 1 <= max) {\n      base = base + 1;\n    } else {\n      base = base - 1;\n    }\n  }\n\n  const seededNumber = base;\n\n  // Plaats tekst\n  const textElement = document.getElementById(\"dynamicMonthlyCount\");\n  if (textElement) {\n    textElement.textContent = seededNumber.toLocaleString() + \"+ feel the benefits monthly\";\n  }\n\n  /* ------------ SCROLL TO REVIEWS ------------ */\n  const trigger = document.querySelector('.product-ratings');\n  const reviewsSection = document.querySelector('#shopify-block-AUURVMUlseVpmVUNIR__okendo_reviews_widget_kW3zJT');\n\n  if (trigger && reviewsSection) {\n    trigger.addEventListener('click', function() {\n      reviewsSection.scrollIntoView({\n        behavior: 'smooth',\n        block: 'start'\n      });\n    });\n  }\n});\n</script>"
+          }
+        },
+        "title_4PNcr6": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "text_iYrpfy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Support for ADHD brains that struggle with consistency, not effort.</p><p></p><p></p>"
+          }
+        },
+        "liquid_QKzxad": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% comment %}\n  Generate pseudo-random number per product URL (between 1000–1999)\n{% endcomment %}\n{% assign letter = product.handle | slice: 0, 1 | upcase %}\n{% assign letter_num = letter \n  | replace: 'A', '1'  | replace: 'B', '2'  | replace: 'C', '3'\n  | replace: 'D', '4'  | replace: 'E', '5'  | replace: 'F', '6'\n  | replace: 'G', '7'  | replace: 'H', '8'  | replace: 'I', '9'\n  | replace: 'J', '10' | replace: 'K', '11' | replace: 'L', '12'\n  | replace: 'M', '13' | replace: 'N', '14' | replace: 'O', '15'\n  | replace: 'P', '16' | replace: 'Q', '17' | replace: 'R', '18'\n  | replace: 'S', '19' | replace: 'T', '20' | replace: 'U', '21'\n  | replace: 'V', '22' | replace: 'W', '23' | replace: 'X', '24'\n  | replace: 'Y', '25' | replace: 'Z', '26' \n%}\n\n{% assign base = letter_num | times: product.handle.size | times: 53 | modulo: 1000 %}\n{% assign final_number = base | plus: 1000 %}\n\n{% comment %}\n  Product Info Section with HEARTBEAT ANIMATION\n{% endcomment %}\n<style>\n  .product-info-section {\n    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;\n    padding: 5px 0;\n  }\n  \n  .product-info-section .almost-sold-out {\n    display: inline-flex !important;\n    align-items: center;\n    gap: 8px;\n    margin-bottom: 6px;\n    color: #C1633F;\n    font-size: 14px;\n    font-weight: 600;\n  }\n  \n  .product-info-section .pulse-dot {\n    width: 8px;\n    height: 8px;\n    background-color: #C1633F;\n    border-radius: 50%;\n    animation: heartbeat 1.5s ease-in-out infinite;\n  }\n  \n  @keyframes heartbeat {\n    0% { transform: scale(1); }\n    14% { transform: scale(1.3); }\n    28% { transform: scale(1); }\n    42% { transform: scale(1.3); }\n    70% { transform: scale(1); }\n  }\n  \n  .product-info-section .product-stats {\n    color: #333333;\n    font-size: 14px;\n    margin-bottom: 12px;\n    line-height: 1.4;\n    font-weight: 500;\n  }\n  \n  .product-info-section .product-stats strong {\n    color: #C1633F;\n    font-weight: 700;\n  }\n  \n  .product-info-section .delivery-info {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    color: #333333;\n    font-size: 14px;\n    padding-top: 12px;\n    border-top: 1px solid #eeeeee;\n    font-weight: 500;\n  }\n  \n  .product-info-section .delivery-icon {\n    width: 20px;\n    height: 20px;\n    flex-shrink: 0;\n    color: #666666;\n  }\n</style>\n\n<div class=\"product-info-section\">\n  <div class=\"almost-sold-out\">\n    <div class=\"pulse-dot\"></div>\n    <span>Limited Stock Remaining</span>\n  </div>\n  \n  <div class=\"product-stats\">\n    This product was bought <strong>{{ final_number }}</strong> times this week\n  </div>\n  \n  <div class=\"delivery-info\">\n    <svg class=\"delivery-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n      <circle cx=\"12\" cy=\"12\" r=\"10\" stroke-width=\"2\"></circle>\n      <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 6v6l4 2\"></path>\n    </svg>\n    <span>\n      Order today, receive \n      {{ \"now\" | date: \"%s\" | plus: 432000 | date: \"%A, %B %d\" }}\n    </span>\n  </div>\n</div>\n\n{% comment %}\n  HEARTBEAT ANIMATION ACTIVE\n{% endcomment %}"
+          }
+        },
+        "image_JPKTbU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Ontwerp_zonder_titel_18.png",
+            "alignment": "center",
+            "max_width": 440
+          }
+        },
+        "badges_HCd9La": {
+          "type": "badges",
+          "settings": {}
+        },
+        "liquid_3B3nKE": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% comment %}\n  Gift Banner Block - Place above Add to Cart Button\n  This block creates a promotional banner with a gift bow icon on the left\n  Width matches the add to cart button container\n  \n  IMPORTANT: Replace the image URL with your actual ribbon image URL after uploading to Shopify Files\n{% endcomment %}\n\n<style>\n  .gift-banner-container {\n    background-color: #F1EADE;\n    border-radius: 8px;\n    padding: 10px 14px 10px 45px;\n    display: flex;\n    align-items: center;\n    margin-bottom: 16px;\n    width: 100%;\n    box-sizing: border-box;\n    position: relative;\n    min-height: 50px;\n  }\n\n  /* Vertical Ribbon Container */\n  .gift-ribbon-vertical {\n    position: absolute;\n    left: 8px;\n    top: 0;\n    bottom: 0;\n    width: 28px;\n    height: 100%;\n    z-index: 2;\n    pointer-events: none;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n\n  .ribbon-image {\n    width: 100%;\n    height: 100%;\n    max-height: 100%;\n    object-fit: contain;\n    object-position: center;\n    position: relative;\n    z-index: 1;\n  }\n\n  .gift-banner-text {\n    color: #1a1a1a;\n    font-size: 13px;\n    line-height: 1.3;\n    font-weight: 500;\n  }\n\n  .gift-banner-text .highlight {\n    font-weight: 700;\n    color: #d32f2f;\n  }\n\n  /* Add subtle animation on hover */\n  .gift-banner-container:hover {\n    background-color: #F1EADE;\n    transition: background-color 0.3s ease;\n  }\n\n  /* Responsive adjustments */\n  @media (max-width: 749px) {\n    .gift-banner-container {\n      padding: 8px 10px 8px 38px;\n      min-height: 45px;\n    }\n    \n    .gift-ribbon-vertical {\n      left: 6px;\n      top: 0;\n      bottom: 0;\n      width: 25px;\n      height: 100%;\n    }\n    \n    .gift-banner-text {\n      font-size: 12px;\n    }\n  }\n</style>\n\n<div class=\"gift-banner-container\">\n  <!-- Vertical Ribbon with Bow -->\n  <div class=\"gift-ribbon-vertical\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0930/4218/0471/files/Untitled_design_65.png?v=1762089154\" \n      alt=\"Gift Ribbon\" \n      class=\"ribbon-image\"\n      loading=\"lazy\"\n      onerror=\"this.style.display='none'\"\n    />\n  </div>\n  \n  <div class=\"gift-banner-text\">\n    <span class=\"highlight\">NEW YEAR, NEW YOU SALE 🔥</span><br>\n    GET 4, PAY FOR 2</span><br>\n🔥 PLUS, Subscribe & Save to unlock an additional <span class=\"highlight\">20% OFF</span>.\n  </div>\n</div>\n\n{% comment %}\n  Alternative version with simpler text (uncomment to use):\n  \n  <div class=\"gift-banner-container\">\n    <div class=\"gift-ribbon-vertical\">\n      <img \n        src=\"https://cdn.shopify.com/s/files/1/0930/4218/0471/files/Untitled_design_65.png?v=1762089154\" \n        alt=\"Gift Ribbon\" \n        class=\"ribbon-image\"\n        loading=\"lazy\"\n      />\n    </div>\n    \n    <div class=\"gift-banner-text\">\n      Hear what matters, protect what's priceless.\n    </div>\n  </div>\n{% endcomment %}\n\n{% comment %}\n  IMPLEMENTATION INSTRUCTIONS:\n  \n  1. Upload the ribbon image to Shopify:\n     - Go to Settings > Files\n     - Upload your vertical ribbon bow image\n     - Copy the URL of the uploaded image\n  \n  2. Replace the image URL:\n     - Find this line: src=\"https://cdn.shopify.com/s/files/1/YOUR-STORE/files/vertical-ribbon-bow.png?v=1234567890\"\n     - Replace with your actual uploaded image URL\n  \n  3. In your Shopify theme, create a new snippet:\n     - Go to Online Store > Themes > Actions > Edit code\n     - Under \"Snippets\", click \"Add a new snippet\"\n     - Name it \"gift-banner-block\" and paste this code\n  \n  4. Add to your product template above the add to cart button:\n     {% render 'gift-banner-block' %}\n  \n  5. Or add directly in the product form:\n     - Find your product-template.liquid or main-product.liquid\n     - Locate the add to cart button (usually has class like \"product-form__buttons\")\n     - Add the render tag just above it\n  \n  6. To customize the message, you can pass variables:\n     {% render 'gift-banner-block', \n        headline: 'Special Offer!',\n        message: 'Limited time discount available',\n        ribbon_image: 'YOUR_IMAGE_URL_HERE'\n     %}\n{% endcomment %}\n\n{% comment %}\n  Version with customizable parameters:\n{% endcomment %}\n\n{% if headline or message %}\n  <div class=\"gift-banner-container\">\n    <div class=\"gift-ribbon-vertical\">\n      <img \n        src=\"{{ ribbon_image | default: 'https://cdn.shopify.com/s/files/1/0930/4218/0471/files/Untitled_design_65.png?v=1762089154' }}\" \n        alt=\"Gift Ribbon\" \n        class=\"ribbon-image\"\n        loading=\"lazy\"\n      />\n    </div>\n    \n    <div class=\"gift-banner-text\">\n      {% if headline %}<span class=\"highlight\">{{ headline }}</span><br>{% endif %}\n      {% if message %}{{ message }}{% endif %}\n    </div>\n  </div>\n{% endif %}"
+          }
+        },
+        "price_zR4HDk": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "liquid_D3YW47": {
+          "type": "liquid",
+          "settings": {
+            "liquid": ""
+          }
+        },
+        "separator_GfTGaH": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description_rXUrkT": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "variant_picker_QpF8H8": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_9f8ARy": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "button_mbFHfQ": {
+          "type": "button",
+          "settings": {
+            "link": "",
+            "text": "ADD TO CART",
+            "size": "xl",
+            "style": "fill",
+            "stretch": true,
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "liquid_YjHWjn": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<!-- Trust Badges - Add this code right after your add to cart button -->\n<div class=\"trust-badges\">\n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <rect x=\"1\" y=\"6\" width=\"14\" height=\"10\" rx=\"1\"/>\n            <path d=\"M15 12h7l-2-3h-5v12\"/>\n            <circle cx=\"5\" cy=\"18\" r=\"1\"/>\n            <circle cx=\"19\" cy=\"18\" r=\"1\"/>\n        </svg>\n        <span class=\"badge-text\">Free Shipping</span>\n    </div>\n    \n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/>\n            <polyline points=\"12 8 12 12 14 14\"/>\n        </svg>\n        <span class=\"badge-text\">Money Back Guarantee</span>\n    </div>\n</div>\n\n<style>\n.trust-badges {\n    display: flex;\n    gap: 5px;\n    width: 100%;\n    margin-top: -20px !important; /* NEGATIVE margin to pull it up closer */\n    margin-bottom: 4px;\n    position: relative;\n    z-index: 1;\n}\n\n.badge-block {\n    display: flex;\n    align-items: center;\n    gap: 6px;\n    padding: 8px 10px;\n    background: #F7EDDC;\n    border-radius: 4px;\n    flex: 1;\n    justify-content: center;\n}\n\n.badge-icon {\n    width: 18px;\n    height: 18px;\n    flex-shrink: 0;\n    color: #333;\n}\n\n.badge-text {\n    font-size: 12px;\n    color: #333;\n    font-weight: 500;\n    line-height: 1.2;\n}\n\n@media (max-width: 480px) {\n    .badge-text {\n        font-size: 11px;\n    }\n    .badge-block {\n        padding: 6px 8px;\n    }\n}\n</style>"
+          }
+        },
+        "liquid_mYwFhw": {
+          "type": "liquid",
+          "settings": {
+            "liquid": ""
+          }
+        },
+        "pickup_availability_hijw4F": {
+          "type": "pickup_availability",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "liquid_JEnBrH",
+        "title_4PNcr6",
+        "text_iYrpfy",
+        "liquid_QKzxad",
+        "image_JPKTbU",
+        "badges_HCd9La",
+        "liquid_3B3nKE",
+        "price_zR4HDk",
+        "liquid_D3YW47",
+        "separator_GfTGaH",
+        "description_rXUrkT",
+        "variant_picker_QpF8H8",
+        "quantity_selector_9f8ARy",
+        "button_mbFHfQ",
+        "liquid_YjHWjn",
+        "liquid_mYwFhw",
+        "pickup_availability_hijw4F"
+      ],
+      "disabled": true,
+      "name": "Featured product",
+      "settings": {
+        "full_width": true,
+        "product": "dopamine-patches-1",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "#fefaf4",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "testimonials_dgLrV8": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_akGbUi": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Sarah S. (29)",
+            "title": "Finally Starting Feels Possible",
+            "content": "<p>I’ve tried supplements, routines, apps and nothing ever stuck. I’ve been using Dopamine Patches for about three months now, and the biggest difference is that starting tasks doesn’t feel painful anymore. I’m not suddenly super productive. I just don’t feel blocked all day.</p>"
+          }
+        },
+        "testimonial_WNNEiH": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Daniel R. (34)",
+            "title": "Less Resistance. More Follow-Through.",
+            "content": "<p>I have ADHD and motivation has always been inconsistent. Some days I’m on fire, most days I’m not. After using these patches for a few months, my days feel more even. Less mental resistance. That alone is a huge win for me.</p>"
+          }
+        },
+        "testimonial_cXnRqf": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Emily T. (26)",
+            "title": "I Don’t Have To Remember Another Thing",
+            "content": "<p>What surprised me most is that I don’t have to think about it. I forget pills all the time. With the patch, it’s just there. After a few weeks I noticed my focus felt calmer and my emotional swings weren’t as intense.</p>"
+          }
+        },
+        "testimonial_K4XpPj": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Mark L., 41",
+            "title": "My Days Feel More Even",
+            "content": "<p>I’ve lived with ADHD my whole life and I was skeptical. I’m now three months in and the biggest change is consistency. Not perfect focus, just fewer crashes. I get through my days without constantly fighting my brain.</p>"
+          }
+        },
+        "testimonial_LRgHe8": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Jenna K. (31)",
+            "title": "It’s Not Laziness. It’s Dopamine.",
+            "content": "<p>I used to blame myself for being lazy. These patches helped me understand it wasn’t effort I was missing. After a couple of months, tasks feel lighter and I don’t spiral as quickly when motivation drops.</p>"
+          }
+        },
+        "testimonial_wDRRtF": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Chris B. (37)",
+            "title": "This One Actually Stuck",
+            "content": "<p>Most things work for a week and then I stop. This didn’t require discipline from me, which is why it actually worked. I’ve been using it for over three months now and I notice a real difference in follow-through.</p>"
+          }
+        },
+        "testimonial_zDtYX6": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Laura S. (24)",
+            "title": "ADHD Still There. Just Calmer.",
+            "content": "<p>ADHD makes everything feel urgent or impossible. Since using Dopamine Patches, things feel more neutral. I still have ADHD, but my days don’t feel as overwhelming. That alone makes it worth it.</p>"
+          }
+        },
+        "testimonial_xxUMbw": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Tom H. (45)",
+            "title": "No Jitters. No Crash.",
+            "content": "<p>I don’t feel wired or overstimulated like I did with other products. After consistent use, my focus feels steadier and my mood is more predictable. It’s subtle, but it adds up over time.</p>"
+          }
+        },
+        "testimonial_VgRHRB": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Natalie P. (28)",
+            "title": "I Noticed It Around Month Two",
+            "content": "<p>The biggest change happened around month two. I wasn’t forcing routines anymore. I was just doing things without overthinking them. For someone with ADHD, that’s huge.</p>"
+          }
+        },
+        "testimonial_NWKfNw": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Alex W. (35)",
+            "title": "It Didn’t Fix Me. It Helped Me Move.",
+            "content": "<p>This didn’t fix my ADHD, and that’s why I trust it. It removed enough friction that starting and continuing tasks feels possible again. I’ve been using it for three months and I plan to keep going.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_akGbUi",
+        "testimonial_WNNEiH",
+        "testimonial_cXnRqf",
+        "testimonial_K4XpPj",
+        "testimonial_LRgHe8",
+        "testimonial_wDRRtF",
+        "testimonial_zDtYX6",
+        "testimonial_xxUMbw",
+        "testimonial_VgRHRB",
+        "testimonial_NWKfNw"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": false,
+        "subheading": "",
+        "title": "★★★★★ Trusted by thousands managing ADHD daily",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#f0eadf",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "faq_73q9eg": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_mXN7fe": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What makes titanium superior to other cookware materials?",
+            "answer": "<p><strong>Pure titanium offers unmatched benefits:</strong> It's completely non-toxic with zero chemical coatings, incredibly lightweight yet stronger than steel, and provides superior heat distribution. Unlike traditional non-stick pans, titanium develops a natural seasoning that improves with use.</p><p>Titanium is also highly corrosion-resistant, dishwasher safe, and can withstand extreme temperatures up to 1000°F, making it suitable for stovetop-to-oven cooking.</p>"
+          }
+        },
+        "faq_item_FaXke8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I care for and maintain my titanium pan?",
+            "answer": "<p><strong>Titanium is remarkably low-maintenance:</strong></p><ul><li>Wash with warm soapy water or place in the dishwasher</li><li>No special cleaners or scrubbing required</li><li>Avoid extreme temperature shocks (don't put a hot pan in cold water)</li><li>Season occasionally with a light coating of oil for enhanced non-stick properties</li></ul><p>The natural patina that develops over time is normal and actually improves the pan's performance.</p>"
+          }
+        },
+        "faq_item_KPPRtP": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is the titanium pan truly non-stick without coatings?",
+            "answer": "<p><strong>Yes, but it works differently than chemical coatings.</strong> Pure titanium develops natural non-stick properties through proper heating and seasoning. Unlike PTFE coatings that can chip or wear off, titanium's surface actually improves with use.</p><p>For best results, preheat the pan for 2-3 minutes and use a small amount of oil or butter. Once properly seasoned, foods release easily without any toxic chemicals.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_mXN7fe",
+        "faq_item_FaXke8",
+        "faq_item_KPPRtP"
+      ],
+      "disabled": true,
+      "name": "FAQ Section",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about our titanium cookware and what makes it exceptional.",
+        "show_cta": true,
+        "cta_title": "Still have questions?",
+        "cta_text": "Our culinary experts are here to help you get the most out of your titanium cookware.",
+        "cta_button_text": "Contact Our Team",
+        "cta_button_url": "",
+        "background_color": "#35312e",
+        "text_color": "#f5f2f0",
+        "subtitle_color": "#b5b1ae",
+        "answer_color": "#b5b1ae",
+        "border_color": "#4a453f",
+        "accent_color": "#af593c",
+        "cta_bg_color": "#4a453f",
+        "cta_button_bg": "#af593c",
+        "cta_button_hover_bg": "#974e35",
+        "title_font_size": 48,
+        "title_font_size_mobile": 32,
+        "question_font_size": 18,
+        "question_font_size_mobile": 16,
+        "close_others": true,
+        "close_on_outside_click": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mobile": 65,
+        "padding_bottom_mobile": 65
+      }
+    },
+    "17718043395933dd3a": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_1db11fd_gdEHzt": {
+          "type": "ai_gen_block_1db11fd",
+          "settings": {
+            "button_text": "EXPLORE THE SOLUTION",
+            "button_link": "shopify://products/dopamine-patches-1",
+            "open_in_new_tab": false,
+            "show_icon": false,
+            "icon_type": "chat",
+            "icon_size": 20,
+            "font_size": 16,
+            "button_padding": 20,
+            "button_background": "#c1633f",
+            "button_text_color": "#ffffff",
+            "button_hover_background": "#a04f2f",
+            "button_hover_text_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_1db11fd_gdEHzt"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "custom_liquid_NNFyMP": {
+      "type": "custom-liquid",
+      "name": "Custom Liquid",
+      "settings": {
+        "full_width": false,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": false,
+        "liquid": "<style>\n/* =============================================\n   ANNOUNCEMENT BAR: HIDE COMPLETELY\n   ============================================= */\n#shopify-section-sections--26597666455927__announcement-bar,\n.announcement-bar {\n  display: none !important;\n  height: 0 !important;\n  overflow: hidden !important;\n}\n\n/* =============================================\n   HEADER: SHOW ONLY LOGO\n   ============================================= */\n\n/* Hide left side (menu + links + dropdowns) */\n#shopify-section-sections--26597666455927__header .header__main-nav,\n#shopify-section-sections--26597666455927__header .header__main-nav * {\n  display: none !important;\n}\n\n/* Hide right side (currency + search + login + cart) */\n#shopify-section-sections--26597666455927__header .header__secondary-nav,\n#shopify-section-sections--26597666455927__header .header__secondary-nav * {\n  display: none !important;\n}\n\n/* Kill mobile drawer just in case */\n#shopify-section-sections--26597666455927__header navigation-drawer,\n#shopify-section-sections--26597666455927__header #header-sidebar-menu {\n  display: none !important;\n}\n\n/* Center logo */\n#shopify-section-sections--26597666455927__header .header__wrapper {\n  display: flex !important;\n  justify-content: center !important;\n  align-items: center !important;\n}\n\n/* Ensure logo stays visible */\n#shopify-section-sections--26597666455927__header .header__logo,\n#shopify-section-sections--26597666455927__header .header__logo-image {\n  display: block !important;\n}\n\n/* =============================================\n   FOOTER: HIDE COMPLETELY\n   ============================================= */\n#shopify-section-sections--26597666423159__footer,\n#shopify-section-sections--26597666423159__footer .footer,\n#shopify-section-sections--26597666423159__footer .footer__wrapper,\n#shopify-section-sections--26597666423159__footer .footer__block-list,\n#shopify-section-sections--26597666423159__footer .footer__aside,\n#shopify-section-sections--26597666423159__footer .footer__copyright {\n  display: none !important;\n  visibility: hidden !important;\n  height: 0 !important;\n  overflow: hidden !important;\n}\n\n#shopify-section-sections--26597666423159__footer {\n  margin: 0 !important;\n  padding: 0 !important;\n}\n</style>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "1771804387f3c6dd40": {
+      "type": "_blocks",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "media_with_text_7mn7HD",
+    "alternating_features_Bj3ECD",
+    "rich_text_87XHXi",
+    "featured_product_bLyzxt",
+    "testimonials_dgLrV8",
+    "faq_73q9eg",
+    "17718043395933dd3a",
+    "custom_liquid_NNFyMP",
+    "1771804387f3c6dd40"
+  ]
+}

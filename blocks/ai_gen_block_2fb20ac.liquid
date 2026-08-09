@@ -1,0 +1,122 @@
+{% doc %}
+  @prompt
+    On the collection page product cards, move the "Save" / discount badge so it appears in the top-left corner overlaying the product image, instead of below the price. The theme is called Impact. Use CSS to reposition the badge (likely class .product-card__badge-list or similar) so it sits at the top-left of the product image with absolute positioning. Do not affect the desktop layout if it already shows correctly there.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-badge-reposition-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 999px) {
+    .ai-badge-reposition-{{ ai_gen_id }} .product-card__badge-list {
+      position: absolute !important;
+      top: 0.75rem !important;
+      left: 0.75rem !important;
+      right: auto !important;
+      bottom: auto !important;
+      z-index: 2 !important;
+      margin: 0 !important;
+    }
+
+    .ai-badge-reposition-{{ ai_gen_id }} .product-card__figure {
+      position: relative !important;
+    }
+
+    .ai-badge-reposition-{{ ai_gen_id }} .product-card__info .product-card__badge-list {
+      display: none !important;
+    }
+  }
+
+  {% if block.settings.apply_to_desktop %}
+    @media screen and (min-width: 1000px) {
+      .ai-badge-reposition-{{ ai_gen_id }} .product-card__badge-list {
+        position: absolute !important;
+        top: {{ block.settings.desktop_top_position }}rem !important;
+        left: {{ block.settings.desktop_left_position }}rem !important;
+        right: auto !important;
+        bottom: auto !important;
+        z-index: 2 !important;
+        margin: 0 !important;
+      }
+
+      .ai-badge-reposition-{{ ai_gen_id }} .product-card__figure {
+        position: relative !important;
+      }
+
+      .ai-badge-reposition-{{ ai_gen_id }} .product-card__info .product-card__badge-list {
+        display: none !important;
+      }
+    }
+  {% endif %}
+{% endstyle %}
+
+<style class="ai-badge-reposition-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  /* Badge repositioning styles applied globally */
+</style>
+
+{% schema %}
+{
+  "name": "Badge reposition",
+  "tag": null,
+  "class": "ai-badge-reposition-block",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Mobile settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "On mobile, badges will automatically appear in the top-left corner of product images on collection pages."
+    },
+    {
+      "type": "header",
+      "content": "Desktop settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "apply_to_desktop",
+      "label": "Apply to desktop",
+      "info": "Enable this if you also want to reposition badges on desktop screens",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "desktop_top_position",
+      "label": "Top position",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "rem",
+      "default": 0.5
+    },
+    {
+      "type": "range",
+      "id": "desktop_left_position",
+      "label": "Left position",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "rem",
+      "default": 0.5
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Badge reposition"
+    }
+  ]
+}
+{% endschema %}

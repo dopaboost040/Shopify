@@ -1,0 +1,1293 @@
+{%- render 'section-spacing-collapsing' -%}
+
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+CSS
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --media-grid-row-height: {{ section.settings.mobile_row_height }}px;
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} {
+      --media-grid-row-height: {{ section.settings.desktop_row_height }}px;
+    }
+  }
+
+  {%- for block in section.blocks -%}
+    #media-grid-{{ block.id }} {
+      --content-over-media-overlay: {{ block.settings.overlay_color.rgb }} /{{ block.settings.overlay_opacity | divided_by: 100.0 }};
+
+      {%- if block.settings.heading_tag == 'h5' or block.settings.heading_tag == 'h6' -%}
+        --content-over-media-gap: 1rem;
+      {%- endif -%}
+    }
+
+    {%- if block.settings.heading_tag == 'h5' or block.settings.heading_tag == 'h6' -%}
+      @media screen and (min-width: 740px) {
+        #media-grid-{{ block.id }} {
+          --content-over-media-gap: 1.5rem;
+        }
+      }
+    {%- endif -%}
+  {%- endfor -%}
+
+  /* Additional video styles for better autoplay compatibility */
+  .media-grid__item video-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Hide all native video controls */
+  .media-grid__item video::-webkit-media-controls {
+    display: none !important;
+  }
+
+  .media-grid__item video::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
+
+  .media-grid__item video::-webkit-media-controls-panel {
+    display: none !important;
+  }
+
+  .media-grid__item video::-webkit-media-controls-play-button {
+    display: none !important;
+  }
+
+  .media-grid__item video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+  }
+
+  /* Remove controls attribute styling */
+  .media-grid__item video[controls] {
+    controls: none;
+  }
+
+  /* NEW: Icon styling */
+  .content-icon {
+    display: block;
+    margin-bottom: 1rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: var(--icon-size-mobile, 48px);
+    height: var(--icon-size-mobile, 48px);
+    object-fit: contain;
+  }
+
+  @media screen and (min-width: 740px) {
+    .content-icon {
+      margin-bottom: 1.5rem !important;
+      width: var(--icon-size-desktop, 64px);
+      height: var(--icon-size-desktop, 64px);
+    }
+  }
+
+  /* FIXED: Description styling with proper specificity and control */
+  .media-grid__item .content-description {
+    margin-top: 0.5rem !important;
+    font-size: var(--description-font-size-mobile, 12px) !important;
+    line-height: 1.4 !important;
+    opacity: 0.9 !important;
+    font-weight: 400 !important;
+    display: block !important;
+  }
+
+  @media screen and (min-width: 740px) {
+    .media-grid__item .content-description {
+      margin-top: 0.75rem !important;
+      font-size: var(--description-font-size-desktop, 14px) !important;
+    }
+  }
+
+  /* Override any theme prose styles that might interfere */
+  .media-grid__item .prose .content-description {
+    font-size: var(--description-font-size-mobile, 12px) !important;
+    line-height: 1.4 !important;
+    margin: 0.5rem 0 0 0 !important;
+    padding: 0 !important;
+  }
+
+  @media screen and (min-width: 740px) {
+    .media-grid__item .prose .content-description {
+      font-size: var(--description-font-size-desktop, 14px) !important;
+      margin-top: 0.75rem !important;
+    }
+  }
+
+  /* Better text wrapping for headings */
+  .media-grid__item .prose {
+    max-width: 100%;
+  }
+
+  .media-grid__item .prose > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  .media-grid__item .prose > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* FIXED: Heading styles with controllable font size */
+  .media-grid__item .content-heading {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    text-wrap: balance;
+    margin-bottom: 0 !important;
+    font-size: var(--heading-font-size-mobile, 1.5rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  @media screen and (min-width: 740px) {
+    .media-grid__item .content-heading {
+      font-size: var(--heading-font-size-desktop, 2rem) !important;
+    }
+  }
+
+  /* Override all heading tag sizes with custom variables */
+  .media-grid__item .prose .h1.content-heading,
+  .media-grid__item .prose .h2.content-heading,
+  .media-grid__item .prose .h3.content-heading,
+  .media-grid__item .prose .h4.content-heading,
+  .media-grid__item .prose .h5.content-heading,
+  .media-grid__item .prose .h6.content-heading {
+    font-size: var(--heading-font-size-mobile, 1.5rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  @media screen and (min-width: 740px) {
+    .media-grid__item .prose .h1.content-heading,
+    .media-grid__item .prose .h2.content-heading,
+    .media-grid__item .prose .h3.content-heading,
+    .media-grid__item .prose .h4.content-heading,
+    .media-grid__item .prose .h5.content-heading,
+    .media-grid__item .prose .h6.content-heading {
+      font-size: var(--heading-font-size-desktop, 2rem) !important;
+    }
+  }
+
+  /* Prevent orphaned words when possible */
+  .media-grid__item .prose .content-heading {
+    text-wrap: pretty;
+  }
+
+  /* Play button overlay styles (for videos WITHOUT controls) */
+  .video-play-button {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .video-play-button:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .video-play-button svg {
+    width: 20px;
+    height: 20px;
+    fill: #000000;
+    margin-left: 2px;
+  }
+
+  /* Hide play button when video is playing */
+  .media-grid__item.video-playing .video-play-button {
+    display: none;
+  }
+
+  /* Small toggle button for videos WITH controls */
+  .video-toggle-button {
+    position: absolute !important;
+    bottom: 1rem !important;
+    right: 0.25rem !important;
+    left: auto !important;
+    top: auto !important;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    margin: 0 !important;
+  }
+
+  .video-toggle-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+  }
+
+  .video-toggle-button svg {
+    width: 14px;
+    height: 14px;
+    fill: #ffffff;
+  }
+
+  .video-toggle-button .play-icon {
+    margin-left: 2px;
+  }
+
+  .video-toggle-button .pause-icon {
+    display: none;
+  }
+
+  /* Show pause icon when video is playing */
+  .media-grid__item.video-playing .video-toggle-button .play-icon {
+    display: none;
+  }
+
+  .media-grid__item.video-playing .video-toggle-button .pause-icon {
+    display: block;
+  }
+
+  /* Ensure proper positioning context */
+  .media-grid__item .content-over-media {
+    position: relative;
+  }
+
+  /* Button spacing adjustment */
+  .media-grid__item .prose .button {
+    margin-top: 1rem !important;
+  }
+</style>
+
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+LIQUID
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+<div {% render 'section-properties', narrow: section.settings.reduce_width %}>
+  <media-grid class="media-grid">
+    {%- for block in section.blocks -%}
+      <a {% if block.settings.link_url != blank %}href="{{ block.settings.link_url }}"{% endif %} class="media-grid__item shadow group" reveal-js style="--media-grid-column-span: {{ block.settings.desktop_column_span }}; --media-grid-row-span: {{ block.settings.desktop_row_span }}; --description-font-size-mobile: {{ block.settings.description_font_size_mobile }}px; --description-font-size-desktop: {{ block.settings.description_font_size_desktop }}px; --heading-font-size-mobile: {{ block.settings.heading_font_size_mobile }}px; --heading-font-size-desktop: {{ block.settings.heading_font_size_desktop }}px; --icon-size-mobile: {{ block.settings.icon_size_mobile }}px; --icon-size-desktop: {{ block.settings.icon_size_desktop }}px;" {{ block.shopify_attributes }}>
+        <div id="media-grid-{{ block.id }}" {% render 'surface', class: 'content-over-media rounded', background: block.settings.background, background_gradient: block.settings.background_gradient, text_color: block.settings.text_color %}>
+          {%- liquid
+            assign loading_strategy = nil
+  
+            if section.index > 3 or forloop.index > 3
+              assign loading_strategy = 'lazy'
+            endif
+          -%}
+          
+          {%- case block.type -%}
+            {%- when 'image' -%}
+              {%- if block.settings.image -%}
+                {%- capture sizes -%}(max-width: 699px) 100vw, min({{ 390 | times: block.settings.desktop_column_span }}px, {{ 25 | times: block.settings.desktop_column_span }}vw){%- endcapture -%}
+                {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: loading_strategy, sizes: sizes, widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400', class: 'content-over-media__media zoom-image' -}}
+              {%- endif -%}
+
+            {%- when 'video' -%}
+              {%- if block.settings.video -%}
+                <video-media autoplay style="--aspect-ratio: auto">
+                  {%- if block.settings.show_video_controls -%}
+                    {%- assign loop_video = false -%}
+                  {%- else -%}
+                    {%- assign loop_video = true -%}
+                  {%- endif -%}
+
+                  {{- block.settings.video | video_tag: 
+                    autoplay: true,
+                    playsinline: true, 
+                    muted: true, 
+                    loop: loop_video, 
+                    controls: false,
+                    preload: 'auto', 
+                    class: 'object-fill video-element',
+                    data-autoplay: 'true',
+                    data-has-controls: block.settings.show_video_controls
+                  -}}
+                </video-media>
+                
+                {%- if block.settings.show_video_controls -%}
+                  <button class="video-toggle-button" aria-label="Play/Pause video">
+                    <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                    </svg>
+                  </button>
+                {%- else -%}
+                  <button class="video-play-button" aria-label="Play video">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </button>
+                {%- endif -%}
+              {%- else -%}
+                <video-media host="{{ block.settings.external_video_url.type }}" autoplay style="--aspect-ratio: auto">
+                  <template>
+                    {%- if block.settings.external_video_url.type == 'youtube' -%}
+                      <iframe 
+                        src="https://www.youtube.com/embed/{{ block.settings.external_video_url.id }}?playsinline=1&autoplay=1&controls=0&mute=1&loop=1&playlist={{ block.settings.external_video_url.id }}&enablejsapi=1&rel=0&modestbranding=1&disablekb=1&fs=0&iv_load_policy=3&origin={{ 'https://' | append: request.host | url_encode }}" 
+                        allow="autoplay; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+                        allowfullscreen="allowfullscreen"
+                        loading="lazy"></iframe>
+                    {%- elsif block.settings.external_video_url.type == 'vimeo' -%}
+                      <iframe 
+                        src="https://player.vimeo.com/video/{{ block.settings.external_video_url.id }}?autoplay=1&autopause=0&background=1&loop=1&muted=1&transparent=0&responsive=1&portrait=0&title=0&byline=0&controls=0&color={{ settings.text_color | remove_first: '#' }}" 
+                        allow="autoplay; encrypted-media; accelerometer; gyroscope; picture-in-picture" 
+                        allowfullscreen="allowfullscreen"
+                        loading="lazy"></iframe>
+                    {%- endif -%}
+                  </template>
+                </video-media>
+                
+                {%- if block.settings.show_video_controls -%}
+                  <button class="video-toggle-button" aria-label="Play/Pause video">
+                    <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                    </svg>
+                  </button>
+                {%- else -%}
+                  <button class="video-play-button" aria-label="Play video">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </button>
+                {%- endif -%}
+              {%- endif -%}
+          {%- endcase -%}
+
+          {%- if block.settings.icon_image != blank or block.settings.title != blank or block.settings.description != blank or block.settings.link_text != blank -%}
+            <div class="{{ block.settings.mobile_text_position }} {{ block.settings.desktop_text_position }}">
+              <div class="prose">
+                {%- comment -%} NEW: Display icon if provided {%- endcomment -%}
+                {%- if block.settings.icon_image != blank -%}
+                  {{- block.settings.icon_image | image_url: width: 200 | image_tag: loading: loading_strategy, class: 'content-icon', alt: block.settings.title -}}
+                {%- endif -%}
+
+                {%- if block.settings.title != blank -%}
+                  <p class="{{ block.settings.heading_tag }} content-heading">
+                    {% render 'styled-text', content: block.settings.title, gradient: block.settings.text_gradient %}
+                  </p>
+                {%- endif -%}
+
+                {%- if block.settings.description != blank -%}
+                  <p class="content-description">
+                    {{ block.settings.description }}
+                  </p>
+                {%- endif -%}
+
+                {%- if block.settings.link_text != blank -%}
+                  {%- render 'button', size: 'lg', content: block.settings.link_text, background: block.settings.button_background, text_color: block.settings.button_text_color -%}
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </a>
+    {%- endfor -%}
+  </media-grid>
+</div>
+
+{%- comment -%}
+Additional JavaScript to ensure video autoplay works across all browsers and handle play/pause buttons
+{%- endcomment -%}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('.media-grid video[data-autoplay="true"]');
+    const playButtons = document.querySelectorAll('.video-play-button');
+    const toggleButtons = document.querySelectorAll('.video-toggle-button');
+    
+    playButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const gridItem = this.closest('.media-grid__item');
+        const video = gridItem.querySelector('video');
+        const videoMedia = gridItem.querySelector('video-media');
+        
+        if (video) {
+          if (video.paused) {
+            video.play().then(() => {
+              gridItem.classList.add('video-playing');
+              this.style.display = 'none';
+            }).catch(error => {
+              console.log('Video play failed:', error);
+            });
+          } else {
+            video.pause();
+            gridItem.classList.remove('video-playing');
+            this.style.display = 'flex';
+          }
+        } else if (videoMedia) {
+          const iframe = videoMedia.querySelector('iframe');
+          if (iframe) {
+            if (iframe.src.includes('youtube')) {
+              iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+            } else if (iframe.src.includes('vimeo')) {
+              iframe.contentWindow.postMessage('{"method":"play"}', '*');
+            }
+            gridItem.classList.add('video-playing');
+            this.style.display = 'none';
+          }
+        }
+      });
+    });
+    
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const gridItem = this.closest('.media-grid__item');
+        const video = gridItem.querySelector('video');
+        const videoMedia = gridItem.querySelector('video-media');
+        
+        if (video) {
+          if (video.paused) {
+            video.play().then(() => {
+              gridItem.classList.add('video-playing');
+            }).catch(error => {
+              console.log('Video play failed:', error);
+            });
+          } else {
+            video.pause();
+            gridItem.classList.remove('video-playing');
+          }
+        } else if (videoMedia) {
+          const iframe = videoMedia.querySelector('iframe');
+          if (iframe) {
+            const isPlaying = gridItem.classList.contains('video-playing');
+            
+            if (isPlaying) {
+              if (iframe.src.includes('youtube')) {
+                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+              } else if (iframe.src.includes('vimeo')) {
+                iframe.contentWindow.postMessage('{"method":"pause"}', '*');
+              }
+              gridItem.classList.remove('video-playing');
+            } else {
+              if (iframe.src.includes('youtube')) {
+                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+              } else if (iframe.src.include('vimeo')) {
+                iframe.contentWindow.postMessage('{"method":"play"}', '*');
+              }
+              gridItem.classList.add('video-playing');
+            }
+          }
+        }
+      });
+    });
+    
+    if (videos.length > 0) {
+      const playVideo = (video) => {
+        video.play().catch(function(error) {
+          video.muted = true;
+          video.play().catch(function(error) {
+            console.log('Video autoplay failed:', error);
+          });
+        });
+      };
+
+      videos.forEach(video => {
+        const gridItem = video.closest('.media-grid__item');
+        const playButton = gridItem ? gridItem.querySelector('.video-play-button') : null;
+        const hasControls = video.getAttribute('data-has-controls') === 'true';
+        
+        video.addEventListener('play', function() {
+          if (gridItem) gridItem.classList.add('video-playing');
+          if (playButton && !hasControls) playButton.style.display = 'none';
+        });
+        
+        video.addEventListener('pause', function() {
+          if (gridItem) gridItem.classList.remove('video-playing');
+          if (playButton && !hasControls) playButton.style.display = 'flex';
+        });
+        
+        video.addEventListener('ended', function() {
+          if (!video.loop) {
+            if (gridItem) gridItem.classList.remove('video-playing');
+            if (playButton && !hasControls) playButton.style.display = 'flex';
+          }
+        });
+      });
+
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            playVideo(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.25
+      });
+
+      videos.forEach(video => {
+        videoObserver.observe(video);
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Media grid",
+  "class": "shopify-section--media-grid",
+  "tag": "section",
+  "disabled_on": {
+    "templates": [
+      "password"
+    ],
+    "groups": [
+      "header",
+      "custom.overlay"
+    ]
+  },
+  "max_blocks": 15,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1000 x 1500px .jpg recommended (portrait) or 1500 x 1500px .jpg recommended (square)"
+        },
+        {
+          "type": "header",
+          "content": "Icon (Optional)",
+          "info": "Display an icon above the title"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image",
+          "info": "Recommended: 100 x 100px PNG with transparent background"
+        },
+        {
+          "type": "range",
+          "id": "icon_size_mobile",
+          "label": "Icon size (Mobile)",
+          "min": 32,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 48
+        },
+        {
+          "type": "range",
+          "id": "icon_size_desktop",
+          "label": "Icon size (Desktop)",
+          "min": 40,
+          "max": 160,
+          "step": 4,
+          "unit": "px",
+          "default": 64
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Promote your products"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size_mobile",
+          "label": "Heading font size (Mobile)",
+          "min": 16,
+          "max": 48,
+          "step": 2,
+          "unit": "px",
+          "default": 24
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size_desktop",
+          "label": "Heading font size (Desktop)",
+          "min": 20,
+          "max": 64,
+          "step": 2,
+          "unit": "px",
+          "default": 32
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "info": "Small text that appears under the heading"
+        },
+        {
+          "type": "range",
+          "id": "description_font_size_mobile",
+          "label": "Description font size (Mobile)",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "description_font_size_desktop",
+          "label": "Description font size (Desktop)",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Heading tag (for SEO)",
+          "options": [
+            {
+              "value": "h1",
+              "label": "X-Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            },
+            {
+              "value": "h5",
+              "label": "X-Small"
+            },
+            {
+              "value": "h6",
+              "label": "XX-Small"
+            }
+          ],
+          "default": "h4",
+          "info": "Note: Visual size is now controlled by the font size sliders above"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text"
+        },
+        {
+          "type": "header",
+          "content": "Mobile"
+        },
+        {
+          "type": "select",
+          "id": "mobile_text_position",
+          "label": "Content position",
+          "options": [
+            {
+              "value": "place-self-start text-start",
+              "label": "Top left"
+            },
+            {
+              "value": "place-self-start-center text-center",
+              "label": "Top center"
+            },
+            {
+              "value": "place-self-start-end text-end",
+              "label": "Top right"
+            },
+            {
+              "value": "place-self-center-start text-start",
+              "label": "Middle left"
+            },
+            {
+              "value": "place-self-center text-center",
+              "label": "Middle center"
+            },
+            {
+              "value": "place-self-center-end text-end",
+              "label": "Middle right"
+            },
+            {
+              "value": "place-self-end-start text-start",
+              "label": "Bottom left"
+            },
+            {
+              "value": "place-self-end-center text-center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "place-self-end text-end",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "place-self-center text-center"
+        },
+        {
+          "type": "header",
+          "content": "Desktop",
+          "info": "When using a 1x1 tile, we recommend not using text on top of media."
+        },
+        {
+          "type": "range",
+          "id": "desktop_column_span",
+          "label": "Column",
+          "min": 1,
+          "max": 4,
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "desktop_row_span",
+          "label": "Row",
+          "min": 1,
+          "max": 3,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "desktop_text_position",
+          "label": "Content position",
+          "options": [
+            {
+              "value": "sm:place-self-start sm:text-start",
+              "label": "Top left"
+            },
+            {
+              "value": "sm:place-self-start-center sm:text-center",
+              "label": "Top center"
+            },
+            {
+              "value": "sm:place-self-start-end sm:text-end",
+              "label": "Top right"
+            },
+            {
+              "value": "sm:place-self-center-start sm:text-start",
+              "label": "Middle left"
+            },
+            {
+              "value": "sm:place-self-center sm:text-center",
+              "label": "Middle center"
+            },
+            {
+              "value": "sm:place-self-center-end sm:text-end",
+              "label": "Middle right"
+            },
+            {
+              "value": "sm:place-self-end-start sm:text-start",
+              "label": "Bottom left"
+            },
+            {
+              "value": "sm:place-self-end-center sm:text-center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "sm:place-self-end sm:text-end",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "sm:place-self-center sm:text-center"
+        },
+        {
+          "type": "header",
+          "content": "Colors",
+          "info": "Gradient replaces solid colors when set. Background is ignored when image is used."
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "Background",
+          "default": "#000000"
+        },
+        {
+          "type": "color_background",
+          "id": "background_gradient",
+          "label": "Background gradient"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color_background",
+          "id": "text_gradient",
+          "label": "Text gradient"
+        },
+        {
+          "type": "color",
+          "id": "button_background",
+          "label": "Button background",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button text",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Overlay opacity",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Videos are muted to allow autoplay. For best visual results and avoid platform branding, we recommend uploading a MP4 file."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Replaces external video if both are set. MP4 format recommended for best compatibility."
+        },
+        {
+          "type": "video_url",
+          "id": "external_video_url",
+          "accept": [
+            "vimeo",
+            "youtube"
+          ],
+          "label": "Video URL",
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_video_controls",
+          "label": "Enable custom play/pause button",
+          "info": "When enabled, a small toggle button appears in the bottom right corner. When disabled, video loops automatically with a larger play button.",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Icon (Optional)",
+          "info": "Display an icon above the title"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image",
+          "info": "Recommended: 100 x 100px PNG with transparent background"
+        },
+        {
+          "type": "range",
+          "id": "icon_size_mobile",
+          "label": "Icon size (Mobile)",
+          "min": 32,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 48
+        },
+        {
+          "type": "range",
+          "id": "icon_size_desktop",
+          "label": "Icon size (Desktop)",
+          "min": 40,
+          "max": 160,
+          "step": 4,
+          "unit": "px",
+          "default": 64
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Promote your products"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size_mobile",
+          "label": "Heading font size (Mobile)",
+          "min": 16,
+          "max": 48,
+          "step": 2,
+          "unit": "px",
+          "default": 24
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size_desktop",
+          "label": "Heading font size (Desktop)",
+          "min": 20,
+          "max": 64,
+          "step": 2,
+          "unit": "px",
+          "default": 32
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "info": "Small text that appears under the heading"
+        },
+        {
+          "type": "range",
+          "id": "description_font_size_mobile",
+          "label": "Description font size (Mobile)",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "description_font_size_desktop",
+          "label": "Description font size (Desktop)",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Heading tag (for SEO)",
+          "options": [
+            {
+              "value": "h1",
+              "label": "X-Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            },
+            {
+              "value": "h5",
+              "label": "X-Small"
+            },
+            {
+              "value": "h6",
+              "label": "XX-Small"
+            }
+          ],
+          "default": "h4",
+          "info": "Note: Visual size is now controlled by the font size sliders above"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text"
+        },
+        {
+          "type": "header",
+          "content": "Mobile"
+        },
+        {
+          "type": "select",
+          "id": "mobile_text_position",
+          "label": "Content position",
+          "options": [
+            {
+              "value": "place-self-start text-start",
+              "label": "Top left"
+            },
+            {
+              "value": "place-self-start-center text-center",
+              "label": "Top center"
+            },
+            {
+              "value": "place-self-start-end text-end",
+              "label": "Top right"
+            },
+            {
+              "value": "place-self-center-start text-start",
+              "label": "Middle left"
+            },
+            {
+              "value": "place-self-center text-center",
+              "label": "Middle center"
+            },
+            {
+              "value": "place-self-center-end text-end",
+              "label": "Middle right"
+            },
+            {
+              "value": "place-self-end-start text-start",
+              "label": "Bottom left"
+            },
+            {
+              "value": "place-self-end-center text-center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "place-self-end text-end",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "place-self-center text-center"
+        },
+        {
+          "type": "header",
+          "content": "Desktop",
+          "info": "When using a 1x1 tile, we recommend not using text on top of media."
+        },
+        {
+          "type": "range",
+          "id": "desktop_column_span",
+          "label": "Column",
+          "min": 1,
+          "max": 4,
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "desktop_row_span",
+          "label": "Row",
+          "min": 1,
+          "max": 3,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "desktop_text_position",
+          "label": "Content position",
+          "options": [
+            {
+              "value": "sm:place-self-start sm:text-start",
+              "label": "Top left"
+            },
+            {
+              "value": "sm:place-self-start-center sm:text-center",
+              "label": "Top center"
+            },
+            {
+              "value": "sm:place-self-start-end sm:text-end",
+              "label": "Top right"
+            },
+            {
+              "value": "sm:place-self-center-start sm:text-start",
+              "label": "Middle left"
+            },
+            {
+              "value": "sm:place-self-center sm:text-center",
+              "label": "Middle center"
+            },
+            {
+              "value": "sm:place-self-center-end sm:text-end",
+              "label": "Middle right"
+            },
+            {
+              "value": "sm:place-self-end-start sm:text-start",
+              "label": "Bottom left"
+            },
+            {
+              "value": "sm:place-self-end-center sm:text-center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "sm:place-self-end sm:text-end",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "sm:place-self-center sm:text-center"
+        },
+        {
+          "type": "header",
+          "content": "Colors",
+          "info": "Gradient replaces solid colors when set. Background is ignored when video is used."
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "Background",
+          "default": "#000000"
+        },
+        {
+          "type": "color_background",
+          "id": "background_gradient",
+          "label": "Background gradient"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color_background",
+          "id": "text_gradient",
+          "label": "Text gradient"
+        },
+        {
+          "type": "color",
+          "id": "button_background",
+          "label": "Button background",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button text",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Overlay opacity",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "reduce_width",
+      "label": "Reduce width on large screens",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Row height",
+      "info": "Define the height of a single row, from which the grid is dynamically created."
+    },
+    {
+      "type": "range",
+      "id": "desktop_row_height",
+      "label": "Desktop row height",
+      "min": 150,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 290
+    },
+    {
+      "type": "range",
+      "id": "mobile_row_height",
+      "label": "Mobile row height",
+      "min": 120,
+      "max": 260,
+      "step": 10,
+      "unit": "px",
+      "default": 150
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Media grid",
+      "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            "desktop_column_span": 2,
+            "desktop_row_span": 1
+          }
+        },
+        {
+          "type": "video",
+          "settings": {
+            "desktop_column_span": 2,
+            "desktop_row_span": 2,
+            "show_video_controls": false
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "desktop_column_span": 2,
+            "desktop_row_span": 1
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,722 @@
+{% comment %}
+  Technology Section - DopaBoost
+  
+  INSTALLATION:
+  1. Save this file as: sections/technology-dopaboost.liquid
+  2. Go to Shopify Admin > Online Store > Themes > Customize
+  3. Click "Add section" and find "Technology DopaBoost"
+{% endcomment %}
+
+<style>
+  /* ========================================
+     FONT LOADING
+     ======================================== */
+  {{ section.settings.label_font | font_face: font_display: 'swap' }}
+  {{ section.settings.title_font | font_face: font_display: 'swap' }}
+  {{ section.settings.feature_title_font | font_face: font_display: 'swap' }}
+  {{ section.settings.feature_text_font | font_face: font_display: 'swap' }}
+
+  /* ========================================
+     TECHNOLOGY SECTION STYLES
+     ======================================== */
+  .technology-dopaboost-section {
+    background: {{ section.settings.background_color }};
+    padding: {{ section.settings.section_padding_desktop }};
+    position: relative;
+  }
+
+  .technology-container {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  /* Section Label */
+  .technology-section-label {
+    font-size: {{ section.settings.label_size }}px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: {{ section.settings.label_color }};
+    margin-bottom: {{ section.settings.label_margin }}px;
+    font-family: {{ section.settings.label_font.family }}, {{ section.settings.label_font.fallback_families }};
+    font-style: {{ section.settings.label_font.style }};
+    font-weight: {{ section.settings.label_font.weight }};
+  }
+
+  /* Main Title */
+  .technology-title {
+    font-size: {{ section.settings.title_size_desktop }}px;
+    line-height: 1.2;
+    color: {{ section.settings.title_color }};
+    margin-bottom: {{ section.settings.title_margin }}px;
+    letter-spacing: {{ section.settings.title_letter_spacing }}px;
+    font-family: {{ section.settings.title_font.family }}, {{ section.settings.title_font.fallback_families }};
+    font-style: {{ section.settings.title_font.style }};
+    font-weight: {{ section.settings.title_font.weight }};
+  }
+
+  .technology-title .regular-text {
+    font-weight: {{ section.settings.title_regular_weight }};
+  }
+
+  .technology-title .light-text {
+    font-weight: {{ section.settings.title_light_weight }};
+  }
+
+  /* Features Grid */
+  .technology-grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: {{ section.settings.grid_gap }}px;
+  }
+
+  /* Individual Feature */
+  .technology-feature {
+    padding: {{ section.settings.feature_padding }};
+    border-top: {{ section.settings.feature_border_width }}px solid {{ section.settings.feature_border_color }};
+    {% if section.settings.feature_background != 'rgba(0,0,0,0)' %}
+    background: {{ section.settings.feature_background }};
+    border-radius: {{ section.settings.feature_border_radius }}px;
+    {% endif %}
+  }
+
+  /* Feature Header (Icon + Title) */
+  .technology-feature-header {
+    display: flex;
+    align-items: center;
+    gap: {{ section.settings.icon_spacing }}px;
+    margin-bottom: {{ section.settings.feature_title_margin }}px;
+  }
+
+  /* Feature Icon */
+  .technology-feature-icon {
+    flex-shrink: 0;
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .technology-feature-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Feature Title */
+  .technology-feature h3 {
+    font-size: {{ section.settings.feature_title_size }}px;
+    font-weight: {{ section.settings.feature_title_weight }};
+    color: {{ section.settings.feature_title_color }};
+    line-height: 1.3;
+    margin: 0;
+    font-family: {{ section.settings.feature_title_font.family }}, {{ section.settings.feature_title_font.fallback_families }};
+    font-style: {{ section.settings.feature_title_font.style }};
+    font-weight: {{ section.settings.feature_title_font.weight }};
+  }
+
+  /* Feature Description */
+  .technology-feature p {
+    font-size: {{ section.settings.feature_text_size }}px;
+    color: {{ section.settings.feature_text_color }};
+    line-height: 1.7;
+    margin: 0;
+    font-family: {{ section.settings.feature_text_font.family }}, {{ section.settings.feature_text_font.fallback_families }};
+    font-style: {{ section.settings.feature_text_font.style }};
+    font-weight: {{ section.settings.feature_text_font.weight }};
+  }
+
+  /* ========================================
+     RESPONSIVE - TABLET
+     ======================================== */
+  @media (max-width: 1024px) {
+    .technology-dopaboost-section {
+      padding: {{ section.settings.section_padding_tablet }};
+    }
+
+    .technology-title {
+      font-size: {{ section.settings.title_size_tablet }}px;
+    }
+
+    .technology-grid {
+      grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
+      gap: {{ section.settings.grid_gap_tablet }}px;
+    }
+
+    .technology-feature-icon {
+      width: {{ section.settings.icon_size_tablet }}px;
+      height: {{ section.settings.icon_size_tablet }}px;
+    }
+  }
+
+  /* ========================================
+     RESPONSIVE - MOBILE
+     ======================================== */
+  @media (max-width: 640px) {
+    .technology-dopaboost-section {
+      padding: {{ section.settings.section_padding_mobile }};
+    }
+
+    .technology-title {
+      font-size: {{ section.settings.title_size_mobile }}px;
+      margin-bottom: {{ section.settings.title_margin_mobile }}px;
+    }
+
+    .technology-grid {
+      grid-template-columns: 1fr;
+      gap: {{ section.settings.grid_gap_mobile }}px;
+    }
+
+    .technology-feature h3 {
+      font-size: {{ section.settings.feature_title_size_mobile }}px;
+    }
+
+    .technology-feature p {
+      font-size: {{ section.settings.feature_text_size_mobile }}px;
+    }
+
+    .technology-feature-icon {
+      width: {{ section.settings.icon_size_mobile }}px;
+      height: {{ section.settings.icon_size_mobile }}px;
+    }
+
+    .technology-feature-header {
+      gap: {{ section.settings.icon_spacing_mobile }}px;
+    }
+  }
+</style>
+
+<!-- HTML Structure -->
+<section class="technology-dopaboost-section">
+  <div class="technology-container">
+    
+    {% if section.settings.section_label != blank %}
+    <div class="technology-section-label">{{ section.settings.section_label }}</div>
+    {% endif %}
+
+    {% if section.settings.title_part1 != blank or section.settings.title_part2 != blank %}
+    <h2 class="technology-title">
+      <span class="regular-text">{{ section.settings.title_part1 }}</span>
+      {% if section.settings.title_part2 != blank %}
+      <span class="light-text">{{ section.settings.title_part2 }}</span>
+      {% endif %}
+    </h2>
+    {% endif %}
+
+    <div class="technology-grid">
+      {% for block in section.blocks %}
+        <div class="technology-feature" {{ block.shopify_attributes }}>
+          
+          <div class="technology-feature-header">
+            {% if block.settings.feature_icon != blank %}
+              <div class="technology-feature-icon">
+                <img src="{{ block.settings.feature_icon | img_url: 'master' }}" alt="{{ block.settings.feature_title }}" loading="lazy">
+              </div>
+            {% endif %}
+            <h3>{{ block.settings.feature_title }}</h3>
+          </div>
+
+          <p>{{ block.settings.feature_description }}</p>
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Technology DopaBoost",
+  "settings": [
+    {
+      "type": "header",
+      "content": "📝 Main Content"
+    },
+    {
+      "type": "text",
+      "id": "section_label",
+      "label": "Section Label (Optional)",
+      "default": "07 — TECHNOLOGY",
+      "info": "Small uppercase label above title"
+    },
+    {
+      "type": "text",
+      "id": "title_part1",
+      "label": "Title - Part 1 (Regular Weight)",
+      "default": "What Makes Our Patches"
+    },
+    {
+      "type": "text",
+      "id": "title_part2",
+      "label": "Title - Part 2 (Light Weight)",
+      "default": "So Unique?"
+    },
+    {
+      "type": "header",
+      "content": "🎨 Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Section Label Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "feature_border_color",
+      "label": "Feature Border Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "feature_background",
+      "label": "Feature Background (Optional)",
+      "default": "rgba(0,0,0,0)",
+      "info": "Leave transparent for no background"
+    },
+    {
+      "type": "color",
+      "id": "feature_title_color",
+      "label": "Feature Title Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "feature_text_color",
+      "label": "Feature Text Color",
+      "default": "#999999"
+    },
+    {
+      "type": "header",
+      "content": "📐 Layout & Grid"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Section Max Width",
+      "min": 1000,
+      "max": 1600,
+      "step": 50,
+      "default": 1400,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (Desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns (Tablet)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Gap Between Features (Desktop)",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_tablet",
+      "label": "Gap Between Features (Tablet)",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_mobile",
+      "label": "Gap Between Features (Mobile)",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_desktop",
+      "label": "Section Padding (Desktop)",
+      "default": "120px 60px",
+      "info": "Format: vertical horizontal"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_tablet",
+      "label": "Section Padding (Tablet)",
+      "default": "100px 40px"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_mobile",
+      "label": "Section Padding (Mobile)",
+      "default": "80px 24px"
+    },
+    {
+      "type": "header",
+      "content": "🎴 Feature Styling"
+    },
+    {
+      "type": "text",
+      "id": "feature_padding",
+      "label": "Feature Padding",
+      "default": "40px 0 0 0",
+      "info": "Format: top right bottom left"
+    },
+    {
+      "type": "range",
+      "id": "feature_border_width",
+      "label": "Feature Border Width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "feature_border_radius",
+      "label": "Feature Border Radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "🎯 Icon Settings"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon Size (Desktop)",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "icon_size_tablet",
+      "label": "Icon Size (Tablet)",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "default": 36,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mobile",
+      "label": "Icon Size (Mobile)",
+      "min": 20,
+      "max": 50,
+      "step": 2,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "icon_spacing",
+      "label": "Space Between Icon & Title (Desktop)",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "icon_spacing_mobile",
+      "label": "Space Between Icon & Title (Mobile)",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "✏️ Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "label_font",
+      "label": "Section Label Font",
+      "default": "assistant_n4",
+      "info": "Font for the small label above title"
+    },
+    {
+      "type": "font_picker",
+      "id": "title_font",
+      "label": "Main Title Font",
+      "default": "assistant_n4",
+      "info": "Font for the main section title"
+    },
+    {
+      "type": "font_picker",
+      "id": "feature_title_font",
+      "label": "Feature Title Font",
+      "default": "assistant_n4",
+      "info": "Font for each feature's title"
+    },
+    {
+      "type": "font_picker",
+      "id": "feature_text_font",
+      "label": "Feature Text Font",
+      "default": "assistant_n4",
+      "info": "Font for each feature's description"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "label": "Label Font Size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "default": 13,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "label_margin",
+      "label": "Space Below Label",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Title Size (Desktop)",
+      "min": 28,
+      "max": 72,
+      "step": 2,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_size_tablet",
+      "label": "Title Size (Tablet)",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "default": 36,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Title Size (Mobile)",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "title_regular_weight",
+      "label": "Title Weight (Part 1)",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "select",
+      "id": "title_light_weight",
+      "label": "Title Weight (Part 2)",
+      "options": [
+        { "value": "200", "label": "Extra Light" },
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" }
+      ],
+      "default": "300"
+    },
+    {
+      "type": "range",
+      "id": "title_letter_spacing",
+      "label": "Title Letter Spacing",
+      "min": -3,
+      "max": 3,
+      "step": 0.5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_margin",
+      "label": "Space Below Title",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_margin_mobile",
+      "label": "Space Below Title (Mobile)",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "feature_title_size",
+      "label": "Feature Title Size",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "default": 22,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "feature_title_size_mobile",
+      "label": "Feature Title Size (Mobile)",
+      "min": 16,
+      "max": 28,
+      "step": 1,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "feature_title_weight",
+      "label": "Feature Title Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "feature_title_margin",
+      "label": "Space Below Feature Title",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "feature_text_size",
+      "label": "Feature Text Size",
+      "min": 13,
+      "max": 20,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "feature_text_size_mobile",
+      "label": "Feature Text Size (Mobile)",
+      "min": 13,
+      "max": 18,
+      "step": 1,
+      "default": 15,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Technology Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "feature_icon",
+          "label": "Feature Icon",
+          "info": "Upload an icon image (PNG, SVG recommended)"
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Title",
+          "default": "Absorbs Through Skin"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_description",
+          "label": "Feature Description",
+          "default": "Transdermal delivery allows nutrients to enter your bloodstream directly for faster, more efficient results."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Technology DopaBoost",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Absorbs Through Skin",
+            "feature_description": "Transdermal delivery allows nutrients to enter your bloodstream directly for faster, more efficient results."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Bypasses Digestion",
+            "feature_description": "Avoid stomach upset and nutrient loss that comes with pills and powders for a smoother experience."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Steady Release",
+            "feature_description": "Time-release technology provides consistent support throughout the day without peaks and crashes."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

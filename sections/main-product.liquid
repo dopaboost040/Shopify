@@ -61,14 +61,14 @@
         </div>
         <style>
           .dopa-gallery-wrap { position: relative; }
-          .dopa-gallery-badge { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; align-items: center; justify-content: center; gap: 6px; background: #ffffff; border-radius: 999px; padding: 5px 10px; box-shadow: 0 6px 18px -8px rgba(26,26,26,.25); width: max-content; max-width: calc(100% - 24px); font-family: 'Gilda Display', serif; font-style: italic; }
+          .dopa-gallery-badge { position: absolute; top: 2px; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; align-items: center; justify-content: center; gap: 5px; background: #ffffff; border-radius: 999px; padding: 4px 9px; box-shadow: 0 6px 18px -8px rgba(26,26,26,.25); width: max-content; max-width: calc(100% - 56px); font-family: 'Gilda Display', serif; font-style: italic; }
           .dopa-gallery-badge__photos { display: flex; align-items: center; flex-shrink: 0; }
-          .dopa-gallery-badge__photos img { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; border: 1.5px solid #fff; box-shadow: 0 0 0 1px #E4E0DA; }
-          .dopa-gallery-badge__photos img:not(:first-child) { margin-left: -5px; }
+          .dopa-gallery-badge__photos img { width: 15px; height: 15px; border-radius: 50%; object-fit: cover; border: 1.5px solid #fff; box-shadow: 0 0 0 1px #E4E0DA; }
+          .dopa-gallery-badge__photos img:not(:first-child) { margin-left: -4px; }
           .dopa-gallery-badge__stars { display: flex; align-items: center; gap: 1px; flex-shrink: 0; }
-          .dopa-gallery-badge__stars svg { width: 10px; height: 10px; fill: #C1633F; }
+          .dopa-gallery-badge__stars svg { width: 9px; height: 9px; fill: #C1633F; flex-shrink: 0; }
           .dopa-gallery-badge__stars svg.dopa-half-star { opacity: .45; }
-          .dopa-gallery-badge__text { font-size: 10.5px; color: #333333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+          .dopa-gallery-badge__text { font-size: 9px; color: #333333; white-space: nowrap; flex-shrink: 0; }
           /* desktop: this badge is mobile-only, the buy-box design is untouched there */
           @media screen and (min-width: 700px) {
             .dopa-gallery-badge { display: none !important; }

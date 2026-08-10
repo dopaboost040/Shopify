@@ -168,9 +168,16 @@
           "settings": {
             "liquid": "{% comment %} Shipping promise moved up near the CTA (was only in the FAQ). {% endcomment %}\n<style>\n  .dopa-shipping-note {\n    margin-top: 14px;\n    background: #ffffff;\n    border: 1px solid #eeeeee;\n    border-radius: 8px;\n    padding: 10px 14px;\n    font-size: 12.5px;\n    color: #333333;\n    font-weight: 500;\n    font-family: 'Inter', sans-serif;\n    display: flex;\n    align-items: center;\n    gap: 8px;\n  }\n</style>\n<div class=\"dopa-shipping-note\">Ships within 24h &middot; arrives in 2&ndash;4 days</div>"
           }
+        },
+        "liquid_dopa_trustbar": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% comment %} Top trust bar — \"value in 3 seconds\" above the fold, per the strategy audit. Sits above everything else in the buy box. {% endcomment %}\n<style>\n  .dopa-trust-bar {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    gap: 8px 14px;\n    font-family: 'Inter', sans-serif;\n    font-size: 12.5px;\n    color: #333333;\n    margin: 0 0 14px;\n  }\n  .dopa-trust-bar strong { color: #1a1a1a; }\n  .dopa-trust-bar .dopa-dot { color: #d9cdb4; }\n</style>\n<div class=\"dopa-trust-bar\">\n  <span><strong>Trusted by 100k+</strong> customers</span>\n  <span class=\"dopa-dot\">&middot;</span>\n  <span>30-day money-back guarantee</span>\n  <span class=\"dopa-dot\">&middot;</span>\n  <span>GMP-certified facility</span>\n</div>"
+          }
         }
       },
       "block_order": [
+        "liquid_dopa_trustbar",
         "liquid_P8FmaY",
         "title",
         "liquid_dopa_headline",

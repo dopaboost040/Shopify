@@ -83,12 +83,22 @@
           {%- assign gift_handles = 'energy-patches,stress-down-patches' | split: ',' -%}
         {%- endif -%}
 
+        {%- assign gift_variant_ids = '' -%}
+        {%- for handle in gift_handles -%}
+          {%- assign gift_product_for_id = all_products[handle] -%}
+          {%- if gift_product_for_id and gift_product_for_id.selected_or_first_available_variant -%}
+            {%- if gift_variant_ids != '' -%}{%- assign gift_variant_ids = gift_variant_ids | append: ',' -%}{%- endif -%}
+            {%- assign gift_variant_ids = gift_variant_ids | append: gift_product_for_id.selected_or_first_available_variant.id -%}
+          {%- endif -%}
+        {%- endfor -%}
+
         <div class="sbx__tile{% if forloop.first %} sbx__tile--selected{% endif %}{% if gift_handles.size > 0 %} sbx__tile--has-gifts{% endif %}"
              data-sbx-tile
              data-variant-id="{{ variant.id }}"
              data-plan-id="{{ plan.selling_plan.id }}"
              data-price-onetime="{{ variant.price }}"
              data-price-sub="{{ plan.price | default: variant.price }}"
+             data-gift-variant-ids="{{ gift_variant_ids }}"
              role="radio"
              aria-checked="{% if forloop.first %}true{% else %}false{% endif %}"
              tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
@@ -294,17 +304,88 @@
       if (document.readyState !== 'loading') initAll();
       document.addEventListener('shopify:section:load', initAll);
 
+      function findBuyboxForForm(form) {
+        var scope = form.closest('product-rerender');
+        if (scope) {
+          var inScope = scope.querySelector('[data-sbx]');
+          if (inScope) return inScope;
+        }
+        // Fall back to matching by the form id both reference (form="...").
+        var candidates = document.querySelectorAll('[data-sbx]');
+        for (var i = 0; i < candidates.length; i++) {
+          var idInput = candidates[i].querySelector('[data-sbx-id-input]');
+          if (idInput && idInput.getAttribute('form') === form.id) return candidates[i];
+        }
+        return candidates[0] || null;
+      }
+
       document.addEventListener('submit', function (e) {
         var form = e.target;
         if (!form.matches || !form.matches('form[action*="/cart/add"]')) return;
-        var root = form.closest('product-rerender') ? form.closest('product-rerender').querySelector('[data-sbx]') : document.querySelector('[data-sbx]');
+
+        var root = findBuyboxForForm(form);
         if (!root) return;
+
+        // Strip a stray selling_plan left over from a previous mode/tile.
         var planInputs = form.querySelectorAll('input[name="selling_plan"]');
         planInputs.forEach(function (input) {
-          if (root.dataset.sbxMode !== 'sub') {
-            input.disabled = true;
-          }
+          if (root.dataset.sbxMode !== 'sub') input.disabled = true;
         });
+
+        var tile = root.querySelector('[data-sbx-tile].sbx__tile--selected');
+        var giftIdsAttr = tile ? tile.getAttribute('data-gift-variant-ids') : '';
+        if (!giftIdsAttr) return; // No gifts on this tile: let the native submit proceed as-is.
+
+        // This tile has gifts. The Buy-X-Get-Y discounts only make an item
+        // free if it is ALREADY in the cart, they don't add it themselves.
+        // So this submission must add the main item + gift(s) together via
+        // the Cart AJAX API rather than the native single-item form post.
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        var idInput = root.querySelector('[data-sbx-id-input]');
+        var planInput = root.querySelector('[data-sbx-plan-input]');
+        var giftIds = giftIdsAttr.split(',').filter(Boolean);
+
+        var items = [{
+          id: parseInt(idInput.value, 10),
+          quantity: 1
+        }];
+        if (root.dataset.sbxMode === 'sub' && planInput && !planInput.disabled && planInput.value) {
+          items[0].selling_plan = parseInt(planInput.value, 10);
+        }
+        giftIds.forEach(function (gid) {
+          items.push({ id: parseInt(gid, 10), quantity: 1 });
+        });
+
+        var addUrl = '{{ routes.cart_add_url }}';
+        if (addUrl.indexOf('.js') === -1) addUrl += '.js';
+
+        fetch(addUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ items: items })
+        })
+          .then(function (res) {
+            if (!res.ok) return res.json().then(function (err) { throw err; });
+            return res.json();
+          })
+          .then(function () {
+            document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+            document.dispatchEvent(new CustomEvent('cart:updated', { bubbles: true }));
+            var drawer = document.querySelector('cart-drawer');
+            if (drawer && typeof drawer.show === 'function') {
+              drawer.show();
+            } else if (drawer && typeof drawer.open === 'function') {
+              drawer.open();
+            } else {
+              window.location.href = '{{ routes.cart_url }}';
+            }
+          })
+          .catch(function (err) {
+            console.error('[bundle-buybox] add to cart failed', err);
+            window.location.href = '{{ routes.cart_url }}';
+          });
       }, true);
     })();
   </script>

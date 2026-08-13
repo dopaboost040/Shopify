@@ -1,0 +1,392 @@
+{%- comment -%}
+  Custom subscribe/one-time buy-box for pack-tier products (1 Pack / 3 Pack / 6 Pack).
+  Replaces the Recharge widget's UI only — Recharge still processes the
+  subscription once `selling_plan` reaches checkout via the Cart AJAX API.
+
+  Requires: variants titled "N Pack" (N = 1, 3, 6, ...), each already priced
+  as the full bundle total, with a matching "N Pack(s) - Subscribe & Save"
+  selling plan attached (percentage-off, matched here by name).
+
+  Gift-to-tier mapping is NOT derivable from Liquid (Shopify doesn't expose
+  Buy-X-Get-Y discount rules to the storefront object model), so it is
+  declared explicitly below. It must stay in sync with the automatic
+  discounts configured in Shopify admin. Real price/title/image for each
+  gift still comes from the live product via `all_products`, nothing is
+  hardcoded except which gift belongs to which pack size.
+{%- endcomment -%}
+
+{%- assign pack_variants = '' | split: ',' -%}
+{%- for v in product.variants -%}
+  {%- if v.title contains 'Pack' -%}
+    {%- assign pack_variants = pack_variants | push: v -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if pack_variants.size == 0 -%}
+  {%- comment -%} Not a pack-tier product: render nothing. {%- endcomment -%}
+{%- else -%}
+
+  {%- assign one_pack_variant = pack_variants | first -%}
+  {%- assign one_pack_price = one_pack_variant.price -%}
+  {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
+
+  {%- comment -%} gift map: variant title -> list of gift product handles {%- endcomment -%}
+  {%- assign gift_map_keys = '3 Pack,6 Pack' | split: ',' -%}
+
+  <div class="sbx" data-sbx>
+    <div class="sbx__mode" role="radiogroup" aria-label="Purchase option">
+      <button type="button" class="sbx__mode-btn" data-sbx-mode="sub" role="radio" aria-checked="true">
+        <span class="sbx__mode-title">{{ 'sbx.subscribe_title' | t: default: 'Subscribe & Save' }}</span>
+        <span class="sbx__mode-sub">{{ 'sbx.subscribe_sub' | t: default: 'Extra 20% OFF + FREE GIFT!' }}</span>
+      </button>
+      <button type="button" class="sbx__mode-btn" data-sbx-mode="onetime" role="radio" aria-checked="false">
+        <span class="sbx__mode-title">{{ 'sbx.onetime_title' | t: default: 'One-Time Purchase' }}</span>
+      </button>
+    </div>
+
+    <div class="sbx__trust" data-sbx-trust>
+      <div class="sbx__trust-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span>{{ 'sbx.trust_skip' | t: default: 'Skip or Cancel Anytime' }}</span>
+      </div>
+      <div class="sbx__trust-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+        <span>{{ 'sbx.trust_gift' | t: default: 'Free Gift on First Order' }}</span>
+      </div>
+    </div>
+
+    <div class="sbx__tiles">
+      {%- for variant in pack_variants -%}
+        {%- assign packs = variant.title | remove: ' Pack' | remove: 's' | strip | plus: 0 -%}
+        {%- if packs == 0 -%}{%- assign packs = 1 -%}{%- endif -%}
+
+        {%- assign per_pack = variant.price | divided_by: packs -%}
+        {%- assign anchor = one_pack_price | times: packs -%}
+        {%- if variant.compare_at_price and variant.compare_at_price > anchor -%}
+          {%- assign anchor = variant.compare_at_price -%}
+        {%- endif -%}
+        {%- assign show_compare = false -%}
+        {%- if anchor > variant.price -%}{%- assign show_compare = true -%}{%- endif -%}
+
+        {%- assign plan = null -%}
+        {%- for spg in variant.selling_plan_allocations -%}
+          {%- if spg.selling_plan.name contains variant.title -%}
+            {%- assign plan = spg -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- assign gift_handles = '' | split: ',' -%}
+        {%- if variant.title == '3 Pack' -%}
+          {%- assign gift_handles = 'energy-patches' | split: ',' -%}
+        {%- elsif variant.title == '6 Pack' -%}
+          {%- assign gift_handles = 'energy-patches,stress-down-patches' | split: ',' -%}
+        {%- endif -%}
+
+        {%- assign gift_variant_ids = '' -%}
+        {%- for handle in gift_handles -%}
+          {%- assign gift_product_for_id = all_products[handle] -%}
+          {%- if gift_product_for_id and gift_product_for_id.selected_or_first_available_variant -%}
+            {%- if gift_variant_ids != '' -%}{%- assign gift_variant_ids = gift_variant_ids | append: ',' -%}{%- endif -%}
+            {%- assign gift_variant_ids = gift_variant_ids | append: gift_product_for_id.selected_or_first_available_variant.id -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div class="sbx__tile{% if forloop.first %} sbx__tile--selected{% endif %}{% if gift_handles.size > 0 %} sbx__tile--has-gifts{% endif %}"
+             data-sbx-tile
+             data-variant-id="{{ variant.id }}"
+             data-plan-id="{{ plan.selling_plan.id }}"
+             data-price-onetime="{{ variant.price }}"
+             data-price-sub="{{ plan.price | default: variant.price }}"
+             data-gift-variant-ids="{{ gift_variant_ids }}"
+             role="radio"
+             aria-checked="{% if forloop.first %}true{% else %}false{% endif %}"
+             tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
+          <div class="sbx__tile-row">
+            <div class="sbx__tile-img">
+              {%- for i in (1..packs) -%}
+                {%- if i > 3 -%}{%- break -%}{%- endif -%}
+                {%- if product.featured_image -%}
+                  {{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el', style: 'z-index:' | append: i }}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+            <div class="sbx__tile-body">
+              <div class="sbx__tile-title-row">
+                <span class="sbx__tile-title">{{ variant.title | replace: '1 Pack', '1 Pack' | replace: '3 Pack', '3 Packs' | replace: '6 Pack', '6 Packs' }}</span>
+                {%- if variant.title == '3 Pack' -%}
+                  <span class="sbx__badge">{{ 'sbx.badge_3pack' | t: default: 'BUY 2 GET 1 FREE' }}</span>
+                {%- endif -%}
+              </div>
+              <span class="sbx__chip">{{ per_pack | money }} {{ 'sbx.per_pack' | t: default: 'per pack' }}</span>
+              <span class="sbx__supply">{{ packs }} {{ 'sbx.months_supply' | t: default: 'month(s) supply' }}</span>
+            </div>
+            <div class="sbx__tile-price">
+              <span class="sbx__price" data-sbx-price>{{ variant.price | money }}</span>
+              {%- if show_compare -%}
+                <span class="sbx__compare" data-sbx-compare>{{ anchor | money }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+          {%- if gift_handles.size == 1 -%}
+            <div class="sbx__ribbon">{{ 'sbx.ribbon_one' | t: default: 'Free Gift' }} 🎁</div>
+          {%- elsif gift_handles.size > 1 -%}
+            <div class="sbx__ribbon">{{ gift_handles.size }} {{ 'sbx.ribbon_many' | t: default: 'Free Gifts' }} 🎁</div>
+          {%- endif -%}
+          {%- for handle in gift_handles -%}
+            {%- assign gift_product = all_products[handle] -%}
+            {%- if gift_product -%}
+              <div class="sbx__gift-row">
+                {%- if gift_product.featured_image -%}
+                  {{ gift_product.featured_image | image_url: width: 60 | image_tag: loading: 'lazy', alt: gift_product.title, class: 'sbx__gift-img' }}
+                {%- endif -%}
+                <span class="sbx__gift-label">+ {{ 'sbx.free' | t: default: 'FREE' }} {{ gift_product.title }}</span>
+                <span class="sbx__gift-value">{{ gift_product.price | money }}</span>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <input type="hidden" data-sbx-id-input name="id" form="{{ product_form_id }}" value="{{ pack_variants.first.id }}">
+    <input type="hidden" data-sbx-plan-input name="selling_plan" form="{{ product_form_id }}" value="">
+  </div>
+
+  <style>
+    .sbx { display: flex; flex-direction: column; gap: 12px; font-family: inherit; }
+
+    .sbx__mode { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: #f6f0e7; border-radius: 12px; padding: 6px; }
+    .sbx__mode-btn { appearance: none; border: none; background: transparent; border-radius: 8px; padding: 14px 12px; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .sbx__mode-btn[aria-checked="true"] { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+    .sbx__mode-title { font-family: var(--font-heading, inherit); font-size: 17px; font-weight: 700; color: #1a1a1a; }
+    .sbx__mode-sub { font-size: 12px; color: #948979; }
+    .sbx__mode-btn[aria-checked="true"] .sbx__mode-sub { color: #948979; }
+
+    .sbx__trust { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .sbx__trust-pill { display: flex; align-items: center; gap: 8px; background: #c1633f; color: #fff; border-radius: 10px; padding: 12px 14px; font-size: 13px; font-weight: 600; }
+    .sbx__trust-pill svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    .sbx__tiles { display: flex; flex-direction: column; gap: 12px; }
+    .sbx__tile { position: relative; border: 1px solid #e8e0d3; border-radius: 12px; padding: 14px; cursor: pointer; background: #fff; overflow: hidden; }
+    .sbx__tile--selected { border-color: #c1633f; box-shadow: 0 0 0 1px #c1633f; }
+    .sbx__tile-row { display: flex; align-items: center; gap: 12px; }
+    .sbx__tile-img { display: flex; flex-shrink: 0; }
+    .sbx__tile-img-el { width: 40px; height: 40px; object-fit: contain; border-radius: 4px; background: #f6f0e7; position: relative; margin-left: -14px; }
+    .sbx__tile-img-el:first-child { margin-left: 0; }
+    .sbx__tile-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
+    .sbx__tile-title-row { display: flex; align-items: center; gap: 8px; min-width: 0; flex-wrap: wrap; }
+    .sbx__tile-title { font-family: var(--font-heading, inherit); font-size: 18px; font-weight: 600; color: #1a1a1a; }
+    .sbx__badge { background: #f0c417; color: #1a1a1a; font-size: 11px; font-weight: 700; border-radius: 100px; padding: 3px 8px; white-space: nowrap; }
+    .sbx__chip { display: inline-block; width: fit-content; background: #f6f0e7; color: #1a1a1a; font-size: 12px; font-weight: 600; border-radius: 100px; padding: 3px 10px; }
+    .sbx__supply { font-size: 12px; color: #948979; }
+    .sbx__tile-price { text-align: right; flex-shrink: 0; }
+    .sbx__price { display: block; font-size: 18px; font-weight: 700; color: #1a1a1a; }
+    .sbx__compare { display: block; font-size: 12px; color: #948979; text-decoration: line-through; }
+
+    .sbx__ribbon { position: absolute; top: 12px; right: -30px; background: #c1633f; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 34px; transform: rotate(0deg); }
+    @media (min-width: 1px) { .sbx__ribbon { right: 0; border-radius: 0 0 0 8px; padding: 4px 10px; } }
+
+    .sbx__gift-row { display: flex; align-items: center; gap: 8px; margin: 10px -14px -14px; padding: 10px 14px; background: #f6f0e7; border-top: 1px solid #e8e0d3; }
+    .sbx__gift-img { width: 28px; height: 28px; object-fit: contain; border-radius: 4px; flex-shrink: 0; }
+    .sbx__gift-label { font-size: 13px; font-weight: 600; color: #1a1a1a; flex: 1; min-width: 0; }
+    .sbx__gift-value { font-size: 12px; color: #948979; text-decoration: line-through; flex-shrink: 0; }
+
+    .sbx[data-sbx-mode="onetime"] .sbx__trust { display: none; }
+    .sbx[data-sbx-mode="onetime"] .sbx__mode-btn[data-sbx-mode="sub"] { box-shadow: none; background: transparent; }
+    .sbx[data-sbx-mode="onetime"] .sbx__mode-btn[data-sbx-mode="onetime"] { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+
+    body:has(.sbx) recharge-subscription-widget { display: none !important; }
+    /* The buy-box tiles ARE the variant picker: hide the theme's native
+       variant/price/quantity controls to avoid two competing selectors
+       fighting over the same form fields. */
+    body:has(.sbx) [data-block-type="variant-picker"],
+    body:has(.sbx) [data-block-type="price"],
+    body:has(.sbx) [data-block-type="quantity-selector"] { display: none !important; }
+  </style>
+
+  <script>
+    (function () {
+      function initBuybox(root) {
+        if (root.dataset.sbxInit === '1') return;
+        root.dataset.sbxInit = '1';
+
+        var state = { mode: 'sub' };
+        var idInput = root.querySelector('[data-sbx-id-input]');
+        var planInput = root.querySelector('[data-sbx-plan-input]');
+
+        function selectedTile() {
+          return root.querySelector('[data-sbx-tile].sbx__tile--selected');
+        }
+
+        function render() {
+          root.dataset.sbxMode = state.mode;
+          root.querySelectorAll('[data-sbx-mode]').forEach(function (btn) {
+            if (btn.tagName !== 'BUTTON') return;
+            var active = btn.getAttribute('data-sbx-mode') === state.mode;
+            btn.setAttribute('aria-checked', active ? 'true' : 'false');
+          });
+
+          root.querySelectorAll('[data-sbx-tile]').forEach(function (tile) {
+            var price = state.mode === 'sub'
+              ? tile.getAttribute('data-price-sub')
+              : tile.getAttribute('data-price-onetime');
+            var priceEl = tile.querySelector('[data-sbx-price]');
+            if (priceEl) {
+              var formatted = window.Shopify && Shopify.formatMoney
+                ? Shopify.formatMoney(Math.round(parseFloat(price) * 100), window.theme && window.theme.moneyFormat)
+                : priceEl.textContent;
+              if (priceEl.textContent !== formatted && !isNaN(parseFloat(price))) {
+                // Fallback formatting only if Shopify.formatMoney isn't available;
+                // otherwise leave the server-rendered one-time price as-is when in
+                // one-time mode (it is already correct from Liquid).
+              }
+            }
+          });
+
+          var tile = selectedTile();
+          if (tile) {
+            idInput.value = tile.getAttribute('data-variant-id');
+            if (state.mode === 'sub' && tile.getAttribute('data-plan-id')) {
+              planInput.value = tile.getAttribute('data-plan-id');
+              planInput.disabled = false;
+            } else {
+              planInput.value = '';
+              planInput.disabled = true;
+            }
+          }
+        }
+
+        root.addEventListener('click', function (e) {
+          var modeBtn = e.target.closest('[data-sbx-mode]');
+          if (modeBtn && modeBtn.tagName === 'BUTTON') {
+            state.mode = modeBtn.getAttribute('data-sbx-mode');
+            render();
+            return;
+          }
+          var tile = e.target.closest('[data-sbx-tile]');
+          if (tile) {
+            root.querySelectorAll('[data-sbx-tile]').forEach(function (t) {
+              t.classList.remove('sbx__tile--selected');
+              t.setAttribute('aria-checked', 'false');
+              t.setAttribute('tabindex', '-1');
+            });
+            tile.classList.add('sbx__tile--selected');
+            tile.setAttribute('aria-checked', 'true');
+            tile.setAttribute('tabindex', '0');
+            render();
+          }
+        });
+
+        root.addEventListener('keydown', function (e) {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          var target = e.target.closest('[data-sbx-tile], [data-sbx-mode]');
+          if (!target) return;
+          e.preventDefault();
+          target.click();
+        });
+
+        render();
+
+        var scope = root.closest('product-rerender') || document;
+        var mo = new MutationObserver(function () {
+          if (!document.body.contains(root)) return;
+          if (root.dataset.sbxMode !== state.mode) render();
+        });
+        mo.observe(scope, { childList: true, subtree: true });
+      }
+
+      function initAll() {
+        document.querySelectorAll('[data-sbx]').forEach(initBuybox);
+      }
+
+      document.addEventListener('DOMContentLoaded', initAll);
+      if (document.readyState !== 'loading') initAll();
+      document.addEventListener('shopify:section:load', initAll);
+
+      function findBuyboxForForm(form) {
+        var scope = form.closest('product-rerender');
+        if (scope) {
+          var inScope = scope.querySelector('[data-sbx]');
+          if (inScope) return inScope;
+        }
+        // Fall back to matching by the form id both reference (form="...").
+        var candidates = document.querySelectorAll('[data-sbx]');
+        for (var i = 0; i < candidates.length; i++) {
+          var idInput = candidates[i].querySelector('[data-sbx-id-input]');
+          if (idInput && idInput.getAttribute('form') === form.id) return candidates[i];
+        }
+        return candidates[0] || null;
+      }
+
+      document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form.matches || !form.matches('form[action*="/cart/add"]')) return;
+
+        var root = findBuyboxForForm(form);
+        if (!root) return;
+
+        // Strip a stray selling_plan left over from a previous mode/tile.
+        var planInputs = form.querySelectorAll('input[name="selling_plan"]');
+        planInputs.forEach(function (input) {
+          if (root.dataset.sbxMode !== 'sub') input.disabled = true;
+        });
+
+        var tile = root.querySelector('[data-sbx-tile].sbx__tile--selected');
+        var giftIdsAttr = tile ? tile.getAttribute('data-gift-variant-ids') : '';
+        if (!giftIdsAttr) return; // No gifts on this tile: let the native submit proceed as-is.
+
+        // This tile has gifts. The Buy-X-Get-Y discounts only make an item
+        // free if it is ALREADY in the cart, they don't add it themselves.
+        // So this submission must add the main item + gift(s) together via
+        // the Cart AJAX API rather than the native single-item form post.
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        var idInput = root.querySelector('[data-sbx-id-input]');
+        var planInput = root.querySelector('[data-sbx-plan-input]');
+        var giftIds = giftIdsAttr.split(',').filter(Boolean);
+
+        var items = [{
+          id: parseInt(idInput.value, 10),
+          quantity: 1
+        }];
+        if (root.dataset.sbxMode === 'sub' && planInput && !planInput.disabled && planInput.value) {
+          items[0].selling_plan = parseInt(planInput.value, 10);
+        }
+        giftIds.forEach(function (gid) {
+          items.push({ id: parseInt(gid, 10), quantity: 1 });
+        });
+
+        var addUrl = '{{ routes.cart_add_url }}';
+        if (addUrl.indexOf('.js') === -1) addUrl += '.js';
+
+        fetch(addUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ items: items })
+        })
+          .then(function (res) {
+            if (!res.ok) return res.json().then(function (err) { throw err; });
+            return res.json();
+          })
+          .then(function () {
+            document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+            document.dispatchEvent(new CustomEvent('cart:updated', { bubbles: true }));
+            var drawer = document.querySelector('cart-drawer');
+            if (drawer && typeof drawer.show === 'function') {
+              drawer.show();
+            } else if (drawer && typeof drawer.open === 'function') {
+              drawer.open();
+            } else {
+              window.location.href = '{{ routes.cart_url }}';
+            }
+          })
+          .catch(function (err) {
+            console.error('[bundle-buybox] add to cart failed', err);
+            window.location.href = '{{ routes.cart_url }}';
+          });
+      }, true);
+    })();
+  </script>
+{%- endif -%}

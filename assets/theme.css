@@ -10464,7 +10464,6 @@ body {
 
 body:has(.sbx) recharge-subscription-widget { display: none !important; }
 body:has(.sbx) [data-block-type="variant-picker"],
-body:has(.sbx) [data-block-type="price"],
 body:has(.sbx) [data-block-type="quantity-selector"] { display: none !important; }
 
 /* ==============================================================

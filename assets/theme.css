@@ -7640,6 +7640,13 @@ product-rerender {
   --product-info-block-spacing: var(--spacing-4);
 }
 
+/* Match the gap below the badge to the gap above it: without this,
+   margin collapsing lets the *next* block's own (larger) top margin
+   win, making the bottom gap bigger than the top one. */
+.product-info__block-item:where([data-block-type="badges"]) + .product-info__block-item {
+  margin-block-start: 0 !important;
+}
+
 .product-info__sku {
   display: block;
 }

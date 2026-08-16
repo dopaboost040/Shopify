@@ -10509,6 +10509,7 @@ recharge-subscription-widget::part(rc-benefits__list) {
 
 .sbx__tiles { display: flex; flex-direction: column; gap: 6px; }
 .sbx__tile { position: relative; border: 1px solid #e8e0d3; border-radius: 10px; padding: 9px 10px; cursor: pointer; background: #fff; overflow: hidden; }
+.sbx__tile--has-gifts { padding-top: 24px; }
 .sbx__tile--selected { border-color: #c1633f; box-shadow: 0 0 0 1px #c1633f; }
 .sbx__tile-row { display: flex; align-items: center; gap: 8px; }
 .sbx__tile-img { display: flex; flex-shrink: 0; }
@@ -10524,7 +10525,7 @@ recharge-subscription-widget::part(rc-benefits__list) {
 .sbx__price { display: block; font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
 .sbx__compare { display: block; font-size: 10px; color: #948979; text-decoration: line-through; }
 
-.sbx__ribbon { position: absolute; top: 8px; right: 0; border-radius: 0 0 0 6px; background: #c1633f; color: #fff; font-size: 9px; font-weight: 700; padding: 3px 8px; line-height: 1.2; }
+.sbx__ribbon { position: absolute; top: 0; right: 0; border-radius: 0 9px 0 8px; background: #c1633f; color: #fff; font-size: 9px; font-weight: 700; padding: 4px 10px; line-height: 1.2; white-space: nowrap; }
 
 .sbx__gift-row { display: flex; align-items: center; gap: 6px; margin: 7px -10px -9px; padding: 6px 10px; background: #f6f0e7; border-top: 1px solid #e8e0d3; }
 .sbx__gift-img { width: 20px; height: 20px; object-fit: contain; border-radius: 3px; flex-shrink: 0; }
@@ -10543,6 +10544,7 @@ recharge-subscription-widget::part(rc-benefits__list) {
   .sbx__trust-pill { padding: 6px 8px; font-size: 10px; gap: 5px; }
   .sbx__trust-pill svg { width: 13px; height: 13px; }
   .sbx__tile { padding: 8px 9px; }
+  .sbx__tile--has-gifts { padding-top: 22px; }
   .sbx__tile-img-el { width: 26px; height: 26px; margin-left: -8px; }
   .sbx__tile-title { font-size: 13px; }
   .sbx__price { font-size: 13px; }

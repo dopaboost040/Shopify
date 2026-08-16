@@ -10532,7 +10532,6 @@ recharge-subscription-widget::part(rc-benefits__list) {
 .sbx__gift-label { font-size: 11px; font-weight: 600; color: #1a1a1a; flex: 1; min-width: 0; line-height: 1.2; }
 .sbx__gift-value { font-size: 10px; color: #948979; text-decoration: line-through; flex-shrink: 0; }
 
-.sbx[data-sbx-mode="onetime"] .sbx__trust { display: none; }
 .sbx[data-sbx-mode="onetime"] .sbx__mode-btn[data-sbx-mode="sub"] { box-shadow: none; background: transparent; }
 .sbx[data-sbx-mode="onetime"] .sbx__mode-btn[data-sbx-mode="onetime"] { background: #ffffff; box-shadow: 0 1px 6px rgba(0,0,0,.08); }
 

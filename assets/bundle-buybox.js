@@ -103,6 +103,11 @@
     return candidates[0] || null;
   }
 
+  // Free gifts are handled by the Bogos app (triggers off the cart
+  // contents once the main item is added), not by this component —
+  // so submission is a single normal add-to-cart. This guard only
+  // makes sure a stray selling_plan from a previous tile/mode isn't
+  // left enabled when the customer is in one-time mode.
   document.addEventListener('submit', function (e) {
     var form = e.target;
     if (!form.matches || !form.matches('form[action*="/cart/add"]')) return;
@@ -114,56 +119,5 @@
     planInputs.forEach(function (input) {
       if (root.dataset.sbxMode !== 'sub') input.disabled = true;
     });
-
-    var tile = root.querySelector('[data-sbx-tile].sbx__tile--selected');
-    var giftIdsAttr = tile ? tile.getAttribute('data-gift-variant-ids') : '';
-    if (!giftIdsAttr) return;
-
-    e.preventDefault();
-    e.stopImmediatePropagation();
-
-    var idInput = root.querySelector('[data-sbx-id-input]');
-    var planInput = root.querySelector('[data-sbx-plan-input]');
-    var giftIds = giftIdsAttr.split(',').filter(Boolean);
-
-    var items = [{
-      id: parseInt(idInput.value, 10),
-      quantity: 1
-    }];
-    if (root.dataset.sbxMode === 'sub' && planInput && !planInput.disabled && planInput.value) {
-      items[0].selling_plan = parseInt(planInput.value, 10);
-    }
-    giftIds.forEach(function (gid) {
-      items.push({ id: parseInt(gid, 10), quantity: 1 });
-    });
-
-    var addUrl = root.dataset.cartAddUrl || '/cart/add.js';
-    if (addUrl.indexOf('.js') === -1) addUrl += '.js';
-
-    fetch(addUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ items: items })
-    })
-      .then(function (res) {
-        if (!res.ok) return res.json().then(function (err) { throw err; });
-        return res.json();
-      })
-      .then(function () {
-        document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
-        document.dispatchEvent(new CustomEvent('cart:updated', { bubbles: true }));
-        var drawer = document.querySelector('cart-drawer');
-        if (drawer && typeof drawer.show === 'function') {
-          drawer.show();
-        } else if (drawer && typeof drawer.open === 'function') {
-          drawer.open();
-        } else {
-          window.location.href = root.dataset.cartUrl || '/cart';
-        }
-      })
-      .catch(function (err) {
-        console.error('[bundle-buybox] add to cart failed', err);
-        window.location.href = root.dataset.cartUrl || '/cart';
-      });
   }, true);
 })();

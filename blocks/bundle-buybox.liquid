@@ -1,0 +1,18 @@
+{%- comment -%}
+  Native theme block wrapper around snippets/bundle-buybox.liquid.
+  This exists because the merchant-facing "Custom Liquid" block type
+  (blocks/liquid.liquid, block.settings.liquid) rendered as silent
+  empty output on the storefront for this component, even after
+  trimming it to markup-only (~8.5k chars) with CSS/JS moved to real
+  assets. A real theme block has no such restriction.
+{%- endcomment -%}
+<div {{ block.shopify_attributes }}>
+  {%- render 'bundle-buybox' -%}
+</div>
+
+{% schema %}
+{
+  "name": "Bundle buy-box",
+  "tag": null
+}
+{% endschema %}

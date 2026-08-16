@@ -15,26 +15,32 @@
   hardcoded except which gift belongs to which pack size.
 
   CSS lives in assets/theme.css (.sbx rules) and JS in
-  assets/bundle-buybox.js — kept out of this Custom Liquid block on
-  purpose, a large inline <style>/<script> here rendered as silent
-  empty output on the storefront even though the theme editor preview
-  and the Admin API both showed the content was stored correctly.
+  assets/bundle-buybox.js. Deliberately written with only for/if/unless/
+  continue/assign/capture — no `push`/`first`/`null`, in case this
+  theme's Liquid build doesn't support the newer array filters (that's
+  the leading suspect for this block rendering as silent empty output
+  on the storefront despite being correctly stored and a real, non-
+  sandboxed theme block).
 {%- endcomment -%}
 
-{%- assign pack_variants = '' | split: ',' -%}
+{%- assign has_pack_variant = false -%}
+{%- assign one_pack_price = 0 -%}
+{%- assign first_pack_variant_id = 0 -%}
 {%- for v in product.variants -%}
   {%- if v.title contains 'Pack' -%}
-    {%- assign pack_variants = pack_variants | push: v -%}
+    {%- assign has_pack_variant = true -%}
+    {%- if first_pack_variant_id == 0 -%}
+      {%- assign first_pack_variant_id = v.id -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if v.title == '1 Pack' -%}
+    {%- assign one_pack_price = v.price -%}
   {%- endif -%}
 {%- endfor -%}
 
-{%- if pack_variants.size == 0 -%}
-  {%- comment -%} Not a pack-tier product: render nothing. {%- endcomment -%}
-{%- else -%}
-
-  {%- assign one_pack_variant = pack_variants | first -%}
-  {%- assign one_pack_price = one_pack_variant.price -%}
+{%- if has_pack_variant -%}
   {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
+  {%- assign is_first_tile = true -%}
 
   <div class="sbx" data-sbx data-cart-add-url="{{ routes.cart_add_url }}" data-cart-url="{{ routes.cart_url }}">
     <div class="sbx__mode" role="radiogroup" aria-label="Purchase option">
@@ -59,7 +65,11 @@
     </div>
 
     <div class="sbx__tiles">
-      {%- for variant in pack_variants -%}
+      {%- for variant in product.variants -%}
+        {%- unless variant.title contains 'Pack' -%}
+          {%- continue -%}
+        {%- endunless -%}
+
         {%- assign packs = variant.title | remove: ' Pack' | remove: 's' | strip | plus: 0 -%}
         {%- if packs == 0 -%}{%- assign packs = 1 -%}{%- endif -%}
 
@@ -71,48 +81,54 @@
         {%- assign show_compare = false -%}
         {%- if anchor > variant.price -%}{%- assign show_compare = true -%}{%- endif -%}
 
-        {%- assign plan = null -%}
+        {%- assign plan_id = '' -%}
+        {%- assign plan_price = variant.price -%}
         {%- for spg in variant.selling_plan_allocations -%}
           {%- if spg.selling_plan.name contains variant.title -%}
-            {%- assign plan = spg -%}
-            {%- break -%}
+            {%- assign plan_id = spg.selling_plan.id -%}
+            {%- assign plan_price = spg.price -%}
           {%- endif -%}
         {%- endfor -%}
 
-        {%- assign gift_handles = '' | split: ',' -%}
+        {%- assign gift_count = 0 -%}
+        {%- assign gift_handle_1 = '' -%}
+        {%- assign gift_handle_2 = '' -%}
         {%- if variant.title == '3 Pack' -%}
-          {%- assign gift_handles = 'energy-patches' | split: ',' -%}
+          {%- assign gift_count = 1 -%}
+          {%- assign gift_handle_1 = 'energy-patches' -%}
         {%- elsif variant.title == '6 Pack' -%}
-          {%- assign gift_handles = 'energy-patches,stress-down-patches' | split: ',' -%}
+          {%- assign gift_count = 2 -%}
+          {%- assign gift_handle_1 = 'energy-patches' -%}
+          {%- assign gift_handle_2 = 'stress-down-patches' -%}
         {%- endif -%}
 
         {%- assign gift_variant_ids = '' -%}
-        {%- for handle in gift_handles -%}
-          {%- assign gift_product_for_id = all_products[handle] -%}
-          {%- if gift_product_for_id and gift_product_for_id.selected_or_first_available_variant -%}
-            {%- if gift_variant_ids != '' -%}{%- assign gift_variant_ids = gift_variant_ids | append: ',' -%}{%- endif -%}
-            {%- assign gift_variant_ids = gift_variant_ids | append: gift_product_for_id.selected_or_first_available_variant.id -%}
-          {%- endif -%}
-        {%- endfor -%}
+        {%- if gift_handle_1 != '' -%}
+          {%- assign gp1 = all_products[gift_handle_1] -%}
+          {%- if gp1 -%}{%- assign gift_variant_ids = gp1.selected_or_first_available_variant.id -%}{%- endif -%}
+        {%- endif -%}
+        {%- if gift_handle_2 != '' -%}
+          {%- assign gp2 = all_products[gift_handle_2] -%}
+          {%- if gp2 -%}{%- assign gift_variant_ids = gift_variant_ids | append: ',' | append: gp2.selected_or_first_available_variant.id -%}{%- endif -%}
+        {%- endif -%}
 
-        <div class="sbx__tile{% if forloop.first %} sbx__tile--selected{% endif %}{% if gift_handles.size > 0 %} sbx__tile--has-gifts{% endif %}"
+        <div class="sbx__tile{% if is_first_tile %} sbx__tile--selected{% endif %}{% if gift_count > 0 %} sbx__tile--has-gifts{% endif %}"
              data-sbx-tile
              data-variant-id="{{ variant.id }}"
-             data-plan-id="{{ plan.selling_plan.id }}"
+             data-plan-id="{{ plan_id }}"
              data-price-onetime="{{ variant.price }}"
-             data-price-sub="{{ plan.price | default: variant.price }}"
+             data-price-sub="{{ plan_price }}"
              data-gift-variant-ids="{{ gift_variant_ids }}"
              role="radio"
-             aria-checked="{% if forloop.first %}true{% else %}false{% endif %}"
-             tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
+             aria-checked="{% if is_first_tile %}true{% else %}false{% endif %}"
+             tabindex="{% if is_first_tile %}0{% else %}-1{% endif %}">
           <div class="sbx__tile-row">
             <div class="sbx__tile-img">
-              {%- for i in (1..packs) -%}
-                {%- if i > 3 -%}{%- break -%}{%- endif -%}
-                {%- if product.featured_image -%}
-                  {{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}
-                {%- endif -%}
-              {%- endfor -%}
+              {%- if product.featured_image -%}
+                {%- if packs >= 1 -%}{{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}{%- endif -%}
+                {%- if packs >= 2 -%}{{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}{%- endif -%}
+                {%- if packs >= 3 -%}{{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}{%- endif -%}
+              {%- endif -%}
             </div>
             <div class="sbx__tile-body">
               <div class="sbx__tile-title-row">
@@ -131,13 +147,13 @@
               {%- endif -%}
             </div>
           </div>
-          {%- if gift_handles.size == 1 -%}
+          {%- if gift_count == 1 -%}
             <div class="sbx__ribbon">{{ 'sbx.ribbon_one' | t: default: 'Free Gift' }} 🎁</div>
-          {%- elsif gift_handles.size > 1 -%}
-            <div class="sbx__ribbon">{{ gift_handles.size }} {{ 'sbx.ribbon_many' | t: default: 'Free Gifts' }} 🎁</div>
+          {%- elsif gift_count == 2 -%}
+            <div class="sbx__ribbon">{{ gift_count }} {{ 'sbx.ribbon_many' | t: default: 'Free Gifts' }} 🎁</div>
           {%- endif -%}
-          {%- for handle in gift_handles -%}
-            {%- assign gift_product = all_products[handle] -%}
+          {%- if gift_handle_1 != '' -%}
+            {%- assign gift_product = all_products[gift_handle_1] -%}
             {%- if gift_product -%}
               <div class="sbx__gift-row">
                 {%- if gift_product.featured_image -%}
@@ -147,12 +163,26 @@
                 <span class="sbx__gift-value">{{ gift_product.price | money }}</span>
               </div>
             {%- endif -%}
-          {%- endfor -%}
+          {%- endif -%}
+          {%- if gift_handle_2 != '' -%}
+            {%- assign gift_product = all_products[gift_handle_2] -%}
+            {%- if gift_product -%}
+              <div class="sbx__gift-row">
+                {%- if gift_product.featured_image -%}
+                  {{ gift_product.featured_image | image_url: width: 60 | image_tag: loading: 'lazy', alt: gift_product.title, class: 'sbx__gift-img' }}
+                {%- endif -%}
+                <span class="sbx__gift-label">+ {{ 'sbx.free' | t: default: 'FREE' }} {{ gift_product.title }}</span>
+                <span class="sbx__gift-value">{{ gift_product.price | money }}</span>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
         </div>
+
+        {%- assign is_first_tile = false -%}
       {%- endfor -%}
     </div>
 
-    <input type="hidden" data-sbx-id-input name="id" form="{{ product_form_id }}" value="{{ pack_variants.first.id }}">
+    <input type="hidden" data-sbx-id-input name="id" form="{{ product_form_id }}" value="{{ first_pack_variant_id }}">
     <input type="hidden" data-sbx-plan-input name="selling_plan" form="{{ product_form_id }}" value="">
   </div>
 

@@ -68,6 +68,7 @@
         },
         "liquid_79Arfj": {
           "type": "liquid",
+          "disabled": true,
           "settings": {
             "liquid": "<div class=\"dopa-offer-text\">\n  Add 4 Packs To Your Cart, Pay For 2\n</div>\n\n<style>\n  .dopa-offer-text {\n    color: #C1633F;\n    text-align: center;\n    font-size: 16px;\n    font-weight: 700;\n    line-height: 1.2;\n    margin: 0 0 -10px 0;\n    padding: 0;\n    font-family: inherit;\n  }\n\n  @media (min-width: 750px) {\n    .dopa-offer-text {\n      font-size: 22px;\n      margin-bottom: 4px;\n    }\n  }\n</style>"
           }

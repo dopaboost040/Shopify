@@ -11,6 +11,51 @@
       return root.querySelector('[data-sbx-tile].sbx__tile--selected');
     }
 
+    function formatMoney(amount) {
+      return Shopify.formatMoney(Math.round(amount * 100), window.theme && window.theme.moneyFormat);
+    }
+
+    function updateStickyBar(tile, price) {
+      var stickyRoot = document.querySelector('[data-dopa-sticky-atc]');
+      if (!stickyRoot || !tile || !window.Shopify || !Shopify.formatMoney) return;
+
+      var packs = parseInt(tile.getAttribute('data-packs'), 10) || 1;
+      var compare = parseFloat(tile.getAttribute('data-compare')) || 0;
+      var priceNum = parseFloat(price);
+      if (isNaN(priceNum)) return;
+
+      var titleEl = stickyRoot.querySelector('[data-dopa-sticky-title]');
+      var priceEl = stickyRoot.querySelector('[data-dopa-sticky-price]');
+      var permoEl = stickyRoot.querySelector('[data-dopa-sticky-permo]');
+      var saveEl = stickyRoot.querySelector('[data-dopa-sticky-save]');
+
+      if (titleEl) {
+        var supplyLabel = packs === 1 ? '1 Month Supply' : packs + ' Months Supply';
+        titleEl.textContent = packs + '-Pack — ' + supplyLabel;
+      }
+
+      if (priceEl) priceEl.textContent = formatMoney(priceNum);
+
+      if (permoEl) {
+        if (packs > 1) {
+          permoEl.textContent = ' · ' + formatMoney(priceNum / packs) + '/mo';
+          permoEl.hidden = false;
+        } else {
+          permoEl.hidden = true;
+        }
+      }
+
+      if (saveEl) {
+        if (compare > priceNum) {
+          var pct = Math.round((compare - priceNum) / compare * 100);
+          saveEl.textContent = 'SAVE ' + pct + '%';
+          saveEl.hidden = false;
+        } else {
+          saveEl.hidden = true;
+        }
+      }
+    }
+
     function render() {
       root.dataset.sbxMode = state.mode;
       root.querySelectorAll('[data-sbx-mode]').forEach(function (btn) {
@@ -39,6 +84,11 @@
           planInput.value = '';
           planInput.disabled = true;
         }
+
+        var stickyPrice = state.mode === 'sub'
+          ? tile.getAttribute('data-price-sub')
+          : tile.getAttribute('data-price-onetime');
+        updateStickyBar(tile, stickyPrice);
       }
     }
 

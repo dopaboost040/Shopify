@@ -119,6 +119,9 @@
              data-price-onetime="{{ variant.price }}"
              data-price-sub="{{ plan_price }}"
              data-gift-variant-ids="{{ gift_variant_ids }}"
+             data-packs="{{ packs }}"
+             data-compare="{% if show_compare %}{{ anchor }}{% else %}0{% endif %}"
+             data-title="{{ variant.title }}"
              role="radio"
              aria-checked="{% if is_first_tile %}true{% else %}false{% endif %}"
              tabindex="{% if is_first_tile %}0{% else %}-1{% endif %}">

@@ -63,38 +63,62 @@
 {%- if section.settings.show_fixed_add_to_cart and product.available and buy_buttons_block != blank -%}
   <product-rerender id="{{ product_form_id }}-sticky-bar" observe-form="{{ product_form_id }}">
     {%- if product.selected_or_first_available_variant.available -%}
-      <product-quick-add form="{{ product_form_id }}" class="product-quick-add">
-        {%- assign button_label = 'product.general.add_to_cart_button' | t -%}
+      {%- assign button_label = 'product.general.add_to_cart_button' | t -%}
 
-        <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" class="sm:hidden">
-          {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true, stretch: true, size: 'lg' -%}
-        </buy-buttons>
+      {%- if product.template_suffix == 'bundle-widget-test' -%}
+        {%- comment -%}
+          Scoped to this test product only: mirrors the pack tile currently
+          selected in the buy-box (title, price, per-pack, sale %) instead
+          of the theme's generic image/title/price card. Kept out of the
+          shared branch below so the real Dopamine Patches PDP is untouched.
+        {%- endcomment -%}
+        <product-quick-add form="{{ product_form_id }}" class="product-quick-add dopa-sticky-atc" data-dopa-sticky-atc>
+          <div class="dopa-sticky-atc__info">
+            <div class="dopa-sticky-atc__title" data-dopa-sticky-title>{{ product.selected_or_first_available_variant.title }}</div>
+            <div class="dopa-sticky-atc__price">
+              <span data-dopa-sticky-price>{{ product.selected_or_first_available_variant.price | money }}</span>
+              <span class="dopa-sticky-atc__permo" data-dopa-sticky-permo hidden></span>
+            </div>
+          </div>
+          <div class="dopa-sticky-atc__cta">
+            <span class="dopa-sticky-atc__save" data-dopa-sticky-save hidden></span>
+            <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" class="dopa-sticky-atc__btn-wrap">
+              {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color -%}
+            </buy-buttons>
+          </div>
+        </product-quick-add>
+      {%- else -%}
+        <product-quick-add form="{{ product_form_id }}" class="product-quick-add">
+          <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" class="sm:hidden">
+            {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true, stretch: true, size: 'lg' -%}
+          </buy-buttons>
 
-        {%- assign image = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+          {%- assign image = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
 
-        <div class="product-quick-add__variant {% if image == blank %}no-image{% endif %} hidden sm:grid">
-          {%- if image != blank -%}
-            <variant-media widths="80,160" form="{{ product_form_id }}">
-              {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: '80px', widths: '80,160', class: 'rounded-xs' -}}
-            </variant-media>
-          {%- endif -%}
-
-          <div class="v-stack gap-0.5">
-            {%- assign vendor_block = section.blocks | where: 'type', 'vendor' -%}
-
-            {%- if vendor_block != blank -%}
-              {%- render 'vendor' with product.vendor, class: 'text-xs' -%}
+          <div class="product-quick-add__variant {% if image == blank %}no-image{% endif %} hidden sm:grid">
+            {%- if image != blank -%}
+              <variant-media widths="80,160" form="{{ product_form_id }}">
+                {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: '80px', widths: '80,160', class: 'rounded-xs' -}}
+              </variant-media>
             {%- endif -%}
 
-            <a href="{{ product.url }}" class="bold truncate-text">{{ product.title }}</a>
-            {%- render 'price-list', product: product, variant: product.selected_or_first_available_variant, form_id: product_form_id -%}
-          </div>
+            <div class="v-stack gap-0.5">
+              {%- assign vendor_block = section.blocks | where: 'type', 'vendor' -%}
 
-          <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" force-secondary-button>
-            {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true -%}
-          </buy-buttons>
-        </div>
-      </product-quick-add>
+              {%- if vendor_block != blank -%}
+                {%- render 'vendor' with product.vendor, class: 'text-xs' -%}
+              {%- endif -%}
+
+              <a href="{{ product.url }}" class="bold truncate-text">{{ product.title }}</a>
+              {%- render 'price-list', product: product, variant: product.selected_or_first_available_variant, form_id: product_form_id -%}
+            </div>
+
+            <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" force-secondary-button>
+              {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true -%}
+            </buy-buttons>
+          </div>
+        </product-quick-add>
+      {%- endif -%}
     {%- endif -%}
   </product-rerender>
 {%- endif -%}

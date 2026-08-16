@@ -10466,3 +10466,69 @@ body:has(.sbx) recharge-subscription-widget { display: none !important; }
 body:has(.sbx) [data-block-type="variant-picker"],
 body:has(.sbx) [data-block-type="price"],
 body:has(.sbx) [data-block-type="quantity-selector"] { display: none !important; }
+
+/* ==============================================================
+   Sticky add-to-cart bar override (product.bundle-widget-test.json
+   only — rendered only when product.template_suffix is that
+   template, see sections/main-product.liquid). Mirrors the pack
+   tile currently selected in the buy-box instead of the theme's
+   generic image/title/price card.
+   ============================================================== */
+.dopa-sticky-atc {
+  background: #241209 !important;
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 12px 14px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dopa-sticky-atc__info { min-width: 0; }
+
+.dopa-sticky-atc__title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dopa-sticky-atc__price {
+  color: #cbbfb4;
+  font-size: 12.5px;
+  margin-top: 2px;
+}
+
+.dopa-sticky-atc__price [data-dopa-sticky-price] { color: #ffffff; font-weight: 600; }
+
+.dopa-sticky-atc__cta {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.dopa-sticky-atc__save {
+  position: absolute;
+  top: -12px;
+  right: 8px;
+  background: #f0c417;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.dopa-sticky-atc__btn-wrap .button {
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 700px) {
+  .dopa-sticky-atc { width: 22rem; }
+}

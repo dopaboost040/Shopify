@@ -10512,11 +10512,30 @@ recharge-subscription-widget::part(rc-benefits__list) {
 .sbx__tile--has-gifts { padding-top: 24px; }
 .sbx__tile--selected { border-color: #c1633f; box-shadow: 0 0 0 1px #c1633f; }
 .sbx__tile-row { display: flex; align-items: center; gap: 8px; }
-.sbx__tile-img { display: flex; align-items: center; flex-shrink: 0; padding-left: 6px; }
-.sbx__tile-img-el { width: 44px; height: 44px; object-fit: contain; border-radius: 6px; background: transparent; position: relative; margin-left: -15px; filter: drop-shadow(0 2px 5px rgba(26,26,26,.18)); }
-.sbx__tile-img-el:first-child { margin-left: 0; transform: none; z-index: 3; }
-.sbx__tile-img-el:nth-child(odd) { transform: rotate(-6deg) translateY(1px); }
-.sbx__tile-img-el:nth-child(even) { transform: rotate(6deg) translateY(-2px); }
+.sbx__tile-img { position: relative; flex-shrink: 0; }
+.sbx__tile-img-el { position: relative; width: 34px; height: 44px; object-fit: contain; border-radius: 4px; background: transparent; margin-left: -12px; filter: drop-shadow(0 2px 5px rgba(26,26,26,.18)); }
+.sbx__tile-img-el:first-child { margin-left: 0; }
+
+/* 1 Pack: single image, centered, a little larger, no stacking */
+.sbx__tile-img--p1 { width: 42px; height: 54px; }
+.sbx__tile-img--p1 .sbx__tile-img-el { position: static; width: 42px; height: 54px; margin-left: 0; }
+
+/* 3 Packs: front-center pack with a pair fanned out behind it */
+.sbx__tile-img--p3 { width: 74px; height: 60px; }
+.sbx__tile-img--p3 .sbx__tile-img-el { position: absolute; width: 30px; height: 40px; margin-left: 0; }
+.sbx__tile-img--p3 .sbx__tile-img-el:nth-child(1) { left: 22px; top: 18px; z-index: 3; transform: rotate(0deg); }
+.sbx__tile-img--p3 .sbx__tile-img-el:nth-child(2) { left: 2px; top: 0; z-index: 2; transform: rotate(-10deg); }
+.sbx__tile-img--p3 .sbx__tile-img-el:nth-child(3) { left: 42px; top: 0; z-index: 2; transform: rotate(10deg); }
+
+/* 6 Packs: diagonal staircase, each pack peeking out from behind the next */
+.sbx__tile-img--p6 { width: 84px; height: 78px; }
+.sbx__tile-img--p6 .sbx__tile-img-el { position: absolute; width: 28px; height: 38px; margin-left: 0; }
+.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(1) { left: 0; top: 0; z-index: 1; }
+.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(2) { left: 10px; top: 8px; z-index: 2; }
+.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(3) { left: 20px; top: 16px; z-index: 3; }
+.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(4) { left: 30px; top: 24px; z-index: 4; }
+.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(5) { left: 40px; top: 32px; z-index: 5; }
+.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(6) { left: 50px; top: 40px; z-index: 6; }
 .sbx__tile-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
 .sbx__tile-title-row { display: flex; align-items: center; gap: 6px; min-width: 0; flex-wrap: wrap; }
 .sbx__tile-title { font-family: var(--font-heading, inherit); font-size: 14px; font-weight: 600; color: #1a1a1a; line-height: 1.2; }
@@ -10546,7 +10565,7 @@ recharge-subscription-widget::part(rc-benefits__list) {
   .sbx__trust-pill svg { width: 13px; height: 13px; }
   .sbx__tile { padding: 8px 9px; }
   .sbx__tile--has-gifts { padding-top: 22px; }
-  .sbx__tile-img-el { width: 34px; height: 34px; margin-left: -12px; }
+  .sbx__tile-img { transform: scale(.78); transform-origin: left center; margin-right: -16px; }
   .sbx__tile-title { font-size: 13px; }
   .sbx__price { font-size: 13px; }
   .sbx__chip, .sbx__supply, .sbx__compare { font-size: 9.5px; }

@@ -1,10 +1,14 @@
 {%- comment -%}
-  Native theme block wrapper around snippets/bundle-buybox.liquid.
-  This exists because the merchant-facing "Custom Liquid" block type
-  (blocks/liquid.liquid, block.settings.liquid) rendered as silent
-  empty output on the storefront for this component, even after
-  trimming it to markup-only (~8.5k chars) with CSS/JS moved to real
-  assets. A real theme block has no such restriction.
+  Schema/editor definition for the "Bundle buy-box" block type.
+  NOTE: the actual HTML for this block type does NOT render through
+  this file. snippets/product-info.liquid renders theme-defined block
+  types (everything except "@app") via its own {% case block.type %}
+  statement instead of {% render block %} — confirmed by checking how
+  every other native block type (vendor, title, price, liquid, ...) is
+  handled there: each has its own inline `{% when '<type>' %}` branch.
+  The real render call is the `{% when 'bundle-buybox' %}` branch added
+  next to `{% when 'liquid' %}` in that file. This file only needs to
+  exist so the block type is registered/named for the theme editor.
 {%- endcomment -%}
 <div {{ block.shopify_attributes }}>
   {%- render 'bundle-buybox' -%}

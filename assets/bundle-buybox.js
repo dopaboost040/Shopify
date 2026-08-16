@@ -165,6 +165,19 @@
     var root = findBuyboxForForm(form);
     if (!root) return;
 
+    // form.elements includes every control associated with this form,
+    // whether it's a real descendant (e.g. buy-buttons.liquid's own
+    // hidden "id" input, which stays enabled whenever no variant-picker
+    // block happens to be present) or linked in via a form="..."
+    // attribute like ours. Disable every other "id" field so a stray
+    // one can never win the submission over the buy-box's own choice.
+    var ourIdInput = root.querySelector('[data-sbx-id-input]');
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (el.name === 'id' && el !== ourIdInput) {
+        el.disabled = true;
+      }
+    });
+
     var planInputs = form.querySelectorAll('input[name="selling_plan"]');
     planInputs.forEach(function (input) {
       if (root.dataset.sbxMode !== 'sub') input.disabled = true;

@@ -123,11 +123,12 @@
              aria-checked="{% if is_first_tile %}true{% else %}false{% endif %}"
              tabindex="{% if is_first_tile %}0{% else %}-1{% endif %}">
           <div class="sbx__tile-row">
-            <div class="sbx__tile-img">
+            <div class="sbx__tile-img sbx__tile-img--p{{ packs | at_most: 6 }}">
               {%- if product.featured_image -%}
-                {%- if packs >= 1 -%}{{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}{%- endif -%}
-                {%- if packs >= 2 -%}{{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}{%- endif -%}
-                {%- if packs >= 3 -%}{{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}{%- endif -%}
+                {%- for i in (1..packs) -%}
+                  {%- if i > 6 -%}{%- break -%}{%- endif -%}
+                  {{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}
+                {%- endfor -%}
               {%- endif -%}
             </div>
             <div class="sbx__tile-body">

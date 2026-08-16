@@ -1,5 +1,17 @@
-<div {{ block.shopify_attributes }} style="background:#ff00ff;color:#000;font-size:32px;font-weight:900;padding:40px;border:8px solid black;">
-  BUYBOX TEST MARKER 12345
+{%- comment -%}
+  Schema/editor definition for the "Bundle buy-box" block type.
+  NOTE: the actual HTML for this block type does NOT render through
+  this file. snippets/product-info.liquid renders theme-defined block
+  types (everything except "@app") via its own {% case block.type %}
+  statement instead of {% render block %} — confirmed by checking how
+  every other native block type (vendor, title, price, liquid, ...) is
+  handled there: each has its own inline `{% when '<type>' %}` branch.
+  The real render call is the `{% when 'bundle-buybox' %}` branch added
+  next to `{% when 'liquid' %}` in that file. This file only needs to
+  exist so the block type is registered/named for the theme editor.
+{%- endcomment -%}
+<div {{ block.shopify_attributes }}>
+  {%- render 'bundle-buybox' -%}
 </div>
 
 {% schema %}

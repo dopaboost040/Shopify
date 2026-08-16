@@ -362,6 +362,9 @@ Supported variables
             </div>
           {%- endif -%}
 
+        {%- when 'bundle-buybox' -%}
+          {%- render 'bundle-buybox' -%}
+
         {%- when 'associated_products' -%}
           <product-recommendations class="block" product="{{ product.id }}" limit="{{ block.settings.products_count }}" intent="complementary">
             {%- if recommendations.performed and recommendations.products_count > 0 -%}

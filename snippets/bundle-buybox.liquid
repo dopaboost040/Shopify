@@ -13,6 +13,12 @@
   discounts configured in Shopify admin. Real price/title/image for each
   gift still comes from the live product via `all_products`, nothing is
   hardcoded except which gift belongs to which pack size.
+
+  CSS lives in assets/theme.css (.sbx rules) and JS in
+  assets/bundle-buybox.js — kept out of this Custom Liquid block on
+  purpose, a large inline <style>/<script> here rendered as silent
+  empty output on the storefront even though the theme editor preview
+  and the Admin API both showed the content was stored correctly.
 {%- endcomment -%}
 
 {%- assign pack_variants = '' | split: ',' -%}
@@ -30,10 +36,7 @@
   {%- assign one_pack_price = one_pack_variant.price -%}
   {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
-  {%- comment -%} gift map: variant title -> list of gift product handles {%- endcomment -%}
-  {%- assign gift_map_keys = '3 Pack,6 Pack' | split: ',' -%}
-
-  <div class="sbx" data-sbx>
+  <div class="sbx" data-sbx data-cart-add-url="{{ routes.cart_add_url }}" data-cart-url="{{ routes.cart_url }}">
     <div class="sbx__mode" role="radiogroup" aria-label="Purchase option">
       <button type="button" class="sbx__mode-btn" data-sbx-mode="sub" role="radio" aria-checked="true">
         <span class="sbx__mode-title">{{ 'sbx.subscribe_title' | t: default: 'Subscribe & Save' }}</span>
@@ -107,13 +110,13 @@
               {%- for i in (1..packs) -%}
                 {%- if i > 3 -%}{%- break -%}{%- endif -%}
                 {%- if product.featured_image -%}
-                  {{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el', style: 'z-index:' | append: i }}
+                  {{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}
                 {%- endif -%}
               {%- endfor -%}
             </div>
             <div class="sbx__tile-body">
               <div class="sbx__tile-title-row">
-                <span class="sbx__tile-title">{{ variant.title | replace: '1 Pack', '1 Pack' | replace: '3 Pack', '3 Packs' | replace: '6 Pack', '6 Packs' }}</span>
+                <span class="sbx__tile-title">{{ variant.title | replace: '3 Pack', '3 Packs' | replace: '6 Pack', '6 Packs' }}</span>
                 {%- if variant.title == '3 Pack' -%}
                   <span class="sbx__badge">{{ 'sbx.badge_3pack' | t: default: 'BUY 2 GET 1 FREE' }}</span>
                 {%- endif -%}
@@ -153,240 +156,5 @@
     <input type="hidden" data-sbx-plan-input name="selling_plan" form="{{ product_form_id }}" value="">
   </div>
 
-  <style>
-    .sbx { display: flex; flex-direction: column; gap: 12px; font-family: inherit; }
-
-    .sbx__mode { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: #f6f0e7; border-radius: 12px; padding: 6px; }
-    .sbx__mode-btn { appearance: none; border: none; background: transparent; border-radius: 8px; padding: 14px 12px; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-    .sbx__mode-btn[aria-checked="true"] { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
-    .sbx__mode-title { font-family: var(--font-heading, inherit); font-size: 17px; font-weight: 700; color: #1a1a1a; }
-    .sbx__mode-sub { font-size: 12px; color: #948979; }
-    .sbx__mode-btn[aria-checked="true"] .sbx__mode-sub { color: #948979; }
-
-    .sbx__trust { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .sbx__trust-pill { display: flex; align-items: center; gap: 8px; background: #c1633f; color: #fff; border-radius: 10px; padding: 12px 14px; font-size: 13px; font-weight: 600; }
-    .sbx__trust-pill svg { width: 18px; height: 18px; flex-shrink: 0; }
-
-    .sbx__tiles { display: flex; flex-direction: column; gap: 12px; }
-    .sbx__tile { position: relative; border: 1px solid #e8e0d3; border-radius: 12px; padding: 14px; cursor: pointer; background: #fff; overflow: hidden; }
-    .sbx__tile--selected { border-color: #c1633f; box-shadow: 0 0 0 1px #c1633f; }
-    .sbx__tile-row { display: flex; align-items: center; gap: 12px; }
-    .sbx__tile-img { display: flex; flex-shrink: 0; }
-    .sbx__tile-img-el { width: 40px; height: 40px; object-fit: contain; border-radius: 4px; background: #f6f0e7; position: relative; margin-left: -14px; }
-    .sbx__tile-img-el:first-child { margin-left: 0; }
-    .sbx__tile-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
-    .sbx__tile-title-row { display: flex; align-items: center; gap: 8px; min-width: 0; flex-wrap: wrap; }
-    .sbx__tile-title { font-family: var(--font-heading, inherit); font-size: 18px; font-weight: 600; color: #1a1a1a; }
-    .sbx__badge { background: #f0c417; color: #1a1a1a; font-size: 11px; font-weight: 700; border-radius: 100px; padding: 3px 8px; white-space: nowrap; }
-    .sbx__chip { display: inline-block; width: fit-content; background: #f6f0e7; color: #1a1a1a; font-size: 12px; font-weight: 600; border-radius: 100px; padding: 3px 10px; }
-    .sbx__supply { font-size: 12px; color: #948979; }
-    .sbx__tile-price { text-align: right; flex-shrink: 0; }
-    .sbx__price { display: block; font-size: 18px; font-weight: 700; color: #1a1a1a; }
-    .sbx__compare { display: block; font-size: 12px; color: #948979; text-decoration: line-through; }
-
-    .sbx__ribbon { position: absolute; top: 12px; right: -30px; background: #c1633f; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 34px; transform: rotate(0deg); }
-    @media (min-width: 1px) { .sbx__ribbon { right: 0; border-radius: 0 0 0 8px; padding: 4px 10px; } }
-
-    .sbx__gift-row { display: flex; align-items: center; gap: 8px; margin: 10px -14px -14px; padding: 10px 14px; background: #f6f0e7; border-top: 1px solid #e8e0d3; }
-    .sbx__gift-img { width: 28px; height: 28px; object-fit: contain; border-radius: 4px; flex-shrink: 0; }
-    .sbx__gift-label { font-size: 13px; font-weight: 600; color: #1a1a1a; flex: 1; min-width: 0; }
-    .sbx__gift-value { font-size: 12px; color: #948979; text-decoration: line-through; flex-shrink: 0; }
-
-    .sbx[data-sbx-mode="onetime"] .sbx__trust { display: none; }
-    .sbx[data-sbx-mode="onetime"] .sbx__mode-btn[data-sbx-mode="sub"] { box-shadow: none; background: transparent; }
-    .sbx[data-sbx-mode="onetime"] .sbx__mode-btn[data-sbx-mode="onetime"] { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
-
-    body:has(.sbx) recharge-subscription-widget { display: none !important; }
-    /* The buy-box tiles ARE the variant picker: hide the theme's native
-       variant/price/quantity controls to avoid two competing selectors
-       fighting over the same form fields. */
-    body:has(.sbx) [data-block-type="variant-picker"],
-    body:has(.sbx) [data-block-type="price"],
-    body:has(.sbx) [data-block-type="quantity-selector"] { display: none !important; }
-  </style>
-
-  <script>
-    (function () {
-      function initBuybox(root) {
-        if (root.dataset.sbxInit === '1') return;
-        root.dataset.sbxInit = '1';
-
-        var state = { mode: 'sub' };
-        var idInput = root.querySelector('[data-sbx-id-input]');
-        var planInput = root.querySelector('[data-sbx-plan-input]');
-
-        function selectedTile() {
-          return root.querySelector('[data-sbx-tile].sbx__tile--selected');
-        }
-
-        function render() {
-          root.dataset.sbxMode = state.mode;
-          root.querySelectorAll('[data-sbx-mode]').forEach(function (btn) {
-            if (btn.tagName !== 'BUTTON') return;
-            var active = btn.getAttribute('data-sbx-mode') === state.mode;
-            btn.setAttribute('aria-checked', active ? 'true' : 'false');
-          });
-
-          root.querySelectorAll('[data-sbx-tile]').forEach(function (tile) {
-            var price = state.mode === 'sub'
-              ? tile.getAttribute('data-price-sub')
-              : tile.getAttribute('data-price-onetime');
-            var priceEl = tile.querySelector('[data-sbx-price]');
-            if (priceEl) {
-              var formatted = window.Shopify && Shopify.formatMoney
-                ? Shopify.formatMoney(Math.round(parseFloat(price) * 100), window.theme && window.theme.moneyFormat)
-                : priceEl.textContent;
-              if (priceEl.textContent !== formatted && !isNaN(parseFloat(price))) {
-                // Fallback formatting only if Shopify.formatMoney isn't available;
-                // otherwise leave the server-rendered one-time price as-is when in
-                // one-time mode (it is already correct from Liquid).
-              }
-            }
-          });
-
-          var tile = selectedTile();
-          if (tile) {
-            idInput.value = tile.getAttribute('data-variant-id');
-            if (state.mode === 'sub' && tile.getAttribute('data-plan-id')) {
-              planInput.value = tile.getAttribute('data-plan-id');
-              planInput.disabled = false;
-            } else {
-              planInput.value = '';
-              planInput.disabled = true;
-            }
-          }
-        }
-
-        root.addEventListener('click', function (e) {
-          var modeBtn = e.target.closest('[data-sbx-mode]');
-          if (modeBtn && modeBtn.tagName === 'BUTTON') {
-            state.mode = modeBtn.getAttribute('data-sbx-mode');
-            render();
-            return;
-          }
-          var tile = e.target.closest('[data-sbx-tile]');
-          if (tile) {
-            root.querySelectorAll('[data-sbx-tile]').forEach(function (t) {
-              t.classList.remove('sbx__tile--selected');
-              t.setAttribute('aria-checked', 'false');
-              t.setAttribute('tabindex', '-1');
-            });
-            tile.classList.add('sbx__tile--selected');
-            tile.setAttribute('aria-checked', 'true');
-            tile.setAttribute('tabindex', '0');
-            render();
-          }
-        });
-
-        root.addEventListener('keydown', function (e) {
-          if (e.key !== 'Enter' && e.key !== ' ') return;
-          var target = e.target.closest('[data-sbx-tile], [data-sbx-mode]');
-          if (!target) return;
-          e.preventDefault();
-          target.click();
-        });
-
-        render();
-
-        var scope = root.closest('product-rerender') || document;
-        var mo = new MutationObserver(function () {
-          if (!document.body.contains(root)) return;
-          if (root.dataset.sbxMode !== state.mode) render();
-        });
-        mo.observe(scope, { childList: true, subtree: true });
-      }
-
-      function initAll() {
-        document.querySelectorAll('[data-sbx]').forEach(initBuybox);
-      }
-
-      document.addEventListener('DOMContentLoaded', initAll);
-      if (document.readyState !== 'loading') initAll();
-      document.addEventListener('shopify:section:load', initAll);
-
-      function findBuyboxForForm(form) {
-        var scope = form.closest('product-rerender');
-        if (scope) {
-          var inScope = scope.querySelector('[data-sbx]');
-          if (inScope) return inScope;
-        }
-        // Fall back to matching by the form id both reference (form="...").
-        var candidates = document.querySelectorAll('[data-sbx]');
-        for (var i = 0; i < candidates.length; i++) {
-          var idInput = candidates[i].querySelector('[data-sbx-id-input]');
-          if (idInput && idInput.getAttribute('form') === form.id) return candidates[i];
-        }
-        return candidates[0] || null;
-      }
-
-      document.addEventListener('submit', function (e) {
-        var form = e.target;
-        if (!form.matches || !form.matches('form[action*="/cart/add"]')) return;
-
-        var root = findBuyboxForForm(form);
-        if (!root) return;
-
-        // Strip a stray selling_plan left over from a previous mode/tile.
-        var planInputs = form.querySelectorAll('input[name="selling_plan"]');
-        planInputs.forEach(function (input) {
-          if (root.dataset.sbxMode !== 'sub') input.disabled = true;
-        });
-
-        var tile = root.querySelector('[data-sbx-tile].sbx__tile--selected');
-        var giftIdsAttr = tile ? tile.getAttribute('data-gift-variant-ids') : '';
-        if (!giftIdsAttr) return; // No gifts on this tile: let the native submit proceed as-is.
-
-        // This tile has gifts. The Buy-X-Get-Y discounts only make an item
-        // free if it is ALREADY in the cart, they don't add it themselves.
-        // So this submission must add the main item + gift(s) together via
-        // the Cart AJAX API rather than the native single-item form post.
-        e.preventDefault();
-        e.stopImmediatePropagation();
-
-        var idInput = root.querySelector('[data-sbx-id-input]');
-        var planInput = root.querySelector('[data-sbx-plan-input]');
-        var giftIds = giftIdsAttr.split(',').filter(Boolean);
-
-        var items = [{
-          id: parseInt(idInput.value, 10),
-          quantity: 1
-        }];
-        if (root.dataset.sbxMode === 'sub' && planInput && !planInput.disabled && planInput.value) {
-          items[0].selling_plan = parseInt(planInput.value, 10);
-        }
-        giftIds.forEach(function (gid) {
-          items.push({ id: parseInt(gid, 10), quantity: 1 });
-        });
-
-        var addUrl = '{{ routes.cart_add_url }}';
-        if (addUrl.indexOf('.js') === -1) addUrl += '.js';
-
-        fetch(addUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ items: items })
-        })
-          .then(function (res) {
-            if (!res.ok) return res.json().then(function (err) { throw err; });
-            return res.json();
-          })
-          .then(function () {
-            document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
-            document.dispatchEvent(new CustomEvent('cart:updated', { bubbles: true }));
-            var drawer = document.querySelector('cart-drawer');
-            if (drawer && typeof drawer.show === 'function') {
-              drawer.show();
-            } else if (drawer && typeof drawer.open === 'function') {
-              drawer.open();
-            } else {
-              window.location.href = '{{ routes.cart_url }}';
-            }
-          })
-          .catch(function (err) {
-            console.error('[bundle-buybox] add to cart failed', err);
-            window.location.href = '{{ routes.cart_url }}';
-          });
-      }, true);
-    })();
-  </script>
+  <script src="{{ 'bundle-buybox.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}

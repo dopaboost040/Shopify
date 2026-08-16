@@ -42,14 +42,14 @@
   {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
   {%- assign is_first_tile = true -%}
 
-  <div class="sbx" data-sbx data-cart-add-url="{{ routes.cart_add_url }}" data-cart-url="{{ routes.cart_url }}">
+  <div class="sbx" data-sbx data-sbx-mode="onetime" data-cart-add-url="{{ routes.cart_add_url }}" data-cart-url="{{ routes.cart_url }}">
     <div class="sbx__mode" role="radiogroup" aria-label="Purchase option">
-      <button type="button" class="sbx__mode-btn" data-sbx-mode="sub" role="radio" aria-checked="true">
+      <button type="button" class="sbx__mode-btn" data-sbx-mode="onetime" role="radio" aria-checked="true">
+        <span class="sbx__mode-title">One-Time Purchase</span>
+      </button>
+      <button type="button" class="sbx__mode-btn" data-sbx-mode="sub" role="radio" aria-checked="false">
         <span class="sbx__mode-title">Subscribe & Save</span>
         <span class="sbx__mode-sub">Extra 20% OFF + FREE GIFT!</span>
-      </button>
-      <button type="button" class="sbx__mode-btn" data-sbx-mode="onetime" role="radio" aria-checked="false">
-        <span class="sbx__mode-title">One-Time Purchase</span>
       </button>
     </div>
 

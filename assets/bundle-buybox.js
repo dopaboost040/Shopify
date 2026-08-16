@@ -3,7 +3,7 @@
     if (root.dataset.sbxInit === '1') return;
     root.dataset.sbxInit = '1';
 
-    var state = { mode: 'sub' };
+    var state = { mode: root.dataset.sbxMode || 'sub' };
     var idInput = root.querySelector('[data-sbx-id-input]');
     var planInput = root.querySelector('[data-sbx-plan-input]');
 

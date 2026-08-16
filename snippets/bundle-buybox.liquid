@@ -45,22 +45,22 @@
   <div class="sbx" data-sbx data-cart-add-url="{{ routes.cart_add_url }}" data-cart-url="{{ routes.cart_url }}">
     <div class="sbx__mode" role="radiogroup" aria-label="Purchase option">
       <button type="button" class="sbx__mode-btn" data-sbx-mode="sub" role="radio" aria-checked="true">
-        <span class="sbx__mode-title">{{ 'sbx.subscribe_title' | t: default: 'Subscribe & Save' }}</span>
-        <span class="sbx__mode-sub">{{ 'sbx.subscribe_sub' | t: default: 'Extra 20% OFF + FREE GIFT!' }}</span>
+        <span class="sbx__mode-title">Subscribe & Save</span>
+        <span class="sbx__mode-sub">Extra 20% OFF + FREE GIFT!</span>
       </button>
       <button type="button" class="sbx__mode-btn" data-sbx-mode="onetime" role="radio" aria-checked="false">
-        <span class="sbx__mode-title">{{ 'sbx.onetime_title' | t: default: 'One-Time Purchase' }}</span>
+        <span class="sbx__mode-title">One-Time Purchase</span>
       </button>
     </div>
 
     <div class="sbx__trust" data-sbx-trust>
       <div class="sbx__trust-pill">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-        <span>{{ 'sbx.trust_skip' | t: default: 'Skip or Cancel Anytime' }}</span>
+        <span>Skip or Cancel Anytime</span>
       </div>
       <div class="sbx__trust-pill">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg>
-        <span>{{ 'sbx.trust_gift' | t: default: 'Free Gift on First Order' }}</span>
+        <span>Free Gift on First Order</span>
       </div>
     </div>
 
@@ -134,11 +134,11 @@
               <div class="sbx__tile-title-row">
                 <span class="sbx__tile-title">{{ variant.title | replace: '3 Pack', '3 Packs' | replace: '6 Pack', '6 Packs' }}</span>
                 {%- if variant.title == '3 Pack' -%}
-                  <span class="sbx__badge">{{ 'sbx.badge_3pack' | t: default: 'BUY 2 GET 1 FREE' }}</span>
+                  <span class="sbx__badge">BUY 2 GET 1 FREE</span>
                 {%- endif -%}
               </div>
-              <span class="sbx__chip">{{ per_pack | money }} {{ 'sbx.per_pack' | t: default: 'per pack' }}</span>
-              <span class="sbx__supply">{{ packs }} {{ 'sbx.months_supply' | t: default: 'month(s) supply' }}</span>
+              <span class="sbx__chip">{{ per_pack | money }} per pack</span>
+              <span class="sbx__supply">{{ packs }} month(s) supply</span>
             </div>
             <div class="sbx__tile-price">
               <span class="sbx__price" data-sbx-price>{{ variant.price | money }}</span>
@@ -148,9 +148,9 @@
             </div>
           </div>
           {%- if gift_count == 1 -%}
-            <div class="sbx__ribbon">{{ 'sbx.ribbon_one' | t: default: 'Free Gift' }} 🎁</div>
+            <div class="sbx__ribbon">Free Gift 🎁</div>
           {%- elsif gift_count == 2 -%}
-            <div class="sbx__ribbon">{{ gift_count }} {{ 'sbx.ribbon_many' | t: default: 'Free Gifts' }} 🎁</div>
+            <div class="sbx__ribbon">{{ gift_count }} Free Gifts 🎁</div>
           {%- endif -%}
           {%- if gift_handle_1 != '' -%}
             {%- assign gift_product = all_products[gift_handle_1] -%}
@@ -159,7 +159,7 @@
                 {%- if gift_product.featured_image -%}
                   {{ gift_product.featured_image | image_url: width: 60 | image_tag: loading: 'lazy', alt: gift_product.title, class: 'sbx__gift-img' }}
                 {%- endif -%}
-                <span class="sbx__gift-label">+ {{ 'sbx.free' | t: default: 'FREE' }} {{ gift_product.title }}</span>
+                <span class="sbx__gift-label">+ FREE {{ gift_product.title }}</span>
                 <span class="sbx__gift-value">{{ gift_product.price | money }}</span>
               </div>
             {%- endif -%}
@@ -171,7 +171,7 @@
                 {%- if gift_product.featured_image -%}
                   {{ gift_product.featured_image | image_url: width: 60 | image_tag: loading: 'lazy', alt: gift_product.title, class: 'sbx__gift-img' }}
                 {%- endif -%}
-                <span class="sbx__gift-label">+ {{ 'sbx.free' | t: default: 'FREE' }} {{ gift_product.title }}</span>
+                <span class="sbx__gift-label">+ FREE {{ gift_product.title }}</span>
                 <span class="sbx__gift-value">{{ gift_product.price | money }}</span>
               </div>
             {%- endif -%}

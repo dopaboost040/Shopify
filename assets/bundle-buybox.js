@@ -1,3 +1,4 @@
+// buy-box interactivity
 (function () {
   function initBuybox(root) {
     if (root.dataset.sbxInit === '1') return;

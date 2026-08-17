@@ -10414,15 +10414,11 @@ body {
 .sbx__tile-img--p3 .sbx__tile-img-el { position: static; width: 64px; height: 82px; margin-left: 0; }
 .sbx__tile-img--p3 .sbx__tile-img-el:nth-child(n+2) { display: none; }
 
-/* 6 Packs: diagonal staircase, each pack peeking out from behind the next */
-.sbx__tile-img--p6 { width: 126px; height: 118px; }
-.sbx__tile-img--p6 .sbx__tile-img-el { position: absolute; width: 42px; height: 56px; margin-left: 0; }
-.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(1) { left: 0; top: 0; z-index: 1; }
-.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(2) { left: 15px; top: 12px; z-index: 2; }
-.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(3) { left: 30px; top: 24px; z-index: 3; }
-.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(4) { left: 45px; top: 36px; z-index: 4; }
-.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(5) { left: 60px; top: 48px; z-index: 5; }
-.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(6) { left: 75px; top: 60px; z-index: 6; }
+/* 6 Packs: single image for now, same as 1 Pack (until a real product
+   photo replaces the current placeholder) */
+.sbx__tile-img--p6 { width: 64px; height: 82px; }
+.sbx__tile-img--p6 .sbx__tile-img-el { position: static; width: 64px; height: 82px; margin-left: 0; }
+.sbx__tile-img--p6 .sbx__tile-img-el:nth-child(n+2) { display: none; }
 .sbx__tile-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
 .sbx__tile-title-row { display: flex; align-items: center; gap: 6px; min-width: 0; flex-wrap: wrap; }
 .sbx__tile-title { font-family: var(--font-heading, inherit); font-size: 14px; font-weight: 600; color: #1a1a1a; line-height: 1.2; }

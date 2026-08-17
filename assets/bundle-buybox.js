@@ -129,6 +129,29 @@
       if (root.dataset.sbxMode !== state.mode) render();
     });
     mo.observe(scope, { childList: true, subtree: true });
+
+    // The theme's <product-rerender> wrapping the sticky bar has no
+    // allow-partial-rerender attribute, so any "product:rerender" event
+    // (dispatched by the native variant-picker, if one is ever enabled
+    // again) fully replaces it with a fresh server-rendered fragment
+    // that only knows about product.selected_or_first_available_variant
+    // -- wiping out whatever pack the customer picked in the buy-box.
+    // Our own root survives untouched (its block type isn't one of the
+    // ones that mechanism swaps), so just re-push its current selection
+    // into the sticky bar right after the replacement finishes.
+    var formEl = document.getElementById(idInput.getAttribute('form'));
+    if (formEl) {
+      formEl.addEventListener('product:rerender', function () {
+        setTimeout(function () {
+          var tile = selectedTile();
+          if (!tile) return;
+          var price = state.mode === 'sub'
+            ? tile.getAttribute('data-price-sub')
+            : tile.getAttribute('data-price-onetime');
+          updateStickyBar(tile, price);
+        }, 0);
+      });
+    }
   }
 
   function initAll() {

@@ -10392,6 +10392,7 @@ body {
 .sbx__mode-btn[aria-checked="true"] .sbx__mode-sub { color: #948979; }
 
 .sbx__trust { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.sbx[data-sbx-mode="onetime"] .sbx__trust { display: none; }
 .sbx__trust-pill { display: flex; align-items: center; gap: 6px; background: #c1633f; color: #fff; border-radius: 8px; padding: 7px 9px; font-size: 10.5px; font-weight: 600; line-height: 1.2; }
 .sbx__trust-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
 

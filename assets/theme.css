@@ -10408,12 +10408,11 @@ body {
 .sbx__tile-img--p1 { width: 64px; height: 82px; }
 .sbx__tile-img--p1 .sbx__tile-img-el { position: static; width: 64px; height: 82px; margin-left: 0; }
 
-/* 3 Packs: front-center pack with a straight pair sitting behind it */
-.sbx__tile-img--p3 { width: 132px; height: 108px; }
-.sbx__tile-img--p3 .sbx__tile-img-el { position: absolute; width: 64px; height: 82px; margin-left: 0; }
-.sbx__tile-img--p3 .sbx__tile-img-el:nth-child(1) { left: 34px; top: 24px; z-index: 3; transform: rotate(0deg); }
-.sbx__tile-img--p3 .sbx__tile-img-el:nth-child(2) { left: -2px; top: 0; z-index: 2; transform: rotate(0deg); }
-.sbx__tile-img--p3 .sbx__tile-img-el:nth-child(3) { left: 66px; top: 0; z-index: 2; transform: rotate(0deg); }
+/* 3 Packs: single image for now, same as 1 Pack (until a real product
+   photo replaces the current placeholder) */
+.sbx__tile-img--p3 { width: 64px; height: 82px; }
+.sbx__tile-img--p3 .sbx__tile-img-el { position: static; width: 64px; height: 82px; margin-left: 0; }
+.sbx__tile-img--p3 .sbx__tile-img-el:nth-child(n+2) { display: none; }
 
 /* 6 Packs: diagonal staircase, each pack peeking out from behind the next */
 .sbx__tile-img--p6 { width: 126px; height: 118px; }

@@ -10397,7 +10397,8 @@ body {
 .sbx__trust-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
 
 .sbx__tiles { display: flex; flex-direction: column; gap: 6px; }
-.sbx__tile { position: relative; border: 1px solid #e8e0d3; border-radius: 10px; padding: 27px 10px 9px; cursor: pointer; background: #fff; overflow: hidden; }
+.sbx__tile { position: relative; border: 1px solid #e8e0d3; border-radius: 10px; padding: 9px 10px; cursor: pointer; background: #fff; overflow: hidden; }
+.sbx__tile--has-gifts { padding-top: 27px; }
 .sbx__tile--selected { border-color: #c1633f; box-shadow: 0 0 0 1px #c1633f; }
 .sbx__tile-row { display: flex; align-items: center; gap: 8px; }
 .sbx__tile-img { position: relative; flex-shrink: 0; }
@@ -10484,7 +10485,8 @@ body {
   .sbx__mode-sub { font-size: 9.5px; }
   .sbx__trust-pill { padding: 6px 8px; font-size: 10px; gap: 5px; }
   .sbx__trust-pill svg { width: 13px; height: 13px; }
-  .sbx__tile { padding: 25px 9px 8px; }
+  .sbx__tile { padding: 8px 9px; }
+  .sbx__tile--has-gifts { padding-top: 25px; }
   .sbx__tile-img { transform: scale(.78); transform-origin: left center; margin-right: -16px; }
   .sbx__tile-title { font-size: 13px; }
   .sbx__price { font-size: 13px; }

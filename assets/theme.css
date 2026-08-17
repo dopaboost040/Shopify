@@ -10517,6 +10517,14 @@ body:has(.sbx) [data-block-type="quantity-selector"] { display: none !important;
   gap: 12px;
 }
 
+@media screen and (max-width: 699px) {
+  .dopa-sticky-atc {
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+  }
+}
+
 .dopa-sticky-atc__info { min-width: 0; }
 
 .dopa-sticky-atc__title {

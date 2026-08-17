@@ -10410,14 +10410,14 @@ body {
 
 /* 3 Packs: single image for now, same as 1 Pack (until a real product
    photo replaces the current placeholder), with a "3x" badge hanging
-   half off the bottom-right corner */
+   half off the top-right corner */
 .sbx__tile-img--p3 { width: 64px; height: 82px; }
 .sbx__tile-img--p3 .sbx__tile-img-el { position: static; width: 64px; height: 82px; margin-left: 0; }
 .sbx__tile-img--p3 .sbx__tile-img-el:nth-child(n+2) { display: none; }
 .sbx__tile-img--p3::after {
   content: "3x";
   position: absolute;
-  bottom: -7px;
+  top: -7px;
   right: -7px;
   width: 24px;
   height: 24px;

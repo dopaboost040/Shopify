@@ -1,4 +1,3 @@
-// buy-box interactivity (sync retrigger)
 (function () {
   function initBuybox(root) {
     if (root.dataset.sbxInit === '1') return;
@@ -13,19 +12,12 @@
     }
 
     function formatMoney(amount) {
-      if (window.Shopify && Shopify.formatMoney) {
-        try {
-          return Shopify.formatMoney(Math.round(amount * 100), window.theme && window.theme.moneyFormat);
-        } catch (e) {
-          // fall through to the manual formatter below
-        }
-      }
-      return '$' + amount.toFixed(2);
+      return Shopify.formatMoney(Math.round(amount * 100), window.theme && window.theme.moneyFormat);
     }
 
     function updateStickyBar(tile, price) {
       var stickyRoot = document.querySelector('[data-dopa-sticky-atc]');
-      if (!stickyRoot || !tile) return;
+      if (!stickyRoot || !tile || !window.Shopify || !Shopify.formatMoney) return;
 
       var packs = parseInt(tile.getAttribute('data-packs'), 10) || 1;
       var compare = parseFloat(tile.getAttribute('data-compare')) || 0;
@@ -77,8 +69,8 @@
           ? tile.getAttribute('data-price-sub')
           : tile.getAttribute('data-price-onetime');
         var priceEl = tile.querySelector('[data-sbx-price]');
-        if (priceEl && !isNaN(parseFloat(price))) {
-          priceEl.textContent = formatMoney(parseFloat(price));
+        if (priceEl && window.Shopify && Shopify.formatMoney && !isNaN(parseFloat(price))) {
+          priceEl.textContent = Shopify.formatMoney(Math.round(parseFloat(price) * 100), window.theme && window.theme.moneyFormat);
         }
       });
 

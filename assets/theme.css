@@ -10508,8 +10508,8 @@ body:has(.sbx) [data-block-type="quantity-selector"] { display: none !important;
 .dopa-sticky-atc {
   background: #241209 !important;
   border: none !important;
-  border-radius: var(--rounded-button) !important;
-  padding: var(--spacing-2-5) var(--spacing-5) !important;
+  border-radius: 14px !important;
+  padding: 12px 14px !important;
   display: flex;
   align-items: center;
   justify-content: space-between;

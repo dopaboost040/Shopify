@@ -93,12 +93,16 @@
         {%- assign gift_count = 0 -%}
         {%- assign gift_handle_1 = '' -%}
         {%- assign gift_handle_2 = '' -%}
+        {%- assign gift_benefit_1 = '' -%}
+        {%- assign gift_benefit_2 = '' -%}
         {%- if variant.title == '3 Pack' -%}
           {%- assign gift_count = 1 -%}
           {%- assign gift_handle_1 = 'energy-patches' -%}
+          {%- assign gift_benefit_1 = 'Aims to support energy, motivation, and focus.' -%}
         {%- elsif variant.title == '6 Pack' -%}
           {%- assign gift_count = 2 -%}
           {%- assign gift_handle_1 = 'energy-patches' -%}
+          {%- assign gift_benefit_1 = 'Aims to support energy, motivation, and focus.' -%}
           {%- assign gift_handle_2 = 'stress-down-patches' -%}
         {%- endif -%}
 
@@ -163,8 +167,12 @@
                 {%- if gift_product.featured_image -%}
                   {{ gift_product.featured_image | image_url: width: 60 | image_tag: loading: 'lazy', alt: gift_product.title, class: 'sbx__gift-img' }}
                 {%- endif -%}
-                <span class="sbx__gift-label">+ FREE {{ gift_product.title }}</span>
-                <span class="sbx__gift-value">{{ one_pack_price | money }}</span>
+                <div class="sbx__gift-body">
+                  <span class="sbx__gift-label">+ FREE {{ gift_product.title }} <span class="sbx__gift-value">WORTH: {{ one_pack_price | money }}</span></span>
+                  {%- if gift_benefit_1 != '' -%}
+                    <span class="sbx__gift-benefit">{{ gift_benefit_1 }}</span>
+                  {%- endif -%}
+                </div>
               </div>
             {%- endif -%}
           {%- endif -%}
@@ -175,8 +183,12 @@
                 {%- if gift_product.featured_image -%}
                   {{ gift_product.featured_image | image_url: width: 60 | image_tag: loading: 'lazy', alt: gift_product.title, class: 'sbx__gift-img' }}
                 {%- endif -%}
-                <span class="sbx__gift-label">+ FREE {{ gift_product.title }}</span>
-                <span class="sbx__gift-value">{{ one_pack_price | money }}</span>
+                <div class="sbx__gift-body">
+                  <span class="sbx__gift-label">+ FREE {{ gift_product.title }} <span class="sbx__gift-value">WORTH: {{ one_pack_price | money }}</span></span>
+                  {%- if gift_benefit_2 != '' -%}
+                    <span class="sbx__gift-benefit">{{ gift_benefit_2 }}</span>
+                  {%- endif -%}
+                </div>
               </div>
             {%- endif -%}
           {%- endif -%}

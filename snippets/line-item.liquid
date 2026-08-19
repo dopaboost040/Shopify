@@ -52,8 +52,8 @@ Supported variables
       <p class="text-sm text-subdued">{{ line_item.variant.title }}</p>
     {%- endunless -%}
 
-    {%- if line_item.selling_plan_allocation -%}
-      <p class="text-sm text-subdued">{{ line_item.selling_plan_allocation.selling_plan.name }}</p>
+    {%- if line_item.selling_plan_allocation and line_item.product.template_suffix != 'bundle-widget-test' -%}
+      <p class="text-sm text-subdued">{{ line_item.selling_plan_allocation.selling_plan.name | replace: '&amp;', '&' }}</p>
     {%- endif -%}
 
     {%- unless line_item.properties == blank -%}
@@ -62,6 +62,11 @@ Supported variables
           {%- assign first_character_in_key = property.first | truncate: 1, '' -%}
 
           {%- if property.last == blank or first_character_in_key == '_' -%}
+            {%- continue -%}
+          {%- endif -%}
+
+          {%- if line_item.product.template_suffix == 'bundle-widget-test' and property.first == 'Packs' -%}
+            {%- comment -%} redundant with the variant title ("3 Pack" etc.) shown above {%- endcomment -%}
             {%- continue -%}
           {%- endif -%}
 

@@ -33,7 +33,18 @@
     function formatMoney(amount) {
       var currency = (window.Shopify && Shopify.currency && Shopify.currency.active) || 'USD';
       try {
-        return new Intl.NumberFormat(undefined, { style: 'currency', currency: currency }).format(amount / 100);
+        // currencyDisplay: 'narrowSymbol' avoids Intl's disambiguated
+        // symbols (e.g. "US$" for USD, "CA$" for CAD) in locales where
+        // plain "$" would be ambiguous -- we only ever show one currency
+        // at a time so the short symbol is unambiguous here. Some locales
+        // still insert a (non-breaking) space between symbol and amount;
+        // strip all whitespace so the symbol sits tight against the price.
+        var formatted = new Intl.NumberFormat(undefined, {
+          style: 'currency',
+          currency: currency,
+          currencyDisplay: 'narrowSymbol'
+        }).format(amount / 100);
+        return formatted.replace(/\s+/g, '');
       } catch (e) {
         // fall through to the manual formatter below (only reachable if
         // Shopify.currency isn't set or the browser lacks Intl support)

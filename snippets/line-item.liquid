@@ -123,3 +123,68 @@ Supported variables
     </div>
   {%- endif -%}
 </line-item>
+
+{%- comment -%}
+  Free-gift info for the bundle-widget-test product only -- mirrors the
+  gift row on the product page's buy-box (snippets/bundle-buybox.liquid),
+  same gift-to-pack mapping and benefit copy, kept in sync by hand.
+{%- endcomment -%}
+{%- if line_item.product.template_suffix == 'bundle-widget-test' -%}
+  {%- assign li_packs = line_item.variant.title | remove: ' Pack' | remove: 's' | strip | plus: 0 -%}
+  {%- if li_packs == 0 -%}{%- assign li_packs = 1 -%}{%- endif -%}
+
+  {%- if li_packs > 1 -%}
+    {%- assign li_one_pack_price = 0 -%}
+    {%- for v in line_item.product.variants -%}
+      {%- if v.title == '1 Pack' -%}{%- assign li_one_pack_price = v.price -%}{%- endif -%}
+    {%- endfor -%}
+
+    {%- assign li_gift_handle_1 = '' -%}
+    {%- assign li_gift_benefit_1 = '' -%}
+    {%- assign li_gift_handle_2 = '' -%}
+    {%- assign li_gift_benefit_2 = '' -%}
+    {%- if li_packs == 3 -%}
+      {%- assign li_gift_handle_1 = 'energy-patches' -%}
+      {%- assign li_gift_benefit_1 = 'Aims to support energy, motivation, and focus.' -%}
+    {%- elsif li_packs == 6 -%}
+      {%- assign li_gift_handle_1 = 'energy-patches' -%}
+      {%- assign li_gift_benefit_1 = 'Aims to support energy, motivation, and focus.' -%}
+      {%- assign li_gift_handle_2 = 'stress-down-patches' -%}
+      {%- assign li_gift_benefit_2 = 'Aims to support calmness, relaxation, and stress relief.' -%}
+    {%- endif -%}
+
+    {%- if li_gift_handle_1 != '' -%}
+      {%- assign li_gift_product = all_products[li_gift_handle_1] -%}
+      {%- if li_gift_product -%}
+        <div class="sbx__gift-row line-item__gift-row">
+          {%- if li_gift_product.featured_image -%}
+            {{ li_gift_product.featured_image | image_url: width: 60 | image_tag: loading: 'lazy', alt: li_gift_product.title, class: 'sbx__gift-img' }}
+          {%- endif -%}
+          <div class="sbx__gift-body">
+            <span class="sbx__gift-label">+ FREE {{ li_gift_product.title }} WORTH: <span class="sbx__gift-value">{{ li_one_pack_price | money }}</span></span>
+            {%- if li_gift_benefit_1 != '' -%}
+              <span class="sbx__gift-benefit">{{ li_gift_benefit_1 }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if li_gift_handle_2 != '' -%}
+      {%- assign li_gift_product = all_products[li_gift_handle_2] -%}
+      {%- if li_gift_product -%}
+        <div class="sbx__gift-row line-item__gift-row">
+          {%- if li_gift_product.featured_image -%}
+            {{ li_gift_product.featured_image | image_url: width: 60 | image_tag: loading: 'lazy', alt: li_gift_product.title, class: 'sbx__gift-img' }}
+          {%- endif -%}
+          <div class="sbx__gift-body">
+            <span class="sbx__gift-label">+ FREE {{ li_gift_product.title }} WORTH: <span class="sbx__gift-value">{{ li_one_pack_price | money }}</span></span>
+            {%- if li_gift_benefit_2 != '' -%}
+              <span class="sbx__gift-benefit">{{ li_gift_benefit_2 }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}

@@ -21,24 +21,22 @@
     // ever renders it), so no manual exchange-rate conversion is needed
     // either -- only the currency SYMBOL/format needs to match.
     //
-    // `window.theme.moneyFormat` doesn't exist anywhere in this theme
-    // (dead reference), so Shopify.formatMoney always got called with
-    // no format string, quietly failed, and fell through to the '$'
-    // fallback below for every visitor -- including markets where the
-    // buyer is actually being shown GBP/CAD/AUD amounts. Use the
-    // theme's real global instead (set from shop.money_format in
-    // snippets/js-variables.liquid), which is presentment-currency-
-    // aware, so the correct symbol shows for each market.
+    // shop.money_format (and window.theme.moneyFormat, which is also a
+    // dead reference -- nothing in this theme ever sets window.theme) is
+    // the shop's single admin-configured template, NOT market-aware, so
+    // it can't be trusted to show the right symbol for GBP/CAD/AUD
+    // visitors. Shopify.currency.active *is* market-aware (set by
+    // Shopify's own injected script based on the buyer's presentment
+    // currency), so format with that via Intl.NumberFormat instead --
+    // guaranteed correct symbol/placement per currency, no theme
+    // settings involved.
     function formatMoney(amount) {
-      var format = window.themeVariables && window.themeVariables.settings && window.themeVariables.settings.moneyFormat;
-      if (window.Shopify && Shopify.formatMoney) {
-        try {
-          return Shopify.formatMoney(Math.round(amount), format);
-        } catch (e) {
-          // fall through to the manual formatter below (only reachable if
-          // Shopify's own core script isn't loaded at all, which doesn't
-          // happen on a real storefront page)
-        }
+      var currency = (window.Shopify && Shopify.currency && Shopify.currency.active) || 'USD';
+      try {
+        return new Intl.NumberFormat(undefined, { style: 'currency', currency: currency }).format(amount / 100);
+      } catch (e) {
+        // fall through to the manual formatter below (only reachable if
+        // Shopify.currency isn't set or the browser lacks Intl support)
       }
       return '$' + (amount / 100).toFixed(2);
     }

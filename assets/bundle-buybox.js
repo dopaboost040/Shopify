@@ -16,13 +16,28 @@
     // raw cents when output unfiltered in Liquid (data-price-*/data-compare
     // read them straight, no money filter), same convention Shopify's own
     // money filter and Shopify.formatMoney both expect -- do not multiply
-    // by 100 again here.
+    // by 100 again here. The value itself is already in the buyer's
+    // presentment currency (Shopify Markets resolves this before Liquid
+    // ever renders it), so no manual exchange-rate conversion is needed
+    // either -- only the currency SYMBOL/format needs to match.
+    //
+    // `window.theme.moneyFormat` doesn't exist anywhere in this theme
+    // (dead reference), so Shopify.formatMoney always got called with
+    // no format string, quietly failed, and fell through to the '$'
+    // fallback below for every visitor -- including markets where the
+    // buyer is actually being shown GBP/CAD/AUD amounts. Use the
+    // theme's real global instead (set from shop.money_format in
+    // snippets/js-variables.liquid), which is presentment-currency-
+    // aware, so the correct symbol shows for each market.
     function formatMoney(amount) {
+      var format = window.themeVariables && window.themeVariables.settings && window.themeVariables.settings.moneyFormat;
       if (window.Shopify && Shopify.formatMoney) {
         try {
-          return Shopify.formatMoney(Math.round(amount), window.theme && window.theme.moneyFormat);
+          return Shopify.formatMoney(Math.round(amount), format);
         } catch (e) {
-          // fall through to the manual formatter below
+          // fall through to the manual formatter below (only reachable if
+          // Shopify's own core script isn't loaded at all, which doesn't
+          // happen on a real storefront page)
         }
       }
       return '$' + (amount / 100).toFixed(2);

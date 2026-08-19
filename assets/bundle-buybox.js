@@ -28,7 +28,7 @@
       return '$' + (amount / 100).toFixed(2);
     }
 
-    function updateStickyBar(tile, price) {
+    function updateStickyBar(tile, price, mode) {
       var stickyRoot = document.querySelector('[data-dopa-sticky-atc]');
       if (!stickyRoot || !tile) return;
 
@@ -50,7 +50,10 @@
       if (priceEl) priceEl.textContent = formatMoney(priceNum);
 
       if (permoEl) {
-        if (packs > 1) {
+        // "/mo" only makes sense for the recurring Subscribe & Save price --
+        // showing it under One-Time Purchase reads as a monthly charge and
+        // scares off buyers who picked a single, non-recurring order.
+        if (mode === 'sub' && packs > 1) {
           permoEl.textContent = ' · ' + formatMoney(priceNum / packs) + '/mo';
           permoEl.hidden = false;
         } else {
@@ -101,7 +104,7 @@
         var stickyPrice = state.mode === 'sub'
           ? tile.getAttribute('data-price-sub')
           : tile.getAttribute('data-price-onetime');
-        updateStickyBar(tile, stickyPrice);
+        updateStickyBar(tile, stickyPrice, state.mode);
       }
     }
 
@@ -161,7 +164,7 @@
           var price = state.mode === 'sub'
             ? tile.getAttribute('data-price-sub')
             : tile.getAttribute('data-price-onetime');
-          updateStickyBar(tile, price);
+          updateStickyBar(tile, price, state.mode);
         }, 0);
       });
     }

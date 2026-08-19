@@ -10460,7 +10460,7 @@ body {
 .sbx__tile-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
 .sbx__tile-title-row { display: flex; align-items: center; gap: 6px; min-width: 0; flex-wrap: wrap; }
 .sbx__tile-title { font-family: var(--font-heading, inherit); font-size: 14px; font-weight: 600; color: #1a1a1a; line-height: 1.2; }
-.sbx__badge { background: #f0c417; color: #1a1a1a; font-size: 9px; font-weight: 700; border-radius: 100px; padding: 2px 6px; white-space: nowrap; }
+.sbx__badge { background: #fcd900; color: #1a1a1a; font-size: 9px; font-weight: 700; border-radius: 100px; padding: 2px 6px; white-space: nowrap; }
 .sbx__chip { display: inline-block; width: fit-content; background: #f6f0e7; color: #1a1a1a; font-size: 10px; font-weight: 600; border-radius: 100px; padding: 1px 7px; }
 .sbx__supply { font-size: 10px; color: #948979; }
 .sbx__tile-price { text-align: right; flex-shrink: 0; }

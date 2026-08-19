@@ -26,6 +26,13 @@
 {%- assign has_pack_variant = false -%}
 {%- assign one_pack_price = 0 -%}
 {%- assign first_pack_variant_id = 0 -%}
+{%- comment -%}
+  Tile thumbnails intentionally use the last image in the product's media
+  gallery, not product.featured_image -- the featured image is the hero
+  shot (may carry promo badges baked in) and changes independently of
+  what should show in the small pack tiles here.
+{%- endcomment -%}
+{%- assign widget_image = product.images | last -%}
 {%- for v in product.variants -%}
   {%- if v.title contains 'Pack' -%}
     {%- assign has_pack_variant = true -%}
@@ -132,10 +139,10 @@
              tabindex="{% if is_first_tile %}0{% else %}-1{% endif %}">
           <div class="sbx__tile-row">
             <div class="sbx__tile-img sbx__tile-img--p{{ packs | at_most: 6 }}">
-              {%- if product.featured_image -%}
+              {%- if widget_image -%}
                 {%- for i in (1..packs) -%}
                   {%- if i > 6 -%}{%- break -%}{%- endif -%}
-                  {{ product.featured_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}
+                  {{ widget_image | image_url: width: 80 | image_tag: loading: 'lazy', alt: variant.title, class: 'sbx__tile-img-el' }}
                 {%- endfor -%}
               {%- endif -%}
             </div>

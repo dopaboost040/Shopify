@@ -164,7 +164,7 @@
                   {{ gift_product.featured_image | image_url: width: 60 | image_tag: loading: 'lazy', alt: gift_product.title, class: 'sbx__gift-img' }}
                 {%- endif -%}
                 <span class="sbx__gift-label">+ FREE {{ gift_product.title }}</span>
-                <span class="sbx__gift-value">{{ gift_product.price | money }}</span>
+                <span class="sbx__gift-value">{{ one_pack_price | money }}</span>
               </div>
             {%- endif -%}
           {%- endif -%}
@@ -176,7 +176,7 @@
                   {{ gift_product.featured_image | image_url: width: 60 | image_tag: loading: 'lazy', alt: gift_product.title, class: 'sbx__gift-img' }}
                 {%- endif -%}
                 <span class="sbx__gift-label">+ FREE {{ gift_product.title }}</span>
-                <span class="sbx__gift-value">{{ gift_product.price | money }}</span>
+                <span class="sbx__gift-value">{{ one_pack_price | money }}</span>
               </div>
             {%- endif -%}
           {%- endif -%}

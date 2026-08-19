@@ -12,15 +12,20 @@
       return root.querySelector('[data-sbx-tile].sbx__tile--selected');
     }
 
+    // `amount` is cents: this theme's price/compare_at_price fields print
+    // raw cents when output unfiltered in Liquid (data-price-*/data-compare
+    // read them straight, no money filter), same convention Shopify's own
+    // money filter and Shopify.formatMoney both expect -- do not multiply
+    // by 100 again here.
     function formatMoney(amount) {
       if (window.Shopify && Shopify.formatMoney) {
         try {
-          return Shopify.formatMoney(Math.round(amount * 100), window.theme && window.theme.moneyFormat);
+          return Shopify.formatMoney(Math.round(amount), window.theme && window.theme.moneyFormat);
         } catch (e) {
           // fall through to the manual formatter below
         }
       }
-      return '$' + amount.toFixed(2);
+      return '$' + (amount / 100).toFixed(2);
     }
 
     function updateStickyBar(tile, price) {

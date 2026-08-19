@@ -10524,6 +10524,7 @@ body:has(.sbx) [data-block-type="quantity-selector"] { display: none !important;
   .dopa-sticky-atc {
     left: 12px !important;
     right: 12px !important;
+    bottom: 12px !important;
     width: auto !important;
   }
 }

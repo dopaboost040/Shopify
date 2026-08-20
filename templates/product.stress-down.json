@@ -108,12 +108,6 @@
             "payment_button_text_color": ""
           }
         },
-        "liquid_GXz3Wt": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<div id='ss-trust-badges'></div>"
-          }
-        },
         "liquid_YCHCjB": {
           "type": "liquid",
           "settings": {
@@ -189,7 +183,6 @@
         "variant_picker",
         "liquid_qWta8P",
         "buy_buttons",
-        "liquid_GXz3Wt",
         "liquid_YCHCjB",
         "liquid_QxDttB",
         "liquid_BUDzNx",

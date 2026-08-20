@@ -33,6 +33,7 @@
   what should show in the small pack tiles here.
 {%- endcomment -%}
 {%- assign widget_image = product.images | last -%}
+{%- assign default_pack_variant_id = 0 -%}
 {%- for v in product.variants -%}
   {%- if v.title contains 'Pack' -%}
     {%- assign has_pack_variant = true -%}
@@ -43,11 +44,21 @@
   {%- if v.title == '1 Pack' -%}
     {%- assign one_pack_price = v.price -%}
   {%- endif -%}
+  {%- if v.title == '3 Pack' -%}
+    {%- assign default_pack_variant_id = v.id -%}
+  {%- endif -%}
 {%- endfor -%}
+{%- comment -%}
+  3 Pack is the tile we want pre-selected for new visitors (best margin/
+  gift combo); fall back to whichever pack variant comes first if this
+  product doesn't have a 3 Pack.
+{%- endcomment -%}
+{%- if default_pack_variant_id == 0 -%}
+  {%- assign default_pack_variant_id = first_pack_variant_id -%}
+{%- endif -%}
 
 {%- if has_pack_variant -%}
   {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
-  {%- assign is_first_tile = true -%}
 
   <div class="sbx" data-sbx data-sbx-mode="onetime" data-cart-add-url="{{ routes.cart_add_url }}" data-cart-url="{{ routes.cart_url }}">
     <div class="sbx__mode" role="radiogroup" aria-label="Purchase option">
@@ -76,6 +87,11 @@
         {%- unless variant.title contains 'Pack' -%}
           {%- continue -%}
         {%- endunless -%}
+
+        {%- assign is_selected_tile = false -%}
+        {%- if variant.id == default_pack_variant_id -%}
+          {%- assign is_selected_tile = true -%}
+        {%- endif -%}
 
         {%- assign packs = variant.title | remove: ' Pack' | remove: 's' | strip | plus: 0 -%}
         {%- if packs == 0 -%}{%- assign packs = 1 -%}{%- endif -%}
@@ -124,7 +140,7 @@
           {%- if gp2 -%}{%- assign gift_variant_ids = gift_variant_ids | append: ',' | append: gp2.selected_or_first_available_variant.id -%}{%- endif -%}
         {%- endif -%}
 
-        <div class="sbx__tile{% if is_first_tile %} sbx__tile--selected{% endif %}{% if gift_count > 0 %} sbx__tile--has-gifts{% endif %}"
+        <div class="sbx__tile{% if is_selected_tile %} sbx__tile--selected{% endif %}{% if gift_count > 0 %} sbx__tile--has-gifts{% endif %}"
              data-sbx-tile
              data-variant-id="{{ variant.id }}"
              data-plan-id="{{ plan_id }}"
@@ -135,8 +151,8 @@
              data-compare="{% if show_compare %}{{ anchor }}{% else %}0{% endif %}"
              data-title="{{ variant.title }}"
              role="radio"
-             aria-checked="{% if is_first_tile %}true{% else %}false{% endif %}"
-             tabindex="{% if is_first_tile %}0{% else %}-1{% endif %}">
+             aria-checked="{% if is_selected_tile %}true{% else %}false{% endif %}"
+             tabindex="{% if is_selected_tile %}0{% else %}-1{% endif %}">
           <div class="sbx__tile-row">
             <div class="sbx__tile-img sbx__tile-img--p{{ packs | at_most: 6 }}">
               {%- if widget_image -%}
@@ -201,12 +217,10 @@
             {%- endif -%}
           {%- endif -%}
         </div>
-
-        {%- assign is_first_tile = false -%}
       {%- endfor -%}
     </div>
 
-    <input type="hidden" data-sbx-id-input name="id" form="{{ product_form_id }}" value="{{ first_pack_variant_id }}">
+    <input type="hidden" data-sbx-id-input name="id" form="{{ product_form_id }}" value="{{ default_pack_variant_id }}">
     <input type="hidden" data-sbx-plan-input name="selling_plan" form="{{ product_form_id }}" value="">
   </div>
 

@@ -12,6 +12,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "liquid_FUJHgk": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div id='ss-trust-badges'></div>"
+          }
+        },
         "liquid_P8FmaY": {
           "type": "liquid",
           "settings": {
@@ -102,6 +108,12 @@
             "payment_button_text_color": ""
           }
         },
+        "liquid_GXz3Wt": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div id='ss-trust-badges'></div>"
+          }
+        },
         "liquid_YCHCjB": {
           "type": "liquid",
           "settings": {
@@ -162,6 +174,7 @@
         }
       },
       "block_order": [
+        "liquid_FUJHgk",
         "liquid_P8FmaY",
         "title",
         "text_dngyfh",
@@ -176,6 +189,7 @@
         "variant_picker",
         "liquid_qWta8P",
         "buy_buttons",
+        "liquid_GXz3Wt",
         "liquid_YCHCjB",
         "liquid_QxDttB",
         "liquid_BUDzNx",

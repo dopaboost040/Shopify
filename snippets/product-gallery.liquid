@@ -13,7 +13,17 @@ Supported variables
 * product_form_id: the product form id
 {%- endcomment -%}
 
-{%- assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+{%- comment -%}
+  bundle-widget-test intentionally shows the hero/featured image on page
+  load regardless of which variant is selected -- variant-specific media
+  is used for cart line items only (see the media assignment on each
+  variant), not for the gallery's initial image on this product.
+{%- endcomment -%}
+{%- if product.template_suffix == 'bundle-widget-test' -%}
+  {%- assign default_media = product.featured_media -%}
+{%- else -%}
+  {%- assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+{%- endif -%}
 {%- capture product_gallery_id -%}product-gallery-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
 {%- comment -%}

@@ -96,6 +96,20 @@
       }
     }
 
+    // The native price near the headline (snippets/product-info.liquid,
+    // rendered via price-list.liquid) always reflects
+    // product.selected_or_first_available_variant, which never changes
+    // as the customer clicks around this buy-box -- keep it in sync here.
+    function updateMainPrice(priceNum) {
+      var salePrice = document.querySelector('[data-dopa-main-price] sale-price');
+      if (!salePrice || isNaN(priceNum)) return;
+
+      var srOnly = salePrice.querySelector('.sr-only');
+      salePrice.textContent = '';
+      if (srOnly) salePrice.appendChild(srOnly);
+      salePrice.appendChild(document.createTextNode(formatMoney(priceNum)));
+    }
+
     function render() {
       root.dataset.sbxMode = state.mode;
       root.querySelectorAll('[data-sbx-mode]').forEach(function (btn) {
@@ -129,6 +143,7 @@
           ? tile.getAttribute('data-price-sub')
           : tile.getAttribute('data-price-onetime');
         updateStickyBar(tile, stickyPrice, state.mode);
+        updateMainPrice(parseFloat(stickyPrice));
       }
     }
 

@@ -102,7 +102,7 @@ Supported variables
 
         {%- when 'price' -%}
           {%- if product.selected_or_first_available_variant != nil -%}
-            <div class="product-info__price"{% if product.template_suffix == 'bundle-widget-test' %} data-dopa-main-price{% endif %}>
+            <div class="product-info__price">
               <div class="rating-with-text">
                 {%- render 'price-list', variant: product.selected_or_first_available_variant, size: 'lg' -%}
                 {%- render 'product-badges', types: 'sold_out, discount', product: product, context: 'product', class: 'product-info__badge-list' -%}

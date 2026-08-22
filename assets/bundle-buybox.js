@@ -96,34 +96,6 @@
       }
     }
 
-    // The native price near the headline (snippets/product-info.liquid,
-    // rendered via price-list.liquid) always reflects
-    // product.selected_or_first_available_variant, which never changes
-    // as the customer clicks around this buy-box -- keep it in sync here.
-    function updateMainPrice(priceNum) {
-      var salePrice = document.querySelector('[data-dopa-main-price] sale-price');
-      if (!salePrice || isNaN(priceNum)) return;
-
-      var srOnly = salePrice.querySelector('.sr-only');
-      salePrice.textContent = '';
-      if (srOnly) salePrice.appendChild(srOnly);
-      salePrice.appendChild(document.createTextNode(formatMoney(priceNum)));
-    }
-
-    // The main "Add to cart" button (snippets/buy-buttons.liquid) is a
-    // shared, site-wide component -- scoped here via the template
-    // attribute Shopify already stamps on it, and further narrowed to
-    // exclude the sticky bar's own buy-buttons instance (dopa-sticky-atc).
-    function updateAddToCartButton(priceNum) {
-      var btn = document.querySelector('buy-buttons.buy-buttons[template="bundle-widget-test"] button[type="submit"]');
-      if (!btn || isNaN(priceNum)) return;
-
-      if (!btn.dataset.dopaBaseLabel) {
-        btn.dataset.dopaBaseLabel = btn.textContent.trim();
-      }
-      btn.textContent = btn.dataset.dopaBaseLabel + ' • ' + formatMoney(priceNum);
-    }
-
     function render() {
       root.dataset.sbxMode = state.mode;
       root.querySelectorAll('[data-sbx-mode]').forEach(function (btn) {
@@ -157,8 +129,6 @@
           ? tile.getAttribute('data-price-sub')
           : tile.getAttribute('data-price-onetime');
         updateStickyBar(tile, stickyPrice, state.mode);
-        updateMainPrice(parseFloat(stickyPrice));
-        updateAddToCartButton(parseFloat(stickyPrice));
       }
     }
 

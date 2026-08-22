@@ -71,17 +71,8 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
     <a href="#main" class="skip-to-content sr-only">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
-    {%- comment -%}
-      bundle-widget-test is a dedicated landing page: no header nav / footer
-      links back into the store, so customers can't wander off it. Scoped to
-      this one template only -- every other page keeps the normal header/footer.
-    {%- endcomment -%}
-    {%- assign dopa_landing_page = request.page_type == 'product' and product.template_suffix == 'bundle-widget-test' -%}
-
     {%- if request.page_type != 'password' -%}
-      {%- unless dopa_landing_page -%}
-        {%- sections 'header-group' -%}
-      {%- endunless -%}
+      {%- sections 'header-group' -%}
       {%- sections 'overlay-group' -%}
 
       {%- if settings.cart_type == 'popover' -%}
@@ -101,9 +92,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       added into the main element to ensure that dynamic sections added into the footer group are properly laid out.
       {%- endcomment -%}
       {%- if request.page_type != 'password' -%}
-        {%- unless dopa_landing_page -%}
-          {%- sections 'footer-group' -%}
-        {%- endunless -%}
+        {%- sections 'footer-group' -%}
       {%- endif -%}
     </main>
   </body>

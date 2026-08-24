@@ -8,7 +8,6 @@
  * ------------------------------------------------------------
  */
 {
-  "layout": "theme.dopa-landing",
   "sections": {
     "main": {
       "type": "main-product",

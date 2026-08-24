@@ -118,6 +118,16 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
     <main role="main" id="main" class="anchor">
       {{ content_for_layout }}
+
+      {%- comment -%}
+        The sticky Add to cart bar (product-quick-add custom element,
+        assets/theme.js) uses an IntersectionObserver anchored on the
+        page's ".footer" element to know when to show/hide -- with no
+        footer on this landing page it found nothing and never showed
+        at all. This is an invisible marker only (no footer content/
+        links), just so that observer has something to anchor to.
+      {%- endcomment -%}
+      <div class="footer" aria-hidden="true" style="padding: 0 !important; background: transparent !important;"></div>
     </main>
   </body>
 </html>

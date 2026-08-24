@@ -76,30 +76,51 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       out of this page. Only used by templates that set "layout" to this
       file's name -- theme.liquid (every other page) is untouched.
 
-      Logo bar below is intentionally NOT a link -- linking it to the
-      homepage would reopen the exact exit path this layout removes.
+      Logo is intentionally NOT a link -- linking it to the homepage
+      would reopen the exact exit path this layout removes. The cart
+      icon on the right is kept (same markup/behavior as the normal
+      header) since it opens the cart drawer in place, it doesn't
+      navigate anywhere -- customers still need a way to view their
+      cart without waiting on Bogos/UpCart's own auto-open.
     {%- endcomment -%}
     <div class="dopa-landing-logo-bar">
+      <div class="dopa-landing-logo-bar__spacer" aria-hidden="true"></div>
       <img
+        class="dopa-landing-logo-bar__logo"
         src="https://cdn.shopify.com/s/files/1/0930/4218/0471/files/BUY_2_GET_2_FREE_10.png?v=1785161064"
         width="1080"
         height="168"
         alt="{{ shop.name }}"
         loading="eager"
       >
+      <a href="{{ routes.cart_url }}" data-no-instant class="dopa-landing-logo-bar__cart relative block tap-area" {% if settings.cart_type != 'page' and request.page_type != 'cart' %}aria-controls="cart-drawer"{% endif %}>
+        <span class="sr-only">{{ 'header.general.cart' | t }}</span>
+        {%- render 'icon' with 'cart' -%}
+        <div class="header__cart-count">
+          <cart-count class="count-bubble {% if cart.item_count == 0 %}opacity-0{% endif %}">
+            <span class="sr-only">{{ 'cart.general.item_count' | t: count: cart.item_count }}</span>
+            <span aria-hidden="true">{{ cart.item_count }}</span>
+          </cart-count>
+        </div>
+      </a>
     </div>
     <style>
       .dopa-landing-logo-bar {
-        display: flex;
-        justify-content: center;
-        padding: 20px 0 10px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        padding: 20px var(--spacing-4, 16px) 10px;
       }
-      .dopa-landing-logo-bar img {
+      .dopa-landing-logo-bar__logo {
         height: 14px;
         width: auto;
+        justify-self: center;
+      }
+      .dopa-landing-logo-bar__cart {
+        justify-self: end;
       }
       @media screen and (min-width: 750px) {
-        .dopa-landing-logo-bar img {
+        .dopa-landing-logo-bar__logo {
           height: 18px;
         }
       }

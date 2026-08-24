@@ -97,13 +97,46 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         <span class="sr-only">{{ 'header.general.cart' | t }}</span>
         {%- render 'icon' with 'cart' -%}
         <div class="header__cart-count">
-          <cart-count class="count-bubble {% if cart.item_count == 0 %}opacity-0{% endif %}">
-            <span class="sr-only">{{ 'cart.general.item_count' | t: count: cart.item_count }}</span>
-            <span aria-hidden="true">{{ cart.item_count }}</span>
-          </cart-count>
+          {%- comment -%}
+            Plain span driven by our own script below, not the theme's
+            <cart-count> element -- that component infers its previous
+            count by re-parsing its own rendered text, which loses track
+            when several cart:change events fire in quick succession
+            (exactly what happens here: pack + Bogos free-gift add back
+            to back) and gets stuck on the first number. This always
+            reads the true count straight from the event/cart.js instead.
+          {%- endcomment -%}
+          <span class="count-bubble {% if cart.item_count == 0 %}opacity-0{% endif %}" data-dopa-cart-badge>
+            <span class="sr-only" data-dopa-cart-badge-sr>{{ 'cart.general.item_count' | t: count: cart.item_count }}</span>
+            <span aria-hidden="true" data-dopa-cart-badge-num>{{ cart.item_count }}</span>
+          </span>
         </div>
       </a>
     </div>
+    <script>
+      (function () {
+        var badge = document.querySelector('[data-dopa-cart-badge]');
+        if (!badge) return;
+        var num = badge.querySelector('[data-dopa-cart-badge-num]');
+        var sr = badge.querySelector('[data-dopa-cart-badge-sr]');
+
+        function update(count) {
+          num.textContent = count;
+          if (sr) sr.textContent = count + ' item(s) in cart';
+          badge.classList.toggle('opacity-0', count === 0);
+        }
+
+        document.addEventListener('cart:change', function (e) {
+          update(e.detail.cart.item_count);
+        });
+
+        document.addEventListener('cart:refresh', function () {
+          fetch(window.Shopify.routes.root + 'cart.js')
+            .then(function (r) { return r.json(); })
+            .then(function (cart) { update(cart.item_count); });
+        });
+      })();
+    </script>
     <style>
       .dopa-landing-logo-bar {
         display: grid;

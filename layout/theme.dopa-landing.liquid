@@ -75,7 +75,35 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       Dedicated landing-page layout: no header/footer, so there's no nav
       out of this page. Only used by templates that set "layout" to this
       file's name -- theme.liquid (every other page) is untouched.
+
+      Logo bar below is intentionally NOT a link -- linking it to the
+      homepage would reopen the exact exit path this layout removes.
     {%- endcomment -%}
+    <div class="dopa-landing-logo-bar">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0930/4218/0471/files/BUY_2_GET_2_FREE_10.png?v=1785161064"
+        width="1080"
+        height="168"
+        alt="{{ shop.name }}"
+        loading="eager"
+      >
+    </div>
+    <style>
+      .dopa-landing-logo-bar {
+        display: flex;
+        justify-content: center;
+        padding: var(--spacing-4, 16px) 0;
+      }
+      .dopa-landing-logo-bar img {
+        height: 28px;
+        width: auto;
+      }
+      @media screen and (min-width: 750px) {
+        .dopa-landing-logo-bar img {
+          height: 34px;
+        }
+      }
+    </style>
     {%- if request.page_type != 'password' -%}
       {%- sections 'overlay-group' -%}
 

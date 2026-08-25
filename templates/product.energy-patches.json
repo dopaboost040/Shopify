@@ -27,7 +27,7 @@
         "text_3fdmMb": {
           "type": "text",
           "settings": {
-            "text": "<p>Aims to boost natural energy, reduce fatigue, and promote lasting alertness. 30 patches in each pack.</p><p></p>"
+            "text": "<p>Aims to boost natural energy, reduce fatigue, and promote lasting alertness. <strong>30 patches</strong> in each pack.</p><p></p>"
           }
         },
         "badges": {
@@ -49,7 +49,7 @@
         "liquid_UxXy6w": {
           "type": "liquid",
           "settings": {
-            "liquid": "{% comment %} 4th of July Ultra Compact Banner {% endcomment %}\n<style>\n.july-banner {\n  background: linear-gradient(135deg, #0A3161 50%, #B22234 50%);\n  border-radius: 12px;\n  padding: 8px 18px;\n  margin-bottom: 14px;\n  text-align: center;\n  color: #FEF9F1;\n  position: relative;\n  overflow: hidden;\n}\n.july-banner::before {\n  content: \"\";\n  position: absolute;\n  top: 0; left: 0;\n  width: 100%; height: 100%;\n  background: url('https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg') center/cover;\n  opacity: 0.15;\n  z-index: 1;\n}\n.july-banner > * {\n  position: relative;\n  z-index: 2;\n}\n.july-banner .title {\n  font-size: 13px;\n  font-weight: 700;\n  line-height: 1.25;\n  margin-bottom: 2px;\n}\n.july-banner .offer {\n  font-size: 14.5px;\n  font-weight: 700;\n  margin: 2px 0 3px;\n}\n.july-banner .sub {\n  font-size: 11px;\n  opacity: 0.9;\n}\n</style>\n\n<div class=\"july-banner\">\n  <div class=\"title\">Celebrate Independence. Invest in Your Well-Being.</div>\n  <div class=\"offer\">BUY 2, GET 2 FREE + 20% OFF with Subscribe & Save</div>\n  <div class=\"sub\">Exclusive 4th of July Deal</div>\n</div>"
+            "liquid": "{% comment %} Premium Deal Banner - No Ribbon {% endcomment %}\n<style>\n.premium-deal-banner {\n  background-color: #f8f4ed;\n  border: 1px solid #e8d9c0;\n  border-radius: 12px;\n  padding: 14px 20px;\n  margin-bottom: 20px;\n  text-align: center;\n  font-size: 14px;\n  line-height: 1.4;\n  color: #2c2c2c;\n}\n\n.premium-deal-banner .highlight {\n  color: #d32f2f;\n  font-weight: 700;\n}\n\n.premium-deal-banner .subtext {\n  font-size: 13px;\n  color: #555;\n  margin-top: 4px;\n}\n</style>\n\n<div class=\"premium-deal-banner\">\n  <strong>Limited Time Offer</strong><br>\n  <span class=\"highlight\">BUY 2, GET 2 FREE</span> + <span class=\"highlight\">20% OFF</span> with Subscribe & Save<br>\n  <span class=\"subtext\">Perfect for yourself or as a thoughtful gift</span>\n</div>"
           }
         },
         "recharge_subscriptions_subscription_widget_v2_QRz77y": {

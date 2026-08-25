@@ -12,6 +12,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "liquid_FUJHgk": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div id='ss-trust-badges'></div>"
+          }
+        },
         "liquid_P8FmaY": {
           "type": "liquid",
           "settings": {
@@ -27,7 +33,7 @@
         "text_dngyfh": {
           "type": "text",
           "settings": {
-            "text": "<p>Designed for adults who want to feel more focused, motivated, and energized throughout the day. Includes <strong>30 Dopamine Patches </strong>and <strong>30 Energy Patches</strong> for a complete<strong> 60 Patch</strong> daily wellness routine.</p>"
+            "text": "<p>Aims to support calm, relaxation, and emotional wellbeing. <strong>30 patches</strong> in each pack.</p>"
           }
         },
         "badges": {
@@ -85,6 +91,12 @@
             "size_chart_page": ""
           }
         },
+        "liquid_qWta8P": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"dopa-offer-text\">\n  Add 4 Packs To Your Cart, Pay For 2\n</div>\n\n<style>\n  .dopa-offer-text {\n    color: #C1633F;\n    text-align: center;\n    font-size: 16px;\n    font-weight: 700;\n    line-height: 1.2;\n    margin: 0 0 -10px 0;\n    padding: 0;\n    font-family: inherit;\n  }\n\n  @media (min-width: 750px) {\n    .dopa-offer-text {\n      font-size: 22px;\n      margin-bottom: 4px;\n    }\n  }\n</style>"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -100,6 +112,18 @@
           "type": "liquid",
           "settings": {
             "liquid": "<!-- Trust Badges - Add this code right after your add to cart button -->\n<div class=\"trust-badges\">\n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <rect x=\"1\" y=\"6\" width=\"14\" height=\"10\" rx=\"1\"/>\n            <path d=\"M15 12h7l-2-3h-5v12\"/>\n            <circle cx=\"5\" cy=\"18\" r=\"1\"/>\n            <circle cx=\"19\" cy=\"18\" r=\"1\"/>\n        </svg>\n        <span class=\"badge-text\">Free Shipping</span>\n    </div>\n    \n    <div class=\"badge-block\">\n        <svg class=\"badge-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">\n            <path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/>\n            <polyline points=\"12 8 12 12 14 14\"/>\n        </svg>\n        <span class=\"badge-text\">Money Back Guarantee</span>\n    </div>\n</div>\n\n<style>\n.trust-badges {\n    display: flex;\n    gap: 5px;\n    width: 100%;\n    margin-top: -20px !important; /* NEGATIVE margin to pull it up closer */\n    margin-bottom: 4px;\n    position: relative;\n    z-index: 1;\n}\n\n.badge-block {\n    display: flex;\n    align-items: center;\n    gap: 6px;\n    padding: 8px 10px;\n    background: #F7EDDC;\n    border-radius: 4px;\n    flex: 1;\n    justify-content: center;\n}\n\n.badge-icon {\n    width: 18px;\n    height: 18px;\n    flex-shrink: 0;\n    color: #333;\n}\n\n.badge-text {\n    font-size: 12px;\n    color: #333;\n    font-weight: 500;\n    line-height: 1.2;\n}\n\n@media (max-width: 480px) {\n    .badge-text {\n        font-size: 11px;\n    }\n    .badge-block {\n        padding: 6px 8px;\n    }\n}\n</style>"
+          }
+        },
+        "liquid_QxDttB": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div id='ss-trust-badges'></div>"
+          }
+        },
+        "liquid_BUDzNx": {
+          "type": "liquid",
+          "settings": {
+            "liquid": ""
           }
         },
         "separator_Hw6cKh": {
@@ -144,6 +168,7 @@
         }
       },
       "block_order": [
+        "liquid_FUJHgk",
         "liquid_P8FmaY",
         "title",
         "text_dngyfh",
@@ -156,8 +181,11 @@
         "payment_terms",
         "description",
         "variant_picker",
+        "liquid_qWta8P",
         "buy_buttons",
         "liquid_YCHCjB",
+        "liquid_QxDttB",
+        "liquid_BUDzNx",
         "separator_Hw6cKh",
         "collapsible_text_adWWLr",
         "collapsible_text_btNMjc",

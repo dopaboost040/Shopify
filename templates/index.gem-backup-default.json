@@ -15,8 +15,8 @@
         "image_RnM6Pf": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/GLP-1_Support_Patches_offer_a_gentle_steady_approach_to_appetite_and_glucose_balance._Their_transdermal_delivery_ensures_consistent_support_without_the_fluctuations_typical_of_oral_su_73635680-df37-406e-8dbb-dcda06cddc2d.png",
-            "mobile_image": "shopify:\/\/shop_images\/GLP-1_Support_Patches_offer_a_gentle_steady_approach_to_appetite_and_glucose_balance._Their_transdermal_delivery_ensures_consistent_support_without_the_fluctuations_typical_of_oral_su_f0823855-8fa3-40a2-b5e4-70c567efe3b4.png",
+            "image": "shopify://shop_images/GLP-1_Support_Patches_offer_a_gentle_steady_approach_to_appetite_and_glucose_balance._Their_transdermal_delivery_ensures_consistent_support_without_the_fluctuations_typical_of_oral_su_73635680-df37-406e-8dbb-dcda06cddc2d.png",
+            "mobile_image": "shopify://shop_images/GLP-1_Support_Patches_offer_a_gentle_steady_approach_to_appetite_and_glucose_balance._Their_transdermal_delivery_ensures_consistent_support_without_the_fluctuations_typical_of_oral_su_f0823855-8fa3-40a2-b5e4-70c567efe3b4.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
@@ -59,7 +59,7 @@
         "collection": "",
         "products": [
           "collagen-patches",
-          "dopamine-patches-1",
+          "dopamine-patches-2",
           "energy-patches",
           "focus-patches",
           "glp-1-berberine-patches",
@@ -137,10 +137,10 @@
           "type": "values",
           "settings": {
             "product": "",
-            "value_1": "<p>40mm Beryllium<\/p>",
-            "value_2": "<p>245g<\/p>",
-            "value_3": "<p>165mm x 190mm x 66mm<\/p>",
-            "value_4": "<p>24 hours<\/p>",
+            "value_1": "<p>40mm Beryllium</p>",
+            "value_2": "<p>245g</p>",
+            "value_3": "<p>165mm x 190mm x 66mm</p>",
+            "value_4": "<p>24 hours</p>",
             "value_5": "",
             "value_6": "",
             "value_7": "",
@@ -165,10 +165,10 @@
           "type": "values",
           "settings": {
             "product": "",
-            "value_1": "<p>40mm Beryllium<\/p>",
-            "value_2": "<p>205g (On-Ear), 239g (Over-Ear)<\/p>",
-            "value_3": "<p>190mm x 155mm x 34mm (On-Ear), 200mm x 165mm x 40mm (Over-Ear)<\/p>",
-            "value_4": "<p>16 hours<\/p>",
+            "value_1": "<p>40mm Beryllium</p>",
+            "value_2": "<p>205g (On-Ear), 239g (Over-Ear)</p>",
+            "value_3": "<p>190mm x 155mm x 34mm (On-Ear), 200mm x 165mm x 40mm (Over-Ear)</p>",
+            "value_4": "<p>16 hours</p>",
             "value_5": "",
             "value_6": "",
             "value_7": "",
@@ -200,7 +200,7 @@
         "full_width": true,
         "subheading": "Compare",
         "title": "Highlight key differences at a glance",
-        "content": "<p>This section is perfect for showcasing product comparisons side-by-side. Use it to display key features, specifications, and pricing so customers can quickly decide which item fits their needs.<\/p>",
+        "content": "<p>This section is perfect for showcasing product comparisons side-by-side. Use it to display key features, specifications, and pricing so customers can quickly decide which item fits their needs.</p>",
         "button_text": "Learn more",
         "button_url": "",
         "text_position": "start",
@@ -228,7 +228,7 @@
         "feature_8h967Q": {
           "type": "feature",
           "settings": {
-            "feature_icon": "shopify:\/\/shop_images\/skin.png",
+            "feature_icon": "shopify://shop_images/skin.png",
             "feature_title": "Absorbs Through Skin",
             "feature_description": "Transdermal delivery allows nutrients to enter your bloodstream directly for faster, more efficient results."
           }
@@ -236,7 +236,7 @@
         "feature_TW9NN4": {
           "type": "feature",
           "settings": {
-            "feature_icon": "shopify:\/\/shop_images\/blood.png",
+            "feature_icon": "shopify://shop_images/blood.png",
             "feature_title": "Bypasses Digestion",
             "feature_description": "Avoid stomach upset and nutrient loss that comes with pills and powders for a smoother experience."
           }
@@ -244,7 +244,7 @@
         "feature_UcLzFp": {
           "type": "feature",
           "settings": {
-            "feature_icon": "shopify:\/\/shop_images\/absorption.png",
+            "feature_icon": "shopify://shop_images/absorption.png",
             "feature_title": "Steady Release",
             "feature_description": "Time-release technology provides consistent support throughout the day without peaks and crashes."
           }
@@ -312,7 +312,7 @@
         "image_dzYCnq": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/canvas-image-1761221626832.jpg",
+            "image": "shopify://shop_images/canvas-image-1761221626832.jpg",
             "icon_size_mobile": 48,
             "icon_size_desktop": 64,
             "title": "30,000+ happy customers",
@@ -341,7 +341,7 @@
         "image_bgWqxW": {
           "type": "image",
           "settings": {
-            "icon_image": "shopify:\/\/shop_images\/Untitled_design_71.png",
+            "icon_image": "shopify://shop_images/Untitled_design_71.png",
             "icon_size_mobile": 60,
             "icon_size_desktop": 80,
             "title": "Plant-based",
@@ -370,7 +370,7 @@
         "image_6XFDeR": {
           "type": "image",
           "settings": {
-            "icon_image": "shopify:\/\/shop_images\/Untitled_design_70.png",
+            "icon_image": "shopify://shop_images/Untitled_design_70.png",
             "icon_size_mobile": 60,
             "icon_size_desktop": 80,
             "title": "Science-Backed",

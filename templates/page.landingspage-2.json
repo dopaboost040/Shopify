@@ -95,7 +95,7 @@
             "size": "base",
             "mobile_size": "same",
             "text": "Shop Dopamine Patches",
-            "url": "shopify://products/dopamine-patches-1",
+            "url": "shopify://products/dopamine-patches-2",
             "background": "#fcd900",
             "text_color": "#321e1e"
           }
@@ -356,7 +356,7 @@
       "name": "Featured product",
       "settings": {
         "full_width": true,
-        "product": "dopamine-patches-1",
+        "product": "dopamine-patches-2",
         "desktop_media_width": 55,
         "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "expanded",
@@ -467,7 +467,7 @@
             "size": "sm",
             "mobile_size": "same",
             "text": "Shop Dopamine Patches",
-            "url": "shopify://products/dopamine-patches-1",
+            "url": "shopify://products/dopamine-patches-2",
             "background": "#fcd900",
             "text_color": "#321e1e"
           }
@@ -604,7 +604,7 @@
             "size": "sm",
             "mobile_size": "same",
             "text": "Shop Dopamine Patches",
-            "url": "shopify://products/dopamine-patches-1",
+            "url": "shopify://products/dopamine-patches-2",
             "background": "#fcd900",
             "text_color": "#321e1e"
           }
@@ -685,7 +685,7 @@
         "dosage_background": "#fcd900",
         "image_radius": 20,
         "button_text": "Shop Dopamine Patches",
-        "button_url": "shopify://products/dopamine-patches-1",
+        "button_url": "shopify://products/dopamine-patches-2",
         "button_size": "lg",
         "button_mobile_size": "same",
         "button_background": "#fcd900",

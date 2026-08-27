@@ -286,7 +286,7 @@
       "name": "Featured product",
       "settings": {
         "full_width": true,
-        "product": "dopamine-patches-1",
+        "product": "dopamine-patches-2",
         "desktop_media_width": 55,
         "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "expanded",

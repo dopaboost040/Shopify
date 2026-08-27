@@ -179,7 +179,7 @@
             "style": "fill",
             "size": "xl",
             "text": "Explore Dopamine Patches",
-            "url": "shopify://products/dopamine-patches-1",
+            "url": "shopify://products/dopamine-patches-2",
             "background": "",
             "text_color": ""
           }
@@ -340,7 +340,7 @@
       "name": "Featured product",
       "settings": {
         "full_width": true,
-        "product": "dopamine-patches-1",
+        "product": "dopamine-patches-2",
         "desktop_media_width": 55,
         "desktop_media_layout": "carousel_thumbnails_left",
         "mobile_media_size": "expanded",

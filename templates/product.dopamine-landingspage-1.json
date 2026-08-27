@@ -88,7 +88,7 @@
             "size": "lg",
             "mobile_size": "base",
             "text": "Shop Dopamine Patches",
-            "url": "shopify://products/dopamine-patches-1",
+            "url": "shopify://products/dopamine-patches-2",
             "background": "#ff0000",
             "text_color": "#ffffff"
           }
@@ -481,7 +481,7 @@
             "size": "lg",
             "mobile_size": "sm",
             "text": "SHOP NOW",
-            "url": "shopify://products/dopamine-patches-1",
+            "url": "shopify://products/dopamine-patches-2",
             "background": "#ff0000",
             "text_color": "#ffffff"
           }
@@ -601,7 +601,7 @@
             "size": "lg",
             "mobile_size": "sm",
             "text": "SHOP NOW",
-            "url": "shopify://products/dopamine-patches-1",
+            "url": "shopify://products/dopamine-patches-2",
             "background": "#ff0000",
             "text_color": "#ffffff"
           }
@@ -751,7 +751,7 @@
         "dosage_background": "#fcd900",
         "image_radius": 20,
         "button_text": "SHOP NOW",
-        "button_url": "shopify://products/dopamine-patches-1",
+        "button_url": "shopify://products/dopamine-patches-2",
         "button_size": "lg",
         "button_mobile_size": "same",
         "button_background": "#ff0000",

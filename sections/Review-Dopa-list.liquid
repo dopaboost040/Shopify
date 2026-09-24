@@ -1,0 +1,691 @@
+<style>
+  #shopify-section-{{ section.id }} .cr-section{
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+  #shopify-section-{{ section.id }} .cr-inner{ width: 100%; }
+  #shopify-section-{{ section.id }} .cr-heading{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 0;
+  }
+  #shopify-section-{{ section.id }} .cr-subheading{
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  #shopify-section-{{ section.id }} .cr-summary-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+  #shopify-section-{{ section.id }} .cr-score-block{ text-align: center; }
+  #shopify-section-{{ section.id }} .cr-score-number{
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+  }
+  #shopify-section-{{ section.id }} .cr-score-stars{ margin: 8px 0 4px; }
+  #shopify-section-{{ section.id }} .cr-score-count{ font-size: 14px; margin: 0; }
+  #shopify-section-{{ section.id }} .cr-bars-block{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 260px;
+  }
+  #shopify-section-{{ section.id }} .cr-bar-row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+  #shopify-section-{{ section.id }} .cr-bar-track{
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 160px;
+  }
+  #shopify-section-{{ section.id }} .cr-bar-fill{
+    height: 100%;
+    border-radius: 3px;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .cr-bar-count{
+    min-width: 34px;
+    text-align: right;
+  }
+  #shopify-section-{{ section.id }} .cr-write-review-btn{
+    border: none;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #shopify-section-{{ section.id }} .cr-filter-row{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    margin-bottom: 6px;
+  }
+  #shopify-section-{{ section.id }} .cr-search-box{
+    flex: 1;
+    min-width: 200px;
+    background: #fff;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  #shopify-section-{{ section.id }} .cr-rating-select{
+    background: #fff;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 14px;
+    border: none;
+  }
+  #shopify-section-{{ section.id }} .cr-review-item{
+    display: flex;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+  #shopify-section-{{ section.id }} .cr-reviewer{ min-width: 140px; }
+  #shopify-section-{{ section.id }} .cr-reviewer-name{ font-weight: 600; margin: 0 0 6px; }
+  #shopify-section-{{ section.id }} .cr-verified{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+  #shopify-section-{{ section.id }} .cr-check{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+  }
+  #shopify-section-{{ section.id }} .cr-review-head{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  #shopify-section-{{ section.id }} .cr-review-stars{ letter-spacing: 2px; }
+  #shopify-section-{{ section.id }} .cr-review-heading{ font-weight: 700; }
+  #shopify-section-{{ section.id }} .cr-review-date{ margin-left: auto; font-size: 13px; }
+  #shopify-section-{{ section.id }} .cr-review-text{ font-size: 14px; line-height: 1.6; margin: 0; }
+
+  @media (max-width: 700px){
+    #shopify-section-{{ section.id }} .cr-summary-row{ gap: 30px; }
+  }
+
+  #shopify-section-{{ section.id }} .cr-section{
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_top }}px;
+    padding-left: {{ section.settings.padding_x }}px;
+    padding-right: {{ section.settings.padding_x }}px;
+  }
+  #shopify-section-{{ section.id }} .cr-heading{
+    font-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    font-weight: {{ section.settings.heading_font.weight }};
+    color: {{ section.settings.text_color }};
+    margin-bottom: {{ section.settings.block_gap }}px;
+  }
+  #shopify-section-{{ section.id }} .cr-subheading{
+    font-family: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+    color: {{ section.settings.text_color }};
+    margin-bottom: {{ section.settings.block_gap }}px;
+  }
+  #shopify-section-{{ section.id }} .cr-summary-row{
+    margin-bottom: {{ section.settings.block_gap }}px;
+  }
+  #shopify-section-{{ section.id }} .cr-body,
+  #shopify-section-{{ section.id }} .cr-review-text,
+  #shopify-section-{{ section.id }} .cr-reviewer-name,
+  #shopify-section-{{ section.id }} .cr-review-heading,
+  #shopify-section-{{ section.id }} .cr-search-box,
+  #shopify-section-{{ section.id }} .cr-rating-select,
+  #shopify-section-{{ section.id }} .cr-write-review-btn{
+    font-family: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+  }
+  #shopify-section-{{ section.id }} .cr-text-secondary,
+  #shopify-section-{{ section.id }} .cr-score-count,
+  #shopify-section-{{ section.id }} .cr-bar-count,
+  #shopify-section-{{ section.id }} .cr-review-date,
+  #shopify-section-{{ section.id }} .cr-verified{
+    color: {{ section.settings.text_secondary_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-star-icon,
+  #shopify-section-{{ section.id }} .cr-score-stars,
+  #shopify-section-{{ section.id }} .cr-review-stars{
+    color: {{ section.settings.icon_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-verified .cr-check{
+    background: {{ section.settings.icon_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-bar-fill{
+    background: {{ section.settings.bar_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-write-review-btn{
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text }};
+  }
+  #shopify-section-{{ section.id }} .cr-review-item,
+  #shopify-section-{{ section.id }} .cr-filter-row{
+    border-color: {{ section.settings.border_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-bar-track{
+    background: {{ section.settings.border_color }};
+  }
+
+  /* Pagination */
+  #shopify-section-{{ section.id }} .cr-pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+  #shopify-section-{{ section.id }} .cr-page-btn{
+    min-width: 38px;
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    background: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+  }
+  #shopify-section-{{ section.id }} .cr-page-btn:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  #shopify-section-{{ section.id }} .cr-page-btn.cr-page-active{
+    color: {{ section.settings.button_text }};
+    border-color: transparent;
+  }
+  #shopify-section-{{ section.id }} .cr-page-ellipsis{
+    padding: 0 4px;
+    color: {{ section.settings.text_secondary_color }};
+  }
+
+  /* Write a review modal */
+  #shopify-section-{{ section.id }} .cr-modal-overlay{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-overlay.cr-modal-open{
+    display: flex;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-box{
+    background: #fff;
+    color: #1a1a1a;
+    border-radius: 16px;
+    padding: 32px;
+    width: 100%;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    font-family: {{ section.settings.body_font.family }}, {{ section.settings.body_font.fallback_families }};
+  }
+  #shopify-section-{{ section.id }} .cr-modal-close{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-title{
+    margin: 0 0 20px;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+  }
+  #shopify-section-{{ section.id }} .cr-modal-stars{
+    display: flex;
+    gap: 6px;
+    margin-bottom: 18px;
+    font-size: 26px;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-star{
+    cursor: pointer;
+    color: #d9d9d9;
+    transition: color 0.15s ease;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-star.cr-star-active{
+    color: {{ section.settings.icon_color }};
+  }
+  #shopify-section-{{ section.id }} .cr-modal-field{
+    margin-bottom: 14px;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-field label{
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-field input,
+  #shopify-section-{{ section.id }} .cr-modal-field textarea{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-field textarea{
+    min-height: 90px;
+    resize: vertical;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-submit{
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text }};
+  }
+  #shopify-section-{{ section.id }} .cr-modal-thanks{
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-thanks.cr-modal-thanks-show{
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .cr-modal-form.cr-modal-form-hide{
+    display: none;
+  }
+</style>
+
+<section class="cr-section">
+  <div class="cr-inner">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="cr-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="cr-subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="cr-summary-row">
+      <div class="cr-score-block">
+        <p class="cr-score-number">{{ section.settings.average_rating }}</p>
+        <div class="cr-score-stars">
+          {% for i in (1..5) %}★{% endfor %}
+        </div>
+        <p class="cr-score-count">Based on {{ section.settings.review_count }} reviews</p>
+      </div>
+
+      <div class="cr-bars-block">
+        {% assign star_labels = "5,4,3,2,1" | split: "," %}
+        {% for label in star_labels %}
+          {% case label %}
+            {% when "5" %}{% assign count = section.settings.count_5 %}
+            {% when "4" %}{% assign count = section.settings.count_4 %}
+            {% when "3" %}{% assign count = section.settings.count_3 %}
+            {% when "2" %}{% assign count = section.settings.count_2 %}
+            {% when "1" %}{% assign count = section.settings.count_1 %}
+          {% endcase %}
+          {% assign total = section.settings.count_5 | plus: section.settings.count_4 | plus: section.settings.count_3 | plus: section.settings.count_2 | plus: section.settings.count_1 %}
+          {% if total > 0 %}
+            {% assign pct = count | times: 100.0 | divided_by: total %}
+          {% else %}
+            {% assign pct = 0 %}
+          {% endif %}
+          <div class="cr-bar-row">
+            <span>{{ label }}</span><span class="cr-star-icon">★</span>
+            <div class="cr-bar-track"><div class="cr-bar-fill" style="width:{{ pct }}%"></div></div>
+            <span class="cr-bar-count">{{ count }}</span>
+          </div>
+        {% endfor %}
+      </div>
+
+      <button type="button" class="cr-write-review-btn cr-write-review-trigger">{{ section.settings.button_label }}</button>
+    </div>
+
+    <div class="cr-filter-row">
+      <div class="cr-search-box">Search reviews</div>
+      <select class="cr-rating-select">
+        <option>Rating</option>
+        <option>5 stars</option>
+        <option>4 stars</option>
+        <option>3 stars</option>
+        <option>2 stars</option>
+        <option>1 star</option>
+      </select>
+    </div>
+
+    <div class="cr-reviews-list">
+      {% for block in section.blocks %}
+        {% if block.type == 'review' %}
+          <div class="cr-review-item" {{ block.shopify_attributes }}>
+            <div class="cr-reviewer">
+              <p class="cr-reviewer-name">{{ block.settings.name }}</p>
+              {% if block.settings.verified %}
+                <div class="cr-verified"><span class="cr-check">✓</span> Verified buyer</div>
+              {% endif %}
+            </div>
+            <div class="cr-body">
+              <div class="cr-review-head">
+                <span class="cr-review-stars">
+                  {% for i in (1..block.settings.rating) %}★{% endfor %}
+                </span>
+                <span class="cr-review-heading">{{ block.settings.title }}</span>
+                <span class="cr-review-date">{{ block.settings.date }}</span>
+              </div>
+              <p class="cr-review-text">{{ block.settings.text }}</p>
+            </div>
+          </div>
+        {% elsif block.type == 'review_batch' %}
+          {%- comment -%}
+            Bulk-import block: holds many reviews as one JSON array, so a
+            large imported review set doesn't hit Shopify's 250-block-per-
+            section limit. Each item: {name, rating, title, date, text,
+            verified}. Rendered exactly like a single 'review' block.
+          {%- endcomment -%}
+          {% assign batch = block.settings.reviews_json | parse_json %}
+          {% for r in batch %}
+            <div class="cr-review-item">
+              <div class="cr-reviewer">
+                <p class="cr-reviewer-name">{{ r.name }}</p>
+                {% if r.verified %}
+                  <div class="cr-verified"><span class="cr-check">✓</span> Verified buyer</div>
+                {% endif %}
+              </div>
+              <div class="cr-body">
+                <div class="cr-review-head">
+                  <span class="cr-review-stars">
+                    {% for i in (1..r.rating) %}★{% endfor %}
+                  </span>
+                  <span class="cr-review-heading">{{ r.title }}</span>
+                  <span class="cr-review-date">{{ r.date }}</span>
+                </div>
+                <p class="cr-review-text">{{ r.text }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <nav class="cr-pagination" aria-label="Reviews pagination"></nav>
+
+  </div>
+</section>
+
+<div class="cr-modal-overlay">
+  <div class="cr-modal-box">
+    <button type="button" class="cr-modal-close" aria-label="Close">✕</button>
+
+    <div class="cr-modal-form">
+      <h3 class="cr-modal-title">Write A Review</h3>
+
+      <div class="cr-modal-stars">
+        <span class="cr-modal-star" data-value="1">★</span>
+        <span class="cr-modal-star" data-value="2">★</span>
+        <span class="cr-modal-star" data-value="3">★</span>
+        <span class="cr-modal-star" data-value="4">★</span>
+        <span class="cr-modal-star" data-value="5">★</span>
+      </div>
+
+      <div class="cr-modal-field">
+        <label>Name</label>
+        <input type="text" class="cr-modal-name" placeholder="Your name">
+      </div>
+      <div class="cr-modal-field">
+        <label>Review Title</label>
+        <input type="text" class="cr-modal-review-title" placeholder="Sum it up in a few words">
+      </div>
+      <div class="cr-modal-field">
+        <label>Review</label>
+        <textarea class="cr-modal-review-text" placeholder="Tell us what you think"></textarea>
+      </div>
+
+      <button type="button" class="cr-modal-submit">Submit Review</button>
+    </div>
+
+    <div class="cr-modal-thanks">
+      <p>Thank you for your review!</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var root = document.getElementById('shopify-section-{{ section.id }}');
+  if (!root) return;
+
+  /* ---- Write a review modal ---- */
+  var trigger = root.querySelector('.cr-write-review-trigger');
+  var overlay = root.querySelector('.cr-modal-overlay');
+  var closeBtn = root.querySelector('.cr-modal-close');
+  var form = root.querySelector('.cr-modal-form');
+  var thanks = root.querySelector('.cr-modal-thanks');
+  var stars = root.querySelectorAll('.cr-modal-star');
+  var submitBtn = root.querySelector('.cr-modal-submit');
+  var selectedRating = 0;
+
+  function openModal() {
+    if (overlay) overlay.classList.add('cr-modal-open');
+    form.classList.remove('cr-modal-form-hide');
+    thanks.classList.remove('cr-modal-thanks-show');
+    selectedRating = 0;
+    updateStars();
+  }
+
+  function closeModal() {
+    if (overlay) overlay.classList.remove('cr-modal-open');
+  }
+
+  function updateStars() {
+    stars.forEach(function(star) {
+      var value = parseInt(star.getAttribute('data-value'), 10);
+      if (value <= selectedRating) {
+        star.classList.add('cr-star-active');
+      } else {
+        star.classList.remove('cr-star-active');
+      }
+    });
+  }
+
+  if (trigger) trigger.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeModal();
+    });
+  }
+
+  stars.forEach(function(star) {
+    star.addEventListener('click', function() {
+      selectedRating = parseInt(star.getAttribute('data-value'), 10);
+      updateStars();
+    });
+  });
+
+  if (submitBtn) {
+    submitBtn.addEventListener('click', function() {
+      form.classList.add('cr-modal-form-hide');
+      thanks.classList.add('cr-modal-thanks-show');
+      setTimeout(closeModal, 1800);
+    });
+  }
+
+  /* ---- Review pagination ---- */
+  var perPage = parseInt('{{ section.settings.reviews_per_page | default: 10 }}', 10) || 10;
+  var items = Array.prototype.slice.call(root.querySelectorAll('.cr-review-item'));
+  var pagination = root.querySelector('.cr-pagination');
+  var reviewsList = root.querySelector('.cr-reviews-list');
+  var totalPages = Math.max(1, Math.ceil(items.length / perPage));
+  var currentPage = 1;
+
+  function showPage(page, scroll) {
+    currentPage = page;
+    var start = (page - 1) * perPage;
+    var end = start + perPage;
+    items.forEach(function(item, index) {
+      item.style.display = (index >= start && index < end) ? '' : 'none';
+    });
+    renderPagination();
+    if (scroll && reviewsList) {
+      reviewsList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function pageButton(label, page, opts) {
+    opts = opts || {};
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'cr-page-btn';
+    btn.textContent = label;
+    if (opts.active) btn.classList.add('cr-page-active');
+    if (opts.disabled) btn.disabled = true;
+    if (!opts.disabled && !opts.active) {
+      btn.addEventListener('click', function() {
+        showPage(page, true);
+      });
+    }
+    return btn;
+  }
+
+  function renderPagination() {
+    if (!pagination) return;
+    pagination.innerHTML = '';
+    if (totalPages <= 1) return;
+
+    pagination.appendChild(pageButton('‹ Prev', currentPage - 1, { disabled: currentPage === 1 }));
+
+    var pagesToShow = [];
+    for (var i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 1) {
+        pagesToShow.push(i);
+      } else if (pagesToShow[pagesToShow.length - 1] !== '...') {
+        pagesToShow.push('...');
+      }
+    }
+
+    pagesToShow.forEach(function(p) {
+      if (p === '...') {
+        var span = document.createElement('span');
+        span.className = 'cr-page-ellipsis';
+        span.textContent = '...';
+        pagination.appendChild(span);
+      } else {
+        pagination.appendChild(pageButton(String(p), p, { active: p === currentPage }));
+      }
+    });
+
+    pagination.appendChild(pageButton('Next ›', currentPage + 1, { disabled: currentPage === totalPages }));
+  }
+
+  showPage(1, false);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Real Customer Reviews" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Read great reviews" },
+    { "type": "text", "id": "average_rating", "label": "Average Rating", "default": "4.7" },
+    { "type": "text", "id": "review_count", "label": "Number Of Reviews", "default": "2731" },
+    { "type": "text", "id": "button_label", "label": "Button Text", "default": "Write A Review" },
+    { "type": "range", "id": "reviews_per_page", "label": "Reviews Per Page", "min": 5, "max": 50, "step": 5, "default": 10 },
+
+    { "type": "header", "content": "Star Distribution" },
+    { "type": "text", "id": "count_5", "label": "Number Of 5-Star Reviews", "default": "2080" },
+    { "type": "text", "id": "count_4", "label": "Number Of 4-Star Reviews", "default": "418" },
+    { "type": "text", "id": "count_3", "label": "Number Of 3-Star Reviews", "default": "224" },
+    { "type": "text", "id": "count_2", "label": "Number Of 2-Star Reviews", "default": "1" },
+    { "type": "text", "id": "count_1", "label": "Number Of 1-Star Reviews", "default": "8" },
+
+    { "type": "header", "content": "Font" },
+    { "type": "font_picker", "id": "heading_font", "label": "Heading Font", "default": "helvetica_n4" },
+    { "type": "font_picker", "id": "body_font", "label": "Body Font", "default": "helvetica_n4" },
+
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#F4F2EC" },
+    { "type": "color", "id": "text_color", "label": "Text Color (Main)", "default": "#22223A" },
+    { "type": "color", "id": "text_secondary_color", "label": "Text Color (Subtle)", "default": "#55556B" },
+    { "type": "color", "id": "icon_color", "label": "Icon / Star Color", "default": "#7FA8E8" },
+    { "type": "color", "id": "bar_color", "label": "Progress Bar Color", "default": "#191927" },
+    { "type": "color", "id": "border_color", "label": "Border / Bar Track Color", "default": "#E4E1D8" },
+    { "type": "color", "id": "button_bg", "label": "Button Background Color", "default": "#191927" },
+    { "type": "color", "id": "button_text", "label": "Button Text Color", "default": "#FFFFFF" },
+
+    { "type": "header", "content": "Spacing / Padding" },
+    { "type": "range", "id": "padding_top", "label": "Vertical Padding", "min": 0, "max": 150, "step": 2, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding_x", "label": "Horizontal Padding", "min": 0, "max": 150, "step": 2, "unit": "px", "default": 40 },
+    { "type": "range", "id": "block_gap", "label": "Space Between Blocks", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 28 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Customer Name" },
+        { "type": "checkbox", "id": "verified", "label": "Verified Buyer", "default": true },
+        { "type": "range", "id": "rating", "label": "Number Of Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "text", "id": "title", "label": "Review Title", "default": "Amazing" },
+        { "type": "text", "id": "date", "label": "Date", "default": "01/01/26" },
+        { "type": "textarea", "id": "text", "label": "Review Text", "default": "Write the review text here." }
+      ]
+    },
+    {
+      "type": "review_batch",
+      "name": "Review Batch (bulk)",
+      "settings": [
+        { "type": "paragraph", "content": "Holds a bundle of imported reviews as data. Not meant for manual editing here — use the 'Review' block above to add reviews by hand." },
+        { "type": "textarea", "id": "reviews_json", "label": "Reviews data (JSON)", "default": "[]" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}
